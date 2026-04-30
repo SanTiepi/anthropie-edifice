@@ -2,10 +2,10 @@
 import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
-// Hosting actuel : GitHub Pages → https://santiepi.github.io/anthropie-edifice/
-// À migrer vers https://anthropie.org quand le domaine sera actif (changer site, vider base).
+// Hosting : GitHub Pages avec custom domain → https://anthropie.org
+// Le fichier site/public/CNAME contient le domaine et est copié dans dist/ par Astro,
+// puis détecté par GitHub Pages au déploiement.
 export default defineConfig({
 	integrations: [],
-	site: 'https://santiepi.github.io',
-	base: '/anthropie-edifice',
+	site: 'https://anthropie.org',
 });
