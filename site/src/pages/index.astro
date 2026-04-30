@@ -1,4 +1,5 @@
 ---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const githubBase = "https://github.com/SanTiepi/anthropie-edifice/blob/master";
 const couches = [
   { n: 1, nom: "LA MATRICE", age: "0-3", coeur: "Présence des aînés (RPU), 6 strates affectives", file: "anthropie_couche_01_matrice.md", hasFile: false },
@@ -32,7 +33,7 @@ const articles = [
 <html lang="fr">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content="L'Anthropie — édifice civilisationnel d'apprentissage humain à 12 couches, 0 à infini. CC0 1.0 Universal. Sans signature personnelle. Cherche porteurs." />
