@@ -2,6 +2,12 @@
 
 > *Édifice civilisationnel d'apprentissage humain à 12 couches, 0 à l'infini. CC0 1.0 Universal.*
 
+[![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](LICENSE.md)
+[![Site](https://img.shields.io/badge/site-anthropie.org-4a6741)](https://anthropie.org)
+[![Deploy](https://github.com/SanTiepi/anthropie-edifice/actions/workflows/deploy.yml/badge.svg)](https://github.com/SanTiepi/anthropie-edifice/actions/workflows/deploy.yml)
+
+🌐 **Site** : [anthropie.org](https://anthropie.org) — 📄 **3 min** : [le brief](anthropie_brief_3pages.md) — 🗺️ **Roadmap** : [4 phases](ROADMAP.md)
+
 ## Ce qui suit n'a pas d'auteur
 
 L'Anthropie est un édifice civilisationnel construit sous CC0 1.0 (domaine public). Personne ne le possède. Toute personne ou collectif peut l'utiliser, le modifier, le traduire, l'incarner, le contester, l'augmenter — sans demander permission, sans rétribution, sans attribution exigée.

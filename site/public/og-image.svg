@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+	<rect width="1200" height="630" fill="#fdfdfb"/>
+	<rect x="0" y="0" width="1200" height="6" fill="#4a6741"/>
+	<rect x="0" y="624" width="1200" height="6" fill="#4a6741"/>
+	<text x="600" y="240" font-family="Iowan Old Style, Palatino Linotype, Palatino, Georgia, serif" font-size="120" fill="#1a1a1a" text-anchor="middle" font-weight="400">L'Anthropie</text>
+	<text x="600" y="320" font-family="Iowan Old Style, Palatino Linotype, Palatino, Georgia, serif" font-size="34" fill="#5a5a5a" text-anchor="middle" font-style="italic">Édifice civilisationnel d'apprentissage humain</text>
+	<text x="600" y="370" font-family="Iowan Old Style, Palatino Linotype, Palatino, Georgia, serif" font-size="34" fill="#5a5a5a" text-anchor="middle" font-style="italic">à 12 couches — de 0 à l'infini</text>
+	<text x="600" y="490" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" fill="#4a6741" text-anchor="middle" letter-spacing="4">DOMAINE PUBLIC · CC0 1.0</text>
+	<text x="600" y="540" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#1a1a1a" text-anchor="middle" letter-spacing="2">anthropie.org</text>
+</svg>

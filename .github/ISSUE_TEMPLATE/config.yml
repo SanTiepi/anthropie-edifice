@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Site web Anthropie
+    url: https://anthropie.org
+    about: Présentation, brief 3 pages, accès aux 12 couches
+  - name: Discussion publique générale
+    url: https://github.com/SanTiepi/anthropie-edifice/discussions
+    about: Échange ouvert (pas un signalement structuré). Préférer Issues pour signaler erreur, manque, ou contradiction.

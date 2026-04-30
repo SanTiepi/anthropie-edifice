@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+title: "L'Anthropie — édifice civilisationnel d'apprentissage humain à 12 couches"
+message: "Si vous citez ou utilisez cet édifice, aucune attribution n'est requise (CC0 1.0 Universal). Cette citation est fournie pour ceux qui souhaitent référencer le travail dans des publications académiques."
+type: dataset
+authors:
+  - name: "Anthropie Network"
+    website: "https://anthropie.org"
+    affiliation: "(édifice CC0 sans signature personnelle)"
+abstract: "Édifice civilisationnel d'apprentissage humain à 12 couches articulées, couvrant la vie humaine de la naissance à l'infini (0-∞). Inclut une charpente juridique de 11 articles d'extension (31bis-duodecies) proposés au protocole optionnel à la Convention relative aux droits de l'enfant. Mobilise environ 88 sources scientifiques 2024-2025. Publié sous licence CC0 1.0 Universal — domaine public."
+keywords:
+  - civilizational education
+  - 12-layer pedagogical architecture
+  - Convention on the Rights of the Child
+  - Optional Protocol
+  - LLM-flattening
+  - Pre-Vocal Prediction Discipline
+  - Mycelial Cells
+  - Hospices of Breakage
+  - Indigenous co-design
+license: CC0-1.0
+repository-code: "https://github.com/SanTiepi/anthropie-edifice"
+url: "https://anthropie.org"
+version: "0.1"
+date-released: "2026-04-30"
