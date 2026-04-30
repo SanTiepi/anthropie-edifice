@@ -1,0 +1,322 @@
+---
+const githubBase = "https://github.com/SanTiepi/anthropie-edifice/blob/master";
+const couches = [
+  { n: 1, nom: "LA MATRICE", age: "0-3", coeur: "Présence des aînés (RPU), 6 strates affectives", file: "anthropie_couche_01_matrice.md", hasFile: false },
+  { n: 2, nom: "LE SANCTUAIRE", age: "3-7", coeur: "7 disciplines de la posture adulte, droit à la curiosité préservée", file: "anthropie_couche_02_sanctuaire.md", hasFile: true },
+  { n: 3, nom: "L'ATELIER", age: "5-12", coeur: "Constructionnisme Papert + Pont des Certifications (Open Badges 3.0)", file: "anthropie_couche_03_atelier.md", hasFile: true },
+  { n: 4, nom: "LA PAROLE", age: "7-15", coeur: "Cercles de Voix + Discipline de Prédiction-Avant-Vocal anti-LLM-flattening", file: "anthropie_couche_04_parole.md", hasFile: true },
+  { n: 5, nom: "LA VILLE", age: "10-18", coeur: "RCI Illich + Big Picture Learning + dual apprenticeship suisse", file: "anthropie_couche_05_ville.md", hasFile: true },
+  { n: 6, nom: "LE REGARD", age: "10-18", coeur: "CVO Freire + Critique deepfakes + Diaspora Visuelle", file: "anthropie_couche_06_regard.md", hasFile: true },
+  { n: 7, nom: "LES SEUILS", age: "12-22", coeur: "12 Rites Articulés + Liminalité Protégée juridique", file: "anthropie_couche_07_seuils.md", hasFile: true },
+  { n: 8, nom: "LA MYCOLOGIE", age: "15-25", coeur: "Cellules Mycéliales 4-7 personnes 5-10 ans (refondation post-BCI)", file: "anthropie_couche_08_mycologie.md", hasFile: true },
+  { n: 9, nom: "L'ARCHIVE VIVANTE", age: "0-∞", coeur: "Maison d'Atomes + Anti-Résurrection AI", file: "anthropie_couche_09_archive.md", hasFile: true },
+  { n: 10, nom: "LE CONSEIL DES MORTS", age: "4-∞", coeur: "Maisons des Lignées + Audiences (anti-tabou occidental)", file: "anthropie_couche_10_morts.md", hasFile: true },
+  { n: 11, nom: "LA PARENTÉ ÉLARGIE", age: "3-25", coeur: "3 Parents Non-Humains Choisis (modèle Te Awa Tupua)", file: "anthropie_couche_11_parente.md", hasFile: true },
+  { n: 12, nom: "LE SEUIL DE LA BRISURE", age: "9-∞", coeur: "Hospices des Brisures + Kintsugi + Wounded Healers", file: "anthropie_couche_12_brisure.md", hasFile: true },
+];
+const articles = [
+  { code: "31bis", titre: "Droit à la curiosité préservée (3-7 ans)" },
+  { code: "31ter", titre: "Reconnaissance des apprentissages exploratoires" },
+  { code: "31quater", titre: "Droit délibératif de l'enfant 9 ans et plus" },
+  { code: "31quinquies", titre: "Reconnaissance professionnelle des apprentissages urbains" },
+  { code: "31sexies", titre: "Souveraineté visuelle (regard critique image)" },
+  { code: "31septies", titre: "Liminalité Protégée pour rites de passage" },
+  { code: "31octies", titre: "Droit à appartenir à une cellule durable d'observation mutuelle" },
+  { code: "31novies", titre: "Maison d'Atomes Personnelle (extension GDPR Art. 17)" },
+  { code: "31decies", titre: "Lien actif avec ses morts, éducation à la mort dès 4 ans" },
+  { code: "31undecies", titre: "3 Parents Non-Humains Choisis (extension Te Awa Tupua Act NZ 2017)" },
+  { code: "31duodecies", titre: "Brisure accompagnée non-pathologisée" },
+];
+---
+
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content="L'Anthropie — édifice civilisationnel d'apprentissage humain à 12 couches, 0 à infini. CC0 1.0 Universal. Sans signature personnelle. Cherche porteurs." />
+		<meta property="og:title" content="L'Anthropie — édifice civilisationnel CC0" />
+		<meta property="og:description" content="12 couches d'apprentissage humain, 0 à infini. 11 articles juridiques 31bis-duodecies. Domaine public." />
+		<meta property="og:type" content="website" />
+		<title>L'Anthropie — édifice civilisationnel CC0</title>
+		<style>
+			:root {
+				--text: #1a1a1a;
+				--muted: #5a5a5a;
+				--bg: #fdfdfb;
+				--bg-alt: #f4f2ec;
+				--accent: #4a6741;
+				--accent-dark: #3a5631;
+				--border: #e2dfd6;
+				--max: 760px;
+			}
+			* { box-sizing: border-box; }
+			html { scroll-behavior: smooth; }
+			body {
+				font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Hoefler Text', Georgia, serif;
+				font-size: 17px;
+				line-height: 1.65;
+				color: var(--text);
+				background-color: var(--bg);
+				margin: 0;
+				padding: 0;
+			}
+			header {
+				border-bottom: 1px solid var(--border);
+				padding: 4rem 1.5rem 3rem;
+				text-align: center;
+			}
+			header h1 {
+				font-size: 3rem;
+				font-weight: 400;
+				letter-spacing: 0.02em;
+				margin: 0 0 0.5rem;
+			}
+			header .sub {
+				font-style: italic;
+				color: var(--muted);
+				margin: 0 auto;
+				max-width: 560px;
+				font-size: 1.05rem;
+			}
+			main {
+				max-width: var(--max);
+				margin: 0 auto;
+				padding: 2.5rem 1.5rem 4rem;
+			}
+			section { margin: 3rem 0; }
+			section:first-of-type { margin-top: 1rem; }
+			h2 {
+				font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				font-size: 0.85rem;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 0.18em;
+				color: var(--accent);
+				margin: 0 0 1.2rem;
+				padding-bottom: 0.4rem;
+				border-bottom: 1px solid var(--border);
+			}
+			h3 {
+				font-size: 1.25rem;
+				font-weight: 400;
+				margin: 1.6rem 0 0.6rem;
+			}
+			p { margin: 0.8em 0; }
+			a {
+				color: var(--accent);
+				text-decoration: none;
+				border-bottom: 1px solid rgba(74, 103, 65, 0.3);
+				transition: border-color 0.15s;
+			}
+			a:hover { border-bottom-color: var(--accent); }
+			strong { font-weight: 600; }
+			em { color: var(--muted); }
+			ul, ol { padding-left: 1.4rem; }
+			li { margin: 0.3rem 0; }
+			.quote {
+				border-left: 3px solid var(--accent);
+				padding: 0.2rem 0 0.2rem 1.2rem;
+				margin: 1.5rem 0;
+				color: var(--muted);
+				font-style: italic;
+			}
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				margin: 1rem 0;
+				font-size: 0.95rem;
+			}
+			th, td {
+				border-bottom: 1px solid var(--border);
+				padding: 0.6rem 0.5rem;
+				text-align: left;
+				vertical-align: top;
+			}
+			th {
+				font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				font-size: 0.78rem;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				color: var(--muted);
+				background: transparent;
+			}
+			td.num { color: var(--muted); width: 2.2rem; }
+			td.age { color: var(--muted); width: 4rem; white-space: nowrap; }
+			td.couche { font-weight: 500; min-width: 9rem; }
+			.articles-list {
+				list-style: none;
+				padding: 0;
+				margin: 1rem 0;
+			}
+			.articles-list li {
+				border-bottom: 1px dotted var(--border);
+				padding: 0.55rem 0;
+			}
+			.articles-list .code {
+				display: inline-block;
+				font-family: 'SF Mono', Menlo, Consolas, monospace;
+				font-size: 0.85rem;
+				color: var(--accent);
+				min-width: 6.5rem;
+				font-weight: 500;
+			}
+			.tldr {
+				background: var(--bg-alt);
+				border-left: 3px solid var(--accent);
+				padding: 1rem 1.2rem;
+				margin: 1.5rem 0;
+				font-size: 0.95rem;
+			}
+			.tldr ul { margin: 0.4rem 0; padding-left: 1.2rem; }
+			.cta-row {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.6rem;
+				margin: 1.5rem 0;
+			}
+			.cta {
+				display: inline-block;
+				padding: 0.55rem 1rem;
+				border: 1px solid var(--accent);
+				color: var(--accent);
+				font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				font-size: 0.9rem;
+				border-bottom: 1px solid var(--accent);
+			}
+			.cta:hover {
+				background: var(--accent);
+				color: var(--bg);
+				border-bottom-color: var(--accent);
+			}
+			footer {
+				border-top: 1px solid var(--border);
+				padding: 2.5rem 1.5rem;
+				text-align: center;
+				color: var(--muted);
+				font-size: 0.9rem;
+			}
+			footer p { margin: 0.4em 0; }
+			@media (max-width: 600px) {
+				header { padding: 2.5rem 1rem 2rem; }
+				header h1 { font-size: 2.2rem; }
+				main { padding: 1.5rem 1rem 3rem; }
+				body { font-size: 16px; }
+				th, td { padding: 0.5rem 0.3rem; font-size: 0.9rem; }
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>L'Anthropie</h1>
+			<p class="sub">Édifice civilisationnel d'apprentissage humain à 12 couches — de 0 à l'infini. Domaine public.</p>
+		</header>
+
+		<main>
+
+			<section>
+				<p>L'Anthropie est un édifice civilisationnel construit sous licence <a href={`${githubBase}/LICENSE.md`}>CC0 1.0 Universal</a>. Personne ne le possède. Toute personne ou collectif peut l'utiliser, le modifier, le traduire, l'incarner, le contester, l'augmenter — sans demander permission, sans rétribution, sans attribution exigée.</p>
+				<p class="quote">L'édifice cherche ses porteurs. Vous êtes peut-être l'un d'eux.</p>
+				<div class="cta-row">
+					<a class="cta" href={`${githubBase}/anthropie_brief_3pages.md`}>Brief 3 pages</a>
+					<a class="cta" href="https://github.com/SanTiepi/anthropie-edifice">Repository GitHub</a>
+				</div>
+			</section>
+
+			<section>
+				<h2>Le diagnostic</h2>
+				<p><strong>Premier constat — la fenêtre de bascule est étroite.</strong> AGI déployée à grande échelle dans 5-10 ans, cascades climatiques 2030-2050, instabilités géopolitiques cumulatives. Les modèles classiques de transformation éducative (Reggio 60 ans, Sudbury 50 ans, AA 90 ans) sont trop lents. Les enfants qui ont 5 ans en 2026 traverseront leur adolescence dans la bascule, leur âge adulte dans le post-bascule. Ils ne sont pas préparés.</p>
+				<p><strong>Deuxième constat — la crise mentale jeunesse documentée 2014-2024.</strong> Suicide 10-24 ans +56&nbsp;% en 10 ans (USA, <em>Frontiers Psychiatry</em> 2024), Black youth +78&nbsp;%. Eco-anxiety Gen Z ~50&nbsp;% niveau élevé. UNICEF&nbsp;: 1 enfant sur 3 victime mensuelle de bullying. UNESCO&nbsp;: <em>«&nbsp;crisis of knowing&nbsp;»</em> face aux deepfakes. La génération qui doit porter l'avenir est en effondrement structurel.</p>
+				<p><strong>Troisième constat — les frameworks existants sont fragmentés.</strong> Reggio Emilia couvre 0-6 ans magnifiquement. Big Picture Learning 14-18 superbement. Bildung Nordique jusqu'à l'âge adulte. Te Whāriki biculturel. Día de los Muertos pour les morts. Whanganui Te Awa Tupua pour les non-humains. AA pour les brisures. <strong>Mais aucun édifice ne les articule en un protocole civilisationnel cohérent 0-∞ avec charpente juridique.</strong></p>
+			</section>
+
+			<section>
+				<h2>Les 12 couches</h2>
+				<table>
+					<thead>
+						<tr><th>#</th><th>Couche</th><th>Âge</th><th>Cœur</th></tr>
+					</thead>
+					<tbody>
+						{couches.map(c => (
+							<tr>
+								<td class="num">{c.n}</td>
+								<td class="couche">
+									{c.hasFile ? <a href={`${githubBase}/${c.file}`}>{c.nom}</a> : c.nom}
+								</td>
+								<td class="age">{c.age}</td>
+								<td>{c.coeur}</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+				<p>Chaque couche a sept strates, des droits fondamentaux, un audit matriciel à 70 cellules, un déploiement fractal du camp de réfugié à la métropole mature, des articulations explicites avec les autres couches, et des angles morts assumés honnêtement.</p>
+			</section>
+
+			<section>
+				<h2>Charpente juridique — Protocole optionnel CRC</h2>
+				<p>Onze articles d'extension du protocole optionnel à la <em>Convention relative aux droits de l'enfant</em> :</p>
+				<ul class="articles-list">
+					{articles.map(a => (
+						<li><span class="code">Art. {a.code}</span>{a.titre}</li>
+					))}
+				</ul>
+				<p>Cinq États-pilotes identifiés : Norvège, Costa Rica, Nouvelle-Zélande, Bhoutan, Québec. Effet domino visé&nbsp;: 30+ ratifications d'ici 2045.</p>
+			</section>
+
+			<section>
+				<h2>Pour comprendre rapidement</h2>
+				<div class="tldr">
+					<ul>
+						<li><strong>3 minutes</strong> — <a href={`${githubBase}/anthropie_brief_3pages.md`}>le brief</a> (présentation compacte)</li>
+						<li><strong>30 minutes</strong> — une couche complète, idéalement <a href={`${githubBase}/anthropie_couche_04_parole.md`}>Couche 4 LA PAROLE</a> (Discipline de Prédiction-Avant-Vocal) ou <a href={`${githubBase}/anthropie_couche_12_brisure.md`}>Couche 12 LE SEUIL DE LA BRISURE</a> (Hospices + Kintsugi)</li>
+						<li><strong>Une journée</strong> — lecture intégrale des onze fichiers de couche</li>
+					</ul>
+				</div>
+			</section>
+
+			<section>
+				<h2>Pour contribuer</h2>
+				<p>Voir <a href={`${githubBase}/CONTRIBUTING.md`}>CONTRIBUTING</a>. Six modes&nbsp;:</p>
+				<ol>
+					<li><strong>Lire et signaler</strong> ce qui résonne, dérange, manque (Issues GitHub)</li>
+					<li><strong>Co-designer</strong> une couche qui aligne avec votre travail (Pull Request)</li>
+					<li><strong>Prototyper</strong> localement une couche dans votre contexte (documenter, partager)</li>
+					<li><strong>Plaidoyer</strong> institutionnel (universitaire, philanthropique, gouvernemental)</li>
+					<li><strong>Traduire</strong> dans une langue (priorité&nbsp;: EN, ES, AR, ZH, HI, SW, PT)</li>
+					<li><strong>Critique radicale</strong> publique des pièces qui ne tiennent pas</li>
+				</ol>
+			</section>
+
+			<section>
+				<h2>Pour les communautés autochtones</h2>
+				<p>L'édifice mobilise des références aux traditions vivantes (Maori <em>Te Whāriki</em> et <em>Te Awa Tupua</em>, Anishinaabe pédagogie de la terre, Aboriginal <em>8 Ways</em>, Saami land-based, Yoruba Egúngún, Lakota Conseil, Día de los Muertos). Toute adaptation/co-design d'une couche pour une tradition spécifique respecte la <strong>charte anti-appropriation</strong> (Couche 7 Strate 5)&nbsp;:</p>
+				<ol>
+					<li>L'initiative vient de la communauté, pas de l'édifice</li>
+					<li>Co-designers rémunérés au tarif Compagnon-Maître senior</li>
+					<li>Souveraineté communautaire absolue, retrait possible à tout moment (90 jours)</li>
+					<li>Pas de transposition extra-communautaire sans nouveau co-design</li>
+				</ol>
+				<p>Si une partie de l'édifice cite incorrectement votre tradition, ouvrez une <a href="https://github.com/SanTiepi/anthropie-edifice/issues">Issue GitHub</a> — correction sous 30 jours.</p>
+			</section>
+
+			<section>
+				<h2>Pour les chercheurs</h2>
+				<p>L'édifice est synthèse rapide d'évidence existante 2024-2025. Aucune validation longitudinale propre. Premières cohortes seront laboratoires. Sources détaillées en fin de chaque fichier de couche (~88 sources scientifiques mobilisées). Critique radicale bienvenue, surtout pour démolir ce qui ne tient pas.</p>
+			</section>
+
+			<section>
+				<h2>Contact</h2>
+				<p>Pour discussion publique&nbsp;: <a href="https://github.com/SanTiepi/anthropie-edifice/issues">Issues GitHub</a>.</p>
+				<p>Contact privé&nbsp;: <code>contact@anthropie.org</code> <em>(canal en cours d'ouverture)</em>.</p>
+			</section>
+
+		</main>
+
+		<footer>
+			<p>Anthropie Network — édifice <a href={`${githubBase}/LICENSE.md`}>CC0 1.0 Universal</a></p>
+			<p><em>«&nbsp;Le porteur vient après. Ambition civilisationnelle à chaque couche.&nbsp;»</em></p>
+		</footer>
+	</body>
+</html>
