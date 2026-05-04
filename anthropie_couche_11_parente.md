@@ -158,7 +158,7 @@ Modules formation 80h pour adolescents 12-15 ans, articulés Couche 4 Strate 3 C
 - **C. Culturels :** "Anthropomorphisme légal" critique → modèle Te Awa Tupua = relation Maori-rivière reconnue, pas projection arbitraire | Rejet juridique conservateur.
 - **D. Économiques :** Coût procédures juridiques → tuteurs partagent ; financement public 31undecies + ONGs | Pays pauvres limites.
 - **E. Éthiques :** Risque instrumentalisation par lobbies (rivière "veut" autoroute) → règle de tutelle multi-acteurs, transparence audit | Capture.
-- **F. Adoption :** États refusant rights of nature → 5 États-pilotes domino (NZ déjà, Bolivie, Équateur, Colombie, Espagne Mar Menor) | Hostilité conservatrice.
+- **F. Adoption :** États refusant rights of nature → stratégie 5 États-pilotes canoniques (Norvège, Costa Rica, Nouvelle-Zélande, Bhoutan, Québec) ; effet domino renforcé par précédents juridiques existants (NZ Te Awa Tupua 2017, Bolivie Pachamama 2010, Équateur constitution 2008, Colombie Atrato 2017, Espagne Mar Menor 2022) | Hostilité conservatrice.
 - **G. Scale :** Reconnaissance progressive territoires → modèle bottom-up (community-led nominations) | Surcharge juridique.
 - **H. Dérive :** Reconnaissance utilisée pour empêcher communautés d'usage traditionnel → règle : reconnaissance avec usage durable communautaire intégré | Conflits accès.
 - **I. Cas limites :** Territoires transfrontaliers (rivières internationales) → traités bilatéraux/multilatéraux nécessaires | Pas encore acquis.
@@ -234,7 +234,7 @@ Modules formation 80h pour adolescents 12-15 ans, articulés Couche 4 Strate 3 C
 
 **M. Séquençage temporel réaliste (0-40 ans)**
 
-- **2026-2030** : 5 États-pilotes 31undecies (NZ déjà, + Bolivie, Équateur, Colombie, Espagne). 50 cités-pilotes Couche 11. Co-design avec collectifs autochtones (Kimmerer, Anishinaabe, Maori, Aboriginal, Sami, Mayan, Quechua).
+- **2026-2030** : 5 États-pilotes 31undecies (Norvège, Costa Rica, Nouvelle-Zélande, Bhoutan, Québec) ; précédents juridiques existants mobilisables (NZ Te Awa Tupua 2017, Bolivie Pachamama 2010, Équateur 2008, Colombie Atrato 2017, Espagne Mar Menor 2022). 50 cités-pilotes Couche 11. Co-design avec collectifs autochtones (Kimmerer, Anishinaabe, Maori, Aboriginal, Sami, Mayan, Quechua).
 - **2030-2035** : 10 000 Parents Non-Humains reconnus civilement mondialement. Première génération sortie Couche 5 avec 3 Parents inscrits Maison.
 - **2035-2045** : 100 000 Parents reconnus. Effets observables sur eco-anxiety. CMTIE = 50 000 mondialement.
 - **2045-2055** : 1M Parents reconnus. Universal Declaration on Rights of Mother Earth ratifiée par 50+ États. Génération Couche 11 dominant pratiques écologiques transformatives.

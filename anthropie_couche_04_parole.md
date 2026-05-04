@@ -91,7 +91,7 @@ Animateur formé Boalien (Compagnon-Maître spécialisé). Cycle annuel avec fes
 **Droit fondamental :** Droit civil de l'enfant 9-15 à délibérer dans des assemblées qui ont des conséquences réelles sur sa vie et sa cité.
 Extension de l'Assemblée d'Atelier (Couche 3 Strate 7). À 9-12 ans : Assemblée d'Atelier (gouvernance interne). À 11-15 ans : participation à **Assemblées de Quartier/Cité** (citizens' assemblies extension Couche 5) sur sujets concrets — aménagements urbains, écoles, parcs, transports, climat local. Voix-pour-voix avec adultes (modèle Sudbury + Lüneberg 2025 + NL Youth Sessions). Groupes mixtes par tirage au sort + volontariat enfant.
 Préparation : 4-6 séances avec experts, lectures accessibles, Forum Boalien sur scénarios. Sortie : **avis officiel transmis aux instances décisionnelles**, avec obligation de réponse argumentée dans les 60 jours.
-**Ancrage juridique** : extension 31bis art. 12 CRC (droit d'expression). Article 31quater "Droit délibératif de l'enfant" à inscrire dans le protocole optionnel.
+**Ancrage juridique** : extension de l'art. 12 CRC (droit d'expression) via le protocole optionnel — article 31quater "Droit délibératif de l'enfant" à inscrire.
 
 ### Strate 7 — La Pluri-Voix
 **Droit fondamental :** Droit de l'enfant à habiter plusieurs langues, dialectes, registres, et à passer de l'un à l'autre sans hiérarchie.

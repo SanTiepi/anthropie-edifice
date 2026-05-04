@@ -142,7 +142,7 @@ Format par cellule : *PROBLÈME → MÉCANISME | OUVERT.*
 - **C. Culturels :** Accusation "ingérence ONU dans famille" → 31bis n'oblige pas, ouvre des droits OPT-IN | Mobilisation conservatrice.
 - **D. Économiques :** Pas de coût direct, libère les budgets actuels | RAS.
 - **E. Éthiques :** "Et si parent abusif demande opt-out scolaire pour cacher abus ?" → Témoin Garant obligatoire pour valider opt-out, visite trimestrielle | Cas où Témoin lui-même complice.
-- **F. Adoption :** États refuseront → stratégie 5 États-pilotes (Norvège, Costa Rica, Nouvelle-Zélande, Bhoutan, Canada-Québec) puis effet domino | 30 ans pour ratification large.
+- **F. Adoption :** États refuseront → stratégie 5 États-pilotes (Norvège, Costa Rica, Nouvelle-Zélande, Bhoutan, Québec) puis effet domino | 30 ans pour ratification large.
 - **G. Scale :** ONU = lent → déploiement parallèle via communes, régions (subsidiarité) sans attendre ratification nationale | Risque fragmentation juridique.
 - **H. Dérive :** 31bis détourné par fondamentalistes pour homeschooling abusif → exigence Témoin Garant tiers + Cahier visible | Régimes autoritaires.
 - **I. Cas limites :** Apatrides, sans-papiers → 31bis explicite "tout enfant sur le territoire" indépendamment statut | Camps sans État (Rohingyas).
@@ -202,7 +202,7 @@ Format par cellule : *PROBLÈME → MÉCANISME | OUVERT.*
 3. *Patriarcalisation par Cercle des Mères* — Mode B (Fatma) instrumentalisé pour confiner femmes au domestique. Garde-fou : Témoins Garants mixtes obligatoires, Compagnons hommes dans pool de référence.
 
 **M. Séquençage temporel réaliste (0-40 ans)**
-- **2026-2030** : 5 États-pilotes (Norvège, Costa Rica, NZ, Bhoutan, Québec) ; 10 Maisons Mères ; rédaction draft 31bis.
+- **2026-2030** : 5 États-pilotes (Norvège, Costa Rica, Nouvelle-Zélande, Bhoutan, Québec) ; 10 Maisons Mères ; rédaction draft 31bis.
 - **2030-2035** : 100 Maisons Mères ; 5 000 formateurs/an ; 30 États signataires 31bis.
 - **2035-2045** : déploiement camps réfugiés via UNHCR ; 500k Compagnons certifiés mondialement ; révision charte v2.
 - **2045-2065** : 50% des États CRC ratifient 31bis ; 5M Compagnons ; intégration dans systèmes éducatifs nationaux comme alternative reconnue.
@@ -281,7 +281,7 @@ Sanctuaire est l'évidence préscolaire majoritaire. 80%+ des enfants 3-7 fréqu
 - **Implémentation effective screen-free en métropoles** : la charte 31bis interdit les écrans EN Sanctuaire, mais ne contrôle pas l'exposition au foyer. Effets multipliés en familles écran-saturées (8h+/jour cumulé) non encore mesurables. Couche 5 (LA VILLE) devra prolonger cette protection en urbanisme.
 - **Intégration profonde des frameworks autochtones** : la couche cite Te Whāriki, *8 Ways* aborigènes, Saami land-based comme références. Cette intégration reste à l'état de référence, pas de **co-design réel**. Risque sérieux d'extractivisme épistémique. Travail à mener avec collectifs autochtones rémunérés et **souverains** sur leur framework — pas absorbés dans un "Sanctuaire universel" européen.
 - **Sociétés ultra-mobiles 2030+** : si rythme métropolitain accélère encore (déménagements moyens 3-5 ans, travail nomade, déplacements climatiques), maintenir 7 Compagnons stables 4 ans devient tendu. Mécanisme "Compagnons à distance + Compagnons d'arrivée" non encore conçu.
-- **Disparités État-pilote vs reste du monde** : si les 5 États-pilotes (Norvège, Costa Rica, NZ, Bhoutan, Québec) déploient avec succès 2030-2040, risque de fossé "enfants 31bis / enfants non-31bis" plus grand que les fossés actuels riches/pauvres. Stratégie de **diffusion accélérée hors-pilotes** non encore conçue.
+- **Disparités État-pilote vs reste du monde** : si les 5 États-pilotes (Norvège, Costa Rica, Nouvelle-Zélande, Bhoutan, Québec) déploient avec succès 2030-2040, risque de fossé "enfants 31bis / enfants non-31bis" plus grand que les fossés actuels riches/pauvres. Stratégie de **diffusion accélérée hors-pilotes** non encore conçue.
 
 ---
 

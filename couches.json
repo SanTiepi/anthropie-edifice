@@ -1,0 +1,292 @@
+{
+  "$schema": "./couches.schema.json",
+  "version": "0.1.0",
+  "metadata": {
+    "last_updated": "2026-05-04",
+    "license": "CC0-1.0",
+    "non_affiliation": "L'Anthropie has no link with Anthropic PBC, OpenAI, or any commercial AI actor. See NOT_AN_AI_LAB.md and NAMING.md."
+  },
+  "couches": [
+    {
+      "n": 1,
+      "slug": "couche-01-matrice",
+      "nom": "LA MATRICE",
+      "age": "0-3",
+      "coeur": "Présence des aînés (RPU), 7 strates affectives (Pikler-Lóczy, allomaternage)",
+      "file": "anthropie_couche_01_matrice.md",
+      "article_crc": null,
+      "maturite": "robuste",
+      "claims_cles": [
+        { "claim_id": "C01-A1", "claim": "L'attachement sécure 0-3 ans est cross-culturellement protecteur, dans des formes culturellement variables", "evidence_level": "A", "source_type": "meta-analyse", "primary_source": "Heidi Keller, Univ. Osnabrück 2018-2024 ; van IJzendoorn meta-analyses Leiden" },
+        { "claim_id": "C01-A2", "claim": "L'allomaternage (cooperative breeding) est la norme historique de l'humanité", "evidence_level": "A", "source_type": "framework-eprouve", "primary_source": "Sarah Hrdy, Mothers and Others, Harvard 2009" },
+        { "claim_id": "C01-A3", "claim": "Le ratio adulte/enfant 1:3 ou 1:4 est nécessaire pour attachement sécure 0-2 ans", "evidence_level": "A", "source_type": "longitudinal", "primary_source": "NICHD Study of Early Child Care USA ; OECD Starting Strong V 2017" },
+        { "claim_id": "C01-D1", "claim": "Le RPU (Revenu Présence Universel) des aînés peut résoudre simultanément solitude des aînés, ratio adulte-enfant insuffisant et transmission inter-générationnelle", "evidence_level": "D", "source_type": "invention-propre", "primary_source": "Anthropie — couche 1" }
+      ],
+      "depends_on": [],
+      "feeds_into": [2, 11],
+      "safety_flags": ["protection-mineurs", "donnees-personnelles"],
+      "sovereignty_flags": [],
+      "falsifiers": [
+        "Méta-analyse 2026-2030 démontrant absence d'effet du ratio adulte/enfant 1:4 sur attachement sécure",
+        "Étude RPU pilote produisant zéro effet ou effet inverse sur la solitude des aînés ou la qualité d'attachement"
+      ],
+      "open_grievances": []
+    },
+    {
+      "n": 2,
+      "slug": "couche-02-sanctuaire",
+      "nom": "LE SANCTUAIRE",
+      "age": "3-7",
+      "coeur": "7 disciplines de la posture adulte, droit à la curiosité préservée",
+      "file": "anthropie_couche_02_sanctuaire.md",
+      "article_crc": "31bis",
+      "maturite": "sensible",
+      "claims_cles": [
+        { "claim_id": "C02-B1", "claim": "Reggio Emilia 0-6 ans produit développement créatif documenté", "evidence_level": "B", "source_type": "framework-eprouve", "primary_source": "Reggio Children consortium 1963-2024 ; Schneider 2024" },
+        { "claim_id": "C02-D1", "claim": "Un opt-out scolaire 3-7 avec statut civil de Compagnons-Maîtres et Témoins Garants peut tenir juridiquement et socialement dans les États-pilotes", "evidence_level": "D", "source_type": "invention-propre", "primary_source": "Anthropie — couche 2 + article 31bis" }
+      ],
+      "depends_on": [1],
+      "feeds_into": [3, 4],
+      "safety_flags": ["protection-mineurs", "anti-secte"],
+      "sovereignty_flags": ["maori"],
+      "falsifiers": [
+        "Précédent juridique national d'opt-out scolaire reconnaissant effet pervers documenté (mineurs lésés)"
+      ],
+      "open_grievances": ["G-002"]
+    },
+    {
+      "n": 3,
+      "slug": "couche-03-atelier",
+      "nom": "L'ATELIER",
+      "age": "5-12",
+      "coeur": "Constructionnisme Papert + Pont des Certifications (Open Badges 3.0)",
+      "file": "anthropie_couche_03_atelier.md",
+      "article_crc": "31ter",
+      "maturite": "robuste",
+      "claims_cles": [
+        { "claim_id": "C03-A1", "claim": "Le constructionnisme produit apprentissage durable supérieur à la pédagogie transmissive", "evidence_level": "A", "source_type": "framework-eprouve", "primary_source": "Seymour Papert MIT 1980-2000 ; multiples études STEM 2000-2024" },
+        { "claim_id": "C03-B1", "claim": "Open Badges 3.0 + W3C VC sont infalsifiables cryptographiquement", "evidence_level": "B", "source_type": "framework-eprouve", "primary_source": "W3C VC Recommandation 2022 ; ELM EU 2023" }
+      ],
+      "depends_on": [2],
+      "feeds_into": [4, 5],
+      "safety_flags": ["protection-mineurs", "donnees-personnelles"],
+      "sovereignty_flags": [],
+      "falsifiers": [
+        "Étude longitudinale démontrant absence d'effet du constructionnisme Papert sur réussite académique post-Atelier"
+      ],
+      "open_grievances": []
+    },
+    {
+      "n": 4,
+      "slug": "couche-04-parole",
+      "nom": "LA PAROLE",
+      "age": "7-15",
+      "coeur": "Cercles de Voix + Discipline de Prédiction-Avant-Vocal anti-LLM-flattening",
+      "file": "anthropie_couche_04_parole.md",
+      "article_crc": "31quater",
+      "maturite": "robuste",
+      "claims_cles": [
+        { "claim_id": "C04-A1", "claim": "L'art forum boalien produit délibération inclusive efficace", "evidence_level": "A", "source_type": "framework-eprouve", "primary_source": "Augusto Boal 1974 ; Catherine Wallis Lüneberg 2025" },
+        { "claim_id": "C04-D1", "claim": "La Discipline de Prédiction-Avant-Vocal en 4 temps atténue l'aplatissement LLM-induit du langage adolescent", "evidence_level": "D", "source_type": "invention-propre", "primary_source": "Anthropie — couche 4 (innovation propre)" }
+      ],
+      "depends_on": [3],
+      "feeds_into": [5, 6, 7],
+      "safety_flags": ["protection-mineurs", "ai-non-substitution"],
+      "sovereignty_flags": [],
+      "falsifiers": [
+        "Étude qualitative 100-500 ados sur 2 ans démontrant que la PAV ne réduit pas l'aplatissement langagier mesuré"
+      ],
+      "open_grievances": ["G-003"]
+    },
+    {
+      "n": 5,
+      "slug": "couche-05-ville",
+      "nom": "LA VILLE",
+      "age": "10-18",
+      "coeur": "RCI Illich + Big Picture Learning + dual apprenticeship suisse",
+      "file": "anthropie_couche_05_ville.md",
+      "article_crc": "31quinquies",
+      "maturite": "sensible",
+      "claims_cles": [
+        { "claim_id": "C05-B1", "claim": "Big Picture Learning produit engagement scolaire élevé sur cohortes 14-18 ans", "evidence_level": "B", "source_type": "framework-eprouve", "primary_source": "LTI Boston Univ. ; OECD 2018-2023" },
+        { "claim_id": "C05-C1", "claim": "L'articulation RCI Illich + dual apprenticeship suisse + reconnaissance professionnelle 31quinquies tient à scale", "evidence_level": "C", "source_type": "inference", "primary_source": "Anthropie — couche 5 (extrapolation)" }
+      ],
+      "depends_on": [3, 4],
+      "feeds_into": [6, 7, 8],
+      "safety_flags": ["protection-mineurs"],
+      "sovereignty_flags": [],
+      "falsifiers": [
+        "Précédent juridique 31quinquies dans un État-pilote produisant disparition des apprentissages exploratoires (effet inverse)"
+      ],
+      "open_grievances": []
+    },
+    {
+      "n": 6,
+      "slug": "couche-06-regard",
+      "nom": "LE REGARD",
+      "age": "10-18",
+      "coeur": "CVO Freire + Critique deepfakes + Diaspora Visuelle",
+      "file": "anthropie_couche_06_regard.md",
+      "article_crc": "31sexies",
+      "maturite": "sensible",
+      "claims_cles": [
+        { "claim_id": "C06-A1", "claim": "Crisis of knowing face aux deepfakes documentée par UNESCO", "evidence_level": "A", "source_type": "framework-eprouve", "primary_source": "UNESCO Recommandation IA 2021-2024" },
+        { "claim_id": "C06-D1", "claim": "Une CVO (Critique Visuelle Organisée) freirienne adolescente peut tenir face à régimes autoritaires via diaspora visuelle", "evidence_level": "D", "source_type": "invention-propre", "primary_source": "Anthropie — couche 6" }
+      ],
+      "depends_on": [4],
+      "feeds_into": [7],
+      "safety_flags": ["protection-mineurs", "ai-non-substitution"],
+      "sovereignty_flags": [],
+      "falsifiers": [
+        "Documentation que la diaspora visuelle est facilement neutralisée par filtrage Internet régime"
+      ],
+      "open_grievances": []
+    },
+    {
+      "n": 7,
+      "slug": "couche-07-seuils",
+      "nom": "LES SEUILS",
+      "age": "12-22",
+      "coeur": "12 Rites Articulés + Liminalité Protégée juridique",
+      "file": "anthropie_couche_07_seuils.md",
+      "article_crc": "31septies",
+      "maturite": "robuste",
+      "claims_cles": [
+        { "claim_id": "C07-B1", "claim": "Les rites de passage articulés produisent effets documentés sur la transition adolescente", "evidence_level": "B", "source_type": "framework-eprouve", "primary_source": "Victor Turner liminality 1969 ; corpus anthropologique" },
+        { "claim_id": "C07-D1", "claim": "Une Liminalité Protégée juridique opt-in peut s'inscrire sans pénalité scolaire/professionnelle", "evidence_level": "D", "source_type": "invention-propre", "primary_source": "Anthropie — couche 7 + article 31septies" }
+      ],
+      "depends_on": [4, 5, 6],
+      "feeds_into": [8, 11, 12],
+      "safety_flags": ["protection-mineurs", "co-design-autochtone"],
+      "sovereignty_flags": ["maori", "anishinaabe", "aboriginal", "lakota", "yoruba"],
+      "falsifiers": [
+        "Refus collectif documenté des communautés Maori/Anishinaabe/Aboriginal/Saami/Yoruba/Lakota à l'usage de leurs traditions par l'édifice"
+      ],
+      "open_grievances": ["G-001"]
+    },
+    {
+      "n": 8,
+      "slug": "couche-08-mycologie",
+      "nom": "LA MYCOLOGIE",
+      "age": "15-25",
+      "coeur": "Cellules Mycéliales 4-7 personnes 5-10 ans (refondation post-BCI)",
+      "file": "anthropie_couche_08_mycologie.md",
+      "article_crc": "31octies",
+      "maturite": "sensible",
+      "claims_cles": [
+        { "claim_id": "C08-C1", "claim": "Une cellule mycéliale 4-7 personnes engagée 5-10 ans produit observation longue qualitative", "evidence_level": "C", "source_type": "inference", "primary_source": "Anthropie — couche 8 (extrapolation Reggio adulte + AA groupes longs)" },
+        { "claim_id": "C08-D1", "claim": "Refondation post-BCI : modèle observation humaine type Reggio scaled adulte", "evidence_level": "D", "source_type": "invention-propre", "primary_source": "Anthropie — couche 8 (refondation 2026)" }
+      ],
+      "depends_on": [7],
+      "feeds_into": [9, 12],
+      "safety_flags": ["non-therapie", "anti-secte"],
+      "sovereignty_flags": [],
+      "falsifiers": [
+        "Trois prototypes successifs de Cellule Mycéliale qui ne tiennent pas 24 mois en contextes variés"
+      ],
+      "open_grievances": ["G-004"]
+    },
+    {
+      "n": 9,
+      "slug": "couche-09-archive",
+      "nom": "L'ARCHIVE VIVANTE",
+      "age": "0-∞",
+      "coeur": "Maison d'Atomes + Anti-Résurrection AI",
+      "file": "anthropie_couche_09_archive.md",
+      "article_crc": "31novies",
+      "maturite": "robuste",
+      "claims_cles": [
+        { "claim_id": "C09-A1", "claim": "GDPR Art. 17 (droit à l'effacement) est applicable et opérationnel en UE", "evidence_level": "A", "source_type": "precedent-juridique", "primary_source": "Règlement (UE) 2016/679 ; jurisprudence CJUE 2018-2024" },
+        { "claim_id": "C09-D1", "claim": "L'extension Maison d'Atomes Personnelle peut interdire la résurrection AI sans opt-in vivant", "evidence_level": "D", "source_type": "invention-propre", "primary_source": "Anthropie — couche 9 + article 31novies" }
+      ],
+      "depends_on": [],
+      "feeds_into": [10, 12],
+      "safety_flags": ["donnees-personnelles", "ai-non-substitution"],
+      "sovereignty_flags": [],
+      "falsifiers": [
+        "Disparition du droit à l'effacement GDPR Art. 17 ou jurisprudence CJUE l'invalidant"
+      ],
+      "open_grievances": []
+    },
+    {
+      "n": 10,
+      "slug": "couche-10-morts",
+      "nom": "LE CONSEIL DES MORTS",
+      "age": "4-∞",
+      "coeur": "Maisons des Lignées + Audiences (anti-tabou occidental)",
+      "file": "anthropie_couche_10_morts.md",
+      "article_crc": "31decies",
+      "maturite": "sensible",
+      "claims_cles": [
+        { "claim_id": "C10-B1", "claim": "Día de los Muertos produit deuil sain à l'échelle d'une culture", "evidence_level": "B", "source_type": "framework-eprouve", "primary_source": "Brandes 2006 ; Chibnik 2003" },
+        { "claim_id": "C10-D1", "claim": "Une éducation à la mort dès 4 ans + Audiences inscrites en droit civil 31decies est compatible avec contextes culturels variés", "evidence_level": "D", "source_type": "invention-propre", "primary_source": "Anthropie — couche 10 + article 31decies" }
+      ],
+      "depends_on": [7, 9],
+      "feeds_into": [11, 12],
+      "safety_flags": ["deuil-trauma", "co-design-autochtone", "ai-non-substitution"],
+      "sovereignty_flags": ["lakota", "yoruba", "dia-de-los-muertos"],
+      "falsifiers": [
+        "Étude qualitative démontrant que l'éducation à la mort dès 4 ans produit anxiété mortale aggravée"
+      ],
+      "open_grievances": ["G-001"]
+    },
+    {
+      "n": 11,
+      "slug": "couche-11-parente",
+      "nom": "LA PARENTÉ ÉLARGIE",
+      "age": "3-25",
+      "coeur": "3 Parents Non-Humains Choisis (modèle Te Awa Tupua)",
+      "file": "anthropie_couche_11_parente.md",
+      "article_crc": "31undecies",
+      "maturite": "robuste",
+      "claims_cles": [
+        { "claim_id": "C11-A1", "claim": "Le précédent juridique rights of nature a effet civil opérationnel", "evidence_level": "A", "source_type": "precedent-juridique", "primary_source": "Te Awa Tupua Act NZ 2017 ; Bolivie Pachamama 2010 ; Équateur 2008 ; Colombie Atrato 2017 ; Espagne Mar Menor 2022" },
+        { "claim_id": "C11-D1", "claim": "L'Anti-Anthropomorphisme Discipliné (7 disciplines) distingue rigoureusement animisme rigoureux vs romantisme Disney-fié", "evidence_level": "D", "source_type": "invention-propre", "primary_source": "Anthropie — couche 11 (innovation propre)" }
+      ],
+      "depends_on": [1, 7],
+      "feeds_into": [12],
+      "safety_flags": ["co-design-autochtone"],
+      "sovereignty_flags": ["maori", "te-awa-tupua", "anishinaabe", "aboriginal", "saami"],
+      "falsifiers": [
+        "Refus collectif des communautés Maori sur l'usage du modèle Te Awa Tupua par l'édifice"
+      ],
+      "open_grievances": ["G-001"]
+    },
+    {
+      "n": 12,
+      "slug": "couche-12-brisure",
+      "nom": "LE SEUIL DE LA BRISURE",
+      "age": "9-∞",
+      "coeur": "Hospices des Brisures + Kintsugi + Wounded Healers",
+      "file": "anthropie_couche_12_brisure.md",
+      "article_crc": "31duodecies",
+      "maturite": "sensible",
+      "claims_cles": [
+        { "claim_id": "C12-B1", "claim": "Anonymous Alcoholics tient sur 90 ans avec faible attrition", "evidence_level": "B", "source_type": "framework-eprouve", "primary_source": "Kelly et al. Alcoholism 2020" },
+        { "claim_id": "C12-D1", "claim": "Une Anti-Pathologisation Civilisationnelle inscrite en droit civil 31duodecies tient face à la médicalisation de masse", "evidence_level": "D", "source_type": "invention-propre", "primary_source": "Anthropie — couche 12 (innovation propre)" }
+      ],
+      "depends_on": [7, 8, 9, 10],
+      "feeds_into": [],
+      "safety_flags": ["non-therapie", "deuil-trauma", "anti-secte"],
+      "sovereignty_flags": ["kintsugi"],
+      "falsifiers": [
+        "Documentation d'Hospices des Brisures produisant retard de diagnostic psychiatrique grave",
+        "Étude longitudinale démontrant que l'anti-pathologisation produit aggravation symptomatique"
+      ],
+      "open_grievances": ["G-003"]
+    }
+  ],
+  "articles": [
+    { "code": "31bis", "titre": "Droit à la curiosité préservée (3-7 ans)", "couche_source": 2, "status_juridique": "proposition", "etats_pilotes_cibles": ["Norvège", "Costa Rica", "Nouvelle-Zélande", "Bhoutan", "Québec"], "extension_de": "CRC art. 28 + 29" },
+    { "code": "31ter", "titre": "Reconnaissance des apprentissages exploratoires (Open Badges)", "couche_source": 3, "status_juridique": "proposition", "etats_pilotes_cibles": ["Norvège", "Costa Rica", "Nouvelle-Zélande", "Bhoutan", "Québec"], "extension_de": "CRC art. 29 + Recommandation UE Open Badges 3.0" },
+    { "code": "31quater", "titre": "Droit délibératif de l'enfant 9 ans et plus", "couche_source": 4, "status_juridique": "proposition", "etats_pilotes_cibles": ["Norvège", "Costa Rica", "Nouvelle-Zélande", "Bhoutan", "Québec"], "extension_de": "CRC art. 12" },
+    { "code": "31quinquies", "titre": "Reconnaissance professionnelle des apprentissages urbains", "couche_source": 5, "status_juridique": "proposition", "etats_pilotes_cibles": ["Norvège", "Costa Rica", "Nouvelle-Zélande", "Bhoutan", "Québec"], "extension_de": "Convention OIT 142 (orientation professionnelle)" },
+    { "code": "31sexies", "titre": "Souveraineté visuelle (regard critique image)", "couche_source": 6, "status_juridique": "proposition", "etats_pilotes_cibles": ["Norvège", "Costa Rica", "Nouvelle-Zélande", "Bhoutan", "Québec"], "extension_de": "CRC art. 17 + UNESCO Recommandation IA 2021" },
+    { "code": "31septies", "titre": "Liminalité Protégée pour rites de passage", "couche_source": 7, "status_juridique": "proposition", "etats_pilotes_cibles": ["Norvège", "Costa Rica", "Nouvelle-Zélande", "Bhoutan", "Québec"], "extension_de": "CRC art. 31 (loisirs et culture)" },
+    { "code": "31octies", "titre": "Droit à appartenir à une cellule durable d'observation mutuelle", "couche_source": 8, "status_juridique": "proposition", "etats_pilotes_cibles": ["Norvège", "Costa Rica", "Nouvelle-Zélande", "Bhoutan", "Québec"], "extension_de": "CRC art. 13 + 15" },
+    { "code": "31novies", "titre": "Maison d'Atomes Personnelle (extension GDPR Art. 17)", "couche_source": 9, "status_juridique": "proposition", "etats_pilotes_cibles": ["Norvège", "Costa Rica", "Nouvelle-Zélande", "Bhoutan", "Québec"], "extension_de": "GDPR (UE) 2016/679 art. 17 + CRC art. 8" },
+    { "code": "31decies", "titre": "Lien actif avec ses morts, éducation à la mort dès 4 ans", "couche_source": 10, "status_juridique": "proposition", "etats_pilotes_cibles": ["Norvège", "Costa Rica", "Nouvelle-Zélande", "Bhoutan", "Québec"], "extension_de": "CRC art. 30 (minorités culturelles)" },
+    { "code": "31undecies", "titre": "3 Parents Non-Humains Choisis (extension Te Awa Tupua Act NZ 2017)", "couche_source": 11, "status_juridique": "proposition", "etats_pilotes_cibles": ["Norvège", "Costa Rica", "Nouvelle-Zélande", "Bhoutan", "Québec"], "extension_de": "Te Awa Tupua Act NZ 2017 + UNDRIP 2007" },
+    { "code": "31duodecies", "titre": "Brisure accompagnée non-pathologisée", "couche_source": 12, "status_juridique": "proposition", "etats_pilotes_cibles": ["Norvège", "Costa Rica", "Nouvelle-Zélande", "Bhoutan", "Québec"], "extension_de": "CRC art. 24 (santé) + Convention d'Oviedo (Conseil de l'Europe)" }
+  ]
+}

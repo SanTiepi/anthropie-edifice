@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anthropie.org/schemas/couches.schema.json",
+  "title": "L'Anthropie — schéma canonique par couche",
+  "description": "Schéma JSON pour l'audit machine-readable de chaque couche de l'édifice. Permet RAG, recherche structurée, vérification automatique de la cohérence. CC0 1.0 Universal.",
+  "type": "object",
+  "required": ["version", "couches", "articles", "metadata"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Version du schéma au format SemVer."
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["last_updated", "license", "non_affiliation"],
+      "properties": {
+        "last_updated": { "type": "string", "format": "date" },
+        "license": { "type": "string", "const": "CC0-1.0" },
+        "non_affiliation": { "type": "string" }
+      }
+    },
+    "couches": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "items": { "$ref": "#/$defs/Couche" }
+    },
+    "articles": {
+      "type": "array",
+      "minItems": 11,
+      "maxItems": 11,
+      "items": { "$ref": "#/$defs/Article" }
+    }
+  },
+  "$defs": {
+    "Couche": {
+      "type": "object",
+      "required": ["n", "slug", "nom", "age", "coeur", "file", "maturite", "claims_cles", "depends_on", "safety_flags", "sovereignty_flags"],
+      "properties": {
+        "n": { "type": "integer", "minimum": 1, "maximum": 12 },
+        "slug": { "type": "string", "pattern": "^couche-[0-1][0-9]-[a-z\\-]+$" },
+        "nom": { "type": "string" },
+        "age": { "type": "string", "description": "Tranche d'âge couverte, format 'a-b' ou 'a-∞'" },
+        "coeur": { "type": "string", "description": "Cœur de la couche, 1 ligne" },
+        "file": { "type": "string", "pattern": "\\.md$" },
+        "article_crc": {
+          "type": ["string", "null"],
+          "description": "Article 31bis-duodecies associé, ou null pour la Couche 1"
+        },
+        "maturite": {
+          "type": "string",
+          "enum": ["robuste", "sensible"],
+          "description": "Maturité épistémique : robuste = convergence empirique ou précédent juridique fort ; sensible = arbitrages culturels, juridiques ou opérationnels en cours"
+        },
+        "claims_cles": {
+          "type": "array",
+          "description": "Claims principaux de la couche, chacun classé par EVIDENCE_MAP A/B/C/D",
+          "items": {
+            "type": "object",
+            "required": ["claim_id", "claim", "evidence_level"],
+            "properties": {
+              "claim_id": { "type": "string" },
+              "claim": { "type": "string" },
+              "evidence_level": { "type": "string", "enum": ["A", "B", "C", "D"] },
+              "source_type": { "type": "string", "enum": ["meta-analyse", "RCT", "longitudinal", "framework-eprouve", "precedent-juridique", "inference", "invention-propre"] },
+              "primary_source": { "type": "string", "description": "Citation de la source primaire" }
+            }
+          }
+        },
+        "depends_on": {
+          "type": "array",
+          "description": "Couches dont celle-ci dépend pour fonctionner",
+          "items": { "type": "integer", "minimum": 1, "maximum": 12 }
+        },
+        "feeds_into": {
+          "type": "array",
+          "description": "Couches qui dépendent de celle-ci",
+          "items": { "type": "integer", "minimum": 1, "maximum": 12 }
+        },
+        "safety_flags": {
+          "type": "array",
+          "description": "Garde-fous SAFETY.md mobilisés par la couche",
+          "items": { "type": "string", "enum": ["protection-mineurs", "non-therapie", "anti-secte", "donnees-personnelles", "deuil-trauma", "co-design-autochtone", "ai-non-substitution"] }
+        },
+        "sovereignty_flags": {
+          "type": "array",
+          "description": "Communautés vivantes mobilisées (charte anti-appropriation requise pour co-design)",
+          "items": { "type": "string", "enum": ["maori", "anishinaabe", "aboriginal", "saami", "yoruba", "lakota", "dia-de-los-muertos", "te-awa-tupua", "kintsugi"] }
+        },
+        "falsifiers": {
+          "type": "array",
+          "description": "Éléments empiriques qui invalideraient une partie significative de la couche, cf. REFUTATION.md",
+          "items": { "type": "string" }
+        },
+        "open_grievances": {
+          "type": "array",
+          "description": "ID des griefs ouverts dans OPEN_GRIEVANCES.md qui touchent cette couche",
+          "items": { "type": "string", "pattern": "^G-[0-9]{3}$" }
+        }
+      }
+    },
+    "Article": {
+      "type": "object",
+      "required": ["code", "titre", "couche_source", "status_juridique"],
+      "properties": {
+        "code": { "type": "string", "pattern": "^31[a-z]+$" },
+        "titre": { "type": "string" },
+        "couche_source": { "type": "integer", "minimum": 1, "maximum": 12 },
+        "status_juridique": {
+          "type": "string",
+          "enum": ["proposition", "depose-en-instance", "ratifie-pilote", "ratifie-massif"],
+          "description": "Status d'avancement réel — au lancement, tous sont 'proposition'"
+        },
+        "etats_pilotes_cibles": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["Norvège", "Costa Rica", "Nouvelle-Zélande", "Bhoutan", "Québec"] }
+        },
+        "extension_de": {
+          "type": "string",
+          "description": "Texte juridique en vigueur que cet article propose d'étendre",
+          "examples": ["CRC art. 12", "CRC art. 24", "GDPR art. 17", "Te Awa Tupua Act NZ 2017"]
+        }
+      }
+    }
+  }
+}

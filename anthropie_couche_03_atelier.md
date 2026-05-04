@@ -155,7 +155,7 @@ Format : *PROBLÈME → MÉCANISME | OUVERT.*
 ### Strate 5 — Le Pont des Certifications
 
 - **A. Techniques :** Open Badges 3.0 + W3C VC + ELM = stack complexe → fédération Anthropie maintient toolkit standard CC0, audit annuel | Évolutions standards.
-- **B. Juridiques :** Reconnaissance étatique des badges → 31ter ratifié par États-pilotes (Norvège, Costa Rica, NZ, Bhoutan, Québec, Finlande) puis effet domino | États refusant ratification.
+- **B. Juridiques :** Reconnaissance étatique des badges → 31ter ratifié par États-pilotes (Norvège, Costa Rica, Nouvelle-Zélande, Bhoutan, Québec) puis effet domino | États refusant ratification.
 - **C. Culturels :** "Un badge ne vaut pas un diplôme" → narrative civilisationnelle, démonstration alumni Sudbury 40 ans, alliance avec employeurs visionnaires | Élites diplôme-fétichistes.
 - **D. Économiques :** Infrastructure cryptographique = coût → ELM en Europe finance, fédération bénévole + ONG + petits États | Pays sans infra numérique.
 - **E. Éthiques :** Falsification badges → cryptographie W3C VC pratiquement infalsifiable ; punition pénale 31ter | Hacks futurs quantum-era.
