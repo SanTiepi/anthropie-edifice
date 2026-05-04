@@ -1,0 +1,140 @@
+---
+import { couches } from '../data/couches';
+
+interface AgeBounds { start: number; end: number; infinite: boolean }
+function parseAge(age: string): AgeBounds {
+  const [a, b] = age.split('-');
+  const start = parseInt(a, 10);
+  if (b === '∞') return { start, end: 28, infinite: true };
+  return { start, end: parseInt(b, 10), infinite: false };
+}
+
+// Couleurs (cohérentes avec le reste du site)
+const C_ACCENT = '#4a6741';        // vert mousse — accent + maturité robuste
+const C_AMBER = '#b8860b';          // ambre — maturité sensible
+const C_TEXT = '#1a1a1a';
+const C_MUTED = '#5a5a5a';
+const C_BORDER = '#e2dfd6';
+const FILL_ROBUSTE = C_ACCENT;
+const FILL_SENSIBLE = C_AMBER;
+const FILL_OPACITY = 0.78;
+
+// Layout — élargi pour accommoder "31undecies" / "31duodecies"
+const W = 760;
+const ROW_H = 30;
+const MARGIN_TOP = 60;
+const MARGIN_LEFT = 250;
+const MARGIN_RIGHT = 130;
+const AGE_MAX = 25;
+const BAR_AREA = W - MARGIN_LEFT - MARGIN_RIGHT;
+const H = MARGIN_TOP + couches.length * ROW_H + 80; // +80 pour la légende sur 2 lignes
+const ageToX = (a: number): number => MARGIN_LEFT + (Math.min(a, AGE_MAX) / AGE_MAX) * BAR_AREA;
+const INF_X = MARGIN_LEFT + BAR_AREA + 12;
+
+const ageMarks = [0, 5, 10, 15, 20, 25];
+
+// Polices
+const FONT_SERIF = "'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif";
+const FONT_SANS = "'Helvetica Neue', Helvetica, Arial, sans-serif";
+const FONT_MONO = "'SF Mono', Menlo, Consolas, monospace";
+---
+
+<figure class="schema-couches" aria-labelledby="schema-title">
+  <figcaption id="schema-title">Schéma — empilement des 12 couches par tranche d'âge</figcaption>
+  <svg viewBox={`0 0 ${W} ${H}`} xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Schéma : les 12 couches d'apprentissage humain par tranche d'âge couverte. Chaque barre représente la fenêtre d'âge d'une couche ; les couches 9, 10 et 12 s'étendent à l'infini.">
+    {/* Age axis (top) */}
+    <g aria-hidden="true">
+      <text x={MARGIN_LEFT - 10} y={MARGIN_TOP - 30} text-anchor="end" font-family={FONT_SANS} font-size="11" fill={C_MUTED} letter-spacing="0.04em">Âge</text>
+      {ageMarks.map(a => (
+        <>
+          <line x1={ageToX(a)} y1={MARGIN_TOP - 18} x2={ageToX(a)} y2={MARGIN_TOP - 12} stroke={C_MUTED} stroke-width="1" />
+          <text x={ageToX(a)} y={MARGIN_TOP - 24} text-anchor="middle" font-family={FONT_SANS} font-size="11" fill={C_MUTED}>{a}</text>
+        </>
+      ))}
+      <text x={INF_X} y={MARGIN_TOP - 24} text-anchor="middle" font-family={FONT_SANS} font-size="13" fill={C_MUTED}>∞</text>
+      <line x1={MARGIN_LEFT} y1={MARGIN_TOP - 6} x2={MARGIN_LEFT + BAR_AREA + 30} y2={MARGIN_TOP - 6} stroke={C_BORDER} stroke-width="1" />
+    </g>
+
+    {/* Age vertical gridlines */}
+    {ageMarks.slice(1).map(a => (
+      <line x1={ageToX(a)} y1={MARGIN_TOP} x2={ageToX(a)} y2={MARGIN_TOP + couches.length * ROW_H} stroke={C_BORDER} stroke-width="1" />
+    ))}
+
+    {/* Rows */}
+    {couches.map((c, i) => {
+      const ab = parseAge(c.age);
+      const y = MARGIN_TOP + i * ROW_H;
+      const yMid = y + ROW_H / 2;
+      const x1 = ageToX(ab.start);
+      const x2 = ab.infinite ? INF_X : ageToX(ab.end);
+      const barW = Math.max(x2 - x1, 8);
+      const fill = c.maturite === 'robuste' ? FILL_ROBUSTE : FILL_SENSIBLE;
+      return (
+        <g aria-label={`Couche ${c.n} — ${c.nom} — âge ${c.age} — ${c.maturite}${c.article ? ` — article ${c.article}` : ''}`}>
+          {/* Subtle row separator (above) */}
+          {i > 0 && (
+            <line x1={20} y1={y} x2={W - 20} y2={y} stroke={C_BORDER} stroke-width="1" stroke-opacity="0.4" />
+          )}
+          {/* Number on left */}
+          <text x={20} y={yMid + 4} font-family={FONT_SANS} font-size="11" fill={C_MUTED}>{c.n}</text>
+          {/* Layer name (link) */}
+          <a href={`/lire/${c.slug}/`}>
+            <text x={42} y={yMid + 4} font-family={FONT_SERIF} font-size="13" fill={C_ACCENT}>{c.nom}</text>
+          </a>
+          {/* Bar */}
+          <rect x={x1} y={y + 6} width={barW} height={ROW_H - 12} rx={3} ry={3} fill={fill} fill-opacity={FILL_OPACITY} />
+          {/* Infinity arrow if applicable */}
+          {ab.infinite && (
+            <path d={`M ${INF_X - 4} ${yMid - 5} L ${INF_X + 4} ${yMid} L ${INF_X - 4} ${yMid + 5}`} stroke={C_MUTED} stroke-width="1.2" fill="none" />
+          )}
+          {/* Article on the right */}
+          {c.article && (
+            <text x={W - MARGIN_RIGHT + 8} y={yMid + 4} font-family={FONT_MONO} font-size="10" fill={C_ACCENT}>{c.article}</text>
+          )}
+        </g>
+      );
+    })}
+
+    {/* Legend at the bottom — 2 lignes pour éviter le débordement */}
+    <g aria-label="Légende" transform={`translate(${MARGIN_LEFT}, ${MARGIN_TOP + couches.length * ROW_H + 26})`}>
+      <rect x={0} y={-9} width={14} height={11} rx={2} ry={2} fill={FILL_ROBUSTE} fill-opacity={FILL_OPACITY} />
+      <text x={20} y={0} font-family={FONT_SANS} font-size="11" fill={C_MUTED}>robuste — convergence empirique ou précédent juridique fort</text>
+      <rect x={0} y={15} width={14} height={11} rx={2} ry={2} fill={FILL_SENSIBLE} fill-opacity={FILL_OPACITY} />
+      <text x={20} y={24} font-family={FONT_SANS} font-size="11" fill={C_MUTED}>sensible — arbitrages culturels, juridiques ou opérationnels en cours</text>
+    </g>
+  </svg>
+</figure>
+
+<style>
+  figure.schema-couches {
+    margin: 1.5rem 0 1rem;
+    padding: 0;
+  }
+  figure.schema-couches figcaption {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+  figure.schema-couches svg {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    display: block;
+    border: 1px solid var(--border);
+    background: var(--bg);
+  }
+  figure.schema-couches svg a:hover text {
+    fill: var(--accent-dark, #3a5631);
+    text-decoration: underline;
+  }
+  @media (max-width: 600px) {
+    figure.schema-couches { margin: 1rem 0; }
+  }
+  @media print {
+    figure.schema-couches svg { border: 1px solid #999; }
+  }
+</style>

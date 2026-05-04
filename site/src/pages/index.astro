@@ -1,33 +1,7 @@
 ---
+import { couches, articles, githubBase } from "../data/couches";
+import CouchesSchema from "../components/CouchesSchema.astro";
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const githubBase = "https://github.com/SanTiepi/anthropie-edifice/blob/master";
-const couches = [
-  { n: 1, nom: "LA MATRICE", age: "0-3", coeur: "Présence des aînés (RPU), 6 strates affectives", file: "anthropie_couche_01_matrice.md", hasFile: false },
-  { n: 2, nom: "LE SANCTUAIRE", age: "3-7", coeur: "7 disciplines de la posture adulte, droit à la curiosité préservée", file: "anthropie_couche_02_sanctuaire.md", hasFile: true },
-  { n: 3, nom: "L'ATELIER", age: "5-12", coeur: "Constructionnisme Papert + Pont des Certifications (Open Badges 3.0)", file: "anthropie_couche_03_atelier.md", hasFile: true },
-  { n: 4, nom: "LA PAROLE", age: "7-15", coeur: "Cercles de Voix + Discipline de Prédiction-Avant-Vocal anti-LLM-flattening", file: "anthropie_couche_04_parole.md", hasFile: true },
-  { n: 5, nom: "LA VILLE", age: "10-18", coeur: "RCI Illich + Big Picture Learning + dual apprenticeship suisse", file: "anthropie_couche_05_ville.md", hasFile: true },
-  { n: 6, nom: "LE REGARD", age: "10-18", coeur: "CVO Freire + Critique deepfakes + Diaspora Visuelle", file: "anthropie_couche_06_regard.md", hasFile: true },
-  { n: 7, nom: "LES SEUILS", age: "12-22", coeur: "12 Rites Articulés + Liminalité Protégée juridique", file: "anthropie_couche_07_seuils.md", hasFile: true },
-  { n: 8, nom: "LA MYCOLOGIE", age: "15-25", coeur: "Cellules Mycéliales 4-7 personnes 5-10 ans (refondation post-BCI)", file: "anthropie_couche_08_mycologie.md", hasFile: true },
-  { n: 9, nom: "L'ARCHIVE VIVANTE", age: "0-∞", coeur: "Maison d'Atomes + Anti-Résurrection AI", file: "anthropie_couche_09_archive.md", hasFile: true },
-  { n: 10, nom: "LE CONSEIL DES MORTS", age: "4-∞", coeur: "Maisons des Lignées + Audiences (anti-tabou occidental)", file: "anthropie_couche_10_morts.md", hasFile: true },
-  { n: 11, nom: "LA PARENTÉ ÉLARGIE", age: "3-25", coeur: "3 Parents Non-Humains Choisis (modèle Te Awa Tupua)", file: "anthropie_couche_11_parente.md", hasFile: true },
-  { n: 12, nom: "LE SEUIL DE LA BRISURE", age: "9-∞", coeur: "Hospices des Brisures + Kintsugi + Wounded Healers", file: "anthropie_couche_12_brisure.md", hasFile: true },
-];
-const articles = [
-  { code: "31bis", titre: "Droit à la curiosité préservée (3-7 ans)" },
-  { code: "31ter", titre: "Reconnaissance des apprentissages exploratoires" },
-  { code: "31quater", titre: "Droit délibératif de l'enfant 9 ans et plus" },
-  { code: "31quinquies", titre: "Reconnaissance professionnelle des apprentissages urbains" },
-  { code: "31sexies", titre: "Souveraineté visuelle (regard critique image)" },
-  { code: "31septies", titre: "Liminalité Protégée pour rites de passage" },
-  { code: "31octies", titre: "Droit à appartenir à une cellule durable d'observation mutuelle" },
-  { code: "31novies", titre: "Maison d'Atomes Personnelle (extension GDPR Art. 17)" },
-  { code: "31decies", titre: "Lien actif avec ses morts, éducation à la mort dès 4 ans" },
-  { code: "31undecies", titre: "3 Parents Non-Humains Choisis (extension Te Awa Tupua Act NZ 2017)" },
-  { code: "31duodecies", titre: "Brisure accompagnée non-pathologisée" },
-];
 ---
 
 <html lang="fr">
@@ -46,7 +20,40 @@ const articles = [
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:image" content="https://anthropie.org/og-image.svg" />
 		<link rel="canonical" href="https://anthropie.org/" />
+		<meta name="theme-color" content="#4a6741" />
+		<meta name="author" content="Anthropie Network" />
+		<meta name="dcterms.rights" content="CC0 1.0 Universal — Public Domain Dedication" />
 		<title>L'Anthropie — édifice civilisationnel CC0</title>
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "CreativeWork",
+			"name": "L'Anthropie — édifice civilisationnel d'apprentissage humain",
+			"alternateName": "L'Anthropie",
+			"description": "Édifice civilisationnel d'apprentissage humain à 12 couches (0 à infini). Onze articles juridiques 31bis-duodecies. Domaine public.",
+			"url": "https://anthropie.org/",
+			"inLanguage": "fr",
+			"license": "https://creativecommons.org/publicdomain/zero/1.0/",
+			"creator": { "@type": "Organization", "name": "Anthropie Network" },
+			"copyrightNotice": "CC0 1.0 Universal — Public Domain Dedication. No rights reserved.",
+			"keywords": ["éducation", "apprentissage", "droits de l'enfant", "Convention CRC", "31bis", "civilisation", "anthropologie", "12 couches", "Anthropie"],
+			"genre": "civic infrastructure proposal",
+			"isAccessibleForFree": true,
+			"hasPart": [
+				{ "@type": "CreativeWork", "name": "Couche 1 — La Matrice (0-3)", "url": "https://github.com/SanTiepi/anthropie-edifice/blob/master/anthropie_couche_01_matrice.md" },
+				{ "@type": "CreativeWork", "name": "Couche 2 — Le Sanctuaire (3-7)", "url": "https://github.com/SanTiepi/anthropie-edifice/blob/master/anthropie_couche_02_sanctuaire.md" },
+				{ "@type": "CreativeWork", "name": "Couche 3 — L'Atelier (5-12)", "url": "https://github.com/SanTiepi/anthropie-edifice/blob/master/anthropie_couche_03_atelier.md" },
+				{ "@type": "CreativeWork", "name": "Couche 4 — La Parole (7-15)", "url": "https://github.com/SanTiepi/anthropie-edifice/blob/master/anthropie_couche_04_parole.md" },
+				{ "@type": "CreativeWork", "name": "Couche 5 — La Ville (10-18)", "url": "https://github.com/SanTiepi/anthropie-edifice/blob/master/anthropie_couche_05_ville.md" },
+				{ "@type": "CreativeWork", "name": "Couche 6 — Le Regard (10-18)", "url": "https://github.com/SanTiepi/anthropie-edifice/blob/master/anthropie_couche_06_regard.md" },
+				{ "@type": "CreativeWork", "name": "Couche 7 — Les Seuils (12-22)", "url": "https://github.com/SanTiepi/anthropie-edifice/blob/master/anthropie_couche_07_seuils.md" },
+				{ "@type": "CreativeWork", "name": "Couche 8 — La Mycologie (15-25)", "url": "https://github.com/SanTiepi/anthropie-edifice/blob/master/anthropie_couche_08_mycologie.md" },
+				{ "@type": "CreativeWork", "name": "Couche 9 — L'Archive vivante (0-∞)", "url": "https://github.com/SanTiepi/anthropie-edifice/blob/master/anthropie_couche_09_archive.md" },
+				{ "@type": "CreativeWork", "name": "Couche 10 — Le Conseil des morts (4-∞)", "url": "https://github.com/SanTiepi/anthropie-edifice/blob/master/anthropie_couche_10_morts.md" },
+				{ "@type": "CreativeWork", "name": "Couche 11 — La Parenté élargie (3-25)", "url": "https://github.com/SanTiepi/anthropie-edifice/blob/master/anthropie_couche_11_parente.md" },
+				{ "@type": "CreativeWork", "name": "Couche 12 — Le Seuil de la brisure (9-∞)", "url": "https://github.com/SanTiepi/anthropie-edifice/blob/master/anthropie_couche_12_brisure.md" }
+			]
+		})} />
+
 		<style>
 			:root {
 				--text: #1a1a1a;
@@ -170,6 +177,23 @@ const articles = [
 				min-width: 6.5rem;
 				font-weight: 500;
 			}
+			.articles-list a.article-link {
+				color: var(--text);
+				text-decoration: none;
+				border-bottom: none;
+			}
+			.articles-list a.article-link:hover {
+				color: var(--accent);
+			}
+			.articles-list a.article-link:hover .code {
+				text-decoration: underline;
+			}
+			.articles-list .article-couche-ref {
+				color: var(--muted);
+				font-style: italic;
+				font-size: 0.85rem;
+				margin-left: 0.4rem;
+			}
 			.tldr {
 				background: var(--bg-alt);
 				border-left: 3px solid var(--accent);
@@ -178,6 +202,132 @@ const articles = [
 				font-size: 0.95rem;
 			}
 			.tldr ul { margin: 0.4rem 0; padding-left: 1.2rem; }
+			ul.principes {
+				list-style: none;
+				padding: 0;
+				margin: 1.2rem 0;
+				font-size: 0.95rem;
+				border-top: 1px solid var(--border);
+				border-bottom: 1px solid var(--border);
+			}
+			ul.principes li {
+				padding: 0.55rem 0;
+				border-bottom: 1px dotted var(--border);
+			}
+			ul.principes li:last-child { border-bottom: none; }
+			ul.principes strong {
+				font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				font-size: 0.78rem;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 0.12em;
+				color: var(--accent);
+				display: inline-block;
+				min-width: 9rem;
+			}
+			ol.quatre-portes {
+				list-style: none;
+				padding: 0;
+				margin: 1.4rem 0;
+				counter-reset: porte;
+			}
+			ol.quatre-portes > li {
+				padding: 1rem 0;
+				border-top: 1px solid var(--border);
+				margin: 0;
+				font-size: 0.95rem;
+			}
+			ol.quatre-portes > li:last-child { border-bottom: 1px solid var(--border); }
+			ol.quatre-portes > li > strong {
+				font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				font-size: 0.85rem;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 0.14em;
+				color: var(--accent);
+			}
+			ol.quatre-portes .porte-desc {
+				color: var(--muted);
+				font-style: italic;
+				font-size: 0.92rem;
+			}
+			p.biblio-intro {
+				font-size: 0.88rem;
+				color: var(--muted);
+				font-style: italic;
+				margin-top: 1.5rem;
+			}
+			details.biblio-complete {
+				margin: 0.8rem 0 1rem;
+				font-size: 0.92rem;
+			}
+			details.biblio-complete > summary {
+				cursor: pointer;
+				padding: 0.6rem 0;
+				font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				font-size: 0.78rem;
+				text-transform: uppercase;
+				letter-spacing: 0.12em;
+				color: var(--accent);
+				border-bottom: 1px solid var(--border);
+			}
+			details.biblio-complete > summary:hover { color: var(--accent-dark); }
+			details.biblio-complete[open] > summary { margin-bottom: 0.6rem; }
+			details.biblio-complete ul {
+				margin-top: 0.8rem;
+				padding-left: 1.2rem;
+			}
+			details.biblio-complete li {
+				padding: 0.35rem 0;
+				border-bottom: 1px dotted var(--border);
+				font-size: 0.92rem;
+			}
+			details.biblio-complete li:last-child { border-bottom: none; }
+			.skip-link {
+				position: absolute;
+				left: -9999px;
+				top: 0;
+				background: var(--accent);
+				color: var(--bg);
+				padding: 0.5rem 1rem;
+				z-index: 100;
+				font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				font-size: 0.85rem;
+				border-bottom: none;
+			}
+			.skip-link:focus {
+				left: 0.5rem;
+				top: 0.5rem;
+				outline: 2px solid var(--accent-dark);
+				outline-offset: 2px;
+			}
+			:focus-visible {
+				outline: 2px solid var(--accent);
+				outline-offset: 2px;
+			}
+			td.maturite {
+				white-space: nowrap;
+				font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				font-size: 0.78rem;
+				color: var(--muted);
+			}
+			td.maturite-robuste span[aria-hidden="true"] { color: #4a6741; }
+			td.maturite-sensible span[aria-hidden="true"] { color: #b8860b; }
+			.maturite-label { display: inline-block; }
+			strong.maturite-robuste-label { color: #4a6741; }
+			strong.maturite-sensible-label { color: #b8860b; }
+			@media (max-width: 600px) {
+				td.maturite { font-size: 0.7rem; }
+				.maturite-label { display: none; }
+			}
+			@media print {
+				header, footer { border: none; padding: 1rem 0; }
+				header h1 { font-size: 2rem; }
+				main { padding: 0; max-width: none; }
+				.cta-row, .cta { display: none; }
+				a { color: var(--text); border-bottom: none; }
+				body { font-size: 12pt; line-height: 1.5; }
+			}
 			.cta-row {
 				display: flex;
 				flex-wrap: wrap;
@@ -216,19 +366,44 @@ const articles = [
 		</style>
 	</head>
 	<body>
+		<a class="skip-link" href="#main">Aller au contenu</a>
 		<header>
 			<h1>L'Anthropie</h1>
 			<p class="sub">Édifice civilisationnel d'apprentissage humain à 12 couches — de 0 à l'infini. Domaine public.</p>
 		</header>
 
-		<main>
+		<main id="main">
 
 			<section>
 				<p>L'Anthropie est un édifice civilisationnel construit sous licence <a href={`${githubBase}/LICENSE.md`}>CC0 1.0 Universal</a>. Personne ne le possède. Toute personne ou collectif peut l'utiliser, le modifier, le traduire, l'incarner, le contester, l'augmenter — sans demander permission, sans rétribution, sans attribution exigée.</p>
 				<p class="quote">L'édifice cherche ses porteurs. Vous êtes peut-être l'un d'eux.</p>
+				<ul class="principes" aria-label="Trois principes non négociables">
+					<li><strong>Anonymat strict</strong> — l'édifice n'a pas d'auteur. Footer : <em>Anthropie Network</em>.</li>
+					<li><strong>CC0 1.0 intégral</strong> — domaine public, aucun droit revendiqué, aucune attribution exigée.</li>
+					<li><strong>Anti-marketing</strong> — pas de tracking, pas de framework JS lourd, pas de funnel de conversion.</li>
+				</ul>
+				<p style="font-size: 0.88rem; color: var(--muted); margin-top: 0.6rem;"><strong>L'Anthropie n'est pas Anthropic, n'est pas un laboratoire d'IA, n'est pas un produit.</strong> Voir <a href={`${base}/lire/pas-un-labo-ia/`}>la clarification anti-confusion</a> si vous arrivez par homonymie.</p>
 				<div class="cta-row">
-					<a class="cta" href={`${githubBase}/anthropie_brief_3pages.md`}>Brief 3 pages</a>
-					<a class="cta" href="https://github.com/SanTiepi/anthropie-edifice">Repository GitHub</a>
+					<a class="cta" href={`${base}/lire/brief/`}>Brief 3 min</a>
+					<a class="cta" href={`${base}/lire/noyau/`}>Noyau 10 min</a>
+					<a class="cta" href={`${base}/lire/garde-fous/`}>Garde-fous</a>
+					<a class="cta" href={`${base}/lire/adequation/`}>Test d'adéquation 90 s</a>
+					<a class="cta" href="https://github.com/SanTiepi/anthropie-edifice">Repository</a>
+				</div>
+			</section>
+
+			<section aria-labelledby="parcours">
+				<h2 id="parcours">Parcours de lecture</h2>
+				<div class="tldr">
+					<ul>
+						<li><strong>90 secondes</strong> — <a href={`${base}/lire/adequation/`}>test d'adéquation</a> (sept questions oui/non pour s'auto-exclure rapidement si la doctrine ne convient pas)</li>
+						<li><strong>3 minutes</strong> — <a href={`${base}/lire/brief/`}>le brief</a> (présentation compacte)</li>
+						<li><strong>10 minutes</strong> — <a href={`${base}/lire/noyau/`}>le noyau</a> : distillation pour décider en lecture courte</li>
+						<li><strong>15 minutes</strong> — <a href={`${base}/lire/apercu-12-couches/`}>aperçu des 12 couches</a> : ~150 mots par couche, palier intermédiaire avant les fichiers complets</li>
+						<li><strong>30 minutes</strong> — une couche complète, idéalement <a href={`${base}/lire/couche-04-parole/`}>Couche 4 LA PAROLE</a> (Discipline de Prédiction-Avant-Vocal anti-LLM-flattening) ou <a href={`${base}/lire/couche-12-brisure/`}>Couche 12 LE SEUIL DE LA BRISURE</a> (Hospices + Kintsugi)</li>
+						<li><strong>Une journée</strong> — lecture intégrale des douze fichiers de couche</li>
+					</ul>
+					<p style="margin-top: 0.8rem; font-size: 0.9rem;"><strong>Avant tout prototype ou contact terrain</strong> — lire <a href={`${base}/lire/garde-fous/`}>SAFETY</a> (protection mineurs, non-thérapie, anti-secte, co-design souverain, AI-non-substitution) et <a href={`${base}/lire/prototyper/`}>PROTOTYPES</a> (formats 2h/1mois/12mois + critères d'arrêt).</p>
 				</div>
 			</section>
 
@@ -243,56 +418,57 @@ const articles = [
 				<h2>Les 12 couches</h2>
 				<table>
 					<thead>
-						<tr><th>#</th><th>Couche</th><th>Âge</th><th>Cœur</th></tr>
+						<tr><th>#</th><th>Couche</th><th>Âge</th><th>Cœur</th><th title="Maturité épistémique : robuste = convergence empirique ou précédent juridique fort ; sensible = arbitrages culturels, juridiques ou opérationnels en cours" aria-label="Maturité épistémique">État</th></tr>
 					</thead>
 					<tbody>
 						{couches.map(c => (
 							<tr>
 								<td class="num">{c.n}</td>
 								<td class="couche">
-									{c.hasFile ? <a href={`${githubBase}/${c.file}`}>{c.nom}</a> : c.nom}
+									{c.hasFile ? <a href={`${base}/lire/${c.slug}/`}>{c.nom}</a> : c.nom}
 								</td>
 								<td class="age">{c.age}</td>
 								<td>{c.coeur}</td>
+								<td class={`maturite maturite-${c.maturite}`}><span aria-hidden="true">●</span> <span class="maturite-label">{c.maturite}</span></td>
 							</tr>
 						))}
 					</tbody>
 				</table>
-				<p>Chaque couche a sept strates, des droits fondamentaux, un audit matriciel à 70 cellules, un déploiement fractal du camp de réfugié à la métropole mature, des articulations explicites avec les autres couches, et des angles morts assumés honnêtement.</p>
+				<p>Chaque couche a sept strates, des droits fondamentaux, un audit matriciel à 70 cellules, un déploiement fractal du camp de réfugié à la métropole mature, des articulations explicites avec les autres couches, et des angles morts assumés honnêtement. <em>État</em> = maturité épistémique de la couche : <strong class="maturite-robuste-label">robuste</strong> (convergence empirique ou précédent juridique fort) ou <strong class="maturite-sensible-label">sensible</strong> (arbitrages culturels, juridiques ou opérationnels en cours).</p>
+				<CouchesSchema />
 			</section>
 
 			<section>
 				<h2>Charpente juridique — Protocole optionnel CRC</h2>
 				<p>Onze articles d'extension du protocole optionnel à la <em>Convention relative aux droits de l'enfant</em> :</p>
 				<ul class="articles-list">
-					{articles.map(a => (
-						<li><span class="code">Art. {a.code}</span>{a.titre}</li>
-					))}
+					{articles.map(a => {
+						const coucheSrc = couches.find(c => c.n === a.coucheSource);
+						return (
+							<li>
+								<a href={`${base}/lire/${coucheSrc?.slug}/`} class="article-link">
+									<span class="code">Art. {a.code}</span>{a.titre}
+								</a>
+								{coucheSrc && (
+									<span class="article-couche-ref"> — Couche {a.coucheSource} {coucheSrc.nom}</span>
+								)}
+							</li>
+						);
+					})}
 				</ul>
 				<p>Cinq États-pilotes identifiés : Norvège, Costa Rica, Nouvelle-Zélande, Bhoutan, Québec. Effet domino visé&nbsp;: 30+ ratifications d'ici 2045.</p>
 			</section>
 
 			<section>
-				<h2>Pour comprendre rapidement</h2>
-				<div class="tldr">
-					<ul>
-						<li><strong>3 minutes</strong> — <a href={`${githubBase}/anthropie_brief_3pages.md`}>le brief</a> (présentation compacte)</li>
-						<li><strong>30 minutes</strong> — une couche complète, idéalement <a href={`${githubBase}/anthropie_couche_04_parole.md`}>Couche 4 LA PAROLE</a> (Discipline de Prédiction-Avant-Vocal) ou <a href={`${githubBase}/anthropie_couche_12_brisure.md`}>Couche 12 LE SEUIL DE LA BRISURE</a> (Hospices + Kintsugi)</li>
-						<li><strong>Une journée</strong> — lecture intégrale des onze fichiers de couche</li>
-					</ul>
-				</div>
-			</section>
-
-			<section>
 				<h2>Pour contribuer</h2>
-				<p>Voir <a href={`${githubBase}/CONTRIBUTING.md`}>CONTRIBUTING</a>. Six modes&nbsp;:</p>
+				<p>Voir <a href={`${base}/lire/contribuer/`}>CONTRIBUTING</a>. Six modes&nbsp;:</p>
 				<ol>
-					<li><strong>Lire et signaler</strong> ce qui résonne, dérange, manque (Issues GitHub)</li>
+					<li><strong>Lire et signaler</strong> ce qui résonne, dérange, manque (<a href="https://github.com/SanTiepi/anthropie-edifice/issues">Issues GitHub</a>)</li>
 					<li><strong>Co-designer</strong> une couche qui aligne avec votre travail (Pull Request)</li>
-					<li><strong>Prototyper</strong> localement une couche dans votre contexte (documenter, partager)</li>
+					<li><strong>Prototyper</strong> localement (cf. <a href={`${base}/lire/prototyper/`}>PROTOTYPES</a> pour formats 2h / 1 mois / 12 mois)</li>
 					<li><strong>Plaidoyer</strong> institutionnel (universitaire, philanthropique, gouvernemental)</li>
 					<li><strong>Traduire</strong> dans une langue (priorité&nbsp;: EN, ES, AR, ZH, HI, SW, PT)</li>
-					<li><strong>Critique radicale</strong> publique des pièces qui ne tiennent pas</li>
+					<li><strong>Critique radicale</strong> publique des pièces qui ne tiennent pas (cf. <a href={`${base}/lire/refutation/`}>critères de réfutation</a>)</li>
 				</ol>
 			</section>
 
@@ -311,6 +487,51 @@ const articles = [
 			<section>
 				<h2>Pour les chercheurs</h2>
 				<p>L'édifice est synthèse rapide d'évidence existante 2024-2025. Aucune validation longitudinale propre. Premières cohortes seront laboratoires. Sources détaillées en fin de chaque fichier de couche (~88 sources scientifiques mobilisées). Critique radicale bienvenue, surtout pour démolir ce qui ne tient pas.</p>
+				<p>Vocabulaire&nbsp;: <a href={`${base}/lire/glossaire/`}>glossaire</a> (treize termes définis en une phrase chacun). Citation&nbsp;: voir le <a href={`${githubBase}/CITATION.cff`}>CITATION.cff</a> et le snippet BibTeX dans le <a href={`${githubBase}/README.md`}>README</a>.</p>
+			</section>
+
+			<section aria-labelledby="quatre-portes">
+				<h2 id="quatre-portes">Quatre portes</h2>
+				<p>Le corpus est dense. Pour entrer sans s'y perdre, choisir une porte selon votre intention.</p>
+				<ol class="quatre-portes">
+					<li>
+						<strong>1. Comprendre</strong>
+						<span class="porte-desc"> — situer ce qu'est l'édifice avant tout autre engagement.</span>
+						<br /><a href={`${base}/lire/accueil/`}>pacte d'accueil 90 s</a> · <a href={`${base}/lire/adequation/`}>test d'adéquation 90 s</a> · <a href={`${base}/lire/brief/`}>brief 3 min</a> · <a href={`${base}/lire/noyau/`}>noyau 10 min</a> · <a href={`${base}/lire/apercu-12-couches/`}>aperçu des 12 couches 15 min</a>
+					</li>
+					<li>
+						<strong>2. Pratiquer prudemment</strong>
+						<span class="porte-desc"> — incarner sans nuire.</span>
+						<br /><a href={`${base}/lire/garde-fous/`}>SAFETY</a> · <a href={`${base}/lire/prototyper/`}>format prototypes</a> · <a href={`${base}/lire/matrice-dispositifs/`}>matrice des dispositifs</a>
+						<br /><em>Noyau opérationnel Couche 4</em>&nbsp;: <a href={`${base}/lire/kit-cercle-45/`}>Kit Cercle 45 min</a> · <a href={`${base}/lire/pav-toolkit/`}>Toolkit PAV</a> · <a href={`${base}/lire/sas-3-restes/`}>Sas des 3 Restes</a>
+					</li>
+					<li>
+						<strong>3. Vérifier, critiquer</strong>
+						<span class="porte-desc"> — démolir proprement plutôt qu'adhérer.</span>
+						<br /><a href={`${base}/lire/preuves/`}>carte des preuves (A/B/C/D)</a> · <a href={`${base}/lire/refutation/`}>critères de réfutation</a> · <a href={`${base}/lire/griefs/`}>griefs ouverts</a> · <a href={`${base}/lire/auto-critique/`}>auto-critique anticipative</a>
+					</li>
+					<li>
+						<strong>4. Porter, transmettre</strong>
+						<span class="porte-desc"> — incarner publiquement et défendre la doctrine.</span>
+						<br /><a href={`${base}/lire/traduction/`}>traduction institutionnelle</a> · <a href={`${base}/lire/defense-mediatique/`}>défense médiatique</a> · <a href={`${base}/lire/transmission/`}>statut de transmission</a> · <a href={`${base}/lire/decisions/`}>décisions doctrinales (ADR)</a> · <a href={`${base}/lire/registre/`}>registre des dispositifs</a>
+					</li>
+				</ol>
+				<p class="biblio-intro">Tout le reste est conservé en accès direct ci-dessous. Aucune page n'est cachée — seulement reléguée pour ne pas surcharger l'entrée.</p>
+				<details class="biblio-complete">
+					<summary>Bibliothèque complète (déplier)</summary>
+					<ul>
+						<li><strong>Premiers pas par profil</strong>&nbsp;: <a href={`${base}/lire/scenarios/`}>trois scénarios concrets</a> (chercheur solo / collectif discret / porteur institutionnel) · <a href={`${base}/lire/glossaire/`}>glossaire 13 termes</a> · <a href={`${base}/lire/salle-attente/`}>salle d'attente 7 min</a></li>
+						<li><strong>Toolkits matériels par couche</strong> (prêts à imprimer)&nbsp;: <a href={`${base}/lire/rpu-toolkit/`}>RPU intergénérationnel (1)</a> · <a href={`${base}/lire/retrait-ecole/`}>Retrait d'école (3-5)</a> · <a href={`${base}/lire/passeport-12-lieux/`}>Passeport 12 lieux (5)</a> · <a href={`${base}/lire/seuil-72h/`}>Seuil 72H (7)</a> · <a href={`${base}/lire/boite-des-absents/`}>Boîte des Absents (9-10)</a> · <a href={`${base}/lire/carnet-3-parents/`}>Carnet 3 Parents (11)</a> · <a href={`${base}/lire/kintsugi-papier/`}>Kintsugi de papier (12)</a></li>
+						<li><strong>Dispositifs de groupe</strong>&nbsp;: <a href={`${base}/lire/veillee-papiers-repares/`}>Veillée des Papiers Réparés</a> (10-30 pers., 4 jours) · <a href={`${base}/lire/relais-72-absents/`}>Relais des 72 Absents</a> (chaîne 12 jours)</li>
+						<li><strong>Dispositifs ultra-courts</strong>&nbsp;: <a href={`${base}/lire/horloge-12-seuils/`}>Horloge des 12 Seuils</a> · <a href={`${base}/lire/mode-degrade-72h/`}>Mode dégradé 72H</a></li>
+						<li><strong>Cellule mycéliale</strong> (Couche 8)&nbsp;: <a href={`${base}/lire/cellule-m0/`}>Mois Zéro</a> · <a href={`${base}/lire/pont-de-pollen/`}>Pont de Pollen</a></li>
+						<li><strong>Rituels de fin</strong>&nbsp;: <a href={`${base}/lire/cloture/`}>Toolkit de Clôture</a> (Acte de Sépulture / Mandat en Cendre / Veillée de Désassemblage)</li>
+						<li><strong>Pour contextes contraints</strong>&nbsp;: <a href={`${base}/lire/toolkit-classe/`}>Classe</a> · <a href={`${base}/lire/toolkit-travail/`}>Travail</a> · <a href={`${base}/lire/toolkit-soin/`}>Soin</a> · <a href={`${base}/lire/toolkit-detention/`}>Détention</a> · <a href={`${base}/lire/toolkit-rural/`}>Rural / Isolé</a> · <a href={`${base}/lire/toolkit-humanitaire/`}>Humanitaire</a></li>
+						<li><strong>Robustesse et anti-capture</strong>&nbsp;: <a href={`${base}/lire/audit-adverse/`}>exercice prise hostile + audit adverse gelé</a> · <a href={`${base}/lire/objections/`}>11 objections + réponses</a> · <a href={`${base}/lire/biblio-negative/`}>bibliographie négative</a></li>
+						<li><strong>Reprendre, forker, reconstruire</strong>&nbsp;: <a href={`${base}/lire/forker/`}>forker l'édifice</a> · <a href={`${base}/lire/reproduire/`}>reconstruire / mode dégradé</a> · <a href={`${base}/lire/cadre/`}>cadre de publication</a> · <a href={`${base}/lire/nommage/`}>nommage canonique</a> · <a href={`${base}/lire/licences/`}>matrice des licences</a> · <a href={`${base}/lire/pas-un-labo-ia/`}>pas un labo IA (anti-confusion)</a></li>
+						<li><strong>Plan et gouvernance</strong>&nbsp;: <a href={`${base}/lire/roadmap/`}>roadmap 4 phases</a> · <a href={`${base}/lire/mandats/`}>mandats fonctionnels</a> · <a href={`${base}/lire/etouffement/`}>points d'étouffement</a> · <a href={`${base}/lire/maintenance/`}>maintenance de l'édifice</a> · <a href={`${base}/lire/evaluation/`}>protocole d'évaluation 90j / 6-12-24m</a> · <a href={`${base}/lire/contribuer/`}>contribuer</a></li>
+					</ul>
+				</details>
 			</section>
 
 			<section>

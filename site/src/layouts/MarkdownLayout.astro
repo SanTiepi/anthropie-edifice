@@ -1,0 +1,266 @@
+---
+const { title, sourceFile, slug, readingMinutes, density } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const githubBase = "https://github.com/SanTiepi/anthropie-edifice/blob/master";
+const readingLabel = readingMinutes ? (readingMinutes === 1 ? '~1 min' : `~${readingMinutes} min`) : null;
+---
+
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={`${title} — L'Anthropie, édifice civilisationnel CC0 1.0 Universal`} />
+		<meta name="theme-color" content="#4a6741" />
+		<meta name="author" content="Anthropie Network" />
+		<meta name="dcterms.rights" content="CC0 1.0 Universal — Public Domain Dedication" />
+		<meta property="og:title" content={`${title} — L'Anthropie`} />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content={`https://anthropie.org/lire/${slug}/`} />
+		<meta property="og:image" content="https://anthropie.org/og-image.svg" />
+		<meta property="og:locale" content="fr_FR" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:image" content="https://anthropie.org/og-image.svg" />
+		<link rel="canonical" href={`https://anthropie.org/lire/${slug}/`} />
+		<title>{title} — L'Anthropie</title>
+		<style>
+			:root {
+				--text: #1a1a1a;
+				--muted: #5a5a5a;
+				--bg: #fdfdfb;
+				--bg-alt: #f4f2ec;
+				--accent: #4a6741;
+				--accent-dark: #3a5631;
+				--border: #e2dfd6;
+				--max: 760px;
+			}
+			* { box-sizing: border-box; }
+			html { scroll-behavior: smooth; }
+			body {
+				font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Hoefler Text', Georgia, serif;
+				font-size: 17px;
+				line-height: 1.65;
+				color: var(--text);
+				background-color: var(--bg);
+				margin: 0;
+				padding: 0;
+			}
+			.skip-link {
+				position: absolute; left: -9999px; top: 0;
+				background: var(--accent); color: var(--bg);
+				padding: 0.5rem 1rem; z-index: 100;
+				font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				font-size: 0.85rem; border-bottom: none;
+			}
+			.skip-link:focus { left: 0.5rem; top: 0.5rem; outline: 2px solid var(--accent-dark); outline-offset: 2px; }
+			:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+			.topnav {
+				border-bottom: 1px solid var(--border);
+				padding: 1rem 1.5rem;
+				font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				font-size: 0.85rem;
+				display: flex;
+				justify-content: space-between;
+				flex-wrap: wrap;
+				gap: 0.5rem;
+				color: var(--muted);
+			}
+			.topnav a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(74, 103, 65, 0.3); }
+			.topnav a:hover { border-bottom-color: var(--accent); }
+			.topnav .left { display: flex; gap: 1rem; flex-wrap: wrap; }
+			.topnav .right { font-style: italic; }
+			main {
+				max-width: var(--max);
+				margin: 0 auto;
+				padding: 2rem 1.5rem 4rem;
+			}
+			main h1 {
+				font-size: 2rem;
+				font-weight: 400;
+				letter-spacing: 0.01em;
+				margin: 0 0 1.5rem;
+				border-bottom: 1px solid var(--border);
+				padding-bottom: 0.7rem;
+			}
+			main h2 {
+				font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				font-size: 0.95rem;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 0.14em;
+				color: var(--accent);
+				margin: 2.4rem 0 0.9rem;
+				padding-bottom: 0.3rem;
+				border-bottom: 1px solid var(--border);
+			}
+			main h3 { font-size: 1.2rem; font-weight: 500; margin: 1.5rem 0 0.5rem; }
+			main h4 { font-size: 1rem; font-weight: 600; margin: 1.3rem 0 0.4rem; }
+			main p { margin: 0.8em 0; }
+			main a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(74, 103, 65, 0.3); }
+			main a:hover { border-bottom-color: var(--accent); }
+			main strong { font-weight: 600; }
+			main em { color: var(--muted); }
+			main ul, main ol { padding-left: 1.4rem; }
+			main li { margin: 0.3rem 0; }
+			main blockquote {
+				border-left: 3px solid var(--accent);
+				padding: 0.2rem 0 0.2rem 1.2rem;
+				margin: 1.4rem 0;
+				color: var(--muted);
+				font-style: italic;
+			}
+			main code {
+				font-family: 'SF Mono', Menlo, Consolas, monospace;
+				font-size: 0.92em;
+				background: var(--bg-alt);
+				padding: 0.05em 0.35em;
+				border-radius: 3px;
+			}
+			main pre {
+				background: var(--bg-alt);
+				padding: 1rem;
+				overflow-x: auto;
+				border-radius: 4px;
+				font-size: 0.88rem;
+				border: 1px solid var(--border);
+			}
+			main pre code { background: none; padding: 0; }
+			main table { width: 100%; border-collapse: collapse; margin: 1.2rem 0; font-size: 0.95rem; }
+			main th, main td { border-bottom: 1px solid var(--border); padding: 0.55rem 0.5rem; text-align: left; vertical-align: top; }
+			main th {
+				font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				font-size: 0.78rem; font-weight: 600;
+				text-transform: uppercase; letter-spacing: 0.1em;
+				color: var(--muted);
+			}
+			main hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+			footer {
+				border-top: 1px solid var(--border);
+				padding: 2rem 1.5rem;
+				text-align: center;
+				color: var(--muted);
+				font-size: 0.88rem;
+				font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			}
+			footer a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(74, 103, 65, 0.3); }
+			.reading-budget {
+				font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				font-size: 0.78rem;
+				color: var(--muted);
+				margin-right: 0.6rem;
+				display: inline-flex;
+				align-items: center;
+				gap: 0.4rem;
+				white-space: nowrap;
+			}
+			.reading-min { font-variant-numeric: tabular-nums; }
+			.density {
+				display: inline-block;
+				padding: 0.05rem 0.4rem;
+				border: 1px solid var(--border);
+				border-radius: 2px;
+				font-size: 0.7rem;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+			}
+			.density-court  { color: #4a6741; border-color: #4a6741; }
+			.density-moyen  { color: #5a5a5a; }
+			.density-dense  { color: #b8860b; border-color: #b8860b; }
+			aside.contest-block {
+				max-width: var(--max);
+				margin: 3rem auto 0;
+				padding: 1.5rem 1.5rem 0.5rem;
+				border-top: 1px solid var(--border);
+				font-size: 0.92rem;
+			}
+			aside.contest-block h2 {
+				font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				font-size: 0.85rem;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 0.14em;
+				color: var(--accent);
+				margin: 0 0 0.8rem;
+				border: none;
+				padding: 0;
+			}
+			aside.contest-block p { margin: 0.5em 0; }
+			aside.contest-block ul {
+				list-style: none;
+				padding: 0;
+				margin: 0.6rem 0;
+			}
+			aside.contest-block li {
+				padding: 0.4rem 0;
+				border-bottom: 1px dotted var(--border);
+				font-size: 0.92rem;
+			}
+			aside.contest-block li:last-child { border-bottom: none; }
+			aside.contest-block .contest-issue {
+				font-style: italic;
+				color: var(--muted);
+				font-size: 0.88rem;
+				margin-top: 0.8rem;
+			}
+			aside.contest-block code {
+				font-family: 'SF Mono', Menlo, Consolas, monospace;
+				font-size: 0.86em;
+				background: var(--bg-alt);
+				padding: 0.05em 0.35em;
+				border-radius: 3px;
+			}
+			@media (max-width: 600px) {
+				body { font-size: 16px; }
+				main { padding: 1.5rem 1rem 3rem; }
+				main h1 { font-size: 1.6rem; }
+				.topnav { font-size: 0.78rem; padding: 0.7rem 1rem; }
+			}
+			@media print {
+				.topnav, footer { border: none; padding: 0.5rem 0; }
+				.topnav .right { display: none; }
+				main { padding: 0; max-width: none; }
+				body { font-size: 11pt; line-height: 1.5; }
+				main a { color: var(--text); border-bottom: none; }
+			}
+		</style>
+	</head>
+	<body>
+		<a class="skip-link" href="#main">Aller au contenu</a>
+		<nav class="topnav" aria-label="Navigation site">
+			<div class="left">
+				<a href={`${base}/`}>← anthropie.org</a>
+				<a href={`${base}/lire/noyau/`}>Noyau (10 min)</a>
+				<a href={`${base}/lire/garde-fous/`}>Garde-fous</a>
+				<a href={`${base}/lire/glossaire/`}>Glossaire</a>
+			</div>
+			<div class="right">
+				{readingLabel && (
+					<span class="reading-budget" aria-label={`Temps de lecture estimé : ${readingLabel}, densité ${density}`}>
+						<span class="reading-min">{readingLabel}</span>
+						<span class={`density density-${density}`}>{density}</span>
+					</span>
+				)}
+				<a href={`${githubBase}/${sourceFile}`}>Source GitHub</a>
+			</div>
+		</nav>
+		<main id="main">
+			<slot />
+		</main>
+		<aside class="contest-block" aria-labelledby="contest-title">
+			<h2 id="contest-title">Contester cette page</h2>
+			<p>Cette page n'attend pas votre adhésion. Quatre voies pour la critiquer ou en démolir un fragment&nbsp;:</p>
+			<ul>
+				<li>📚 <a href={`${base}/lire/preuves/`}>Carte des preuves</a> — vérifier le statut épistémique (A/B/C/D) des claims qui vous semblent fragiles.</li>
+				<li>🛑 <a href={`${base}/lire/refutation/`}>Critères de réfutation</a> — voir ce qui ferait arrêter, suspendre ou réviser cette partie de l'édifice.</li>
+				<li>❓ <a href={`${base}/lire/objections/`}>Objections fréquentes</a> — onze attaques contre l'édifice avec réponses, limites, non résolus.</li>
+				<li>📋 <a href={`${base}/lire/griefs/`}>Griefs ouverts</a> — critiques externes non closes, avec seuil de preuve attendu.</li>
+			</ul>
+			<p class="contest-issue">Si votre objection n'est traitée nulle part&nbsp;: ouvrir une <a href="https://github.com/SanTiepi/anthropie-edifice/issues">Issue GitHub</a> avec tag <code>lecture-critique</code>.</p>
+		</aside>
+		<footer>
+			<p>Anthropie Network — édifice <a href={`${githubBase}/LICENSE.md`}>CC0 1.0 Universal</a> — <a href={`${githubBase}/${sourceFile}`}>source GitHub</a></p>
+			<p><em>Le porteur vient après.</em></p>
+		</footer>
+	</body>
+</html>

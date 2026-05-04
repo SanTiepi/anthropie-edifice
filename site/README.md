@@ -1,43 +1,54 @@
-# Astro Starter Kit: Minimal
+# site/ — anthropie.org
+
+Site statique Astro 6 de l'édifice **L'Anthropie**. Sobriété délibérée : pas de JS, pas de tracking, pas de framework lourd, pas de CTA marketing. Build statique → GitHub Pages → custom domain `anthropie.org`.
+
+## Doctrine du site
+
+- Une seule porte d'entrée (`index.astro`), une 404 (`404.astro`).
+- Couleur d'accent unique : `#4a6741` (vert mousse).
+- Typo serif système (`Iowan Old Style → Palatino Linotype → Palatino → Hoefler Text → Georgia`), aucune webfont.
+- Anonymat strict : footer = *Anthropie Network*, jamais de signature personnelle.
+- Anti-marketing : aucun pixel d'analytics, aucun popup, aucun bouton "Sign up".
+- Données structurées JSON-LD `CreativeWork` CC0 pour découvrabilité académique.
+- Print stylesheet pour les chercheurs qui impriment.
+
+## Structure
+
+```
+site/
+├── astro.config.mjs           Astro 6 + integration sitemap, site = anthropie.org
+├── package.json               astro@^6.1.10, @astrojs/sitemap
+├── public/
+│   ├── CNAME                  anthropie.org (lu par GitHub Pages)
+│   ├── favicon.svg / .ico
+│   ├── og-image.svg           1200×630 sobre, CC0 mention visible
+│   └── robots.txt             allow + sitemap
+└── src/pages/
+    ├── index.astro            page unique, 12 couches + 11 articles 31bis-duodecies
+    └── 404.astro              "Cette page ne se trouve pas dans l'édifice."
+```
+
+## Commandes
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+npm run dev      # dev local sur http://localhost:4321
+npm run build    # build statique → dist/
+npm run preview  # preview du build
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Node `>=22.12.0` requis (cf. `engines.node`).
 
-## 🚀 Project Structure
+## Déploiement
 
-Inside of your Astro project, you'll see the following folders and files:
+Workflow GitHub Actions (`.github/workflows/deploy.yml`) sur push de `site/**` ou du workflow lui-même : `npm ci && npm run build` → upload `site/dist/` → GitHub Pages → CNAME → `anthropie.org`.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+SSL Let's Encrypt provisionné et auto-renouvelé par GitHub Pages.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Doctrine éditoriale rappel
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Avant tout changement visible, consulter [`README.md`](../README.md) racine et [`ROADMAP.md`](../ROADMAP.md). Le site est une **porte d'entrée**, pas une compression de l'édifice. Le contenu profond reste dans les 12 fichiers `anthropie_couche_*.md` à la racine.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Issues / contributions
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+[github.com/SanTiepi/anthropie-edifice/issues](https://github.com/SanTiepi/anthropie-edifice/issues). Critique radicale bienvenue, surtout sur ce qui ne tient pas.
