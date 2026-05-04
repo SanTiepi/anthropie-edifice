@@ -22,7 +22,7 @@ Trois constats convergents fondent l'édifice :
 
 | # | Couche | Âge | Cœur |
 |---|--------|-----|------|
-| 1 | LA MATRICE | 0-3 | Présence des aînés (RPU), 6 strates affectives |
+| 1 | LA MATRICE | 0-3 | Présence des aînés (RPU), 7 strates affectives (Pikler-Lóczy, allomaternage) |
 | 2 | LE SANCTUAIRE | 3-7 | 7 disciplines de la posture adulte, droit à la curiosité préservée |
 | 3 | L'ATELIER | 5-12 | Constructionnisme Papert + Pont des Certifications (Open Badges 3.0) |
 | 4 | LA PAROLE | 7-15 | Cercles de Voix + **Discipline de Prédiction-Avant-Vocal** anti-LLM-flattening |
@@ -115,7 +115,7 @@ Les porteurs sont :
 
 ## Comment contribuer
 
-L'édifice complet est sur le repository GitHub `anthropie/edifice` (ou équivalent). Toute contribution est bienvenue selon les modes suivants :
+L'édifice complet est sur le repository GitHub `github.com/SanTiepi/anthropie-edifice` (CC0, public). Toute contribution est bienvenue selon les modes suivants :
 
 1. **Lecture et retours** — un porteur peut simplement lire et signaler ce qui résonne, ce qui dérange, ce qui manque
 2. **Co-design d'une couche** — s'engager avec la couche qui aligne le mieux avec son travail, proposer modifications
@@ -130,9 +130,9 @@ Aucune signature n'est requise. Aucun engagement contractuel. Aucun retour finan
 
 ## Contact
 
-Édifice : `[GitHub URL à créer]`
-Site : `[anthropie.org URL à créer]`
-Contact direct : `[email à créer dédié]`
+Édifice : <https://github.com/SanTiepi/anthropie-edifice>
+Site : <https://anthropie.org>
+Contact direct : `contact@anthropie.org` *(canal en cours d'ouverture)*
 
 *"Le porteur vient après. Pas de persona "client pragmatique" dans la boucle. Ambition civilisationnelle à chaque couche."* — règle commissionnaire originelle.
 

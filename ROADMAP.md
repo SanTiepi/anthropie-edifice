@@ -11,8 +11,9 @@ L'édifice est CC0. Cette feuille de route est indicative — ouverte à fork, m
 **Objectif** : que l'édifice ait commencé à *exister hors du commissaire originel*.
 
 - [x] Repository GitHub public CC0 — 12 fichiers couches, README, LICENSE, CONTRIBUTING, CODE_OF_CONDUCT
-- [x] Site web minimal (Astro statique, page unique)
-- [ ] Domaine `anthropie.org` (ou équivalent) + email contact
+- [x] Site web minimal (Astro statique, page unique) déployé via GitHub Actions sur push de `site/**`
+- [x] Domaine `anthropie.org` actif (CNAME GitHub Pages, SSL Let's Encrypt auto-renouvelé)
+- [ ] Email `contact@anthropie.org` (à créer chez Infomaniak Manager — alias mail)
 - [ ] Custom GPT *Compagnon Anthropie* (orientation lecteurs)
 - [ ] Claude Project *Atelier Anthropie* (accompagnement praticiens)
 - [ ] Dépôt formel BIE Genève (UNESCO) — proposition 31bis-duodecies

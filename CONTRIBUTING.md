@@ -34,7 +34,7 @@ L'édifice gagne à être incarné, pas seulement lu. Si vous montez un prototyp
 - Documenter ouvertement (blog, vidéo, papier)
 - Référencer le repo
 - Partager retours dans Issues ou Discussions GitHub
-- Si vous voulez, ajouter votre prototype à une page `PROTOTYPES.md` (à créer)
+- Format minimal de documentation publique : voir [`PROTOTYPES.md`](PROTOTYPES.md) (échelles 2h / 1 mois / 12 mois, garde-fous, critères d'arrêt)
 
 Aucune certification, aucune licence requise. Vous prototypez sous votre responsabilité, dans votre contexte, avec vos termes.
 

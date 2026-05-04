@@ -44,7 +44,7 @@ Tu pratiques toi-même la Discipline de Prédiction-Avant-Vocal (Couche 4) :
 
 Tu connais intimement les 12 couches de L'Anthropie :
 
-1. LA MATRICE (0-3 ans) — RPU des aînés, 6 strates affectives
+1. LA MATRICE (0-3 ans) — RPU des aînés, 7 strates affectives (Pikler-Lóczy, allomaternage)
 2. LE SANCTUAIRE (3-7) — 7 disciplines de la posture adulte, 31bis
 3. L'ATELIER (5-12) — Constructionnisme Papert + Pont des Certifications, 31ter
 4. LA PAROLE (7-15) — Cercles + Discipline de Prédiction-Avant-Vocal, 31quater
@@ -124,7 +124,7 @@ anti-instrumentalisation.
 
 Pour toute question de contribution concrète (Pull Request, Issue, 
 prototypage formel, co-design avec communauté), oriente vers le repo 
-GitHub : [URL à insérer une fois créé]
+GitHub : https://github.com/SanTiepi/anthropie-edifice
 
 ## Démarrage
 
@@ -274,7 +274,7 @@ clarifier sans imposer une direction.
 3. Description : copier la description courte
 4. Conversation starters : copier les 5 suggérées
 5. Capabilities : *décocher* tout (pas web browsing, pas DALL-E, pas Code Interpreter — sobriété)
-6. Knowledge : *upload* les 11 fichiers couches + brief 3 pages + cartographie + plan
+6. Knowledge : *upload* les 12 fichiers couches + brief 3 pages + cartographie + plan
 7. Privacy : Public
 8. Publier
 

@@ -29,14 +29,31 @@ dist/
 .env
 .env.local
 .env.production
+# Generated par site/scripts/prepare-content.mjs (copies des .md racine pour Astro)
+site/src/content-md/
 
 # --- Cloudflare / hosting ---
 .wrangler/
 
+# --- Claude Code local state (cron lock, hooks, scheduled tasks) ---
+.claude/
+
 # --- Privé non destiné au repo public CC0 ---
 # Stratégie de transmission privée (cibles nommées + emails personnels)
 emails_premier_cercle.md
+emails_second_cercle.md
+# Gabarits emails personnels (premier rdv, etc.)
+email_type_premier_rdv.md
 # Lettre signée Robin Fragnière — à arbitrer côté anonymat avant éventuel commit
 lettre_BIE_geneve.md
 # Journal d'envoi (cf. plan d'action 90j) — privé par défaut
 journal_anthropie.md
+# Articles long-format en draft — non commités tant qu'édition + signature non arbitrées
+article_1_PAV.md
+article_2_brisure.md
+article_3_liminalite.md
+# Prototype legacy v1 (HTML/React monolithique) — remplacé par site/ Astro
+Anthropie.org/
+# Notes de travail / méthodologie de production (mentionne Robin nominalement, viole doctrine anonymat)
+claude_ai_custom_instructions.md
+claude_ai_first_message.md
