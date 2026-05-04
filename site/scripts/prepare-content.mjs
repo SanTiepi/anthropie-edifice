@@ -97,6 +97,7 @@ const FILES = [
   ['AUDIT_COUCHE_12_BRISURE.md', 'audit-couche-12-brisure', "Audit Couche XII LE SEUIL DE LA BRISURE (ferme-t-elle l'arc d'Anthropie ?)"],
   ['AUDIT_COUCHE_02_SANCTUAIRE.md', 'audit-couche-02-sanctuaire', "Audit Couche II LE SANCTUAIRE (examen de la sensibilité 🟡)"],
   ['AUDIT_COUCHE_01_MATRICE.md',   'audit-couche-01-matrice', "Audit Couche I LA MATRICE (examen de la robustesse 🟢, RPU comme 6e invention propre)"],
+  ['AUDIT_COUCHE_03_ATELIER.md',   'audit-couche-03-atelier', "Audit Couche III L'ATELIER (Pont des Certifications comme 7e invention propre potentielle)"],
   ['ROADMAP.md',                 'roadmap',     "Roadmap — 4 phases"],
   ['CONTRIBUTING.md',            'contribuer',  "Contribuer à l'édifice"],
 ];
