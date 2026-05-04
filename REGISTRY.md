@@ -272,17 +272,9 @@ CC0 1.0 Universal. Document **vivant** — révisé annuellement (Cycle Annuel d
 
 ---
 
-## Outils porteur solitaire (2 entrées)
+## Outils porteur solitaire (1 entrée)
 
-### WAITING_ROOM (salle d'attente 7 min)
-
-- **Fichier** : `WAITING_ROOM.md` → `/lire/salle-attente/`
-- **Promesse** : 7 minutes pour se préparer avant un rendez-vous hostile — objectif unique, 3 pièces (faits/demande/limite), phrase de recadrage, phrase de sortie, après-coup.
-- **Contre-indications** : détresse psychique aiguë (voir pro avant) ; procédure pénale (avocat) ; victime de violences (autorités).
-- **Niveau de preuve** : 🟠 C (compilation pratiques médiation + accompagnement vulnérables).
-- **Conditions minimales** : fiche imprimée recto-verso A4 pliée + 7 minutes avant l'entretien + capacité de respiration consciente.
-- **Garde-fous obligatoires** : SAFETY §3 (numéros d'urgence inscrits), §1 (si rendez-vous concerne un·e mineur·e).
-- **Trajectoire** : créé 2026-05 (iter #15), statut *actif* (déjà testé conceptuellement par audit Robin).
+> *WAITING_ROOM (salle d'attente 7 min) a été **fusionné** dans `MEDIA_DEFENSE.md` comme Outil 4 le 2026-05-04, conformément au pré-cycle d'élagage candidat #1 ci-dessous. Le fichier `WAITING_ROOM.md` n'existe plus ; le contenu reste accessible à `/lire/defense-mediatique/#salle-attente`.*
 
 ### INSTITUTIONAL_TRANSLATION
 
@@ -340,11 +332,12 @@ Examen rapide selon 5 critères : **Recouvrement** (déjà couvert par autre dis
 
 ### Cinq candidats identifiés (proposition à débattre publiquement)
 
-#### Candidat #1 — `WAITING_ROOM` → fusionner dans `MEDIA_DEFENSE`
+#### Candidat #1 — `WAITING_ROOM` → fusionner dans `MEDIA_DEFENSE` ✅ ACTÉ 2026-05-04
 
 - **Diagnostic** : recouvrement large entre la *salle d'attente 7 min* (préparation avant rendez-vous hostile) et `MEDIA_DEFENSE` Outil 2 *3 scripts pré-rédigés en 4 blocs* qui couvre le même territoire avec une structure plus précise.
 - **Action proposée** : **fusionner** WAITING_ROOM comme **Outil 4** de MEDIA_DEFENSE (*« Préparation 7 minutes en salle d'attente »*). Conserver le format A4 imprimable distinct mais sous le même fichier.
 - **Effet** : -1 fichier, doctrine plus cohérente, pas de perte.
+- **Statut** : **fusion réalisée le 2026-05-04** (commit suivant). Outil 4 inséré dans `MEDIA_DEFENSE.md` avec ancre `#salle-attente`. Fichier `WAITING_ROOM.md` supprimé. 7 références mises à jour (`SOIN_TOOLKIT`, `MODE_DEGRADE_72H`, `TOOLKIT_MATRIX` ×5, `index.astro`, `prepare-content.mjs`, `licenses.json`, REGISTRY entrée porteur solitaire). Premier élagage effectif de l'édifice — preuve opératoire que `MAINTENANCE.md` agit.
 
 #### Candidat #2 — `INSTITUTIONAL_TRANSLATION` → garder + lien explicite avec `MEDIA_DEFENSE`
 

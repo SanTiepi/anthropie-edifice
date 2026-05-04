@@ -4,7 +4,7 @@
 
 CC0 1.0 Universal. Cf. codex iter#28 #1+#2+#3 fusionnés. **Territoires extrêmement sensibles** : ces dispositifs **complètent** le soin médical, ne le remplacent jamais. Toute mise en œuvre doit respecter votre déontologie professionnelle, vos protocoles institutionnels, et le consentement de la personne concernée.
 
-**Avant** : lire impérativement [`SAFETY.md`](garde-fous/) §3 (non-thérapie) et §6 (deuil/trauma). Si vous êtes proche aidant·e isolé·e ou en burn-out, voir aussi [`SALLE_ATTENTE_7MIN.md`](salle-attente/) et [`MODE_DEGRADE_72H.md`](mode-degrade-72h/).
+**Avant** : lire impérativement [`SAFETY.md`](garde-fous/) §3 (non-thérapie) et §6 (deuil/trauma). Si vous êtes proche aidant·e isolé·e ou en burn-out, voir aussi [`MEDIA_DEFENSE.md` Outil 4 — préparation 7 min](defense-mediatique/#salle-attente) et [`MODE_DEGRADE_72H.md`](mode-degrade-72h/).
 
 ---
 

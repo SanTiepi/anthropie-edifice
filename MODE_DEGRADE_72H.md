@@ -142,7 +142,7 @@ Si vous hésitez sur la légitimité de votre activation, demandez à **un·e pr
 
 ## Articulation avec les autres toolkits
 
-- **Compatible avec [`SALLE_ATTENTE_7MIN.md`](salle-attente/)** : si vous avez un rendez-vous hostile pendant le mode dégradé, lire la carte salle d'attente avant.
+- **Compatible avec [`MEDIA_DEFENSE.md` Outil 4](defense-mediatique/#salle-attente)** : si vous avez un rendez-vous hostile pendant le mode dégradé, lire la fiche *préparation 7 minutes en salle d'attente* avant.
 - **Compatible avec [`SAS_DES_3_RESTES.md`](sas-3-restes/)** : si vous animez une réunion régulière pendant le mode dégradé, vous pouvez le déléguer ou le réduire au seul Sas (7 min) au lieu d'une animation complète.
 - **Précurseur de [`SEUIL_72H.md`](seuil-72h/)** : si à la fin des 72h dégradées vous ressentez un besoin de seuil profond, basculer vers SEUIL_72H peut être pertinent (sans intervalle entre les deux).
 - **Symétrie avec [`HORLOGE_DES_12_SEUILS.md`](horloge-12-seuils/)** : à la fin du mode dégradé, faire une horloge personnelle peut aider à reprendre contact avec les 12 couches après la pause.

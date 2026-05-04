@@ -25,7 +25,7 @@ CC0 1.0 Universal. Cette matrice ne remplace aucun dispositif individuel — ell
 | Temps disponible | Dispositifs |
 |---|---|
 | **5-15 minutes interstitielles** | [Horloge des 12 Seuils](horloge-12-seuils/) (12 min) · [Sas des 3 Restes](sas-3-restes/) (7 min, clôture de réunion) |
-| **45 minutes** | [Kit Cercle 45 min](kit-cercle-45/) · [Toolkit PAV](pav-toolkit/) intégré dans un cercle · [Salle d'attente 7 min](salle-attente/) avant rendez-vous hostile |
+| **45 minutes** | [Kit Cercle 45 min](kit-cercle-45/) · [Toolkit PAV](pav-toolkit/) intégré dans un cercle · [Préparation 7 min en salle d'attente](defense-mediatique/#salle-attente) avant rendez-vous hostile |
 | **1-2 heures (ponctuel)** | [Kintsugi de papier](kintsugi-papier/) (variante papier 30 min, vêtement 1h, bol 2h) |
 | **Une demi-journée régulière** | [Toolkit RPU intergénérationnel](rpu-toolkit/) (3 phases × 5 min + débrief, hebdomadaire) |
 | **Un weekend (72h)** | [Seuil 72H](seuil-72h/) (liminalité protégée solo) |
@@ -41,12 +41,12 @@ CC0 1.0 Universal. Cette matrice ne remplace aucun dispositif individuel — ell
 
 | Vous êtes / vous traversez | Dispositifs prioritaires |
 |---|---|
-| **Parent isolé** (faible énergie sociale) | [Salle d'attente 7 min](salle-attente/) (avant rendez-vous hostile) · [Toolkit RPU](rpu-toolkit/) (rencontre intergénérationnelle simple) |
+| **Parent isolé** (faible énergie sociale) | [Préparation 7 min en salle d'attente](defense-mediatique/#salle-attente) (avant rendez-vous hostile) · [Toolkit RPU](rpu-toolkit/) (rencontre intergénérationnelle simple) |
 | **Enseignant·e épuisé·e** | [Sas des 3 Restes](sas-3-restes/) (clôture de classe) · [Horloge des 12 Seuils](horloge-12-seuils/) (audit personnel) |
 | **Adolescent·e** (15-25, jeune porteur) | [Kit Cercle 45 min](kit-cercle-45/) entre pairs · [Toolkit PAV](pav-toolkit/) · pré-cellule 4×4 (codex iter#19 #4, à venir) |
 | **Doctorant·e / chercheur·euse** | [Test d'adéquation](adequation/) · [Carte des preuves](preuves/) · [Critères de réfutation](refutation/) · [Trois scénarios](scenarios/) Scénario A |
 | **Veuf·ve / personne en deuil** (> 12 mois) | [Boîte des Absents](boite-des-absents/) (audiences mensuelles) · [Kintsugi de papier](kintsugi-papier/) |
-| **Personne en burn-out / surmenage** | [Mode dégradé 72H](mode-degrade-72h/) *(à venir)* · [Salle d'attente 7 min](salle-attente/) |
+| **Personne en burn-out / surmenage** | [Mode dégradé 72H](mode-degrade-72h/) *(à venir)* · [Préparation 7 min en salle d'attente](defense-mediatique/#salle-attente) |
 | **Couple en transition** | [Seuil 72H](seuil-72h/) chacun en parallèle puis échange · [Kintsugi de papier](kintsugi-papier/) à deux |
 | **Famille élargie en réunion annuelle** | [Sas des 3 Restes](sas-3-restes/) version familiale · [Boîte des Absents](boite-des-absents/) audience d'un défunt commun |
 | **Communauté en formation (3-7 personnes)** | [Kit Cercle 45 min](kit-cercle-45/) hebdomadaire 6 mois → [Cellule Mycéliale](couche-08-mycologie/) 5-10 ans |
@@ -61,7 +61,7 @@ CC0 1.0 Universal. Cette matrice ne remplace aucun dispositif individuel — ell
 | **1 — MATRICE** (0-3) | [Toolkit RPU](rpu-toolkit/) | [Boîte des Absents](boite-des-absents/) pochettes 1, 2, 6 |
 | **2 — SANCTUAIRE** (3-7) | (aucun toolkit dédié, voir [`PROTOTYPES.md`](prototyper/) format Maison Mère) | [Retrait d'école](retrait-ecole/) (parents en alternative) |
 | **3 — ATELIER** (5-12) | [Retrait d'école 30 jours](retrait-ecole/) | combiné avec [Passeport 12 lieux](passeport-12-lieux/) |
-| **4 — PAROLE** (7-15) | [Toolkit PAV](pav-toolkit/) · [Kit Cercle 45 min](kit-cercle-45/) | [Sas des 3 Restes](sas-3-restes/) · [Salle d'attente 7 min](salle-attente/) |
+| **4 — PAROLE** (7-15) | [Toolkit PAV](pav-toolkit/) · [Kit Cercle 45 min](kit-cercle-45/) | [Sas des 3 Restes](sas-3-restes/) · [Préparation 7 min en salle d'attente](defense-mediatique/#salle-attente) |
 | **5 — VILLE** (10-18) | [Passeport 12 lieux](passeport-12-lieux/) | [Retrait d'école / voisinage documenté](retrait-ecole/) |
 | **6 — REGARD** (10-18) | (aucun toolkit dédié actuellement — voir [Couche 6](couche-06-regard/)) | À développer (carnet vidéo, atelier deepfake) |
 | **7 — SEUILS** (12-22) | [Seuil 72H](seuil-72h/) (solo adulte) | [Veillée des Papiers Réparés](veillee-papiers-repares/) |
@@ -97,7 +97,7 @@ CC0 1.0 Universal. Cette matrice ne remplace aucun dispositif individuel — ell
 | **Tradition vivante autochtone** | [`SAFETY.md` §7](garde-fous/) + charte anti-appropriation Couche 7 Strate 5 |
 | **Personne âgée seule** | [`SAFETY.md` §1](garde-fous/) (si rencontre avec mineur, casier vierge requis) |
 | **Données personnelles dans un prototype** | [`SAFETY.md` §5](garde-fous/) + [`LEGAL_BOUNDARIES.md` §5](cadre/) |
-| **Institution hostile (école, hôpital)** | [`INSTITUTIONAL_TRANSLATION.md`](traduction/) + [`SALLE_ATTENTE_7MIN.md`](salle-attente/) |
+| **Institution hostile (école, hôpital)** | [`INSTITUTIONAL_TRANSLATION.md`](traduction/) + [`MEDIA_DEFENSE.md` Outil 4 — préparation 7 min](defense-mediatique/#salle-attente) |
 
 ---
 

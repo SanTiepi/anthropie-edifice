@@ -59,7 +59,6 @@ const FILES = [
   ['HOSTILE_DRILL.md',           'audit-adverse', "Exercice prise hostile + audit adverse gelé"],
   ['NEGATIVE_BIBLIO.md',         'biblio-negative', "Bibliographie négative (sources refusées)"],
   ['TRANSMISSION.md',            'transmission', "Statut de transmission (transmissible / pas)"],
-  ['WAITING_ROOM.md',            'salle-attente', "Salle d'attente 7 minutes (porteurs solitaires)"],
   ['NOT_AN_AI_LAB.md',           'pas-un-labo-ia', "Ce que ce projet n'est PAS (anti-confusion)"],
   ['NAMING.md',                  'nommage',     "Nommage canonique et clauses de non-affiliation"],
   ['LICENSES.md',                'licences',    "Matrice de licences par artefact"],
@@ -93,6 +92,7 @@ const FILES = [
   ['AUTO_CRITIQUE.md',           'auto-critique', "Auto-critique anticipative (accusations futures + erreurs prévisibles)"],
   ['REGISTRY.md',                'registre', "Registre des dispositifs (29 fiches : promesse / preuve / garde-fous)"],
   ['APERCU_12_COUCHES.md',       'apercu-12-couches', "Aperçu des 12 couches (lecture intermédiaire 15 min)"],
+  ['AUDIT_COUCHE_04_PAROLE.md',  'audit-couche-04-parole', "Audit Couche IV LA PAROLE (promesse / preuve / provenance, audit pilote)"],
   ['ROADMAP.md',                 'roadmap',     "Roadmap — 4 phases"],
   ['CONTRIBUTING.md',            'contribuer',  "Contribuer à l'édifice"],
 ];

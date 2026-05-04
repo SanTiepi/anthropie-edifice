@@ -1,10 +1,10 @@
 # L'Anthropie — Défense face aux interlocuteurs hostiles ou pressés
 
-> *Trois outils sobres pour répondre sans se laisser entraîner : un questionnaire à imposer en amont, trois scripts pré-rédigés en 4 blocs, et un compte rendu à froid après chaque échange tendu. Pour journalistes à charge, chercheurs hostiles, parents inquiets, comités d'éthique sceptiques.*
+> *Quatre outils sobres pour répondre sans se laisser entraîner : un questionnaire à imposer en amont, trois scripts pré-rédigés en 4 blocs, un compte rendu à froid après chaque échange tendu, et une préparation 7 minutes en salle d'attente. Pour journalistes à charge, chercheurs hostiles, parents inquiets, comités d'éthique sceptiques, ou porteur isolé entrant dans un rendez-vous administratif.*
 
-CC0 1.0 Universal. Cf. codex iter#25 #1+#2+#3 fusionnés. Outils défensifs minimalistes, doctrinaux. Compatibles avec [`HOSTILE_DRILL.md`](audit-adverse/) (audit adverse gelé) et [`OBJECTIONS.md`](objections/).
+CC0 1.0 Universal. Cf. codex iter#25 #1+#2+#3 fusionnés ; Outil 4 issu de la fusion `WAITING_ROOM.md` → `MEDIA_DEFENSE.md` actée le 2026-05-04 (cf. [`REGISTRY.md` §pré-cycle d'élagage](registre/)). Outils défensifs minimalistes, doctrinaux. Compatibles avec [`HOSTILE_DRILL.md`](audit-adverse/) (audit adverse gelé) et [`OBJECTIONS.md`](objections/).
 
-**Pour qui** : porteur du commissariat originel, mainteneur·euse du dépôt, médiateur·trice juridique (cf. [`MANDATES.md`](mandats/)), chercheur·euse qui prototype publiquement et reçoit critiques. **Pas requis pour les porteurs novices** qui ne sont pas exposés médiatiquement.
+**Pour qui** : porteur du commissariat originel, mainteneur·euse du dépôt, médiateur·trice juridique (cf. [`MANDATES.md`](mandats/)), chercheur·euse qui prototype publiquement et reçoit critiques. **L'Outil 4 (préparation 7 min en salle d'attente) sert également au porteur novice non médiatique** qui s'apprête à entrer dans un rendez-vous administratif tendu.
 
 ---
 
@@ -138,6 +138,79 @@ Contexte : ______________________________________________________
 - Est-ce que je vois différemment maintenant ?
 - Est-ce que la décision prise à froid a été appliquée ? Si non, pourquoi ?
 - Est-ce qu'un échange similaire s'est répété — pattern à documenter ?
+
+---
+
+<a id="salle-attente"></a>
+
+## Outil 4 — Préparation 7 minutes en salle d'attente
+
+> *Fiche ultra-courte pour parent isolé, prof seul, soignant burn-out, ou tout porteur qui s'apprête à entrer dans un rendez-vous hostile ou indifférent. À lire dans la salle d'attente, pas avant. Idéalement imprimée recto-verso A4, pliée en deux, glissée dans une poche intérieure ou un sac.*
+
+Vous l'ouvrez parce que vous allez entrer dans un bureau d'école, de mairie, d'hôpital, de service social, de commission, de tribunal — un rendez-vous où vous savez que la personne en face risque d'être hostile, méprisante, indifférente, fatiguée, ou en position de pouvoir excessive. Vous avez **7 minutes** pour vous préparer. Cette fiche ne vous dit pas ce qu'il faut dire — elle vous aide à savoir **où vous mettre** pour pouvoir parler.
+
+### 1 minute — Objectif unique
+
+À voix basse ou dans votre tête : *« Qu'est-ce que je veux **obtenir** dans les 60 prochaines minutes ?* » Pas plusieurs choses. **Une**. Choisissez la plus importante : un rendez-vous écrit avec date, le refus tracé d'un protocole médicamenteux, la reconnaissance par écrit qu'un fait s'est produit, un délai administratif, un compte rendu mail.
+
+Si vous obtenez cet objectif, le rendez-vous est réussi. Tout le reste est bonus. Si l'autre personne vous embarque sur 5 sujets, ramenez à votre objectif unique. Politiquement, calmement.
+
+### 2 minutes — Trois pièces
+
+- **Pièce A — Faits vérifiables** : 1 à 3 phrases qui se vérifient indépendamment de votre parole (date, document, témoin tiers, certificat).
+  > *« Le 12 mars, mon enfant a manqué l'école pour [...]. Voici le certificat médical du Dr X. »*
+- **Pièce B — Demande exacte** : ce que vous demandez, en une phrase opposable (qu'on puisse vous accorder ou vous refuser sans ambiguïté).
+  > *« Je demande un aménagement scolaire selon l'article L131-2. »*
+- **Pièce C — Limite non-négociable** : ce que vous n'accepterez pas, quoi qu'il arrive. Calmement. Sans menace.
+  > *« Je ne signerai aucun document aujourd'hui. »*
+
+### 1 minute — Phrase de recadrage
+
+Une seule phrase, à mémoriser, prononcée calmement quand l'autre dévie ou attaque :
+
+> *« Je vous remercie pour cette information. Pour aujourd'hui, ma demande reste celle-ci [...]. »*
+> *« Je note ce que vous me dites. Je reviendrai vers vous par écrit après réflexion. »*
+> *« Pouvez-vous me confirmer cela par écrit, s'il vous plaît ? »*
+
+Cette phrase n'est pas une victoire. Elle est une **ancre**. Elle vous ramène.
+
+### 1 minute — Phrase de sortie
+
+Si l'entretien dérape ou vous met en difficulté psychologique majeure, vous **partez**. Sans culpabilité.
+
+> *« Je vous remercie. Cet échange ne peut plus continuer aujourd'hui dans des conditions productives. Je reviendrai vers vous par écrit. »*
+
+Vous vous levez, vous saluez, vous sortez. Personne ne peut vous obliger à rester dans un rendez-vous administratif (sauf rares cas pénaux ou hospitaliers contraints — et ceux-là, vous le savez).
+
+### 1 minute — L'après-coup
+
+Quand vous sortez — bon ou mauvais —, trois choses dans cet ordre :
+
+1. Endroit calme (banc, café, voiture). Trois respirations lentes.
+2. **Notez par écrit** : qui, quand, où, ce qui a été dit, refusé, accordé, flou.
+3. **Mail récapitulatif** dans les 24h : *« Suite à notre rendez-vous du [date], je note les points suivants : [...]. Pourriez-vous me confirmer ces points ? »*
+
+Cette trace écrite **est** votre seconde voix. Elle existe quand la mémoire orale s'efface ou est contestée.
+
+### 30 secondes — Si vous tremblez
+
+Avant de pousser la porte : **trois respirations** lentes (4 sec inspiration, 6 sec expiration), pieds posés au sol, une main sur la cuisse ou le ventre, redressez-vous sans raideur. Vous n'avez pas à *paraître* confiant·e. Vous avez à *rester* vous-même. C'est différent et plus solide.
+
+### 15 secondes — Sortir de la fiche
+
+Si vous avez 3 minutes de plus dans la salle d'attente, **rangez la fiche**. Vous l'avez assez lue. Continuer à la regarder vous épuise. Les trois pièces — *Faits / Demande / Limite* — suffisent.
+
+### Si la situation dépasse votre capacité
+
+L'Outil 4 n'est pas suffisant si :
+
+- Détresse psychique aiguë (idéation suicidaire, dissociation, panique majeure) → professionnel **avant** le rendez-vous. **143** (Suisse), **3114** (France), [findahelpline.com](https://findahelpline.com).
+- Procédure pénale ou placement judiciaire → vous avez droit à un avocat. Demandez-le.
+- Violences (conjugales, familiales, institutionnelles aggravées) → **117** (Suisse), **17** ou **3919** (France).
+
+L'édifice ne se substitue à aucune protection légale ni soin médical. Cf. [`SAFETY.md` §3](garde-fous/).
+
+> *« Sept minutes ne suffisent pas pour gagner. Sept minutes peuvent suffire à ne pas se perdre. »*
 
 ---
 
