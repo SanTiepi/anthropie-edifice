@@ -98,6 +98,7 @@ const FILES = [
   ['AUDIT_COUCHE_02_SANCTUAIRE.md', 'audit-couche-02-sanctuaire', "Audit Couche II LE SANCTUAIRE (examen de la sensibilité 🟡)"],
   ['AUDIT_COUCHE_01_MATRICE.md',   'audit-couche-01-matrice', "Audit Couche I LA MATRICE (examen de la robustesse 🟢, RPU comme 6e invention propre)"],
   ['AUDIT_COUCHE_03_ATELIER.md',   'audit-couche-03-atelier', "Audit Couche III L'ATELIER (Pont des Certifications comme 7e invention propre potentielle)"],
+  ['AUDIT_COUCHE_05_VILLE.md',     'audit-couche-05-ville', "Audit Couche V LA VILLE (sensibilité 🟡 justifiée, Pont étendu universitaire)"],
   ['ROADMAP.md',                 'roadmap',     "Roadmap — 4 phases"],
   ['CONTRIBUTING.md',            'contribuer',  "Contribuer à l'édifice"],
 ];
