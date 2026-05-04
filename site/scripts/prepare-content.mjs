@@ -93,6 +93,7 @@ const FILES = [
   ['REGISTRY.md',                'registre', "Registre des dispositifs (29 fiches : promesse / preuve / garde-fous)"],
   ['APERCU_12_COUCHES.md',       'apercu-12-couches', "Aperçu des 12 couches (lecture intermédiaire 15 min)"],
   ['AUDIT_COUCHE_04_PAROLE.md',  'audit-couche-04-parole', "Audit Couche IV LA PAROLE (promesse / preuve / provenance, audit pilote)"],
+  ['AUDIT_COUCHE_11_PARENTE.md', 'audit-couche-11-parente', "Audit Couche XI LA PARENTÉ ÉLARGIE (promesse / preuve / provenance + diagnostic métabolique)"],
   ['ROADMAP.md',                 'roadmap',     "Roadmap — 4 phases"],
   ['CONTRIBUTING.md',            'contribuer',  "Contribuer à l'édifice"],
 ];

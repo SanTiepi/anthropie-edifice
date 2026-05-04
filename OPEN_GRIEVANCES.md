@@ -104,6 +104,19 @@ CC0 1.0 Universal. Document évolutif — un grief résolu sort de cette page et
 - **Raison du non-traitement actuel** : priorité doctrinale (couvrir les 12 contextes en dispositifs) a primé sur l'outillage technique pendant les 30 premières itérations de la session live. Le moratoire ADR-0014 autorise désormais ce type de travail (CI = modification de fichier existant `.github/workflows/deploy.yml` ; RAG = nouveau script `tools/`, pas un nouveau dispositif doctrinal).
 - **Statut** : `ouvert outillage`. Effort estimé : 2-5 jours pour CI ; 1-2 semaines pour RAG basique.
 
+### G-009 — Angle mort métabolique : Anthropie traite la crise écologique en relation, pas en flux matériels
+
+- **Grief** : *« Anthropie revendique combler l'angle mort civilisationnel "non-humains/Terre" via la Couche XI LA PARENTÉ ÉLARGIE (3 Parents Non-Humains Choisis, Te Awa Tupua, Anti-Anthropomorphisme Discipliné). Mais l'audit interne de la Couche XI (2026-05-05) confirme que cet angle mort n'est couvert qu'en partie : la couche traite la crise écologique sous l'angle **relationnel-juridique** (parenté longue, statut juridique du vivant, eco-anxiety) et reste **structurellement silencieuse** sur les flux matériels — bilan carbone/azote/phosphore par enfant, extraction et flux énergétiques, sobriété distributive, durée des objets, déchets, cycles biogéochimiques (or 6 des 9 *planetary boundaries* Rockström 2023 sont franchies). Un enfant Anthropie peut traverser toute la Couche XI avec ses 3 Parents Non-Humains sans qu'aucune strate ne pose la question matérielle de son empreinte. Ce n'est pas un oubli — c'est une limite de cadrage. La doctrine actuelle psychologise potentiellement la crise écologique, et la Strate 3 Reconnaissance Civile s'arrête au statut juridique sans toucher autorisations / quotas / plafonds. »*
+- **Source** : audit interne Couche XI [`AUDIT_COUCHE_11_PARENTE.md`](audit-couche-11-parente/) — section *Diagnostic métabolique transverse* (10 angles morts documentés). Brainstorm Ecothropie 2026-05-04 (codex iter#36) cadrage 4 *Métabolisme matériel* identifié comme passerelle sœur potentielle, ancrée IPCC AR6 WGIII chapitre 5 *Demand, services and social aspects of mitigation* + UNEP Global Resources Outlook 2024 + IPBES Transformative Change 2024.
+- **Date d'ouverture** : 2026-05-05.
+- **Propriétaire actuel** : `vacant différé` — décision collective post-2026-08-02 (fin du moratoire ADR-0014). Profil idéal : chercheur·euse en métabolisme social ou éco-économie (lignée Steinberger, Creutzig, Jackson, Raworth) acceptant CC0 sans contrepartie.
+- **Seuil de preuve attendu** : la résolution du grief peut prendre **trois formes alternatives**, l'une suffit :
+  - (a) **Démonstration empirique qu'XI absorbe le métabolique sans se déformer** : cohorte pilote 24 mois montrant que les enfants couvrant Couche XI développent spontanément attention au bilan matériel, sans qu'une strate dédiée soit ajoutée. Improbable selon l'audit, mais à laisser ouvert.
+  - (b) **Décision documentée post-2026-08-02 sur cadrage Ecothropie sœur métabolique** (option 4 du brainstorm iter#36) avec ADR explicite couvrant : extraction-flux-déchets-durée-sobriété, distinction stricte *suffisance universelle* vs *pénurie imposée* (anti-austérité de classe), ancrages scientifiques cités, articulation passerelle sans rivaliser avec Anthropie.
+  - (c) **Décision documentée d'accepter cet angle mort comme limite structurelle d'Anthropie**, avec articulation explicite vers les frameworks externes existants (Doughnut Economics Raworth, planetary boundaries, IPCC AR6 WGIII ch. 5) — sans création d'édifice frère, mais reconnaissance dans `NOT_AN_AI_LAB.md` ou équivalent que ces angles relèvent d'autres édifices/cadres.
+- **Raison du non-traitement actuel** : moratoire ADR-0014 actif jusqu'au 2026-08-02, qui interdit explicitement la création d'un nouvel édifice/format. L'audit Couche XI (mai 2026) constitue la base empirique du grief mais la décision sur la voie (a/b/c) est différée conformément à la doctrine. Risque de l'option (b) déjà identifié par codex iter#36 : *catéchisme de décroissance ou austérité de classe* — à intégrer dans tout cadrage futur.
+- **Statut** : `ouvert différé` — résolution attendue post-2026-08-02. Audit XI sert de pré-requis empirique.
+
 ---
 
 ## Note méta — sur l'audit externe de mai 2026
@@ -114,7 +127,13 @@ L'audit externe (deep-research ChatGPT, mai 2026) a identifié **12 points** dan
 - **2 sur 12** étaient **déjà inscrits comme griefs ouverts** : G-003 (validation longitudinale), G-004 (aucun prototype).
 - **2 sur 12** sont **nouveaux griefs ajoutés ici** : G-007 (gouvernance opératoire), G-008 (outillage technique).
 
-L'audit révèle ainsi un **méta-grief implicite** : la **boucle d'invisibilité du repo non-poussé** rend toute évaluation externe partielle. Le push public est donc **prérequis logique** à toute future critique externe sérieuse.
+L'audit révèle ainsi un **méta-grief implicite** : la **boucle d'invisibilité du repo non-poussé** rend toute évaluation externe partielle. Le push public est donc **prérequis logique** à toute future critique externe sérieuse. *Mise à jour 2026-05-04 : le repo a été poussé publiquement (commits b9b049f → 6566564) — la boucle d'invisibilité est levée. Toute critique externe future est désormais sourcée sur le corpus complet.*
+
+## Note méta — sur l'audit interne Couche XI (2026-05-05)
+
+L'audit Couche XI [`AUDIT_COUCHE_11_PARENTE.md`](audit-couche-11-parente/), deuxième application de la méthode promesse-preuve-provenance après l'audit pilote Couche IV, a identifié **un angle mort de cadrage structurel** d'Anthropie : la couche écologique principale (XI) traite la crise écologique en relation, pas en flux matériels. Ce diagnostic, croisé avec le brainstorm Ecothropie iter#36 (cadrage 4 *Métabolisme matériel* — verdict L), a justifié l'ouverture de **G-009** ci-dessus.
+
+L'audit montre aussi que la méthode promesse-preuve-provenance est **reproductible sur deux couches contrastées** (IV très consolidée 🟢 / XI plus expérimentale 🟠) — la décision de généralisation aux 10 autres couches reste différée au cycle annuel 2027 (post moratoire ADR-0014).
 
 ---
 
