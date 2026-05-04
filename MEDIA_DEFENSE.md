@@ -4,6 +4,10 @@
 
 CC0 1.0 Universal. Cf. codex iter#25 #1+#2+#3 fusionnés ; Outil 4 issu de la fusion `WAITING_ROOM.md` → `MEDIA_DEFENSE.md` actée le 2026-05-04 (cf. [`REGISTRY.md` §pré-cycle d'élagage](registre/)). Outils défensifs minimalistes, doctrinaux. Compatibles avec [`HOSTILE_DRILL.md`](audit-adverse/) (audit adverse gelé) et [`OBJECTIONS.md`](objections/).
 
+> ⚠️ **Choisir le bon outil avant de continuer** *(pré-cycle d'élagage candidat #2 acté 2026-05-05)* :
+> - **Pour les hostiles actifs** (journaliste à charge, chercheur·euse hostile, comité d'éthique sceptique, parent inquiet conflictuel) : **vous êtes au bon endroit**.
+> - **Pour les institutions indifférentes ou bureaucratiques** (école qui ne répond pas, guichet administratif évasif, hôpital qui ne prend pas la demande) : voir [`INSTITUTIONAL_TRANSLATION.md`](traduction/) — table de conversion vocabulaire Anthropie → langage administratif recevable.
+
 **Pour qui** : porteur du commissariat originel, mainteneur·euse du dépôt, médiateur·trice juridique (cf. [`MANDATES.md`](mandats/)), chercheur·euse qui prototype publiquement et reçoit critiques. **L'Outil 4 (préparation 7 min en salle d'attente) sert également au porteur novice non médiatique** qui s'apprête à entrer dans un rendez-vous administratif tendu.
 
 ---

@@ -2,6 +2,8 @@
 
 > *Deux dispositifs minimalistes pour camps de réfugiés, contextes post-catastrophe, zones précaires multilingues. Pictogrammes pour le triage et la communication essentielle, mini-dépôts solidaires pour les biens de première nécessité.*
 
+> 🟠 **Statut doctrinal — *en revue prudence*** *(pré-cycle d'élagage candidat #5 acté 2026-05-05)* : ce toolkit propose des dispositifs en zone humanitaire (camps, post-catastrophe). **Le commissariat originel n'a pas l'expertise terrain spécifique requise** pour ce contexte. Risque sérieux d'usage hors-cadre par bénévoles spontanés sans la coordination d'ONG promise dans le disclaimer. **Toute utilisation doit être signalée par Issue GitHub publique avant déploiement** (tag `humanitarian-use`) et nécessite **partenariat formel avec une ONG humanitaire expérimentée présente sur le terrain** (UNHCR, MSF, CICR, Croix-Rouge nationale, Caritas, Médecins du Monde, etc.). **Possible archivage à 12 mois** (mai 2027) si zéro signalement documenté et critique externe sérieuse non levée.
+
 CC0 1.0 Universal. Cf. codex iter#29 #3+#4 fusionnés. **Territoires politiquement et logistiquement complexes** : ces dispositifs ne **remplacent en rien** les ONG humanitaires expérimentées (UNHCR, MSF, CICR, Croix-Rouge nationale, Caritas, Médecins du Monde, etc.). Ils proposent des micro-pratiques **complémentaires**, à intégrer **dans** un cadre humanitaire structuré, pas à la place de.
 
 **Avant** : si vous travaillez en humanitaire, vous savez déjà 90% de ce qui est dans ce fichier. Le toolkit s'adresse plutôt à des **acteurs locaux** (associations de la diaspora, associations de quartier, bénévoles spontanés post-catastrophe) qui n'ont pas de formation humanitaire et veulent contribuer **sans nuire**.

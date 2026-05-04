@@ -339,29 +339,33 @@ Examen rapide selon 5 critères : **Recouvrement** (déjà couvert par autre dis
 - **Effet** : -1 fichier, doctrine plus cohérente, pas de perte.
 - **Statut** : **fusion réalisée le 2026-05-04** (commit suivant). Outil 4 inséré dans `MEDIA_DEFENSE.md` avec ancre `#salle-attente`. Fichier `WAITING_ROOM.md` supprimé. 7 références mises à jour (`SOIN_TOOLKIT`, `MODE_DEGRADE_72H`, `TOOLKIT_MATRIX` ×5, `index.astro`, `prepare-content.mjs`, `licenses.json`, REGISTRY entrée porteur solitaire). Premier élagage effectif de l'édifice — preuve opératoire que `MAINTENANCE.md` agit.
 
-#### Candidat #2 — `INSTITUTIONAL_TRANSLATION` → garder + lien explicite avec `MEDIA_DEFENSE`
+#### Candidat #2 — `INSTITUTIONAL_TRANSLATION` → garder + lien explicite avec `MEDIA_DEFENSE` ✅ ACTÉ 2026-05-05
 
 - **Diagnostic** : ne recouvre pas MEDIA_DEFENSE — sert un autre cas (institutions indifférentes vs hostiles actifs). Mais peut être confondu.
 - **Action proposée** : ajouter une mention croisée explicite en tête de chaque fichier, type *« Pour les hostiles actifs — voir MEDIA_DEFENSE. Pour les institutions indifférentes — vous êtes ici. »*
 - **Effet** : zéro suppression, navigation plus claire.
+- **Statut** : **mention croisée ajoutée le 2026-05-05** en tête des deux fichiers (`INSTITUTIONAL_TRANSLATION.md` et `MEDIA_DEFENSE.md`). Encadrés `> ⚠️ Choisir le bon outil` réciproques pour orienter le lecteur.
 
-#### Candidat #3 — `RELAIS_DES_72_ABSENTS` → rétrograder à *expérimental-déféré*
+#### Candidat #3 — `RELAIS_DES_72_ABSENTS` → rétrograder à *expérimental-déféré* ✅ ACTÉ 2026-05-05
 
 - **Diagnostic** : orchestration la plus complexe de l'édifice (chaîne 12 jours, 4 toolkits, 8-12 personnes coordonnées). Niveau 🔴 D pur. Très exigeant pour un point d'entrée.
 - **Action proposée** : **rétrograder en *expérimental-déféré*** avec note *« réservé aux cellules constituées 24+ mois ; pas pour amorces »*. Continuer à documenter, ne plus mettre en avant comme dispositif d'introduction.
 - **Effet** : zéro suppression, mais signal clair que ce n'est pas un point d'entrée.
+- **Statut** : **rétrogradation actée le 2026-05-05** — encadré 🟠 *expérimental-déféré* ajouté en tête de `RELAIS_DES_72_ABSENTS.md` avec redirection explicite vers le noyau opérationnel Couche 4 (KIT_CERCLE_45 / SAS_DES_3_RESTES) pour les novices.
 
-#### Candidat #4 — `KIT_CERCLE_45` + `PAV_TOOLKIT` + `SAS_DES_3_RESTES` → marquer comme **noyau opérationnel**
+#### Candidat #4 — `KIT_CERCLE_45` + `PAV_TOOLKIT` + `SAS_DES_3_RESTES` → marquer comme **noyau opérationnel** ✅ ACTÉ 2026-05-05
 
 - **Diagnostic** : ces 3 dispositifs forment un **noyau auto-suffisant** pour démarrer Couche 4 (LA PAROLE). Ils s'articulent, ne se recouvrent pas. Beaucoup de visiteurs n'ont sans doute besoin que de ces 3 pour des années.
 - **Action proposée** : ajouter dans REGISTRY (et TOOLKIT_MATRIX) une mention *« noyau opérationnel »* — sous-ensemble minimal recommandé pour porteur novice.
 - **Effet** : zéro suppression, simplification de l'entrée pour les premiers porteurs.
+- **Statut** : **marquage acté le 2026-05-05** — encadrés ✅ *« Noyau opérationnel Couche 4 »* ajoutés en tête des trois fichiers avec articulation explicite (Cercle / PAV / Sas).
 
-#### Candidat #5 — `HUMANITARIAN_TOOLKIT` → rétrograder à *en revue prudence*
+#### Candidat #5 — `HUMANITARIAN_TOOLKIT` → rétrograder à *en revue prudence* ✅ ACTÉ 2026-05-05
 
 - **Diagnostic** : propose dispositifs en zone humanitaire (camps, post-catastrophe). Le contexte exige une expertise terrain spécifique que le commissariat originel **n'a pas**. Risque sérieux d'usage hors-cadre par bénévoles spontanés sans la coordination d'ONG promise dans le disclaimer.
 - **Action proposée** : **rétrograder en *en revue prudence*** avec avertissement renforcé en tête + demande explicite que toute utilisation soit signalée par Issue avant déploiement. Possible archivage à 12 mois si zéro signalement et critique externe sérieuse.
 - **Effet** : zéro suppression, réduction explicite de la légitimité d'usage hors-coordination structurée.
+- **Statut** : **rétrogradation actée le 2026-05-05** — encadré 🟠 *en revue prudence* ajouté en tête de `HUMANITARIAN_TOOLKIT.md` avec demande de signalement Issue tag `humanitarian-use` + exigence de partenariat formel avec ONG humanitaire expérimentée. Possible archivage à mai 2027 si zéro signalement documenté.
 
 ### Pas candidats à action
 

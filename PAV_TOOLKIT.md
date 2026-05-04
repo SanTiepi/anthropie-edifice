@@ -2,6 +2,8 @@
 
 > *Trois outils matériels pour rendre la Discipline de Prédiction-Avant-Vocal (Couche 4 Strate 5) **immédiatement praticable** sans formation longue. Sablier, jeu de cartes, protocole de relève. Imprimable, transmissible, sans logiciel.*
 
+> ✅ **Noyau opérationnel Couche 4 — point d'entrée recommandé** *(pré-cycle d'élagage candidat #4 acté 2026-05-05)* : ce toolkit, [`KIT_CERCLE_45.md`](kit-cercle-45/) et [`SAS_DES_3_RESTES.md`](sas-3-restes/) forment ensemble le **noyau opérationnel Couche 4 LA PAROLE** — sous-ensemble minimal recommandé pour porteur novice.
+
 CC0 1.0 Universal. Cf. [Couche 4 — LA PAROLE](couche-04-parole/) pour la doctrine complète. Voir aussi [`KIT_CERCLE_45.md`](kit-cercle-45/) pour le déroulé d'un Cercle de Voix.
 
 **Pourquoi ces trois outils ?** La Discipline de Prédiction-Avant-Vocal (PAV) est une des cinq inventions propres de l'édifice (cf. [`EVIDENCE_MAP.md` §5](preuves/)). Elle reste **niveau D** (non validée empiriquement) tant qu'aucune cohorte n'a pratiqué sur la durée. Pour qu'une cohorte puisse pratiquer, le seuil d'entrée doit être **trivial matériellement**. Ces trois outils suppriment le seuil d'entrée.

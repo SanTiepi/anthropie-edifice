@@ -2,6 +2,8 @@
 
 > *Une chaîne anonyme sur 12 jours qui orchestre 4 toolkits matériels (Boîte des Absents → Seuil 72H → Passeport 12 lieux → Kintsugi de papier) pour fabriquer une mémoire collective sans auteur fixe.*
 
+> 🟠 **Statut doctrinal — *expérimental-déféré*** *(pré-cycle d'élagage candidat #3 acté 2026-05-05)* : ce dispositif est l'orchestration la plus complexe de l'édifice (chaîne 12 jours × 4 toolkits × 8-12 personnes coordonnées). Niveau de preuve 🔴 **D pur** — aucune cohorte n'a traversé. Très exigeant pour un point d'entrée. **Réservé aux cellules constituées 24+ mois** ayant déjà pratiqué ensemble plusieurs autres toolkits. **Pas un dispositif d'amorce** : si vous êtes novice ou en début de groupe, voir d'abord [`KIT_CERCLE_45.md`](kit-cercle-45/) ou [`SAS_DES_3_RESTES.md`](sas-3-restes/) (noyau opérationnel Couche 4). Le présent fichier reste documenté mais **ne doit plus être mis en avant comme dispositif d'introduction**.
+
 CC0 1.0 Universal. Orchestre [`BOITE_DES_ABSENTS`](boite-des-absents/) (Couches 9-10), [`SEUIL_72H`](seuil-72h/) (Couche 7), [`PASSEPORT_12_LIEUX`](passeport-12-lieux/) (Couche 5) et [`KINTSUGI_PAPIER`](kintsugi-papier/) (Couche 12). Cf. codex iter#22 #1.
 
 **Avant** : ce dispositif est plus exigeant que [`VEILLEE_DES_PAPIERS_REPARES.md`](veillee-des-papiers-repares/). Réservé à des collectifs déjà constitués (groupe d'amis adultes ; cohorte 8-12 personnes qui se connaissent ; cellule mycéliale en formation) et qui ont déjà pratiqué au moins un autre toolkit ensemble.

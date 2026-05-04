@@ -2,6 +2,8 @@
 
 > *Une fiche A4 recto-verso pour animer un Cercle de Voix (Couche 4 Strate 3) en 45 minutes, sans formation longue, par un porteur novice. Imprimable, gardable en poche, utilisable la première fois.*
 
+> ✅ **Noyau opérationnel Couche 4 — point d'entrée recommandé** *(pré-cycle d'élagage candidat #4 acté 2026-05-05)* : ce kit, [`PAV_TOOLKIT.md`](pav-toolkit/) et [`SAS_DES_3_RESTES.md`](sas-3-restes/) forment ensemble le **noyau opérationnel Couche 4 LA PAROLE** — sous-ensemble minimal recommandé pour porteur novice. Beaucoup de visiteurs n'ont sans doute besoin que de ces trois fiches pour des années. Les trois s'articulent sans se recouvrir : `KIT_CERCLE_45` cadre le Cercle, `PAV_TOOLKIT` outille la Discipline de Prédiction-Avant-Vocal, `SAS_DES_3_RESTES` clôt la séance.
+
 CC0 1.0 Universal. Outil matériel direct. À photocopier, à transmettre, à modifier sans permission. Cf. [Couche 4 — LA PAROLE](couche-04-parole/) pour la doctrine complète des Cercles de Voix.
 
 **Avant la première utilisation** : lire [`SAFETY.md`](garde-fous/) §1 (protection mineurs si participants < 18) et §3 (non-thérapie). Ce kit n'est pas un dispositif de soin.

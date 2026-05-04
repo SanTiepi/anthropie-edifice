@@ -2,6 +2,8 @@
 
 > *Sept minutes en groupe. Chacun dépose anonymement un « reste » concret — papier raté, consigne bancale, pièce inutile, question coincée — dans une boîte commune, et repart avec le reste d'un·e autre à réparer ou détourner d'ici la prochaine rencontre.*
 
+> ✅ **Noyau opérationnel Couche 4 — point d'entrée recommandé** *(pré-cycle d'élagage candidat #4 acté 2026-05-05)* : ce dispositif, [`KIT_CERCLE_45.md`](kit-cercle-45/) et [`PAV_TOOLKIT.md`](pav-toolkit/) forment ensemble le **noyau opérationnel Couche 4 LA PAROLE** — sous-ensemble minimal recommandé pour porteur novice. Le Sas peut clôre tout dispositif Couche 4 ou simplement une réunion habituelle.
+
 CC0 1.0 Universal. Cf. codex iter#23 #1. Dispositif minimal qui peut **se glisser à la fin d'une réunion**, d'une formation, d'une session de travail, sans nécessiter d'agenda dédié.
 
 **À utiliser** : avec un groupe qui se voit régulièrement (collègues, étudiants, famille élargie, équipe). Format **récurrent** — l'effet vient de la répétition, pas d'un geste isolé.

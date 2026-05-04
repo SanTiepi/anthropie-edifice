@@ -2,6 +2,10 @@
 
 > *Table prête à l'emploi qui convertit le vocabulaire de l'édifice en langage recevable par formulaires, comptes rendus, mails administratifs, instances scolaires, hospitalières et juridiques — sans perdre le sens.*
 
+> ⚠️ **Choisir le bon outil avant de continuer** *(pré-cycle d'élagage candidat #2 acté 2026-05-05)* :
+> - **Pour les institutions indifférentes ou bureaucratiques** (école qui ne répond pas, mairie qui renvoie de service en service, hôpital qui ne prend pas la demande) : **vous êtes au bon endroit**. Ce fichier traduit votre vocabulaire pour qu'il devienne recevable.
+> - **Pour les interlocuteurs hostiles actifs** (journaliste à charge, chercheur·euse hostile, comité d'éthique sceptique, parent inquiet conflictuel) : voir [`MEDIA_DEFENSE.md`](defense-mediatique/) — questionnaire en amont, scripts 90 secondes en 4 blocs, compte rendu à froid, préparation 7 minutes en salle d'attente.
+
 CC0 1.0 Universal. Outil de soutien aux porteurs solitaires (parent isolé, prof seul, soignant burn-out) face à des institutions hostiles ou indifférentes. Adapter à votre juridiction et secteur.
 
 **Pourquoi ce document ?** Le vocabulaire de l'édifice est délibérément non-académique et non-administratif. Pour qu'un porteur puisse défendre un opt-out scolaire, demander une procédure d'accommodement médical, ou simplement parler à un guichet sans être renvoyé pour "vocabulaire inadéquat", il a besoin d'une traduction sobre. Le sens doit être préservé ; l'apparence doit être recevable.
