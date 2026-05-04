@@ -1,0 +1,100 @@
+{
+  "$comment": "Licence par artefact pour L'Anthropie. Document machine-readable. CC0 1.0 Universal par défaut sur l'intégralité de l'édifice. Cf. LICENSES.md pour la matrice complète et la justification doctrinale, et DECISIONS.md ADR-0001 pour la décision irréversible.",
+  "default_license": "CC0-1.0",
+  "default_license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "default_license_full_text": "https://github.com/SanTiepi/anthropie-edifice/blob/master/LICENSE.md",
+  "policy": "All artefacts in this repository are CC0 1.0 Universal by default — content, code, schemas, metadata. Users requiring an MIT-style software license can treat the code as if it were under MIT, since CC0 grants all MIT permissions without the attribution clause. See LICENSES.md §3 for rationale.",
+  "exceptions": [],
+  "artefact_categories": [
+    {
+      "category": "corpus_doctrinal",
+      "license": "CC0-1.0",
+      "examples": [
+        "anthropie_couche_*.md",
+        "ANTHROPIE_KERNEL.md",
+        "SAFETY.md",
+        "REFUTATION.md",
+        "DECISIONS.md",
+        "FORKING.md",
+        "GLOSSARY.md",
+        "OBJECTIONS.md",
+        "EVIDENCE_MAP.md",
+        "MANDATES.md",
+        "ROADMAP.md",
+        "CONTRIBUTING.md"
+      ]
+    },
+    {
+      "category": "tooling_porteur",
+      "license": "CC0-1.0",
+      "examples": [
+        "PROTOTYPES.md",
+        "ADEQUATION.md",
+        "WELCOME.md",
+        "CHOKE_POINTS.md",
+        "ENTRY_SCENARIOS.md",
+        "REPRODUCE.md",
+        "OPEN_GRIEVANCES.md",
+        "INSTITUTIONAL_TRANSLATION.md",
+        "HOSTILE_DRILL.md",
+        "NEGATIVE_BIBLIO.md",
+        "TRANSMISSION.md",
+        "WAITING_ROOM.md",
+        "NOT_AN_AI_LAB.md",
+        "NAMING.md",
+        "LICENSES.md"
+      ]
+    },
+    {
+      "category": "site_code",
+      "license": "CC0-1.0",
+      "may_be_treated_as": ["MIT", "Apache-2.0"],
+      "rationale": "CC0 grants all permissions of MIT and Apache 2.0 (without attribution clause). Users requiring those licenses for compliance reasons may treat the code as such. See LICENSES.md §3.",
+      "paths": [
+        "site/astro.config.mjs",
+        "site/package.json",
+        "site/scripts/*.mjs",
+        "site/src/**/*.{ts,tsx,astro,css}",
+        "site/public/*"
+      ]
+    },
+    {
+      "category": "metadata",
+      "license": "CC0-1.0",
+      "examples": [
+        "CITATION.cff",
+        "licenses.json",
+        ".github/ISSUE_TEMPLATE/*.md",
+        ".github/PULL_REQUEST_TEMPLATE.md",
+        ".github/workflows/*.yml"
+      ]
+    }
+  ],
+  "indigenous_co_design_clause": {
+    "applies_to": "Couches 7, 10, 11 — couches mobilisant des références à des traditions vivantes autochtones.",
+    "current_license": "CC0-1.0 (defaut)",
+    "doctrinal_addition": "Charte anti-appropriation (Couche 7 Strate 5) promet souveraineté avec retrait possible 90 jours. Cette promesse n'est PAS opposable juridiquement sous CC0 — elle dépend de la désolidarisation publique de la communauté de porteurs et du recours par la communauté autochtone à ses propres mécanismes juridiques nationaux.",
+    "future_revision_trigger": "Si une communauté autochtone signataire effective demande migration vers CC-BY-SA-NC ou licence communautaire équivalente, examen par convergence multi-référents (ADR-0008). Cf. DECISIONS.md ADR-0012.",
+    "current_status": "Aucune communauté autochtone signataire à ce jour. Cf. OPEN_GRIEVANCES.md G-001."
+  },
+  "non_affiliation": {
+    "statement": "L'Anthropie has no institutional, organizational, or financial link with Anthropic PBC, OpenAI, Google DeepMind, Mistral AI, Hugging Face, or any commercial AI actor. The phonetic similarity with 'Anthropic' is coincidental.",
+    "see_also": ["NOT_AN_AI_LAB.md", "NAMING.md"]
+  },
+  "trademark_status": {
+    "registered_trademark": false,
+    "rationale": "Doctrinal — CC0 + anonymat strict (DECISIONS.md ADR-0001 + ADR-0002). The name 'Anthropie' is not registered as a trademark. Anyone may use, modify, fork, or rename the work without permission."
+  },
+  "contact_for_licensing_questions": {
+    "public": "https://github.com/SanTiepi/anthropie-edifice/issues",
+    "label": "legal"
+  },
+  "last_updated": "2026-05-04",
+  "see_also": [
+    "LICENSE.md",
+    "LICENSES.md",
+    "DECISIONS.md (ADR-0001, ADR-0012)",
+    "LEGAL_BOUNDARIES.md",
+    "FORKING.md"
+  ]
+}
