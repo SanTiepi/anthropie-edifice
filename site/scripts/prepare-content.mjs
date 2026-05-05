@@ -105,6 +105,7 @@ const FILES = [
   ['AUDIT_COUCHE_09_ARCHIVE.md',   'audit-couche-09-archive', "Audit Couche IX L'ARCHIVE VIVANTE (Constitution Personnelle comme 8e invention propre potentielle, incohérence maturité)"],
   ['AUDIT_COUCHE_10_MORTS.md',     'audit-couche-10-morts', "Audit Couche X LE CONSEIL DES MORTS (12e et dernier audit par couche, validation cross-culturelle massive)"],
   ['ECOTHROPIE_MEMO_2026_08_02.md', 'ecothropie-memo', "Mémo Ecothropie — préparation décision post-moratoire 2026-08-02 (3 voies a/b/c)"],
+  ['AUDIT_TRANSVERSAL_2026_05_05.md', 'audit-transversal', "Audit transversal des 12 audits couches — 7 tendances, 5 amendements doctrinaux"],
   ['ROADMAP.md',                 'roadmap',     "Roadmap — 4 phases"],
   ['CONTRIBUTING.md',            'contribuer',  "Contribuer à l'édifice"],
 ];

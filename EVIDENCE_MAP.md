@@ -89,7 +89,7 @@ Les cinq inventions civilisationnelles de l'édifice : Discipline de Prédiction
 
 ## 5. Niveau D — Inventions propres non validées longitudinalement
 
-Cf. [`ANTHROPIE_KERNEL.md` §Cinq inventions propres](noyau/) pour exposé détaillé. Les cinq sont **par construction** au niveau D — aucune cohorte n'a traversé.
+Cf. [`ANTHROPIE_KERNEL.md` §Cinq inventions propres](noyau/) pour exposé détaillé original (5 inventions). **Mise à jour 2026-05-05** : la session autonome d'audits couches 2026-05-05 a identifié **3 inventions propres supplémentaires** non listées initialement. Liste révisée — **8 inventions propres**, toutes au niveau D par construction (aucune cohorte n'a traversé).
 
 | Invention | Fondement (à quel niveau) | Test possible à 5 ans |
 |---|---|---|
@@ -98,8 +98,11 @@ Cf. [`ANTHROPIE_KERNEL.md` §Cinq inventions propres](noyau/) pour exposé déta
 | Liminalité Protégée juridique (Couche 7) | Synthèse Turner *liminality* + opt-out scolaires existants (homeschooling US/CH/FR). Innovation : statut civil | Test pilote Norvège ou Québec sur cohorte 50-200 ados 3 ans |
 | Anti-Pathologisation Civilisationnelle (Couche 12) | Critique Foucault + DSM. Pas de cadre juridique précédent | Test pilote Costa Rica ou Bhoutan sur Hospices 2-3 unités |
 | Articulation 12 couches en édifice juridique | L'agrégation est l'apport. Aucun précédent compose ces frameworks | Cohorte traversant 4-5 couches sur 10-15 ans (impossible avant 2040) |
+| **RPU des Aînés (Couche 1 Strate 7)** *[ajouté 2026-05-05 — audit Couche I]* | Inspiration Hrdy *cooperative breeders* + UBI debate (Van Parijs). Mécanisme spécifique (formation 120h × certification × Cercle d'Aînés-Présence × redirection budgétaire) neuf | Pilote Maison de Présence 1 ville-pilote (Norvège ou Costa Rica candidat) sur 24 mois |
+| **Pont des Certifications (Couche 3 Strate 5 + extension Couche 5 Strate 5)** *[ajouté 2026-05-05 — audit Couche III]* | Open Badges 3.0 + W3C VC + ELM = infrastructure technique 🟢 A en vigueur. Tables d'équivalences vivantes IGCSE/IB-PYP/national + commission tripartite + dual apprenticeship adapté = 🔴 D | Pilote 1 cohorte 30 enfants 10-11 ans, équivalences IGCSE/IB-PYP par commission tripartite simulée 90 jours |
+| **Constitution Personnelle Évolutive (Couche 9 Strate 2)** *[ajouté 2026-05-05 — audit Couche IX]* | Inspiration partielle narrative identity McAdams + manifeste personnel. Format spécifique (3-15 pages, 6 sections, révision tous 7 ans cérémonialisée) neuf | Pilote 30 adultes 18-25 ans 1ère Constitution + 1ère révision 7 ans simulée à 24 mois |
 
-**Ce qui ferait tomber l'une de ces inventions** : protocole cohorte pilote produit zéro effet ou effet inverse (cf. §6 ci-dessous, "claims à vérifier").
+**Ce qui ferait tomber l'une de ces inventions** : protocole cohorte pilote produit zéro effet ou effet inverse (cf. §6 ci-dessous, "claims à vérifier"). **Note traçabilité G-003** : le grief G-003 (validation longitudinale 5 inventions propres) est à élargir à 8 inventions propres en cohérence avec cette mise à jour.
 
 ---
 
