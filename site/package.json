@@ -11,6 +11,7 @@
     "dev": "astro dev",
     "prebuild": "node scripts/prepare-content.mjs",
     "build": "astro build",
+    "verify-links": "node scripts/verify-links.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
