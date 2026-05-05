@@ -103,6 +103,7 @@ const FILES = [
   ['AUDIT_COUCHE_07_SEUILS.md',    'audit-couche-07-seuils', "Audit Couche VII LES SEUILS (robustesse 🟢 confirmée, exemplarité humilité doctrinale)"],
   ['AUDIT_COUCHE_08_MYCOLOGIE.md', 'audit-couche-08-mycologie', "Audit Couche VIII LA MYCOLOGIE (refondation post-Okonkwo BCI réussie, ouverture G-011 STS)"],
   ['AUDIT_COUCHE_09_ARCHIVE.md',   'audit-couche-09-archive', "Audit Couche IX L'ARCHIVE VIVANTE (Constitution Personnelle comme 8e invention propre potentielle, incohérence maturité)"],
+  ['AUDIT_COUCHE_10_MORTS.md',     'audit-couche-10-morts', "Audit Couche X LE CONSEIL DES MORTS (12e et dernier audit par couche, validation cross-culturelle massive)"],
   ['ROADMAP.md',                 'roadmap',     "Roadmap — 4 phases"],
   ['CONTRIBUTING.md',            'contribuer',  "Contribuer à l'édifice"],
 ];
