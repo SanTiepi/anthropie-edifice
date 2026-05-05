@@ -107,6 +107,7 @@ const FILES = [
   ['ECOTHROPIE_MEMO_2026_08_02.md', 'ecothropie-memo', "Mémo Ecothropie — préparation décision post-moratoire 2026-08-02 (3 voies a/b/c)"],
   ['AUDIT_TRANSVERSAL_2026_05_05.md', 'audit-transversal', "Audit transversal des 12 audits couches — 7 tendances, 5 amendements doctrinaux"],
   ['ARCHITECTURE_ARTICULATIONS.md', 'architecture-articulations', "Architecture des articulations inter-couches — table consolidée pour chercheurs et RAG"],
+  ['ACCESSIBILITY_AUDIT_2026_05_05.md', 'audit-accessibilite', "Audit accessibilité site — état 2026-05-05 (état des lieux pour Claude Design)"],
   ['ROADMAP.md',                 'roadmap',     "Roadmap — 4 phases"],
   ['CONTRIBUTING.md',            'contribuer',  "Contribuer à l'édifice"],
 ];
