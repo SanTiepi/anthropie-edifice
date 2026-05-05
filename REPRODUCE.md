@@ -48,9 +48,21 @@ Sortie attendue :
 [build] Complete!
 ```
 
-`M` = nombre de pages générées (varie selon les fichiers présents au moment de la reconstruction). Habituellement entre 25 et 35.
+`M` = nombre de pages générées (varie selon les fichiers présents au moment de la reconstruction). État au 2026-05-05 après session autonome d'audits couches : **87 pages** (1 homepage + 1 404 + ~85 pages `/lire/<slug>/` couvrant 12 couches + 29 dispositifs + 12 audits couches + audit transversal + architecture articulations + ECOTHROPIE memo + audit accessibilité + autres documents structurants).
 
 Le répertoire `site/dist/` contient le site complet, statique, déployable sur n'importe quel hébergement HTML/static.
+
+### Vérification automatique des liens internes (CI lien-check)
+
+Depuis 2026-05-05, le workflow GitHub Actions inclut une étape *« Verify internal links »* (cf. [`G-008`](griefs/) partiellement résolu). Localement :
+
+```sh
+cd site
+npm run build         # génère dist/
+npm run verify-links  # vérifie tous les liens internes ; exit 1 si lien cassé
+```
+
+État de référence 2026-05-05 : 1012 liens internes vérifiés, 0 cassé. Le build CI fail désormais si un lien interne casse.
 
 ---
 
