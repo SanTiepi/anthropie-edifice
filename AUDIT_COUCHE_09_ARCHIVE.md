@@ -1,6 +1,8 @@
 # Audit Couche IX L'ARCHIVE VIVANTE — promesse / preuve / provenance + Constitution Personnelle comme 8e invention propre potentielle
 
-> *Onzième application de la méthode promesse-preuve-provenance. Mandat spécifique : la maturité de Couche IX est annoncée 🟢 robuste dans son brief mais 🟡 sensible dans `couches.ts` — l'audit examine la divergence et identifie si la Constitution Personnelle Évolutive (Strate 2) mérite reconnaissance comme nouvelle invention propre.*
+> *Onzième application de la méthode promesse-preuve-provenance. Mandat spécifique : examiner si la Constitution Personnelle Évolutive (Strate 2) mérite reconnaissance comme nouvelle invention propre.*
+
+> ⚠️ **CORRECTION 2026-05-05** : la version initiale de cet audit signalait une *« incohérence maturité »* entre le brief (annonce 🟢 robuste) et `couches.ts` (mentionnait 🟡 sensible). **Vérification a posteriori** : `couches.ts` déclare bien `maturite: "robuste"` pour Couche IX (ligne 46) et `prepare-content.mjs` aussi. L'incohérence supposée n'existe pas ; l'audit s'est trompé en s'appuyant sur le tracker memory `autonomous_session_2026_05_05.md` qui indiquait à tort *« sensible »* pour Couche IX. **L'amendement** *« passer Couche IX à 🟢 robuste »* **est retiré** car il est déjà 🟢. Le reste de l'audit (Constitution comme 8e invention propre, profil bicouche A/D, 3 ponts EVAL_PROTOCOL) reste valide. Conformément à Q7 (procédure correction audit antérieur), la correction est inscrite en commit séparé sans réécriture silencieuse.
 
 CC0 1.0 Universal. Conforme à ADR-0014.
 
