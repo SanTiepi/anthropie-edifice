@@ -8,7 +8,7 @@ CC0 1.0 Universal — domaine public, aucune attribution requise. Anthropie Netw
 
 ## En sept lignes
 
-L'Anthropie est un édifice civilisationnel d'apprentissage humain à **douze couches** distribuées sur la vie entière (0 à l'infini), articulées par une charpente juridique de **onze articles** (31bis à 31duodecies, extension du protocole optionnel à la Convention relative aux droits de l'enfant). Chaque couche traite une fenêtre d'âge avec sept strates, des droits fondamentaux explicites, un audit de cent-soixante-dix cellules de risque, et un déploiement fractal du camp de réfugié à la métropole mature. L'édifice agrège des frameworks existants (Reggio, Pikler-Lóczy, BRAC, Big Picture, Bildung, Te Whāriki, Día de los Muertos, Whanganui Te Awa Tupua, Kintsugi, AA), articule cinq inventions propres, et propose un protocole d'extension juridique testable par cinq États-pilotes. Il est **sous CC0 1.0**, sans propriétaire, sans auteur, sans rétribution exigée. Il est **incomplet, expérimental, contestable** — les premières cohortes seront laboratoires, pas validation. Il cherche des porteurs.
+L'Anthropie est un édifice civilisationnel d'apprentissage humain à **douze couches** distribuées sur la vie entière (0 à l'infini), articulées par une charpente juridique de **onze articles** (31bis à 31duodecies, extension du protocole optionnel à la Convention relative aux droits de l'enfant). Chaque couche traite une fenêtre d'âge avec sept strates, des droits fondamentaux explicites, un audit de cent-soixante-dix cellules de risque, et un déploiement fractal du camp de réfugié à la métropole mature. L'édifice agrège des frameworks existants (Reggio, Pikler-Lóczy, BRAC, Big Picture, Bildung, Te Whāriki, Día de los Muertos, Whanganui Te Awa Tupua, Kintsugi, AA), articule **huit inventions propres** (cf. mise à jour 2026-05-05 ci-dessous), et propose un protocole d'extension juridique testable par cinq États-pilotes. Il est **sous CC0 1.0**, sans propriétaire, sans auteur, sans rétribution exigée. Il est **incomplet, expérimental, contestable** — les premières cohortes seront laboratoires, pas validation. Il cherche des porteurs.
 
 ---
 
@@ -53,9 +53,11 @@ Extension du protocole optionnel à la **Convention relative aux droits de l'enf
 
 ---
 
-## Les cinq inventions propres
+## Les huit inventions propres
 
-L'édifice **agrège** des frameworks existants. Ses cinq apports propres :
+> *Mise à jour 2026-05-05 : la session autonome d'audits couches a identifié 3 inventions propres supplémentaires non listées initialement. Cf. [`AUDIT_TRANSVERSAL_2026_05_05.md`](audit-transversal/) tendance 3 + [`EVIDENCE_MAP.md` §5](preuves/) pour traçabilité. Liste révisée 8 inventions, toutes au niveau 🔴 D par construction.*
+
+L'édifice **agrège** des frameworks existants. Ses huit apports propres :
 
 1. **Discipline de Prédiction-Avant-Vocal** (Couche 4) — protocole métacognitif en quatre temps (prédire ce qu'on va dire / ce qu'un LLM dirait / ce qu'un auditeur anticipe / choisir consciemment). Antidote conçu spécifiquement contre l'aplatissement LLM-induit du langage adolescent 2024-2026.
 
@@ -66,6 +68,12 @@ L'édifice **agrège** des frameworks existants. Ses cinq apports propres :
 4. **Anti-Pathologisation Civilisationnelle** (Couche 12) — droit civil à ne pas être contraint à diagnostic médical pour ce qui relève de la condition humaine ordinaire (deuil, échec, perte de sens, eco-grief).
 
 5. **L'articulation 12 couches en édifice juridique cohérent** — l'agrégation est l'apport central. Aucun framework existant ne couvre l'arc 0-∞ avec ce niveau d'articulation inter-couches.
+
+6. **Le RPU des Aînés** (Couche 1 Strate 7) *[ajouté 2026-05-05]* — Revenu Présence Universel rémunérant les aînés 60+ ans formés (120h) à offrir présence régulière auprès des 0-3 ans, financé par redirection budgétaire (politique familiale + politique aînés + santé publique). Restitution civilisationnelle de l'allomaternage Hrdy (cooperative breeders) traitant simultanément solitude des aînés (30% des 65+ OMS 2023), ratio adulte-enfant insuffisant (crèches 1:8) et transmission intergénérationnelle.
+
+7. **Le Pont des Certifications** (Couche 3 Strate 5 + extension Couche 5 Strate 5) *[ajouté 2026-05-05]* — Open Badges Anthropie (Open Badges 3.0 + W3C VC + ELM standards techniques en vigueur) + tables d'équivalences vivantes vers IGCSE / IB-PYP / systèmes nationaux + commission tripartite (examinateur traditionnel + Compagnon-Maître + alumni 18+) + extension dual apprenticeship. Bridging des apprentissages exploratoires vers crédentiels reconnus, sans rupture pédagogique.
+
+8. **La Constitution Personnelle Évolutive** (Couche 9 Strate 2) *[ajouté 2026-05-05]* — document fondamental personnel de 3-15 pages, 6 sections types (préambule / valeurs / engagements / relations / interdictions / procédure de révision), première rédaction à 18 ans (Seuil de Citoyenneté), révision cérémonialisée tous 7 ans (mini-Seuil) avec témoins. Articulation Récit Vivant (Couche 4) + Maison d'Atomes (Couche 9) + Seuils (Couche 7).
 
 ---
 
