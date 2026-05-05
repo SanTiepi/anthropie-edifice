@@ -2,9 +2,10 @@
   "$schema": "./couches.schema.json",
   "version": "0.1.0",
   "metadata": {
-    "last_updated": "2026-05-04",
+    "last_updated": "2026-05-05",
     "license": "CC0-1.0",
-    "non_affiliation": "L'Anthropie has no link with Anthropic PBC, OpenAI, or any commercial AI actor. See NOT_AN_AI_LAB.md and NAMING.md."
+    "non_affiliation": "L'Anthropie has no link with Anthropic PBC, OpenAI, or any commercial AI actor. See NOT_AN_AI_LAB.md and NAMING.md.",
+    "audits_session_2026_05_05": "Session autonome d'audits couches a identifié 3 inventions propres supplémentaires (RPU Couche I C01-D1 déjà présent ; Pont Certifications Couche III C03-D1 ajouté ; Constitution Personnelle Évolutive Couche IX C09-D2 ajoutée). Voir AUDIT_TRANSVERSAL_2026_05_05.md + EVIDENCE_MAP.md §5 pour la liste révisée 8 inventions propres."
   },
   "couches": [
     {
@@ -65,7 +66,8 @@
       "maturite": "robuste",
       "claims_cles": [
         { "claim_id": "C03-A1", "claim": "Le constructionnisme produit apprentissage durable supérieur à la pédagogie transmissive", "evidence_level": "A", "source_type": "framework-eprouve", "primary_source": "Seymour Papert MIT 1980-2000 ; multiples études STEM 2000-2024" },
-        { "claim_id": "C03-B1", "claim": "Open Badges 3.0 + W3C VC sont infalsifiables cryptographiquement", "evidence_level": "B", "source_type": "framework-eprouve", "primary_source": "W3C VC Recommandation 2022 ; ELM EU 2023" }
+        { "claim_id": "C03-B1", "claim": "Open Badges 3.0 + W3C VC sont infalsifiables cryptographiquement", "evidence_level": "B", "source_type": "framework-eprouve", "primary_source": "W3C VC Recommandation 2022 ; ELM EU 2023" },
+        { "claim_id": "C03-D1", "claim": "Le Pont des Certifications (Open Badges Anthropie + tables d'équivalences vivantes IGCSE/IB-PYP/national + commission tripartite) peut traduire les apprentissages exploratoires en passages reconnus sans rupture", "evidence_level": "D", "source_type": "invention-propre", "primary_source": "Anthropie — couche 3 (innovation propre identifiée par audit 2026-05-05) + extension couche 5 vers ESR" }
       ],
       "depends_on": [2],
       "feeds_into": [4, 5],
@@ -197,7 +199,8 @@
       "maturite": "robuste",
       "claims_cles": [
         { "claim_id": "C09-A1", "claim": "GDPR Art. 17 (droit à l'effacement) est applicable et opérationnel en UE", "evidence_level": "A", "source_type": "precedent-juridique", "primary_source": "Règlement (UE) 2016/679 ; jurisprudence CJUE 2018-2024" },
-        { "claim_id": "C09-D1", "claim": "L'extension Maison d'Atomes Personnelle peut interdire la résurrection AI sans opt-in vivant", "evidence_level": "D", "source_type": "invention-propre", "primary_source": "Anthropie — couche 9 + article 31novies" }
+        { "claim_id": "C09-D1", "claim": "L'extension Maison d'Atomes Personnelle peut interdire la résurrection AI sans opt-in vivant", "evidence_level": "D", "source_type": "invention-propre", "primary_source": "Anthropie — couche 9 + article 31novies" },
+        { "claim_id": "C09-D2", "claim": "La Constitution Personnelle Évolutive (3-15 pages, 6 sections, révision tous 7 ans cérémonialisée comme mini-Seuil) constitue un acte civilisationnel d'identité narrative articulé Récits-Vivants", "evidence_level": "D", "source_type": "invention-propre", "primary_source": "Anthropie — couche 9 strate 2 (innovation propre identifiée par audit 2026-05-05)" }
       ],
       "depends_on": [],
       "feeds_into": [10, 12],
