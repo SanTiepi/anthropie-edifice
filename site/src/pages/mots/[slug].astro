@@ -17,6 +17,19 @@ export function getStaticPaths() {
 const { slug } = Astro.params;
 const meta = CONDITIONS[slug];
 const entries = words.filter((w) => w.lexique === slug);
+
+const seenSlugs = new Set();
+const jsonld = {
+  "@context": "https://schema.org",
+  "@type": "DefinedTermSet",
+  name: meta.title,
+  url: `https://anthropie.org/mots/${slug}/`,
+  inLanguage: "fr",
+  license: "https://creativecommons.org/publicdomain/zero/1.0/",
+  hasDefinedTerm: entries
+    .filter((w) => !seenSlugs.has(w.slug) && seenSlugs.add(w.slug))
+    .map((w) => ({ "@type": "DefinedTerm", name: w.mot, url: `https://anthropie.org/mots/m/${w.slug}/` })),
+};
 const order = [];
 const groups = new Map();
 for (const w of entries) {
@@ -32,7 +45,7 @@ function inline(s) {
   return s;
 }
 ---
-<MotsLayout title={meta.title} active={slug} wide={false}>
+<MotsLayout title={meta.title} active={slug} wide={false} ogImage={`https://anthropie.org/mots/og/p/${slug}.png`} jsonld={jsonld}>
   <header class={`read-head lex-${slug}`}>
     <p class="kicker">{entries.length} mots</p>
     <h1>{meta.title}</h1>

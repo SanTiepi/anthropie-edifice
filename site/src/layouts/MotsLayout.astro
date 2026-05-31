@@ -1,7 +1,12 @@
 ---
-const { title, active = '', wide = false, home = false, desc = '', ogImage = '' } = Astro.props;
+const { title, active = '', wide = false, home = false, desc = '', ogImage = '', jsonld = null } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const gh = "https://github.com/SanTiepi/anthropie-edifice/blob/master";
+// URL canonique absolue (https://anthropie.org/...) — calculée depuis le chemin de la page.
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+// Données structurées schema.org (DefinedTerm / DefinedTermSet / BreadcrumbList).
+// On échappe `<` pour interdire toute fermeture de balise script via le contenu.
+const jsonldText = jsonld ? JSON.stringify(jsonld).replace(/</g, '\\u003c') : null;
 const nav = [
   { key: 'atlas',     href: `${base}/mots/atlas/`,      label: 'Atlas' },
   { key: 'constellation', href: `${base}/mots/constellation/`, label: 'Constellation' },
@@ -27,8 +32,11 @@ const nav = [
     <meta property="og:type" content="article" />
     <meta property="og:locale" content="fr_FR" />
     <meta property="og:image" content={ogImage || "https://anthropie.org/og-image.svg"} />
+    <meta property="og:url" content={canonical} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content={ogImage || "https://anthropie.org/og-image.svg"} />
+    <link rel="canonical" href={canonical} />
+    {jsonldText && <script type="application/ld+json" is:inline set:html={jsonldText} />}
     <title>{title} — Les mots · L'Anthropie</title>
     <script is:inline>
       (function () { document.documentElement.classList.add('js'); try { var t = localStorage.getItem('mots-theme'); if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; document.documentElement.setAttribute('data-theme', t); } catch (e) {} })();

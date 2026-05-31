@@ -48,8 +48,35 @@ function splitRoot(atom) {
   return m ? { root: m[1].trim(), gloss: m[2].trim() } : { root: atom, gloss: '' };
 }
 const ogdesc = (w.etym + ' — ' + w.corps).replace(/[`*]/g, '').slice(0, 185);
+
+const plain = (s) => s.replace(/[`*]/g, '');
+const hubUrl = (lex) => ['humaine', 'numerique', 'agent', 'vivant'].includes(lex)
+  ? `https://anthropie.org/mots/${lex}/`
+  : `https://anthropie.org/mots/recueil/?lex=${lex}`;
+const wordUrl = `https://anthropie.org/mots/m/${w.slug}/`;
+const jsonld = {
+  "@context": "https://schema.org",
+  "@graph": [
+    ...entries.map((e) => ({
+      "@type": "DefinedTerm",
+      name: e.mot,
+      description: plain(e.corps),
+      inLanguage: "fr",
+      url: wordUrl,
+      inDefinedTermSet: { "@type": "DefinedTermSet", name: LEXLABEL[e.lexique], url: hubUrl(e.lexique) },
+    })),
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Les mots", item: "https://anthropie.org/mots/" },
+        { "@type": "ListItem", position: 2, name: LEXLABEL[w.lexique], item: hubUrl(w.lexique) },
+        { "@type": "ListItem", position: 3, name: w.mot, item: wordUrl },
+      ],
+    },
+  ],
+};
 ---
-<MotsLayout title={w.mot} desc={ogdesc} ogImage={`https://anthropie.org/mots/og/${w.slug}.png`} active={w.lexique} wide={false}>
+<MotsLayout title={w.mot} desc={ogdesc} ogImage={`https://anthropie.org/mots/og/${w.slug}.png`} jsonld={jsonld} active={w.lexique} wide={false}>
   <article class={`word lex-${w.lexique}`}>
     <nav class="crumb" aria-label="Fil d'Ariane">
       <a href={`${base}/mots/`}>Les mots</a> <span class="sep">›</span>

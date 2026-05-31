@@ -85,7 +85,7 @@ const nodes = [...positions.keys()].map((slug, i) => {
 const relCounts = new Map();
 for (const e of edges) relCounts.set(e.rel, (relCounts.get(e.rel) || 0) + 1);
 ---
-<MotsLayout title="Constellation des miroirs" active="constellation" wide={true} desc={`${nodes.length} mots reliés par ${edges.length} miroirs entre conditions.`}>
+<MotsLayout title="Constellation des miroirs" active="constellation" wide={true} ogImage="https://anthropie.org/mots/og/p/constellation.png" desc={`${nodes.length} mots reliés par ${edges.length} miroirs entre conditions.`}>
   <header class="constellation-head">
     <p class="kicker">{nodes.length} mots reliés · {edges.length} miroirs</p>
     <h1>Constellation</h1>

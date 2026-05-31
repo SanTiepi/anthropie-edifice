@@ -8,5 +8,10 @@ import sitemap from '@astrojs/sitemap';
 // puis détecté par GitHub Pages au déploiement.
 export default defineConfig({
 	site: 'https://anthropie.org',
-	integrations: [sitemap()],
+	integrations: [
+		sitemap({
+			// Les endpoints d'images OG (/mots/og/*.png) ne sont pas des pages à indexer.
+			filter: (page) => !page.includes('/mots/og/'),
+		}),
+	],
 });

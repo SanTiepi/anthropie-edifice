@@ -21,8 +21,19 @@ function inline(s) {
   return s;
 }
 function norm(s) { return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+
+const jsonld = {
+  "@context": "https://schema.org",
+  "@type": "DefinedTermSet",
+  name: "Les mots — dictionnaire augmenté",
+  description: `${words.length} néologismes gréco-latins forgés en sept lexiques, pour nommer ce que la langue laissait muet.`,
+  url: "https://anthropie.org/mots/recueil/",
+  inLanguage: "fr",
+  creator: [{ "@type": "Person", name: "Robin" }, { "@type": "Person", name: "Claude" }],
+  license: "https://creativecommons.org/publicdomain/zero/1.0/",
+};
 ---
-<MotsLayout title="Le recueil" active="recueil" wide={true}>
+<MotsLayout title="Le recueil" active="recueil" wide={true} ogImage="https://anthropie.org/mots/og/p/recueil.png" jsonld={jsonld}>
   <header class="read-head">
     <p class="kicker">{words.length} mots</p>
     <h1>Le recueil</h1>

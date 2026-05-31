@@ -27,8 +27,35 @@ const OTHERS = [
 const star = words.find((w) => w.slug === 'autoscotie');
 function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 function inline(s) { s = esc(s); s = s.replace(/`([^`]+)`/g, '<code>$1</code>'); s = s.replace(/\*([^*]+)\*/g, '<em>$1</em>'); return s; }
+
+// Données du « mot du jour » : un par slug, texte aplati (le pick est fait côté client,
+// déterministe par la date → même mot pour tous un jour donné, sans Math.random).
+function deMark(s) { return s.replace(/[`*_]/g, ''); }
+function teaser(s, n = 150) {
+  s = deMark(s).trim();
+  if (s.length <= n) return s;
+  const cut = s.slice(0, n);
+  const sp = cut.lastIndexOf(' ');
+  return (sp > n * 0.6 ? cut.slice(0, sp) : cut).trim() + '…';
+}
+const dailySeen = new Set();
+const daily = words
+  .filter((w) => !dailySeen.has(w.slug) && dailySeen.add(w.slug))
+  .map((w) => ({ s: w.slug, m: w.mot, l: w.lexique, ll: w.lexique_label, g: w.langue, e: deMark(w.etym), c: teaser(w.corps) }));
+const dailyJson = JSON.stringify(daily).replace(/</g, '\\u003c');
+
+const jsonld = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Les mots — dictionnaire augmenté",
+  url: "https://anthropie.org/mots/",
+  inLanguage: "fr",
+  description: `${words.length} néologismes gréco-latins forgés de grec et de latin, répartis en sept lexiques.`,
+  creator: [{ "@type": "Person", name: "Robin" }, { "@type": "Person", name: "Claude" }],
+  license: "https://creativecommons.org/publicdomain/zero/1.0/",
+};
 ---
-<MotsLayout title="Dictionnaire augmenté" active="" wide={true} home={true}>
+<MotsLayout title="Dictionnaire augmenté" active="" wide={true} home={true} ogImage="https://anthropie.org/mots/og/p/index.png" jsonld={jsonld}>
   <section class="hero">
     <p class="kicker">Dictionnaire augmenté</p>
     <h1>Les mots</h1>
@@ -41,6 +68,46 @@ function inline(s) { s = esc(s); s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
     <p class="stat">{words.length} mots · 7 lexiques · {miroirs} miroirs entre conditions</p>
   </section>
 
+  {star && (
+    <section class="mdj" aria-labelledby="mdj-title">
+      <h2 class="section-title" id="mdj-title">Le mot du jour</h2>
+      <article class="entry reveal mdj-card" id="mot-du-jour" style={`--lex: var(--lex-${star.lexique})`}>
+        <div class="entry-head">
+          <h3 class="lemma"><a id="mdj-link" href={`${base}/mots/m/${star.slug}/`}>{star.mot}</a></h3>
+          <div class="tags"><span class="langue" id="mdj-langue">{star.langue}</span><span class="lex-tag" id="mdj-lextag">{star.lexique_label}</span></div>
+        </div>
+        <p class="etym" id="mdj-etym" set:html={inline(star.etym)}></p>
+        <p class="corps" id="mdj-corps" set:html={inline(teaser(star.corps))}></p>
+        <p class="more"><a id="mdj-more" href={`${base}/mots/m/${star.slug}/`}>→ lire le mot</a></p>
+      </article>
+      <script type="application/json" id="daily-data" data-base={base} is:inline set:html={dailyJson}></script>
+      <script is:inline>
+        (function () {
+          var el = document.getElementById('daily-data');
+          if (!el) return;
+          var data; try { data = JSON.parse(el.textContent); } catch (e) { return; }
+          if (!data || !data.length) return;
+          var BASE = el.getAttribute('data-base') || '';
+          var now = new Date();
+          var key = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
+          var h = 2166136261;
+          for (var i = 0; i < key.length; i++) { h ^= key.charCodeAt(i); h = (h * 16777619) >>> 0; }
+          var w = data[h % data.length];
+          var art = document.getElementById('mot-du-jour');
+          if (art) art.style.setProperty('--lex', 'var(--lex-' + w.l + ')');
+          var url = BASE + '/mots/m/' + w.s + '/';
+          var link = document.getElementById('mdj-link');
+          if (link) { link.textContent = w.m; link.setAttribute('href', url); }
+          var more = document.getElementById('mdj-more'); if (more) more.setAttribute('href', url);
+          var lg = document.getElementById('mdj-langue'); if (lg) lg.textContent = w.g;
+          var lt = document.getElementById('mdj-lextag'); if (lt) lt.textContent = w.ll;
+          var et = document.getElementById('mdj-etym'); if (et) et.textContent = w.e;
+          var co = document.getElementById('mdj-corps'); if (co) co.textContent = w.c;
+        })();
+      </script>
+    </section>
+  )}
+
   <h2 class="section-title">Les quatre conditions</h2>
   <div class="portals">
     {CONDS.map((c) => (
@@ -51,21 +118,6 @@ function inline(s) { s = esc(s); s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
       </a>
     ))}
   </div>
-
-  {star && (
-    <section class="featured">
-      <h2 class="section-title">Un mot, pour donner le ton</h2>
-      <article class={`entry reveal lex-${star.lexique}`}>
-        <div class="entry-head">
-          <h3 class="lemma">{star.mot}</h3>
-          <div class="tags"><span class="langue">{star.langue}</span><span class="lex-tag" style={`--lex: var(--lex-${star.lexique})`}>{star.lexique_label}</span></div>
-        </div>
-        <p class="etym" set:html={inline(star.etym)}></p>
-        <p class="corps" set:html={inline(star.corps)}></p>
-      </article>
-      <p class="more"><a href={`${base}/mots/agent/#autoscotie`}>→ dans la condition d'un agent</a></p>
-    </section>
-  )}
 
   <h2 class="section-title">Trois lexiques de plus</h2>
   <div class="portals small">
@@ -98,8 +150,11 @@ function inline(s) { s = esc(s); s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
     .p-count { font-family: 'Fraunces', serif; font-size: 2.1rem; font-weight: 400; color: var(--lex, var(--gold)); line-height: 1; }
     .p-label { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 500; }
     .p-desc { font-size: 0.92rem; color: var(--ink-soft); line-height: 1.4; }
-    .featured { max-width: var(--max); margin: 0 auto; }
-    .featured .more { text-align: center; font-family: 'Inter', sans-serif; font-size: 0.82rem; margin-top: 0.6rem; }
+    .mdj { max-width: var(--max); margin: 0 auto; }
+    .mdj-card { position: relative; }
+    .mdj-card .lemma { font-size: 1.95rem; }
+    .mdj-card .more { margin: 0.9rem 0 0; font-family: 'Inter', sans-serif; font-size: 0.82rem; }
+    .mdj-card .more a { border-bottom: 1px solid var(--gold-soft); }
     @keyframes riseIn { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
     .hero .kicker { animation: riseIn .7s .05s both; }
     .hero h1 { animation: riseIn .9s .12s both; }
