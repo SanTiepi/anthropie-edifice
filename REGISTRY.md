@@ -19,7 +19,7 @@ CC0 1.0 Universal. Document **vivant** — révisé annuellement (Cycle Annuel d
 - **Fichier** : `RPU_TOOLKIT.md` → `/lire/rpu-toolkit/`
 - **Promesse** : permettre à un parent et un·e aîné·e de démarrer une rencontre intergénérationnelle 70+/0-3 sans formation longue, en 4 semaines.
 - **Contre-indications** : aîné·e sans casier judiciaire vierge ; parent en dépression post-partum non accompagnée ; absence de consentement parental explicite et révocable.
-- **Niveau de preuve** : 🔴 D (invention propre, basée sur Pikler-Lóczy, allomaternage Hrdy, Polyvagal Porges).
+- **Niveau de preuve** : 🔴 D (invention propre, basée sur Pikler-Lóczy, allomaternage Hrdy ; *Polyvagal Porges — base contestée 2026, ne plus traiter comme appui*).
 - **Conditions minimales** : 1 parent + 1 aîné·e + 1 nourrisson 0-3 ans + 1 espace propre + cycle 4 semaines minimum + cartes Souveraineté visibles.
 - **Garde-fous obligatoires** : SAFETY §1 (mineurs), §3 (non-thérapie).
 - **Trajectoire** : créé 2026-05 (iter #21), statut *expérimental*, revue 2027-05.
@@ -39,7 +39,7 @@ CC0 1.0 Universal. Document **vivant** — révisé annuellement (Cycle Annuel d
 - **Fichier** : `PAV_TOOLKIT.md` → `/lire/pav-toolkit/`
 - **Promesse** : rendre la Discipline de Prédiction-Avant-Vocal immédiatement praticable via 3 outils matériels (sablier 20 sec, cartes Souveraineté, relève binôme).
 - **Contre-indications** : enfants < 12 ans (métacognition insuffisante pour les 4 prédictions complètes).
-- **Niveau de preuve** : 🔴 D (invention propre, base théorique Polyvagal + Flavell métacognition).
+- **Niveau de preuve** : 🔴 D (invention propre, base théorique : Flavell métacognition ; *Polyvagal contestée 2026, à requalifier*).
 - **Conditions minimales** : 4-7 personnes + sablier 20 sec + 3 cartes par personne + un·e binôme expérimenté·e si premier essai.
 - **Garde-fous obligatoires** : SAFETY §1 (si mineurs), §4 (anti-secte — multi-référents).
 - **Trajectoire** : créé 2026-05 (iter #20), statut *expérimental*, revue 2027-05.

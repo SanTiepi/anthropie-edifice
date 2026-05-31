@@ -14,7 +14,7 @@ CC0 1.0 Universal. Pour le contenu doctrinal complet, suivre les liens vers chaq
 
 La fenêtre 0-3 ans construit l'attachement, la régulation neurobiologique, la plasticité linguistique. La couche refuse trois menaces 2026 : (a) atomisation familiale (parent isolé face à charge écrasante), (b) ratio adulte-enfant industriel insuffisant pour attachement sécure, (c) exposition écran 0-2 ans documentée comme délétère (JAMA Pediatrics 2024). **Innovation propre** : le **Revenu Présence Universel (RPU)** des aînés — infrastructure économique-civique rémunérant les 60+ ans pour être présents avec les 0-3 ans. Traite simultanément la solitude des aînés (~30% chronique au-delà de 65 ans), le ratio adulte-enfant catastrophique, et la transmission inter-générationnelle en effondrement.
 
-**Sources** : Pikler-Lóczy (étude OMS 1968), Hrdy *Mothers and Others* (allomaternage), Polyvagal Theory (Porges), Tronick Still Face Experiment.
+**Sources** : Pikler-Lóczy (étude OMS 1968), Hrdy *Mothers and Others* (allomaternage), Polyvagal Theory (Porges — contestée 2026), Tronick Still Face Experiment.
 
 → [**Lire la couche complète**](couche-01-matrice/) · Outil pratique : [Toolkit RPU intergénérationnel](rpu-toolkit/) · [carte des preuves §2](preuves/)
 

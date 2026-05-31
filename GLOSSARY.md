@@ -22,6 +22,6 @@ CC0 1.0 Universal. Glossaire non-exhaustif — pour la définition rigoureuse, v
 
 ---
 
-**Termes plus techniques** *(à expliciter dans le fichier de couche en cas de doute)* : *Polyvagal Theory* (Porges), *attachment cross-culturelle* (Keller), *cooperative breeding* (Hrdy), *Pikler-Lóczy*, *Whanganui Te Awa Tupua Act 2017*, *Open Badges 3.0 / W3C VC / ELM*, *Reggio Emilia*, *Big Picture Learning*, *Bildung Network*, *Constructionnisme Papert*, *Rights of Nature*, *Día de los Muertos*, *Egúngún*, *Kintsugi*.
+**Termes plus techniques** *(à expliciter dans le fichier de couche en cas de doute)* : *Polyvagal Theory* (Porges — contestée 2026), *attachment cross-culturelle* (Keller), *cooperative breeding* (Hrdy), *Pikler-Lóczy*, *Whanganui Te Awa Tupua Act 2017*, *Open Badges 3.0 / W3C VC / ELM*, *Reggio Emilia*, *Big Picture Learning*, *Bildung Network*, *Constructionnisme Papert*, *Rights of Nature*, *Día de los Muertos*, *Egúngún*, *Kintsugi*.
 
 Pour discussion : ouvrir une [Issue GitHub](https://github.com/SanTiepi/anthropie-edifice/issues) avec tag `lecture-critique` si une définition vous semble fausse, incomplète ou occidentaliste.

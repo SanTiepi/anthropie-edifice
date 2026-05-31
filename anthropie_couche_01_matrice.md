@@ -22,7 +22,7 @@ La Couche 1 prend en charge la fenêtre 0-3 ans — période où se constituent 
 
 ### B. Cadres alternatifs et fondations centrales
 
-- *Polyvagal Theory (Stephen Porges, UNC ; 1995-2024)* : la régulation neurobiologique du nourrisson dépend de la *co-régulation* avec un adulte régulé. *"Trauma cannot heal in isolation where it was created"* — appliqué à 0-3, *"l'auto-régulation ne se développe pas sans co-régulation préalable"*. Source théorique majeure.
+- *Polyvagal Theory (Stephen Porges, UNC ; 1995-2024)* : la régulation neurobiologique du nourrisson dépend de la *co-régulation* avec un adulte régulé. *"Trauma cannot heal in isolation where it was created"* — appliqué à 0-3, *"l'auto-régulation ne se développe pas sans co-régulation préalable"*. La co-régulation reste solidement établie (Tronick *Still Face* ; Schore) ; mais la *théorie polyvagale* comme explication neurophysiologique est **contestée 2026** (*Clin. Neuropsychiatry*, 39 experts) — citée ici à titre historique, plus comme fondation.
 - *Daniel Stern, The Interpersonal World of the Infant (1985, ré-édition 2018)* : description fine des "moments présents" entre l'adulte et le nourrisson — l'attunement micro-expressif comme fondation du soi.
 - *Allan Schore, right brain regulation (UCLA 1994-2024)* : la régulation droite-cérébrale du nourrisson par l'adulte est l'infrastructure neurobiologique qui prépare toutes les régulations ultérieures.
 - *Bruce Perry, Neurosequential Model of Therapeutics (ChildTrauma Academy 1995-2024)* : *"safe-relational-rhythmic-rewarding-respectful-relevant"* — six R fondateurs du développement précoce sain.
@@ -40,7 +40,7 @@ La Couche 1 prend en charge la fenêtre 0-3 ans — période où se constituent 
 
 ### Chercheurs de référence cités
 
-John Bowlby (*Attachment*, 1969-1980), Mary Ainsworth (Strange Situation, Univ. Virginia), Mary Main (AAI, UC Berkeley), Heidi Keller (Osnabrück, cross-cultural attachment), Marinus van IJzendoorn & Marian Bakermans-Kranenburg (Leiden), Sarah Hrdy (UC Davis, *Mothers and Others*), Daniel Stern (*The Interpersonal World of the Infant*), Allan Schore (UCLA, right-brain regulation), Stephen Porges (UNC, Polyvagal), Bruce Perry (ChildTrauma Academy), Edward Tronick (UMass Boston, Still Face), Emmi Pikler & Anna Tardos (Lóczy, Budapest), Magda Gerber (RIE — Resources for Infant Educarers), Bea Beebe (Columbia, microanalysis interaction), James McKenna (Notre Dame, anthropologie du sommeil partagé), Suzanne Zeedyk (*Sabre Tooth Tigers and Teddy Bears*).
+John Bowlby (*Attachment*, 1969-1980), Mary Ainsworth (Strange Situation, Univ. Virginia), Mary Main (AAI, UC Berkeley), Heidi Keller (Osnabrück, cross-cultural attachment), Marinus van IJzendoorn & Marian Bakermans-Kranenburg (Leiden), Sarah Hrdy (UC Davis, *Mothers and Others*), Daniel Stern (*The Interpersonal World of the Infant*), Allan Schore (UCLA, right-brain regulation), Stephen Porges (UNC, Polyvagal — contestée 2026), Bruce Perry (ChildTrauma Academy), Edward Tronick (UMass Boston, Still Face), Emmi Pikler & Anna Tardos (Lóczy, Budapest), Magda Gerber (RIE — Resources for Infant Educarers), Bea Beebe (Columbia, microanalysis interaction), James McKenna (Notre Dame, anthropologie du sommeil partagé), Suzanne Zeedyk (*Sabre Tooth Tigers and Teddy Bears*).
 
 ---
 
@@ -93,7 +93,7 @@ Pratiques :
 **Droit fondamental :** Droit civil de chaque enfant 0-3 ans à bénéficier de la présence régulière et formée d'aînés rémunérés au titre civic-économique, et droit civil de chaque aîné 60+ ans à se voir reconnaître économiquement la valeur de sa présence avec les jeunes enfants.
 **Innovation civilisationnelle propre.** Le RPU (Revenu Présence Universel) des Aînés est un dispositif économique-civique qui rémunère les personnes 60+ ans (avec extension possible aux 50+ ayant choisi cette voie) pour leur présence formée auprès des enfants 0-3 ans, dans le cadre d'une certification *Aîné-Présence Anthropie*.
 **Mécanisme** :
-- Un aîné candidat suit une formation 120 heures (modules CC0) : régulation neurobiologique du nourrisson (Polyvagal Porges, Schore), pratiques Pikler-Lóczy, attachment secure, soutien parental, garde-fous (signalement, sécurité, multi-supervision)
+- Un aîné candidat suit une formation 120 heures (modules CC0) : régulation neurobiologique du nourrisson (Schore ; *Polyvagal Porges = modèle historique contesté 2026, pas un fait neurophysiologique*), pratiques Pikler-Lóczy, attachment secure, soutien parental, garde-fous (signalement, sécurité, multi-supervision)
 - Une fois certifié, il s'engage à offrir 8-15 heures/semaine de présence dans une *Maison de Présence* communautaire (espace dédié à proximité des familles) ou en *présence à domicile* (chez les familles invitantes, avec consentement clair des parents)
 - Il reçoit un *Revenu Présence Universel* — équivalent SMIC partiel — financé par redirection budgétaire (politique familiale + politique aînés + santé publique) et reconnu fiscalement comme contribution civic
 - Il appartient à un *Cercle d'Aînés-Présence* (5-10 aînés certifiés sur un territoire), avec supervision pair mensuelle et formation continue annuelle
@@ -316,7 +316,7 @@ Présence inter-générationnelle 0-3 = évidence civique. Génération née 203
 
 ## 10. Synthèse en une ligne
 
-**La Matrice 0-3 inscrit civilisationnellement les fondations affectives et présentielles de la primo-enfance — par sept strates articulées (Présence Vibratoire visage-à-visage régulée, Anneau d'Attachement Élargi à figure primaire + 2-4 figures secondaires stables restituant l'allomaternage Hrdy, Mouvement Libre Pikler-Lóczy avec étude OMS 1968, Bain de Langue Pluriel multilingue précoce, Rythme Cosmique chronobiologique avec règle écran-zéro 0-2 ans, Toucher Discipliné à 70-90% heures éveillées en contact, Revenu Présence Universel des Aînés comme infrastructure civic-économique innovante restituant la transmission inter-générationnelle et résolvant simultanément solitude aînés / charge parentale écrasante / ratio adulte-enfant catastrophique des crèches industrielles) — refondant l'atomisation familiale métropolitaine 2026 par mobilisation économiquement reconnue de la génération aînée, validée empiriquement par convergence Pikler-Lóczy / BRAC Cox's Bazar / Bernard van Leer Urban95 / Hrdy cooperative breeders / Polyvagal Porges / Tronick Still Face / méta-analyse écrans JAMA 2024, articulant les articles existants 6, 18 et 24 de la CRC sans nécessiter d'article 31-numéroté propre.**
+**La Matrice 0-3 inscrit civilisationnellement les fondations affectives et présentielles de la primo-enfance — par sept strates articulées (Présence Vibratoire visage-à-visage régulée, Anneau d'Attachement Élargi à figure primaire + 2-4 figures secondaires stables restituant l'allomaternage Hrdy, Mouvement Libre Pikler-Lóczy avec étude OMS 1968, Bain de Langue Pluriel multilingue précoce, Rythme Cosmique chronobiologique avec règle écran-zéro 0-2 ans, Toucher Discipliné à 70-90% heures éveillées en contact, Revenu Présence Universel des Aînés comme infrastructure civic-économique innovante restituant la transmission inter-générationnelle et résolvant simultanément solitude aînés / charge parentale écrasante / ratio adulte-enfant catastrophique des crèches industrielles) — refondant l'atomisation familiale métropolitaine 2026 par mobilisation économiquement reconnue de la génération aînée, validée empiriquement par convergence Pikler-Lóczy / BRAC Cox's Bazar / Bernard van Leer Urban95 / Hrdy cooperative breeders / Tronick Still Face / méta-analyse écrans JAMA 2024, articulant les articles existants 6, 18 et 24 de la CRC sans nécessiter d'article 31-numéroté propre.**
 
 ---
 
@@ -331,7 +331,7 @@ Présence inter-générationnelle 0-3 = évidence civique. Génération née 203
 - Hrdy S., *Mothers and Others: The Evolutionary Origins of Mutual Understanding*, Harvard 2009.
 - Stern D., *The Interpersonal World of the Infant*, 1985 (ré-éd. 2018).
 - Schore A., *Affect Regulation and the Origin of the Self*, 1994 + corpus 2003-2024.
-- Porges S., *The Polyvagal Theory*, 2011.
+- Porges S., *The Polyvagal Theory*, 2011. *(théorie contestée 2026, Clin. Neuropsychiatry — co-régulation conservée via Tronick/Schore)*
 - Perry B., *Neurosequential Model of Therapeutics*, ChildTrauma Academy 1995-2024.
 - Tronick E., *Still Face Experiment*, 1975 et corpus.
 - David A.A. & Appell G., *The Pikler Approach to Infant and Toddler Education and Care*, 2021 ; OMS étude longitudinale Lóczy 1968.
@@ -357,4 +357,4 @@ Présence inter-générationnelle 0-3 = évidence civique. Génération née 203
 - Universal Basic Income debate (Van Parijs P., *Real Freedom for All*, 1995) — comme antécédent conceptuel partiel du RPU.
 
 ### Penseurs cités
-Bowlby J., Ainsworth M., Main M., Hrdy S., Keller H., Stern D., Schore A., Porges S., Perry B., Tronick E., Pikler E., Tardos A., Gerber M., Liedloff J., Beebe B., Zeedyk S., McKenna J., Bialystok E. (multilinguisme), Mehler J. (perception prénatale langage).
+Bowlby J., Ainsworth M., Main M., Hrdy S., Keller H., Stern D., Schore A., Porges S. (Polyvagal contestée 2026), Perry B., Tronick E., Pikler E., Tardos A., Gerber M., Liedloff J., Beebe B., Zeedyk S., McKenna J., Bialystok E. (multilinguisme), Mehler J. (perception prénatale langage).
