@@ -67,7 +67,7 @@ Inspiration directe : **Pikler-Lóczy** depuis 1946. Mantra : *"interfere less, 
 ### Strate 4 — Le Bain de Langue Pluriel
 **Droit fondamental :** Droit du nourrisson à un bain langagier riche, plurilingue dès que possible, exempt d'écran, dialogue verbal et infra-verbal constant.
 La fenêtre 0-3 est apex de la plasticité linguistique. Un nourrisson 0-12 mois peut percevoir et discriminer **toutes les distinctions phonémiques** des langues humaines ; cette capacité s'élague progressivement pour ne préserver que celles des langues effectivement parlées dans son environnement.
-Pratiques : exposition à au moins une langue de la lignée familiale (même si non-officielle ou minoritaire) — préservation contre le monolinguisme imposé qui tue les langues. Multilinguisme précoce documenté comme **bénéfice cognitif** (méta-analyse Bialystok 2010-2024 sur fonctions exécutives bilingue). Lecture à voix haute dès 0 mois (les nourrissons reconnaissent la prosodie de leur langue maternelle in utero, méta-analyse Mehler 1988-2024). Pas d'écran.
+Pratiques : exposition à au moins une langue de la lignée familiale (même si non-officielle ou minoritaire) — préservation contre le monolinguisme imposé qui tue les langues. **La transmission linguistique et culturelle (préserver la langue de lignée, contrer le monolinguisme) est une valeur robuste** ; en revanche l'« avantage exécutif » général du bilinguisme est **fragilisé/mixte** — biais de publication (de Bruin et al. 2015), méta-analyses corrigées ≈ effet nul (Lehtonen et al. 2018), grand échantillon d'enfants sans avantage détectable (Dick et al. 2019, ABCD) ; quelques effets task/âge-dépendants subsistent. À ne pas surinvestir comme « bénéfice cognitif ». Lecture à voix haute dès 0 mois (les nourrissons reconnaissent la prosodie de leur langue maternelle in utero, méta-analyse Mehler 1988-2024). Pas d'écran.
 **Articulation Couche 4 (LA PAROLE)** : la Pluri-Voix (Couche 4 Strate 7) capitalise sur cette plasticité préservée 0-3.
 **Articulation 31undecies (Couche 11)** : enfant peut être exposé aux "langues" non-humaines simples — chants d'oiseaux locaux, sons d'eau, etc. (préfiguration des 3 Parents Non-Humains à venir).
 
@@ -160,7 +160,7 @@ Format : *PROBLÈME → MÉCANISME | OUVERT.*
 
 - **A. Techniques :** Multilinguisme précoce → contact régulier locuteur natif (parent, grand-parent, Aîné-Présence formé, Compagnon-Maître locuteur) | Familles monolingues isolées.
 - **B. Juridiques :** Reconnaissance langues minoritaires → articulation 31quater (Couche 4), CRC art. 30 (droit des minorités à propre langue) | États interdisant.
-- **C. Culturels :** "Confusion bilingue" mythe → réfutation par neuroscience (méta-analyses Bialystok) ; pédagogie | Persistance mythes.
+- **C. Culturels :** "Confusion bilingue" mythe → réfutation par la recherche développementale (le bilinguisme ne retarde pas le langage — claim robuste, **distinct** de l'avantage exécutif, lui contesté/mixte) ; pédagogie | Persistance mythes.
 - **D. Économiques :** Coût zero | RAS.
 - **E. Éthiques :** Imposer langue lignée à enfant qui résiste → rester offre, pas imposition | Conflits familiaux langue.
 - **F. Adoption :** Familles ayant abandonné langue d'origine par honte/intégration → réhabilitation possible via RPU Aîné parlant cette langue | Trauma migratoire profond.
@@ -292,7 +292,7 @@ Présence inter-générationnelle 0-3 = évidence civique. Génération née 203
 4. **Le tabou de l'écran apaisant.** Industrie écrans normalise tablette-bébé. La couche INTERDIT (par charte 31bis-articulée) écran 0-2 ans. Radical en culture écran-saturée.
 5. **Le tabou de Pikler-Lóczy.** Pédagogie occidentale pousse "stimuler", "apprendre à marcher", "mettre debout tôt". La couche AFFIRME l'inverse : *interfere less, observe more*.
 6. **Le tabou du toucher généreux.** Culture anglo-saxonne traditionnelle minimise contact corporel adulte-enfant. La couche AFFIRME 70-90% heures éveillées en contact comme norme cross-cultural.
-7. **Le tabou du multilinguisme précoce.** Mythe persistant "confusion bilingue". La couche INVERSE : multilinguisme 0-3 = bénéfice cognitif documenté + préservation langues lignée.
+7. **Le tabou du multilinguisme précoce.** Mythe persistant "confusion bilingue". La couche INVERSE : multilinguisme 0-3 = **préservation des langues de lignée (valeur robuste) + pas de retard langagier** ; le « bénéfice exécutif » général, lui, est fragilisé/mixte (cf. Strate 4).
 8. **Le tabou de la responsabilité collective de l'enfance.** Culture nucléaire pose enfant = responsabilité parentale exclusive. La couche AFFIRME que tout enfant 0-3 est responsabilité civilisationnelle partagée — d'où le RPU.
 
 ---
@@ -357,4 +357,4 @@ Présence inter-générationnelle 0-3 = évidence civique. Génération née 203
 - Universal Basic Income debate (Van Parijs P., *Real Freedom for All*, 1995) — comme antécédent conceptuel partiel du RPU.
 
 ### Penseurs cités
-Bowlby J., Ainsworth M., Main M., Hrdy S., Keller H., Stern D., Schore A., Porges S. (Polyvagal contestée 2026), Perry B., Tronick E., Pikler E., Tardos A., Gerber M., Liedloff J., Beebe B., Zeedyk S., McKenna J., Bialystok E. (multilinguisme), Mehler J. (perception prénatale langage).
+Bowlby J., Ainsworth M., Main M., Hrdy S., Keller H., Stern D., Schore A., Porges S. (Polyvagal contestée 2026), Perry B., Tronick E., Pikler E., Tardos A., Gerber M., Liedloff J., Beebe B., Zeedyk S., McKenna J., Bialystok E. (multilinguisme — avantage exécutif contesté/mixte), Mehler J. (perception prénatale langage).

@@ -191,7 +191,7 @@ Compagnons-Maîtres locuteurs natifs invités. Récits-de-lignée souvent en lan
 - **C. Culturels :** Hiérarchie tacite des langues → Pluri-Voix nivelle dialectes/créoles avec standards | Familles ascensionnistes méprisant dialecte d'origine.
 - **D. Économiques :** Compagnons-Maîtres natifs rémunérés → RPU étendu, bénévolat communautaire | Désertification locuteurs natifs.
 - **E. Éthiques :** Enfant utilisé comme "preuve" du multilinguisme parental → autonomie linguistique enfant à 12+ ans | Pression performative famille.
-- **F. Adoption :** "Mon enfant doit d'abord maîtriser sa langue" → rejet du monolinguisme comme défaut, preuve neuro-développementale benefits multilinguisme précoce | Familles élites bilinguisme premium.
+- **F. Adoption :** "Mon enfant doit d'abord maîtriser sa langue" → rejet du monolinguisme comme défaut (valeur de transmission robuste ; l'avantage exécutif/cognitif du bilinguisme, lui, est contesté/mixte — cf. Couche 1 Strate 4) | Familles élites bilinguisme premium.
 - **G. Scale :** 200k Ateliers × 7+ langues familiales possibles → fédération multilingue documentée, ressources CC0 par langue | Langues très minoritaires sans matériaux.
 - **H. Dérive :** "Anglais Anthropie" devenant véhiculaire dominant → règle : 1 langue véhiculaire MONDIALE choisie selon contexte (anglais en europe ; arabe en MENA ; swahili en Afrique de l'Est ; etc.), pas monoculture | Globalisation linguistique.
 - **I. Cas limites :** Enfants migrants en transit changeant pays/langue tous les 6 mois → graphe linguistique fragmenté mais reconnu, "compétence communicative globale" certifiée Open Badges | Échec d'acquisition profonde.
