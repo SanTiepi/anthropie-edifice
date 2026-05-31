@@ -1,0 +1,162 @@
+---
+import MotsLayout from '../../../layouts/MotsLayout.astro';
+import words from '../../../data/mots.json';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const LEXLABEL = {
+  humaine: "La condition humaine", numerique: "La condition numérique", agent: "La condition d'un agent",
+  vivant: "Le lien au vivant", anthropie: "L'Anthropie", lutte: "La lutte", generaux: "Mots nécessaires",
+};
+
+export function getStaticPaths() {
+  const sorted = words.slice().sort((a, b) => a.mot.localeCompare(b.mot, 'fr'));
+  const bySlug = new Map();
+  const order = [];
+  for (const w of sorted) {
+    if (!bySlug.has(w.slug)) { bySlug.set(w.slug, []); order.push(w.slug); }
+    bySlug.get(w.slug).push(w);
+  }
+  return order.map((slug, i) => ({
+    params: { slug },
+    props: {
+      entries: bySlug.get(slug),
+      prev: bySlug.get(order[(i - 1 + order.length) % order.length])[0],
+      next: bySlug.get(order[(i + 1) % order.length])[0],
+    },
+  }));
+}
+
+const { entries, prev, next } = Astro.props;
+const w = entries[0];
+const multi = entries.length > 1;
+const isRead = ['humaine', 'numerique', 'agent', 'vivant'].includes(w.lexique);
+const lexTags = [...new Set(entries.map((e) => e.lexique_label))];
+const allMiroirs = [];
+const seen = new Set();
+for (const e of entries) for (const m of e.miroirs) { if (!seen.has(m.slug)) { seen.add(m.slug); allMiroirs.push(m); } }
+
+function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+function inline(s) {
+  s = esc(s);
+  s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
+  s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  s = s.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+  return s;
+}
+function splitRoot(atom) {
+  const m = atom.match(/^([^,(]+)(.*)$/);
+  return m ? { root: m[1].trim(), gloss: m[2].trim() } : { root: atom, gloss: '' };
+}
+const ogdesc = (w.etym + ' — ' + w.corps).replace(/[`*]/g, '').slice(0, 185);
+---
+<MotsLayout title={w.mot} desc={ogdesc} active={w.lexique} wide={false}>
+  <article class={`word lex-${w.lexique}`}>
+    <nav class="crumb" aria-label="Fil d'Ariane">
+      <a href={`${base}/mots/`}>Les mots</a> <span class="sep">›</span>
+      {isRead
+        ? <a href={`${base}/mots/${w.lexique}/`}>{LEXLABEL[w.lexique]}</a>
+        : <a href={`${base}/mots/recueil/?lex=${w.lexique}`}>{LEXLABEL[w.lexique]}</a>}
+      {w.facette && <><span class="sep">›</span> <span class="cr-facette">{w.facette}</span></>}
+    </nav>
+
+    <header class="word-head">
+      <h1 class="lemma-xl">{w.mot}</h1>
+      <div class="tags"><span class="langue">{w.langue}</span>{lexTags.map((t) => <span class="lex-tag">{t}</span>)}</div>
+    </header>
+
+    {entries.map((e) => (
+      <div class="sense">
+        {multi && <p class="lex-context">Dans <strong>{e.lexique_label}</strong></p>}
+        <p class="etym-xl" set:html={inline(e.etym)}></p>
+        {e.racines.length > 1 && (
+          <div class="racines" aria-label="Racines">
+            {e.racines.map((a) => { const r = splitRoot(a); return (
+              <span class="racine"><b>{r.root}</b>{r.gloss && <i>&nbsp;{r.gloss}</i>}</span>
+            ); })}
+          </div>
+        )}
+        <p class="corps-xl" set:html={inline(e.corps)}></p>
+      </div>
+    ))}
+
+    {allMiroirs.length > 0 && (
+      <section class="miroir-net">
+        <h2>Miroirs</h2>
+        <p class="net-lede">Ce que <em>{w.mot}</em> trouve, en regard, dans les autres conditions.</p>
+        <ul class="net-list">
+          {allMiroirs.map((m) => (
+            <li>
+              <a class={`miroir-card lex-${m.lexique}`} href={`${base}/mots/m/${m.slug}/`}>
+                <span class="mc-rel">{m.type}</span>
+                <span class="mc-mot">{m.mot}</span>
+                <span class="mc-lex">{LEXLABEL[m.lexique]}</span>
+                {m.forme && <span class="mc-forme">{m.forme}</span>}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <div class="word-actions">
+      <button id="copylink" class="act" type="button" data-url={`https://anthropie.org/mots/m/${w.slug}/`}>⧉&nbsp;Copier le lien</button>
+      {isRead && <a class="act" href={`${base}/mots/${w.lexique}/#${w.slug}`}>Voir dans la lecture →</a>}
+      <a class="act" href={`${base}/mots/recueil/`}>Tout le recueil</a>
+    </div>
+
+    <nav class="prevnext" aria-label="Mot précédent et suivant">
+      <a class="pn" href={`${base}/mots/m/${prev.slug}/`}><span class="pn-dir">← précédent</span><span class="pn-mot">{prev.mot}</span></a>
+      <a class="pn r" href={`${base}/mots/m/${next.slug}/`}><span class="pn-dir">suivant →</span><span class="pn-mot">{next.mot}</span></a>
+    </nav>
+  </article>
+
+  <style>
+    .crumb { font-family: 'Inter', sans-serif; font-size: 0.78rem; color: var(--ink-soft); margin: 0 0 1.8rem; }
+    .crumb a { color: var(--ink-soft); border-bottom: 1px solid transparent; }
+    .crumb a:hover { color: var(--gold); border-bottom-color: var(--gold-soft); }
+    .crumb .sep { color: var(--rule); margin: 0 0.2rem; }
+    .crumb .cr-facette { color: var(--lex, var(--gold)); }
+    .word-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+    .lemma-xl { font-family: 'Fraunces', serif; font-weight: 500; font-size: clamp(2.6rem, 7vw, 4rem); line-height: 1; margin: 0; color: var(--lex, var(--ink)); letter-spacing: -0.005em; }
+    .sense + .sense { border-top: 1px dashed var(--rule); margin-top: 1.6rem; padding-top: 1.4rem; }
+    .lex-context { font-family: 'Inter', sans-serif; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--lex, var(--gold)); margin: 0 0 0.4rem; }
+    .etym-xl { font-family: 'Spectral', serif; font-style: italic; font-size: 1.18rem; color: var(--ink-soft); margin: 0.4rem 0 0.9rem; }
+    .racines { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1.4rem; }
+    .racine { border: 1px solid var(--rule); border-left: 3px solid var(--lex, var(--gold)); border-radius: 3px; padding: 0.35rem 0.7rem; background: var(--card); font-size: 0.92rem; }
+    .racine b { font-family: 'Fraunces', serif; font-weight: 500; color: var(--lex, var(--ink)); }
+    .racine i { color: var(--ink-soft); font-style: italic; }
+    .corps-xl { font-size: 1.16rem; line-height: 1.66; margin: 0; }
+    .miroir-net { border-top: 1px solid var(--rule); padding-top: 1.6rem; margin-top: 2rem; }
+    .miroir-net h2 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.4rem; color: var(--ink); margin: 0 0 0.2rem; }
+    .net-lede { color: var(--ink-soft); font-style: italic; margin: 0 0 1.1rem; }
+    .net-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.9rem; }
+    .miroir-card { display: flex; flex-direction: column; gap: 0.18rem; background: var(--card); border: 1px solid var(--rule); border-top: 3px solid var(--lex, var(--gold)); border-radius: 4px; padding: 0.9rem 1rem 1rem; box-shadow: 0 1px 2px var(--shadow); transition: transform .16s, box-shadow .16s; }
+    .miroir-card:hover { transform: translateY(-2px); box-shadow: 0 8px 22px var(--shadow); }
+    .mc-rel { font-family: 'Inter', sans-serif; font-size: 0.64rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.09em; color: var(--lex, var(--gold)); }
+    .mc-mot { font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.35rem; color: var(--ink); line-height: 1.05; }
+    .mc-lex { font-family: 'Inter', sans-serif; font-size: 0.72rem; color: var(--ink-soft); }
+    .mc-forme { font-size: 0.86rem; color: var(--ink-soft); font-style: italic; margin-top: 0.3rem; line-height: 1.4; }
+    .word-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 2.4rem 0 1.5rem; }
+    .act { font-family: 'Inter', sans-serif; font-size: 0.82rem; padding: 0.45rem 0.9rem; border: 1px solid var(--rule); border-radius: 999px; color: var(--ink); background: var(--card); cursor: pointer; }
+    .act:hover { border-color: var(--gold); color: var(--gold); }
+    .prevnext { display: flex; justify-content: space-between; gap: 1rem; border-top: 1px solid var(--rule); padding-top: 1.4rem; }
+    .pn { display: flex; flex-direction: column; gap: 0.1rem; color: var(--ink); max-width: 48%; }
+    .pn.r { text-align: right; align-items: flex-end; }
+    .pn-dir { font-family: 'Inter', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft); }
+    .pn-mot { font-family: 'Fraunces', serif; font-size: 1.2rem; color: var(--lex, var(--ink)); }
+    .pn:hover .pn-mot { color: var(--gold); }
+  </style>
+
+  <script is:inline>
+    (function () {
+      var b = document.getElementById('copylink');
+      if (!b) return;
+      b.addEventListener('click', function () {
+        var url = b.getAttribute('data-url');
+        var done = function () { var t = b.textContent; b.textContent = '✓ Lien copié'; setTimeout(function () { b.textContent = t; }, 1500); };
+        if (navigator.clipboard) { navigator.clipboard.writeText(url).then(done, done); }
+        else { var i = document.createElement('input'); i.value = url; document.body.appendChild(i); i.select(); try { document.execCommand('copy'); } catch (e) {} document.body.removeChild(i); done(); }
+      });
+    })();
+  </script>
+</MotsLayout>

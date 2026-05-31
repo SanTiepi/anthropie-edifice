@@ -45,7 +45,7 @@ function inline(s) {
       {groups.get(f).map((w) => (
         <article class={`entry lex-${w.lexique}`} id={w.slug}>
           <div class="entry-head">
-            <h3 class="lemma"><a href={`#${w.slug}`}>{w.mot}</a></h3>
+            <h3 class="lemma"><a href={`${base}/mots/m/${w.slug}/`}>{w.mot}</a></h3>
             <div class="tags"><span class="langue">{w.langue}</span></div>
           </div>
           <p class="etym" set:html={inline(w.etym)}></p>
@@ -54,7 +54,7 @@ function inline(s) {
             <div class="miroirs">
               <span class="mlabel">↔&nbsp;miroirs</span>
               {w.miroirs.map((m) => (
-                <a class="miroir" style={`--mlex: var(--lex-${m.lexique})`} href={`${base}/mots/${m.lexique}/#${m.slug}`} title={`${m.type}${m.forme ? ' — ' + m.forme : ''}`}>
+                <a class="miroir" style={`--mlex: var(--lex-${m.lexique})`} href={`${base}/mots/m/${m.slug}/`} title={`${m.type}${m.forme ? ' — ' + m.forme : ''}`}>
                   <span class="dot"></span>{m.mot}<span class="rel">{m.type}</span>
                 </a>
               ))}

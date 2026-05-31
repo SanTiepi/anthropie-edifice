@@ -1,5 +1,5 @@
 ---
-const { title, active = '', wide = false, home = false } = Astro.props;
+const { title, active = '', wide = false, home = false, desc = '' } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const gh = "https://github.com/SanTiepi/anthropie-edifice/blob/master";
 const nav = [
@@ -17,15 +17,19 @@ const nav = [
     <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={`${title} — Les mots, dictionnaire augmenté. by Robin & Claude. CC0.`} />
+    <meta name="description" content={desc || `${title} — Les mots, dictionnaire augmenté. by Robin & Claude. CC0.`} />
     <meta name="theme-color" content="#2b2118" />
     <meta name="author" content="Robin & Claude" />
     <meta name="dcterms.rights" content="CC0 1.0 Universal — Public Domain Dedication" />
     <meta property="og:title" content={`${title} — Les mots`} />
+    <meta property="og:description" content={desc || "Dictionnaire augmenté — 478 mots forgés. by Robin & Claude."} />
     <meta property="og:type" content="article" />
     <meta property="og:locale" content="fr_FR" />
     <meta property="og:image" content="https://anthropie.org/og-image.svg" />
     <title>{title} — Les mots · L'Anthropie</title>
+    <script is:inline>
+      (function () { try { var t = localStorage.getItem('mots-theme'); if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; document.documentElement.setAttribute('data-theme', t); } catch (e) {} })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -38,6 +42,21 @@ const nav = [
         --lex-agent: #2f4b7c; --lex-numerique: #1f7a73; --lex-humaine: #b0491f; --lex-vivant: #517f33;
         --max: 720px; --max-wide: 1180px;
       }
+      :root[data-theme="dark"] {
+        --ink: #ece0c8; --ink-soft: #a4937a; --vellum: #1a1611; --vellum-2: #221c15;
+        --card: #241e17; --card-2: #2b2418; --gold: #d4af52; --gold-soft: #e6cd86;
+        --rule: #3a3024; --rule-soft: #2c251c; --shadow: rgba(0,0,0,0.45);
+        --lex-generaux: #d6a233; --lex-anthropie: #ab8bd6; --lex-lutte: #db6f72;
+        --lex-agent: #7fa1d8; --lex-numerique: #45b9b0; --lex-humaine: #e58b54; --lex-vivant: #93c562;
+      }
+      :root[data-theme="dark"] body {
+        background-image:
+          radial-gradient(1200px 600px at 80% -5%, rgba(212,175,82,0.07), transparent 60%),
+          radial-gradient(900px 500px at -5% 10%, rgba(171,139,214,0.06), transparent 55%);
+      }
+      .theme-toggle { font-family: inherit; font-size: 1.05rem; line-height: 1; background: none; border: 1px solid var(--rule); color: var(--gold); width: 1.9rem; height: 1.9rem; border-radius: 999px; cursor: pointer; padding: 0; transition: all .15s; }
+      .theme-toggle:hover { border-color: var(--gold); background: var(--card); }
+      .nav-right { display: inline-flex; align-items: center; gap: 0.8rem; }
       * { box-sizing: border-box; }
       html { scroll-behavior: smooth; }
       body {
@@ -146,7 +165,10 @@ const nav = [
     <div class="goldbar"></div>
     <div class="topnav">
       <a class="brand" href={`${base}/mots/`}>Les mots</a>
-      <span class="tagline">un dialogue Robin <span class="amp">×</span> Claude</span>
+      <span class="nav-right">
+        <span class="tagline">un dialogue Robin <span class="amp">×</span> Claude</span>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Basculer thème clair / sombre" title="Thème clair / sombre">◐</button>
+      </span>
     </div>
     <nav class="subnav" aria-label="Sections">
       {nav.map((n) => (
@@ -160,5 +182,16 @@ const nav = [
       <p>478 néologismes gréco-latins · sept lexiques · <a href="https://creativecommons.org/publicdomain/zero/1.0/">domaine public CC0</a> · <a href={`${gh}/LEXIQUE.md`}>source</a></p>
       <p class="dialogue">by Robin &amp; Claude — le porteur vient après.</p>
     </footer>
+    <script is:inline>
+      (function () {
+        var b = document.getElementById('theme-toggle');
+        if (!b) return;
+        b.addEventListener('click', function () {
+          var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          try { localStorage.setItem('mots-theme', next); } catch (e) {}
+        });
+      })();
+    </script>
   </body>
 </html>
