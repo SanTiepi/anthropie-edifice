@@ -33,7 +33,7 @@ L'auto-audit matriciel : l'édifice se réfute lui-même, cellule par cellule.
 **Autotyphlie** *· gr. autós + typhlós (aveugle) · pur grec*
 La déclaration **assumée** de ses propres angles morts ; chaque couche nomme ce qu'elle ne voit pas.
 
-**Épistèse** *· gr. epistḗmē (savoir établi) + -sis (état) · pur grec*
+**Épistémie** *· gr. epistḗmē (savoir établi) + -ie (état) · pur grec*
 Le degré de maturité doctrinale et juridique d'une partie de l'édifice (état épistémique robuste ou sensible).
 
 **Akléronomie** *· gr. a- (sans) + klēronómos (propriétaire, héritier) · pur grec*
@@ -43,7 +43,7 @@ Le régime d'une œuvre sans propriétaire, transmise par adoption et non par h�
 
 ## Le contexte & l'ennemi (le diagnostic qui justifie l'édifice)
 
-**Kairosténose** *· gr. kairós (moment décisif) + sténôsis (rétrécissement) · pur grec*
+**Kairosténose** *· gr. kairós (moment décisif) + sténôsis (rétrécissement) · pur grec (écho assumé à la sténose médicale)*
 Le rétrécissement de la fenêtre d'action décisive, quand plusieurs bascules (AGI, cascades climatiques) convergent.
 
 **Platynoïe** *· gr. platýs (plat) + nóos (esprit) · pur grec*
@@ -74,7 +74,7 @@ La coprésence active des aînés autour du nourrisson : trois âges qui tissent
 La Référence Primaire Unifiée : la figure d'attachement une et stable que le réseau d'allomaternage présente à l'enfant.
 > *L'hénarche n'est pas une personne mais un visage commun que tout le clan offre.*
 
-**Prélexie** *· lat. prae- (avant) + gr. lexis (parole) · métis°*
+**Prélexie** *· lat. prae- (avant) + gr. lexis (parole) · métis° (à distinguer du « prélexical » des psycholinguistes)*
 Le tissage du lien d'attachement avant l'avènement de la parole, par peau, regard et rythme.
 > *La prélexie se grave dans le corps bien avant le premier mot.*
 
@@ -92,9 +92,9 @@ Curiosité qui croît d'elle-même, préservée intacte plutôt que canalisée p
 L'extinction de la capacité d'émerveillement ; la blessure que le Sanctuaire existe pour empêcher.
 > *Scolariser à trois ans, c'est risquer l'athaumie.*
 
-**Prôscolie** *· gr. pro- + skholê (loisir studieux, racine d'« école ») · pur grec*
+**Proscolie** *· gr. pró- (omicron bref) + skholê (loisir studieux, racine d'« école ») · pur grec*
 Le temps protégé d'avant l'institution ; le loisir originel qu'on refuse de convertir trop tôt en école.
-> *La prôscolie n'est pas du retard : c'est un droit.*
+> *La proscolie n'est pas du retard : c'est un droit.*
 
 **Paidiotope** *· gr. paidia (jeu libre) + topos (lieu) · pur grec*
 Le lieu sanctuarisé du jeu libre, soustrait à toute finalité, évaluation ou productivité.
@@ -118,9 +118,9 @@ La primauté du faire sur la théorie : l'œuvre précède et engendre son expli
 L'erreur traitée comme matière première de l'apprentissage, à façonner plutôt qu'à punir.
 > *La chute du chevalet n'est pas un échec mais une hamarthyle qu'on retaille.*
 
-**Déixigne** *· lat. dexteritas (adresse) + insigne (badge) · métis°*
+**Dextrigne** *· lat. dexteritas, thème dextr- (adresse) + insigne (badge) · pur latin*
 Le badge ouvert d'une habileté réellement exercée, délivré par la preuve du geste, non par l'examen.
-> *Avoir soudé seul son circuit lui vaut un déixigne, pas une note sur vingt.*
+> *Avoir soudé seul son circuit lui vaut un dextrigne, pas une note sur vingt.*
 
 ### Ⅳ · LA PAROLE (7-15) — garder une voix singulière
 
@@ -132,11 +132,11 @@ Formuler à voix haute sa propre hypothèse **avant** d'interroger une IA, pour 
 Le cercle de voix où chacun parle à son tour, sans interruption ni machine entre les bouches.
 > *Le soir, le phonocycle se referme : sept voix, aucun écran.*
 
-**Idiophonie** *· gr. idios (propre) + phônê (voix) · pur grec*
+**Idiophonie** *· gr. idios (propre) + phônê (voix) · pur grec (écho à l'idiophone des organologues ; ici la voix singulière)*
 La voix singulière irréductible d'une personne, ce timbre de pensée que l'aplatissement par l'IA efface.
 > *Garde ton idiophonie : ne laisse pas la machine lisser ton accent intérieur.*
 
-**Homophonisme** *· gr. homos (même) + phônê (voix) · pur grec*
+**Homophonisme** *· gr. homos (même) + phônê (voix) · pur grec (écho à l'homophonie linguistique et musicale ; ici l'uniformisation des voix)*
 L'aplatissement par lequel toutes les voix finissent par dire la même chose, moulées par le même prédicteur.
 > *Trois élèves, une seule phrase : celle de l'IA.*
 
@@ -154,15 +154,15 @@ L'apprentissage par la ville elle-même, tenue pour la véritable école.
 Le réseau des ressources communautaires librement empruntables — le tissu d'apprentissage convivial d'Illich.
 > *L'atelier, le métier à tisser, la forge : versés à la synchrèse du quartier.*
 
-**Paréthète** *· gr. para (à côté) + tithêmi (se poser pour transmettre) · pur grec*
+**Parathète** *· gr. pará (à côté) + thétês (celui qui pose, cf. nomothète) · pur grec*
 Le mentor hors-école — artisan, ancien, voisin — qui forme par le coude-à-coude, non par la chaire.
-> *Le forgeron n'est pas son maître : c'est son paréthète, qui montre en faisant.*
+> *Le forgeron n'est pas son maître : c'est son parathète, qui montre en faisant.*
 
 **Amphimathie** *· gr. amphi (double) + mathêsis · pur grec*
 L'apprentissage dual qui tient ensemble l'étude et le geste, sans les hiérarchiser.
 > *L'amphimathie refuse de couper la tête des mains.*
 
-**Thyromathie** *· gr. thyra (la porte) + mathêsis · pur grec*
+**Thyromathie** *· gr. thýra (la porte) + mathêsis · pur grec (thyro- évoque la thyroïde, de θυρεός ; ici thýra, la porte)*
 Le savoir qui ne s'acquiert qu'en franchissant le seuil de l'école pour entrer dans le monde.
 > *Nul ne sort instruit s'il n'a d'abord passé la porte.*
 
@@ -180,7 +180,7 @@ La faculté de voir à travers l'image, de percer la surface fabriquée jusqu'à
 L'image synthétique façonnée pour tromper l'œil — le *deepfake*, nommé sans l'emprunt anglais.
 > *Un pseudoplaste ne se dénonce pas tout seul : c'est au regard formé de le trahir.*
 
-**Eidocrisie** *· gr. eidôlon (image) + krisis (discernement) · pur grec*
+**Eidocrisie** *· gr. eidos (l'image, l'aspect) + krisis (discernement) · pur grec*
 L'art de juger une image : distinguer le donné du fabriqué, le témoin du montage.
 > *L'eidocrisie n'est pas la méfiance — c'est savoir, calmement, où l'image a été pliée.*
 
@@ -190,7 +190,7 @@ L'état d'un visuel construit pour paraître vrai sans l'être — la fausse év
 
 ### Ⅶ · LES SEUILS (12-22) — devenir adulte par le rite
 
-**Limantie** *· lat. limen (seuil) + -antie (état) · métis°*
+**Liminantie** *· lat. limen, thème limin- (seuil) + -antia (état) · pur latin*
 L'état juridiquement et rituellement protégé de qui se tient sur le seuil, ni enfant ni adulte.
 > *Entre douze et vingt-deux ans, l'entre-deux est un droit, pas une faute.*
 
@@ -212,7 +212,7 @@ Devenir adulte par le rite et non par l'âge seul : l'initiation qui ratifie la 
 
 ### Ⅷ · LA MYCOLOGIE (15-25) — la croissance souterraine et lente
 
-**Mycéline** *· gr. mukês (champignon) + -inê (collectif) · pur grec*
+**Mycéline** *· gr. mukês (champignon) + -inê (suffixe nominal) · pur grec (quasi-homophone de myéline, à distinguer)*
 La cellule de base : un groupe de 4 à 7 personnes liées en réseau souterrain sur 5 à 10 ans.
 > *Sa mycéline s'est formée à seize ans et tient toujours, douze ans plus tard.*
 
@@ -220,13 +220,13 @@ La cellule de base : un groupe de 4 à 7 personnes liées en réseau souterrain 
 Le lien filamentaire lent qui relie deux membres d'une mycéline, tissé par contact répété.
 > *La synhyphe a mis trois ans à devenir solide — on ne la force pas.*
 
-**Synoptie** *· gr. syn + opsis (regard mutuel) · pur grec*
+**Synoptie** *· gr. syn (ensemble) + opsis (la vue) · pur grec (écho à synopsis ; ici le regard porté ensemble, dans la durée)*
 L'observation mutuelle longue où chacun voit grandir l'autre, sur des années.
 > *La synoptie remplace l'évaluation : personne ne te note, on te regarde durer.*
 
-**Hypogénie** *· gr. hupo (sous) + génesis (croissance) · pur grec*
+**Hypauxie** *· gr. hupó (sous) + aúxê (croissance) · pur grec*
 La croissance souterraine et invisible d'une mycéline, qui mûrit hors de tout regard.
-> *Rien ne se voyait dehors, mais l'hypogénie travaillait.*
+> *Rien ne se voyait dehors, mais l'hypauxie travaillait.*
 
 **Bradymathie** *· gr. bradus (lent) + mathêsis · pur grec*
 L'apprentissage lent par réseau filamentaire, qui se mesure en années et refuse l'accélération.
@@ -250,7 +250,7 @@ L'acte de faire **vivre** une trace plutôt que de l'effacer : la raviver et la 
 La souveraineté de chacun sur les atomes de sa propre archive, grain par grain.
 > *Nul ne range tes atomes à ta place.*
 
-**Domémoire** *· lat. domus (maison) + memoria · métis°*
+**Domémoire** *· lat. domus (maison) + memoria · pur latin*
 La mémoire de soi conçue comme demeure vivante qu'on habite et lègue, non comme entrepôt mort.
 > *Il entrait dans sa domémoire chaque soir comme on rentre chez soi.*
 
@@ -286,7 +286,7 @@ L'acte rituel de se choisir trois parents non-humains — un lieu, un être, une
 Le fait d'être nourri et élevé conjointement par du non-humain, à parité avec l'humain.
 > *On grandit en syntrophie avec la forêt autant qu'avec sa mère.*
 
-**Exsanguinité** *· lat. ex (hors de) + sanguis (sang) · pur latin*
+**Exsanguinité** *· lat. ex (hors de) + sanguis (sang) · pur latin (à distinguer d'exsangue, vidé de son sang)*
 Le lien de parenté reconnu valide **hors du sang** (calque inverse de consanguinité).
 > *L'exsanguinité fait du vieux mur un aïeul aussi réel qu'un grand-père.*
 
@@ -300,7 +300,7 @@ L'état d'être l'enfant d'un lieu, façonné et tenu par un territoire reconnu 
 
 ### Ⅻ · LE SEUIL DE LA BRISURE (9-∞) — intégrer la fracture avec dignité
 
-**Ulonose** *· gr. oulê (cicatrice) + nostos (le retour) · pur grec*
+**Ulonose** *· gr. oulê (cicatrice) + nostos (le retour) · pur grec (-nose ici = nóstos, le retour, non nósos, la maladie)*
 Le retour à la vie **par** la cicatrice elle-même : on ne revient pas malgré la blessure, on revient par elle.
 > *Sortir de l'hospice n'est pas guérir : c'est une ulonose, on rentre marqué et entier.*
 
@@ -308,15 +308,15 @@ Le retour à la vie **par** la cicatrice elle-même : on ne revient pas malgré 
 L'art de recoudre la fracture à l'or : réparer en rendant la blessure visible et honorée — le *kintsugi* en racine grecque.
 > *On souligne la fêlure, on ne la ponce pas.*
 
-**Traumagogue** *· gr. trauma (blessure) + agôgos (qui guide) · pur grec*
+**Traumatagogue** *· gr. trauma, thème traumat- (blessure) + agôgos (qui guide) · pur grec*
 L'accompagnant formé par ses propres brisures, qui guide pour avoir lui-même traversé la fracture (*wounded healer*).
-> *Au seuil, ce n'est pas le savant qui parle mais le traumagogue, dont les cicatrices font autorité.*
+> *Au seuil, ce n'est pas le savant qui parle mais le traumatagogue, dont les cicatrices font autorité.*
 
 **Thanatoxénie** *· gr. thanatos (mort) + xenia (hospitalité) · pur grec*
 L'hospitalité faite à la mort : l'accueillir comme un hôte attendu, avec rite, au lieu de la nier.
 > *L'hospice dresse la table pour le mourant et pour ce qui vient.*
 
-**Intégrence** *· lat. integrare (rendre entier) + frangere (briser) · métis°*
+**Intégrence** *· lat. integrare (rendre entier) + frangere (briser) · pur latin*
 La faculté de rester un tout **en portant** la fracture : non l'intégrité préservée, mais l'entièreté reconstruite autour de la brisure.
 > *On ne sort pas indemne du seuil, on en sort dans l'intégrence — fêlé et pourtant pleinement un.*
 
