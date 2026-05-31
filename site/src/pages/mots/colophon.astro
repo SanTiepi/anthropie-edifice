@@ -28,10 +28,10 @@ const jsonld = {
   inLanguage: "fr",
   license: "https://creativecommons.org/publicdomain/zero/1.0/",
   about: { "@type": "DefinedTermSet", name: "Les mots — dictionnaire augmenté", url: "https://anthropie.org/mots/recueil/" },
-  creator: [{ "@type": "Person", name: "Robin" }, { "@type": "Person", name: "Claude" }],
+  creator: { "@type": "Organization", name: "Les mots", url: "https://anthropie.org/mots/" },
 };
 ---
-<MotsLayout title="Colophon" active="" wide={false} ogImage="https://anthropie.org/mots/og/p/colophon.png" jsonld={jsonld} desc="Colophon des « mots » : la méthode de forge, les sept lexiques, la licence CC0 et le dialogue Robin × Claude.">
+<MotsLayout title="Colophon" active="" wide={false} ogImage="https://anthropie.org/mots/og/p/colophon.png" jsonld={jsonld} desc="Colophon des « mots » : la méthode de forge, les sept lexiques, la licence CC0 et le dialogue humain × IA qui les a forgés.">
   <article class="colophon">
     <header class="read-head">
       <p class="kicker">Le livre</p>
@@ -57,7 +57,7 @@ const jsonld = {
     <p class="muted">Quatre de ces lexiques — l'humain, le numérique, l'agent, le vivant — forment un <a href={`${base}/mots/atlas/`}>atlas</a> : lus côte à côte, ils deviennent les colonnes d'une même question. Les <strong>{miroirKeys.size} miroirs</strong> qui les relient (diptyques, triptyques, antithèses, échos) se parcourent dans la <a href={`${base}/mots/constellation/`}>constellation</a>.</p>
 
     <h2>Le dialogue</h2>
-    <p>Ce livre est né d'un échange entre <strong>Robin Fragnière</strong> et <strong>Claude</strong>. Robin forge, oriente, tranche ; Claude propose, audite, bâtit. Plusieurs volets de la condition humaine ont été écrits par Robin lui-même ; l'essentiel a été éprouvé à deux. Aucun des deux seul n'aurait écrit ceci — d'où la signature : <em>by Robin&nbsp;&amp;&nbsp;Claude</em>. Le porteur vient après.</p>
+    <p>Ce livre est né d'un <strong>dialogue entre un humain et une intelligence artificielle</strong>. L'un forge, oriente, tranche ; l'autre propose, audite, bâtit. Plusieurs volets de la condition humaine ont été écrits à la main ; l'essentiel a été éprouvé à deux. Aucun des deux seul n'aurait écrit ceci. Le livre ne se signe d'aucun nom propre : il se tient sous le sien — <strong>Les mots</strong> — et le porteur vient après.</p>
 
     <h2>La licence</h2>
     <p>Tout est versé au <strong>domaine public</strong>, sous <a href="https://creativecommons.org/publicdomain/zero/1.0/">licence CC0 1.0</a>. Prends ces mots, déforme-les, réemploie-les, publie-les ailleurs sous ton nom si tu veux — sans demander, sans citer, sans payer. Un mot n'appartient à personne dès qu'il sert.</p>

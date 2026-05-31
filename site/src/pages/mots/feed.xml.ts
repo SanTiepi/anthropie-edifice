@@ -39,7 +39,7 @@ export const GET: APIRoute = () => {
     <title>Les mots — dictionnaire augmenté</title>
     <link>${SITE}/mots/</link>
     <atom:link href="${SITE}/mots/feed.xml" rel="self" type="application/rss+xml"/>
-    <description>${xml(`${(words as any[]).length} néologismes gréco-latins forgés de grec et de latin, en sept lexiques. by Robin & Claude. Domaine public CC0.`)}</description>
+    <description>${xml(`${(words as any[]).length} néologismes gréco-latins forgés de grec et de latin, en sept lexiques. Domaine public CC0.`)}</description>
     <language>fr</language>
 ${items}
   </channel>

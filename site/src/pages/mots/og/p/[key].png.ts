@@ -33,7 +33,7 @@ const PAGES: Record<string, Page> = {
   constellation: { color: GOLD, kicker: 'Le réseau', title: 'Constellation',
     sub: 'Les formes qui se répondent entre la condition humaine, la condition numérique et la condition d’un agent.' },
   colophon: { color: GOLD, kicker: 'Le livre', title: 'Colophon',
-    sub: 'La méthode, les sept lexiques, la licence CC0, et le dialogue Robin × Claude qui a forgé ces mots.' },
+    sub: 'La méthode, les sept lexiques, la licence CC0, et le dialogue humain × IA qui a forgé ces mots.' },
   humaine: { color: LEXC.humaine, kicker: 'Une lecture', title: 'La condition humaine',
     sub: `${lexCount('humaine')} mots — l'amour, la mort, le temps, la honte, l'intériorité.` },
   numerique: { color: LEXC.numerique, kicker: 'Une lecture', title: 'La condition numérique',
@@ -99,7 +99,7 @@ export const GET: APIRoute = ({ props }) => {
   ${subSvg}
   <rect x="92" y="524" width="1016" height="2" fill="#a9842b" opacity="0.4"/>
   <text x="92" y="566" font-family="Cardo" font-weight="700" font-size="29" fill="#2b2118">Les mots</text>
-  <text x="92" y="599" font-family="Cardo" font-weight="400" font-size="22" fill="#6f6048">dictionnaire augmenté · anthropie.org · by Robin &amp; Claude</text>
+  <text x="92" y="599" font-family="Cardo" font-weight="400" font-size="22" fill="#6f6048">anthropie.org/mots · mot forgé · racines grecques/latines · CC0</text>
 </svg>`;
 
   const png = new Resvg(svg, {

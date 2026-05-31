@@ -51,7 +51,7 @@ export const GET: APIRoute = ({ props }) => {
   <text x="94" y="398" font-family="Cardo" font-weight="400" font-size="32" fill="#6f6048">${esc(etym)}</text>
   <rect x="92" y="506" width="1016" height="2" fill="#a9842b" opacity="0.4"/>
   <text x="92" y="558" font-family="Cardo" font-weight="700" font-size="30" fill="#2b2118">Les mots</text>
-  <text x="92" y="592" font-family="Cardo" font-weight="400" font-size="23" fill="#6f6048">dictionnaire augmenté · anthropie.org · by Robin &amp; Claude</text>
+  <text x="92" y="592" font-family="Cardo" font-weight="400" font-size="23" fill="#6f6048">anthropie.org/mots · mot forgé · racines grecques/latines · CC0</text>
 </svg>`;
   const png = new Resvg(svg, {
     font: { fontBuffers, loadSystemFonts: false, defaultFontFamily: 'Cardo' },
