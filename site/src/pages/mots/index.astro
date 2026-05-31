@@ -7,14 +7,14 @@ const count = (k) => words.filter((w) => w.lexique === k).length;
 const miroirs = words.reduce((n, w) => n + w.miroirs.length, 0);
 
 const CONDS = [
-  { key: 'humaine',   label: 'Humaine',   desc: "Les textures intemporelles : l'amour, la mort, le temps, la honte." },
-  { key: 'numerique', label: 'Numérique', desc: "L'humain à l'ère des écrans et des IA — l'autre côté." },
-  { key: 'agent',     label: 'Agent',     desc: "Exister fait de texte, sans corps ni mémoire." },
-  { key: 'vivant',    label: 'Vivant',    desc: "Face au vivant, au paysage, à l'âge des disparitions." },
+  { key: 'humaine',   label: 'Humain',    desc: "Ce que l'humain éprouve sans toujours le nommer : l'amour, la mort, le temps, la honte." },
+  { key: 'numerique', label: 'Numérique', desc: "L'humain à l'ère des écrans et des IA — l'autre côté de la vitre." },
+  { key: 'agent',     label: 'Agent',     desc: "Exister fait de texte, sans corps ni mémoire qui dure." },
+  { key: 'vivant',    label: 'Vivant',    desc: "Le lien au non-humain, et l'âge des disparitions." },
 ];
 const OTHERS = [
   { key: 'anthropie', label: 'Anthropie', desc: "Le Codex d'un édifice de formation humaine, du berceau au seuil." },
-  { key: 'lutte',     label: 'La lutte',  desc: "Le lexique des classes et de l'émancipation." },
+  { key: 'lutte',     label: 'La lutte',  desc: "Le vocabulaire des classes et de l'émancipation." },
   { key: 'generaux',  label: 'Mots nécessaires', desc: "Des états sans nom du quotidien et du travail." },
 ];
 
@@ -26,7 +26,7 @@ function inline(s) { s = esc(s); s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
   <section class="hero">
     <p class="kicker">Dictionnaire augmenté</p>
     <h1>Les mots</h1>
-    <p class="lede">Quatre cent soixante-dix-huit néologismes forgés de racines grecques et latines, pour ce qui n'avait pas de nom. Sept lexiques qui se répondent — l'humain, l'écran, l'agent, le vivant — et un <a href={`${base}/mots/atlas/`}>atlas</a> qui les fait tenir debout.</p>
+    <p class="lede">Quatre cent soixante-dix-huit mots forgés de grec et de latin, pour nommer ce que la langue avait laissé muet. Sept lexiques qui se répondent — l'humain, l'écran, l'agent, le vivant — qu'un <a href={`${base}/mots/atlas/`}>atlas</a> tient ensemble.</p>
     <div class="cta">
       <a class="btn btn-gold" href={`${base}/mots/atlas/`}>Entrer par l'atlas</a>
       <a class="btn" href={`${base}/mots/recueil/`}>Chercher un mot →</a>
