@@ -50,10 +50,10 @@ function norm(s) { return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase
         </div>
         <p class="etym" set:html={inline(w.etym)}></p>
         <p class="corps" set:html={inline(w.corps)}></p>
-        {w.miroirs.length > 0 && (
+        {w.miroirs.filter((m) => m.slug !== w.slug).length > 0 && (
           <div class="miroirs">
             <span class="mlabel">↔&nbsp;</span>
-            {w.miroirs.map((m) => (
+            {w.miroirs.filter((m) => m.slug !== w.slug).map((m) => (
               <a class="miroir" style={`--mlex: var(--lex-${m.lexique})`} href={`${base}/mots/m/${m.slug}/`} title={`${m.type}${m.forme ? ' — ' + m.forme : ''}`}>
                 <span class="dot"></span>{m.mot}
               </a>
