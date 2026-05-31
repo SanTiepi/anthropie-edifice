@@ -44,7 +44,7 @@ La Couche 12 est la couche-recours, accessible à tout moment de 9 ans à l'infi
 
 ### Chercheurs de référence cités
 
-Richard Tedeschi & Lawrence Calhoun (UNC Charlotte, *Posttraumatic Growth* 1995 fondateurs), Brené Brown (Houston, shame resilience), Carl Jung (1875-1961, *The Wounded Healer*), Cicely Saunders (St Christopher's, hospice movement), Frank Ostaseski (Zen Hospice Project), Marsha Linehan (Univ. Washington, DBT), Paul Gilbert (Derby UK, CFT), Richard Schwartz (IFS), Bessel van der Kolk (*The Body Keeps the Score*), Stephen Porges (Polyvagal Theory), Allen Frances (chair DSM-IV, critique DSM-5), Kristin Neff & Christopher Germer (self-compassion), Tara Brach (RAIN), Pema Chödrön (*When Things Fall Apart*), Bonanno George (*The Other Side of Sadness* — resilience normal vs grief pathological), Joanna Macy (*Active Hope*).
+Richard Tedeschi & Lawrence Calhoun (UNC Charlotte, *Posttraumatic Growth* 1995 fondateurs), Brené Brown (Houston, shame resilience), Carl Jung (1875-1961, *The Wounded Healer*), Cicely Saunders (St Christopher's, hospice movement), Frank Ostaseski (Zen Hospice Project), Marsha Linehan (Univ. Washington, DBT), Paul Gilbert (Derby UK, CFT), Richard Schwartz (IFS), Bessel van der Kolk (*The Body Keeps the Score*), Stephen Porges (Polyvagal Theory — contestée 2026), Allen Frances (chair DSM-IV, critique DSM-5), Kristin Neff & Christopher Germer (self-compassion), Tara Brach (RAIN), Pema Chödrön (*When Things Fall Apart*), Bonanno George (*The Other Side of Sadness* — resilience normal vs grief pathological), Joanna Macy (*Active Hope*).
 
 ---
 
@@ -76,7 +76,7 @@ Espace dédié dans chaque cité (au minimum 1 Hospice / 50 000 habitants pays-p
 **Droit fondamental :** Droit de toute personne accueillie en Hospice à un Compagnon-de-Brisure formé, distinct du psychothérapeute, dédié à l'accompagnement présentiel de la traversée.
 **Compagnon-de-Brisure (CdB)** : formation 400 heures (la plus longue de l'écosystème Anthropie) :
 - *Présence et écoute* (100h) : extension des 7 gestes Couche 2 + 7 gestes Couche 8 *Présence Sans Solution*
-- *Compréhension du trauma et résilience* (80h) : Tedeschi PTG, van der Kolk, Porges polyvagal, Gilbert CFT, Schwartz IFS
+- *Compréhension du trauma et résilience* (80h) : Tedeschi PTG, van der Kolk, Gilbert CFT, Schwartz IFS *(Porges polyvagal retiré — contestée 2026)*
 - *Pratique Kintsugi* (40h) : matérielle (pottery repair) + métaphorique
 - *Articulation santé mentale* (60h) : reconnaissance signaux psychiatriques, protocole orientation, collaboration cliniciens
 - *Wounded Healer expérience personnelle* (60h pratique réflexive) : avoir traversé sa propre brisure, intégration éthique
@@ -373,7 +373,7 @@ La brisure accompagnée est l'évidence. 30%+ population a fréquenté Hospice. 
 - Gilbert P., *Compassion-Focused Therapy*, 2009.
 - Schwartz R., *Internal Family Systems Therapy*, 2020 (3rd ed.).
 - van der Kolk B., *The Body Keeps the Score*, 2014.
-- Porges S., *The Polyvagal Theory*, 2011.
+- Porges S., *The Polyvagal Theory*, 2011. *(théorie contestée 2026, Clin. Neuropsychiatry)*
 - Frances A., *Saving Normal*, 2013 (critique DSM-5).
 - Bonanno G., *The Other Side of Sadness*, 2009.
 - Neff K. & Germer C., *The Mindful Self-Compassion Workbook*, 2018.
@@ -396,4 +396,4 @@ La brisure accompagnée est l'évidence. 30%+ population a fréquenté Hospice. 
 - Recovery Cafe Network.
 
 ### Penseurs cités
-Tedeschi R., Calhoun L., Brown B., Jung C.G., Saunders C., Ostaseski F., Linehan M., Gilbert P., Schwartz R., van der Kolk B., Porges S., Frances A., Bonanno G., Neff K., Germer C., Brach T., Pema Chödrön, Joanna Macy, Anne Lamott, Stephen Levine.
+Tedeschi R., Calhoun L., Brown B., Jung C.G., Saunders C., Ostaseski F., Linehan M., Gilbert P., Schwartz R., van der Kolk B., Porges S. (Polyvagal contestée 2026), Frances A., Bonanno G., Neff K., Germer C., Brach T., Pema Chödrön, Joanna Macy, Anne Lamott, Stephen Levine.

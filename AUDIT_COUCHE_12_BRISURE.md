@@ -10,7 +10,7 @@ CC0 1.0 Universal. Audit doctrinal méta. Compatible avec [`EVIDENCE_MAP.md`](pr
 
 ## Synthèse en une page
 
-La Couche XII est **architecturalement bicouche** : ses **fondations théoriques sont fortes** (PTG Tedeschi-Calhoun 1995, shame resilience Brené Brown 12 ans / 1280 participants, Wounded Healer Jung 1951, AA 90 ans, hospice movement Cicely Saunders 1967, critique DSM-5 par Frances chair DSM-IV, Polyvagal Porges, IFS Schwartz, CFT Gilbert, DBT Linehan), mais son **application opérationnelle est entièrement nouvelle** : Hospices des Brisures non-terminales, formation Compagnon-de-Brisure 400h (la plus longue de l'écosystème), article 31duodecies, infrastructure 100 000 unités d'ici 2055. Sur les 7 strates : **3 strates avec fondation 🟢 A** (Hospices modèle Saunders / Wounded Healer Jung+AA / Anti-Pathologisation critique DSM consensus partiel), mais **0 application déployée** — toute l'infrastructure reste 🔴 D pure.
+La Couche XII est **architecturalement bicouche** : ses **fondations théoriques sont fortes** (PTG Tedeschi-Calhoun 1995, shame resilience Brené Brown 12 ans / 1280 participants, Wounded Healer Jung 1951, AA 90 ans, hospice movement Cicely Saunders 1967, critique DSM-5 par Frances chair DSM-IV, IFS Schwartz, CFT Gilbert, DBT Linehan ; *Polyvagal Porges retiré des fondations « fortes » — contestée 2026*), mais son **application opérationnelle est entièrement nouvelle** : Hospices des Brisures non-terminales, formation Compagnon-de-Brisure 400h (la plus longue de l'écosystème), article 31duodecies, infrastructure 100 000 unités d'ici 2055. Sur les 7 strates : **3 strates avec fondation 🟢 A** (Hospices modèle Saunders / Wounded Healer Jung+AA / Anti-Pathologisation critique DSM consensus partiel), mais **0 application déployée** — toute l'infrastructure reste 🔴 D pure.
 
 **Diagnostic « couche-recours » (mandat spécifique)** : XII **ne ferme pas l'arc d'Anthropie**. Quatre angles morts structurels :
 
@@ -41,7 +41,7 @@ La Couche XII est **architecturalement bicouche** : ses **fondations théoriques
 
 - **Promesse** : formation 400h — la plus longue de l'écosystème Anthropie — combinant présence (100h) / trauma & résilience (80h) / Kintsugi (40h) / articulation santé mentale (60h) / Wounded Healer expérience personnelle (60h pratique réflexive) / cadre juridique (20h) / stage tutoré (40h). Profil 35-70 ans avec brisure majeure intégrée.
 - **Preuve** : 🟢 **Niveau A** sur l'archétype Wounded Healer (Jung 1951, validé empiriquement par AA Twelfth Step Work 90 ans). 🔴 **Niveau D pur** sur le cursus 400h spécifique — jamais déployé.
-- **Provenance** : Carl Jung (*The Wounded Healer* 1951) ; AA *Twelfth Step Work* (1935→) ; cliniciens cités (van der Kolk, Porges, Linehan, Gilbert, Schwartz) ; hospice movement (Saunders, Ostaseski).
+- **Provenance** : Carl Jung (*The Wounded Healer* 1951) ; AA *Twelfth Step Work* (1935→) ; cliniciens cités (van der Kolk, Linehan, Gilbert, Schwartz ; *Porges/Polyvagal contestée 2026*) ; hospice movement (Saunders, Ostaseski).
 - **Trou identifié** :
   1. **Cursus 400h non testé**. La couche promet 200 000 CdB mondialement d'ici 2065 → cascade ≥ 5 000/an dès 2035. Trajectoire de cascade non chiffrée.
   2. **Confusion CdB / psychothérapeute / coach / guide spirituel** signalée §C culturels — le cadrage *« passeur de seuils »* est postulé mais mal différencié en pratique.

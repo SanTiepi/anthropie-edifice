@@ -32,7 +32,7 @@ Les cinq inventions civilisationnelles de l'édifice : Discipline de Prédiction
 | L'allomaternage est la norme historique de l'humanité (cooperative breeding) | 1 | Sarah Hrdy, *Mothers and Others*, Harvard 2009 | anthropologie comparative consensuelle |
 | Le ratio adulte/enfant 1:3 ou 1:4 est nécessaire pour attachement sécure 0-2 ans | 1 | NICHD Study of Early Child Care USA ; OECD Starting Strong V 2017 | cohortes longitudinales convergentes |
 | L'exposition écran 0-2 ans diminue les vocalisations adulte-enfant et le développement lexical | 1 | JAMA Pediatrics 2024 Madigan et al. ; Frontiers Dev. Psychol. 2024 | méta-analyse récente |
-| La régulation neurobiologique du nourrisson dépend de la co-régulation avec adulte régulé | 1 | Stephen Porges, Polyvagal Theory UNC 1995-2024 ; Allan Schore UCLA | théorie validée empiriquement |
+| La régulation neurobiologique du nourrisson dépend de la co-régulation avec adulte régulé | 1 | Edward Tronick (*Still Face*) ; Allan Schore UCLA | claim validé empiriquement — la *théorie polyvagale* (Porges) n'en est plus la source porteuse : contestée 2026 (Clin. Neuropsychiatry), niveau C |
 | Le constructionnisme (Papert) produit apprentissage durable supérieur à la pédagogie transmissive | 3 | Seymour Papert MIT 1980-2000 ; Bret Victor 2010-2020 ; multiples études STEM | replication large |
 | L'art forum boalien produit délibération inclusive efficace | 4 | Augusto Boal *Théâtre de l'Opprimé* 1974 ; Catherine Wallis Lüneberg 2025 | 50 ans de pratique mondiale |
 | Les communautés autochtones ont des cadres pédagogiques 0-∞ documentés | 11 | Te Whāriki Hall 2025 ; Anishinaabe pédagogie de la terre Battiste 2013 ; *8 Ways* Aboriginal Yunkaporta 2009 | corpus académique consolidé |
@@ -93,7 +93,7 @@ Cf. [`ANTHROPIE_KERNEL.md` §Cinq inventions propres](noyau/) pour exposé déta
 
 | Invention | Fondement (à quel niveau) | Test possible à 5 ans |
 |---|---|---|
-| Discipline de Prédiction-Avant-Vocal (Couche 4) | Hypothèse contre LLM-flattening — base théorique solide (Polyvagal, métacognition Flavell), mécanisme inédit | Étude qualitative cohorte 100-500 ados 12-15 ans en milieu scolaire 2 ans |
+| Discipline de Prédiction-Avant-Vocal (Couche 4) | Hypothèse contre LLM-flattening — base théorique : métacognition Flavell (*Polyvagal contestée 2026 → base réduite, fragilisation assumée d'un dispositif D*), mécanisme inédit | Étude qualitative cohorte 100-500 ados 12-15 ans en milieu scolaire 2 ans |
 | Anti-Anthropomorphisme Discipliné (Couche 11) | Synthèse Kimmerer + Te Awa Tupua + critique Latour. Aucun précédent intégré | Co-design Maori/Anishinaabe + pratique observée 5 ans |
 | Liminalité Protégée juridique (Couche 7) | Synthèse Turner *liminality* + opt-out scolaires existants (homeschooling US/CH/FR). Innovation : statut civil | Test pilote Norvège ou Québec sur cohorte 50-200 ados 3 ans |
 | Anti-Pathologisation Civilisationnelle (Couche 12) | Critique Foucault + DSM. Pas de cadre juridique précédent | Test pilote Costa Rica ou Bhoutan sur Hospices 2-3 unités |

@@ -37,7 +37,7 @@ La Couche 8 prend en charge la fenêtre 15-25 ans — fenêtre d'**emerging adul
 
 ### Chercheurs de référence cités
 
-Loris Malaguzzi (Reggio), Carla Rinaldi (Reggio Children, *In Dialogue with Reggio Emilia*), Loris Manfredi & atelieristas Reggio, Shari Tishman (Project Zero), Kurt Lewin (T-Groups, MIT), Carl Rogers (encounter groups, Univ. Wisconsin/Chicago), Bessel van der Kolk (*The Body Keeps the Score*, Boston), Stephen Porges (Polyvagal Theory, UNC), Daniel Siegel (UCLA, *Mindsight*), Peter Levine (Somatic Experiencing), Bruce Perry (Neurosequential Model), Sherry Turkle (*Reclaiming Conversation*), Margaret Wheatley (*Turning to One Another*), Otto Scharmer (MIT, Theory U).
+Loris Malaguzzi (Reggio), Carla Rinaldi (Reggio Children, *In Dialogue with Reggio Emilia*), Loris Manfredi & atelieristas Reggio, Shari Tishman (Project Zero), Kurt Lewin (T-Groups, MIT), Carl Rogers (encounter groups, Univ. Wisconsin/Chicago), Bessel van der Kolk (*The Body Keeps the Score*, Boston), Stephen Porges (Polyvagal Theory, UNC — contestée 2026), Daniel Siegel (UCLA, *Mindsight*), Peter Levine (Somatic Experiencing), Bruce Perry (Neurosequential Model), Sherry Turkle (*Reclaiming Conversation*), Margaret Wheatley (*Turning to One Another*), Otto Scharmer (MIT, Theory U).
 
 ---
 
@@ -330,7 +330,7 @@ La cellule mycéliale est l'évidence civique de l'emerging adulthood. 60-80% de
 - *Embodied witnessing essential in treatment of survivors*, PubMed 31723219.
 - *My Bad, You Got This: witnessing, therapist attitude*, Frontiers Psychol. 2025.
 - *Utilization of Presence Awareness in Trauma Therapy*, MDPI 2024.
-- van der Kolk B., *The Body Keeps the Score*, 2014 ; Porges S., *The Polyvagal Theory*, 2011 ; Siegel D., *Mindsight*, 2010.
+- van der Kolk B., *The Body Keeps the Score*, 2014 ; Porges S., *The Polyvagal Theory*, 2011 *(contestée 2026)* ; Siegel D., *Mindsight*, 2010.
 
 ### Reggio observation transposée
 - Tishman S., *Slow Looking*, Routledge 2017 ; *Look, Listen, Interpret, Teach* Project Zero Harvard.
@@ -351,4 +351,4 @@ La cellule mycéliale est l'évidence civique de l'emerging adulthood. 60-80% de
 - *A Comprehensive Survey of Brain–Computer Interface Technology in Health care*, PMC 12180781 2025.
 
 ### Penseurs cités
-Malaguzzi L., Rinaldi C., Tishman S., Lewin K. (T-Groups), Rogers C., van der Kolk B., Porges S., Siegel D., Levine P., Perry B., Turkle S., Wheatley M., Scharmer O. (Theory U), Sherry Turkle (*Reclaiming Conversation*), Margaret Wheatley (*Turning to One Another*).
+Malaguzzi L., Rinaldi C., Tishman S., Lewin K. (T-Groups), Rogers C., van der Kolk B., Porges S. (Polyvagal contestée 2026), Siegel D., Levine P., Perry B., Turkle S., Wheatley M., Scharmer O. (Theory U), Sherry Turkle (*Reclaiming Conversation*), Margaret Wheatley (*Turning to One Another*).

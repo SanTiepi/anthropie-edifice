@@ -118,7 +118,7 @@ Anthropie articule avec frameworks externes par sa charpente :
 - **Forum Theatre Boal** (1973→) → Couche IV Strate 5
 
 ### 4.3 Frameworks scientifiques mobilisés
-- **Polyvagal Theory Porges** → Couches I, XII
+- **Polyvagal Theory Porges** *(contestée 2026, Clin. Neuropsychiatry ; co-régulation conservée via Tronick/Schore)* → Couches I, XII
 - **Continuing Bonds Klass et al. 1996** → Couche X
 - **Posttraumatic Growth Tedeschi-Calhoun 1995** → Couche XII
 - **Slow Looking Tishman / Project Zero** → Couches VI, VIII

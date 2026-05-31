@@ -59,7 +59,7 @@ Certaines sources sont **utilisables sous conditions** mais souvent abusivement 
 
 - **Travaux de Daniel Goleman sur l'intelligence émotionnelle** : pop-psychology synthétisant des courants académiques. Citer le travail de John Mayer / Peter Salovey en source primaire, pas Goleman comme tel.
 - **Maria Montessori (corpus historique)** : doctrine d'origine 1907-1952 ; ce qui est mobilisable est l'observation directe et certains principes pédagogiques, pas la cosmologie initiale ni les attributions miraculeuses ultérieures.
-- **Travaux de Daniel Siegel sur "the developing mind"** : utiles comme synthèse mais à citer en source secondaire ; les sources primaires sont Schore, Stern, Tronick, Porges.
+- **Travaux de Daniel Siegel sur "the developing mind"** : utiles comme synthèse mais à citer en source secondaire ; les sources primaires sont Schore, Stern, Tronick. *(Porges/Polyvagal : ne plus citer comme primaire — théorie contestée 2026, Clin. Neuropsychiatry.)*
 - **Études de cas IDG (Inner Development Goals)** : utilisables pour cadrer la question, pas comme preuve empirique tant que le cadre n'a pas accumulé de validation longitudinale.
 - **Travaux de Marshall Rosenberg sur la CNV** : utiles dans certains contextes (Couche 4 *Cercles de Voix*), mais à utiliser **avec prudence** — la CNV mal pratiquée produit des effets pervers documentés (cf. débat 2018-2024).
 
