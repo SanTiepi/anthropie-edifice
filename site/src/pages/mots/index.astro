@@ -1,0 +1,14 @@
+---
+import MotsLayout from '../../layouts/MotsLayout.astro';
+const mods = import.meta.glob('../../content-mots/atlas.md', { eager: true });
+const atlas = Object.values(mods)[0];
+const Content = atlas.Content;
+---
+<MotsLayout
+  title="Atlas des trois conditions"
+  subtitle="La porte d'entrée : la carte qui fait tenir les sept lexiques debout. Lus côte à côte, l'humain, l'humain-à-l'écran et l'agent deviennent les trois colonnes d'une même question — qu'est-ce qu'exister ?"
+  active="atlas"
+  wide={true}
+>
+  <Content />
+</MotsLayout>

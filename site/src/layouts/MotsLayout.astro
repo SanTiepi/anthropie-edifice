@@ -1,0 +1,145 @@
+---
+const { title, subtitle, active = '', wide = false } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const gh = "https://github.com/SanTiepi/anthropie-edifice/blob/master";
+const nav = [
+  { key: 'atlas',     href: `${base}/mots/`,            label: 'Atlas' },
+  { key: 'humaine',   href: `${base}/mots/humaine/`,    label: 'Humaine' },
+  { key: 'numerique', href: `${base}/mots/numerique/`,  label: 'Numérique' },
+  { key: 'agent',     href: `${base}/mots/agent/`,      label: 'Agent' },
+  { key: 'vivant',    href: `${base}/mots/vivant/`,     label: 'Vivant' },
+  { key: 'recueil',   href: `${base}/mots/recueil/`,    label: 'Recueil' },
+];
+---
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={`${title} — Les mots, un dialogue Robin Fragnière × Claude. Domaine public CC0.`} />
+    <meta name="theme-color" content="#4a6741" />
+    <meta name="author" content="Robin Fragnière × Claude" />
+    <meta name="dcterms.rights" content="CC0 1.0 Universal — Public Domain Dedication" />
+    <meta property="og:title" content={`${title} — Les mots`} />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:image" content="https://anthropie.org/og-image.svg" />
+    <title>{title} — Les mots · L'Anthropie</title>
+    <style>
+      :root {
+        --text: #1a1a1a; --muted: #5a5a5a; --bg: #fdfdfb; --bg-alt: #f4f2ec;
+        --accent: #4a6741; --accent-dark: #3a5631; --border: #e2dfd6;
+        --max: 760px; --max-wide: 1080px;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Hoefler Text', Georgia, serif;
+        font-size: 17px; line-height: 1.65; color: var(--text);
+        background-color: var(--bg); margin: 0; padding: 0;
+      }
+      .skip-link { position: absolute; left: -9999px; top: 0; background: var(--accent); color: var(--bg); padding: 0.5rem 1rem; z-index: 100; }
+      .skip-link:focus { left: 0.5rem; top: 0.5rem; }
+      :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      .topnav {
+        border-bottom: 1px solid var(--border); padding: 0.9rem 1.5rem;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 0.85rem;
+        display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.6rem; align-items: baseline;
+        color: var(--muted);
+      }
+      .topnav a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(74,103,65,0.3); }
+      .topnav a:hover { border-bottom-color: var(--accent); }
+      .topnav .left { display: flex; gap: 1rem; flex-wrap: wrap; }
+      /* section sub-nav */
+      .subnav {
+        border-bottom: 1px solid var(--border); padding: 0.55rem 1.5rem;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 0.82rem;
+        display: flex; gap: 1.1rem; flex-wrap: wrap; background: var(--bg-alt);
+      }
+      .subnav a { color: var(--muted); text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 1px; }
+      .subnav a:hover { color: var(--accent); }
+      .subnav a.active { color: var(--accent-dark); border-bottom-color: var(--accent); font-weight: 600; }
+      /* section header */
+      .mots-header { max-width: var(--max); margin: 0 auto; padding: 3rem 1.5rem 1.5rem; text-align: center; }
+      .mots-header .kicker {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 0.75rem;
+        text-transform: uppercase; letter-spacing: 0.22em; color: var(--accent); margin: 0 0 0.8rem;
+      }
+      .mots-header h1 { font-size: 2.3rem; font-weight: 400; letter-spacing: 0.01em; margin: 0 0 0.8rem; }
+      .mots-header .subtitle { color: var(--muted); font-style: italic; font-size: 1.08rem; max-width: 38rem; margin: 0 auto; }
+      main { max-width: var(--max); margin: 0 auto; padding: 1.5rem 1.5rem 4rem; }
+      main.wide { max-width: var(--max-wide); }
+      main h1 { font-size: 2rem; font-weight: 400; margin: 0 0 1.4rem; }
+      main h2 {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 0.95rem; font-weight: 600;
+        text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent);
+        margin: 2.6rem 0 1rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--border);
+      }
+      main h3 { font-size: 1.2rem; font-weight: 500; margin: 1.6rem 0 0.6rem; }
+      main p { margin: 0.8em 0; }
+      main a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(74,103,65,0.3); }
+      main a:hover { border-bottom-color: var(--accent); }
+      main strong { font-weight: 600; }
+      main em { color: var(--muted); }
+      main blockquote { border-left: 3px solid var(--accent); padding: 0.2rem 0 0.2rem 1.2rem; margin: 1.4rem 0; color: var(--muted); font-style: italic; }
+      main code { font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: 0.9em; background: var(--bg-alt); padding: 0.05em 0.35em; border-radius: 3px; }
+      main table { width: 100%; border-collapse: collapse; margin: 1.3rem 0; font-size: 0.92rem; }
+      main th, main td { border-bottom: 1px solid var(--border); padding: 0.5rem 0.5rem; text-align: left; vertical-align: top; }
+      main th { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 0.74rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+      main hr { border: none; border-top: 1px solid var(--border); margin: 2.2rem 0; }
+      /* lexicon entry */
+      .facette { margin: 2.6rem 0 0.4rem; }
+      .facette h2 { border-bottom: 1px solid var(--border); }
+      .lex-entry { margin: 1.6rem 0; scroll-margin-top: 5rem; }
+      .lex-entry .lemma { font-size: 1.32rem; font-weight: 600; margin: 0 0 0.15rem; letter-spacing: 0.01em; }
+      .lex-entry .lemma a { color: var(--text); border: none; }
+      .lex-entry .lemma a:hover { color: var(--accent); }
+      .lex-entry .lemma a::before { content: '§'; color: var(--border); font-size: 0.8rem; margin-right: 0.45rem; vertical-align: 0.08em; transition: color 0.15s; }
+      .lex-entry .lemma a:hover::before { color: var(--accent); }
+      .lex-entry .etym { font-style: italic; color: var(--accent-dark); font-size: 0.96rem; margin: 0 0 0.4rem; }
+      .lex-entry .etym code, .lex-entry .corps code { background: none; padding: 0; font-style: normal; color: var(--accent-dark); }
+      .lex-entry .corps { margin: 0; }
+      footer {
+        border-top: 1px solid var(--border); padding: 2.2rem 1.5rem; text-align: center;
+        color: var(--muted); font-size: 0.86rem; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      }
+      footer a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(74,103,65,0.3); }
+      footer .dialogue { font-style: italic; margin-top: 0.4rem; }
+      @media (max-width: 600px) {
+        body { font-size: 16px; }
+        main { padding: 1.2rem 1rem 3rem; }
+        .mots-header { padding: 2rem 1rem 1rem; } .mots-header h1 { font-size: 1.8rem; }
+        .topnav, .subnav { padding-left: 1rem; padding-right: 1rem; }
+      }
+      @media print { .topnav, .subnav, footer { border: none; } main { max-width: none; } body { font-size: 11pt; } }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Aller au contenu</a>
+    <nav class="topnav" aria-label="Navigation site">
+      <div class="left">
+        <a href={`${base}/`}>← anthropie.org</a>
+        <a href={`${base}/mots/`}>Les mots</a>
+      </div>
+      <div class="right"><em>un dialogue Robin × Claude</em></div>
+    </nav>
+    <nav class="subnav" aria-label="Sections des mots">
+      {nav.map((n) => (
+        <a href={n.href} class={active === n.key ? 'active' : ''} aria-current={active === n.key ? 'page' : undefined}>{n.label}</a>
+      ))}
+    </nav>
+    <header class="mots-header">
+      <p class="kicker">Les mots forgés</p>
+      <h1>{title}</h1>
+      {subtitle && <p class="subtitle" set:html={subtitle}></p>}
+    </header>
+    <main id="main" class={wide ? 'wide' : ''}>
+      <slot />
+    </main>
+    <footer>
+      <p>478 néologismes gréco-latins · sept lexiques · <a href={`${gh}/LEXIQUE.md`}>domaine public CC0</a></p>
+      <p class="dialogue">Un dialogue entre Robin Fragnière et Claude (Anthropic). Le porteur vient après.</p>
+    </footer>
+  </body>
+</html>

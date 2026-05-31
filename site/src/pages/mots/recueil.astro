@@ -1,0 +1,108 @@
+---
+import MotsLayout from '../../layouts/MotsLayout.astro';
+import words from '../../data/mots.json';
+
+const LEX = [
+  { key: 'humaine',   label: 'Humaine' },
+  { key: 'numerique', label: 'Numérique' },
+  { key: 'agent',     label: 'Agent' },
+  { key: 'vivant',    label: 'Vivant' },
+  { key: 'anthropie', label: 'Anthropie' },
+  { key: 'lutte',     label: 'Lutte' },
+  { key: 'generaux',  label: 'Généraux' },
+];
+
+function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+function inline(s) {
+  s = esc(s);
+  s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
+  s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  s = s.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+  return s;
+}
+function norm(s) { return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+---
+<MotsLayout
+  title="Le recueil"
+  subtitle="Les 478 mots, cherchables — par le mot, une racine grecque, ou l'expérience qu'il nomme."
+  active="recueil"
+  wide={true}
+>
+  <div class="search-bar">
+    <input id="q" type="search" placeholder="Chercher un mot, une racine, une expérience…" autocomplete="off" aria-label="Chercher" />
+    <div class="filters" role="group" aria-label="Filtrer par lexique">
+      <button class="chip active" data-lex="">Tous <span class="n">{words.length}</span></button>
+      {LEX.map((l) => (
+        <button class="chip" data-lex={l.key}>{l.label} <span class="n">{words.filter((w) => w.lexique === l.key).length}</span></button>
+      ))}
+    </div>
+    <p class="result-count" id="count" aria-live="polite"></p>
+  </div>
+
+  <div id="list">
+    {words.map((w) => (
+      <article class="lex-entry r-entry" id={w.slug} data-lex={w.lexique} data-search={norm(w.mot + ' ' + w.etym + ' ' + w.corps + ' ' + w.facette)}>
+        <p class="lemma"><a href={`#${w.slug}`}>{w.mot}</a> <span class={`lex-tag lt-${w.lexique}`}>{w.lexique_label}</span></p>
+        <p class="etym" set:html={inline(w.etym)}></p>
+        <p class="corps" set:html={inline(w.corps)}></p>
+      </article>
+    ))}
+  </div>
+  <p id="empty" class="empty" hidden>Aucun mot ne correspond.</p>
+
+  <style>
+    .search-bar { position: sticky; top: 0; z-index: 10; background: var(--bg); padding: 1rem 0 0.8rem; border-bottom: 1px solid var(--border); margin-bottom: 1.5rem; }
+    #q { width: 100%; font-family: inherit; font-size: 1.05rem; padding: 0.6rem 0.8rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg); color: var(--text); }
+    #q:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+    .filters { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.7rem; }
+    .chip { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 0.78rem; padding: 0.25rem 0.6rem; border: 1px solid var(--border); border-radius: 999px; background: var(--bg); color: var(--muted); cursor: pointer; }
+    .chip:hover { border-color: var(--accent); color: var(--accent); }
+    .chip.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+    .chip .n { opacity: 0.6; font-variant-numeric: tabular-nums; }
+    .result-count { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 0.78rem; color: var(--muted); margin: 0.6rem 0 0; min-height: 1em; }
+    #list { columns: 2; column-gap: 2.6rem; }
+    .r-entry { break-inside: avoid; margin: 0 0 1.7rem; }
+    .lex-tag { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.09em; vertical-align: 0.18em; padding: 0.08rem 0.4rem; border-radius: 2px; border: 1px solid var(--border); color: var(--muted); font-weight: 600; white-space: nowrap; }
+    .lt-agent { color: #3a5631; border-color: #4a6741; }
+    .lt-numerique { color: #5a6b8c; border-color: #8c9ab8; }
+    .lt-humaine { color: #8c5a3a; border-color: #b8865a; }
+    .lt-vivant { color: #4a7a4a; border-color: #6ba36b; }
+    .lt-anthropie { color: #6b4a8c; border-color: #9a7ab8; }
+    .empty { text-align: center; color: var(--muted); font-style: italic; padding: 2rem; }
+    @media (max-width: 720px) { #list { columns: 1; } }
+  </style>
+
+  <script is:inline>
+    (function () {
+      const q = document.getElementById('q');
+      const entries = Array.from(document.querySelectorAll('.r-entry'));
+      const chips = Array.from(document.querySelectorAll('.chip'));
+      const countEl = document.getElementById('count');
+      const empty = document.getElementById('empty');
+      let lex = '';
+      const norm = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+      function apply() {
+        const term = norm(q.value.trim());
+        let n = 0;
+        for (const e of entries) {
+          const okLex = !lex || e.dataset.lex === lex;
+          const okTerm = !term || e.dataset.search.indexOf(term) !== -1;
+          const show = okLex && okTerm;
+          e.style.display = show ? '' : 'none';
+          if (show) n++;
+        }
+        countEl.textContent = term || lex ? n + (n === 1 ? ' mot' : ' mots') : '';
+        empty.hidden = n !== 0;
+      }
+      q.addEventListener('input', apply);
+      chips.forEach((c) => c.addEventListener('click', () => {
+        chips.forEach((x) => x.classList.remove('active'));
+        c.classList.add('active');
+        lex = c.dataset.lex;
+        apply();
+      }));
+      // deep-link to a word: open with #slug highlights via :target (native)
+      apply();
+    })();
+  </script>
+</MotsLayout>
