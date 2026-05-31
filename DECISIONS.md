@@ -250,6 +250,20 @@ CC0 1.0 Universal. Chaque ADR est immutable une fois mergé — corrections via 
   1. Si une **urgence éthique grave** survient (ex. usage abusif documenté nécessitant une réponse doctrinale formalisée — cf. SAFETY §9), un nouveau dispositif peut être créé en urgence avec mention explicite de la dérogation et justification *post hoc* sous 72h.
   2. Sinon, le moratoire tient strictement.
 
+### Clarification 2026-05-31 — trois registres (« gel de projection, pas gel de réfutation »)
+
+ADR-0014 gèle « tout nouveau dispositif » mais ne disait rien de la *diffusion*. On distingue donc trois registres :
+
+1. **Production doctrinale** — *gelée* (inchangé) : tout nouveau dispositif / toolkit / couche / format / rituel.
+2. **Projection publique forte** — *gelée ciblément, jusqu'aux corrections noyau* : Custom GPT public « Compagnon Anthropie » (`ROADMAP`), dépôt UNESCO/BIE, pitch médias, conférences en posture **promotionnelle**, outreach des 25 porteurs en mode **recrutement / diffusion forte**.
+3. **Exposition critique** — *autorisée et encouragée* : recherche/veille, audit adverse (`HOSTILE_DRILL`), échanges avec spécialistes/juristes/scientifiques, invitation explicite à la critique, discussions cadrées comme **relecture critique**, maintien du **repo/site existants**.
+
+**Formule de clarification : « gel de projection, pas gel de réfutation. »**
+
+**Critère de dégel (minimal) de la projection publique forte** — les trois ensemble : (a) Polyvagal corrigé/rétrogradé (A→C) ; (b) note développementale transversale ajoutée ou validée en draft prêt à insérer ; (c) la présente clause publiée.
+
+**Raison** : garder le projet vivant et attaquable sans faire croître son autorité publique pendant que le noyau doit être corrigé. (Conforme à « ne jamais faire mentir l'outil » : le mot « moratoire » cesse d'être ambigu.)
+
 ---
 
 ## Modèle pour ajouter une nouvelle ADR
