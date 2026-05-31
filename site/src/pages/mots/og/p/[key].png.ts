@@ -32,6 +32,8 @@ const PAGES: Record<string, Page> = {
     sub: "Tous les mots d'un seul tenant : par le mot, par une racine grecque, ou par l'expérience qu'il nomme." },
   constellation: { color: GOLD, kicker: 'Le réseau', title: 'Constellation',
     sub: 'Les formes qui se répondent entre la condition humaine, la condition numérique et la condition d’un agent.' },
+  colophon: { color: GOLD, kicker: 'Le livre', title: 'Colophon',
+    sub: 'La méthode, les sept lexiques, la licence CC0, et le dialogue Robin × Claude qui a forgé ces mots.' },
   humaine: { color: LEXC.humaine, kicker: 'Une lecture', title: 'La condition humaine',
     sub: `${lexCount('humaine')} mots — l'amour, la mort, le temps, la honte, l'intériorité.` },
   numerique: { color: LEXC.numerique, kicker: 'Une lecture', title: 'La condition numérique',

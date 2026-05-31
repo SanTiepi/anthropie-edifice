@@ -1,0 +1,16 @@
+{
+  "name": "Les mots — dictionnaire augmenté",
+  "short_name": "Les mots",
+  "description": "Quatre cent septante-huit néologismes gréco-latins forgés de grec et de latin, pour nommer ce que la langue laissait muet.",
+  "lang": "fr",
+  "start_url": "/mots/",
+  "scope": "/mots/",
+  "display": "standalone",
+  "background_color": "#f4ead4",
+  "theme_color": "#2b2118",
+  "icons": [
+    { "src": "/mots-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/mots-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/mots-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

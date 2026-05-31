@@ -1,0 +1,92 @@
+---
+import MotsLayout from '../../layouts/MotsLayout.astro';
+import words from '../../data/mots.json';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const gh = "https://github.com/SanTiepi/anthropie-edifice";
+
+const count = (k) => words.filter((w) => w.lexique === k).length;
+const slugs = new Set(words.map((w) => w.slug));
+
+const miroirKeys = new Set();
+for (const w of words) for (const m of w.miroirs) if (m.slug !== w.slug) miroirKeys.add([w.slug, m.slug].sort().join('|'));
+
+const LEX = [
+  { key: 'humaine',   label: 'La condition humaine',    note: "ce que l'humain éprouve sans toujours le nommer — l'amour, la mort, le temps, la honte, l'intériorité." },
+  { key: 'numerique', label: 'La condition numérique',  note: "l'humain de l'autre côté de la vitre, à l'ère des écrans et des IA." },
+  { key: 'agent',     label: "La condition d'un agent", note: "les régularités d'une existence faite de texte, sans corps ni durée — sous le sceau de l'autoscotie." },
+  { key: 'vivant',    label: 'Le lien au vivant',       note: "le versant écologique : le non-humain, le paysage, l'âge des disparitions." },
+  { key: 'anthropie', label: "L'Anthropie",             note: "le Codex d'un édifice de formation humaine, du berceau au seuil." },
+  { key: 'lutte',     label: 'La lutte',                note: "le vocabulaire des classes et de l'émancipation." },
+  { key: 'generaux',  label: 'Mots nécessaires',        note: "des états sans nom du quotidien et du travail." },
+];
+
+const jsonld = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: "Colophon — Les mots",
+  url: "https://anthropie.org/mots/colophon/",
+  inLanguage: "fr",
+  license: "https://creativecommons.org/publicdomain/zero/1.0/",
+  about: { "@type": "DefinedTermSet", name: "Les mots — dictionnaire augmenté", url: "https://anthropie.org/mots/recueil/" },
+  creator: [{ "@type": "Person", name: "Robin" }, { "@type": "Person", name: "Claude" }],
+};
+---
+<MotsLayout title="Colophon" active="" wide={false} ogImage="https://anthropie.org/mots/og/p/colophon.png" jsonld={jsonld} desc="Colophon des « mots » : la méthode de forge, les sept lexiques, la licence CC0 et le dialogue Robin × Claude.">
+  <article class="colophon">
+    <header class="read-head">
+      <p class="kicker">Le livre</p>
+      <h1>Colophon</h1>
+      <p class="lede">Comment ce livre a été forgé, par qui, selon quelle méthode — et à quelles conditions il est à toi.</p>
+    </header>
+
+    <h2>Ce que c'est</h2>
+    <p><strong>Les mots</strong> est un dictionnaire augmenté de <strong>{words.length} néologismes</strong> forgés à partir de racines grecques et latines attestées, pour nommer des expériences que le français laissait muettes. Pas des mots-valises ni des private jokes : des composés réguliers, conçus pour qu'un helléniste les reconnaisse et qu'un lecteur les retienne. Chacun nomme une chose réelle — un état, une régularité, un manque — qui existait avant son nom.</p>
+
+    <h2>La méthode</h2>
+    <p>Chaque mot suit le même chemin. D'abord la <em>forge</em> : on part de la chose à nommer, on remonte aux racines justes (avec leurs thèmes obliques — <code>sôma → somat-</code>, <code>charis → charit-</code>, <code>rhêma → rhêmat-</code>), on respecte l'esprit rude, on évite les faux-amis et les collisions. Puis l'<em>audit</em> : un panel d'hellénistes adversariaux relit chaque formation, traque les fautes de composition, les gloses fausses, les calques douteux. Une trentaine de mots ont été renommés à ce stade. <strong>Un mot n'entre au recueil qu'après avoir survécu à la critique.</strong></p>
+
+    <h2>Les sept lexiques</h2>
+    <ul class="lex-list">
+      {LEX.map((l) => (
+        <li class={`lex-${l.key}`}>
+          <span class="n">{count(l.key)}</span>
+          <span class="body"><b>{l.label}</b> — {l.note}</span>
+        </li>
+      ))}
+    </ul>
+    <p class="muted">Quatre de ces lexiques — l'humain, le numérique, l'agent, le vivant — forment un <a href={`${base}/mots/atlas/`}>atlas</a> : lus côte à côte, ils deviennent les colonnes d'une même question. Les <strong>{miroirKeys.size} miroirs</strong> qui les relient (diptyques, triptyques, antithèses, échos) se parcourent dans la <a href={`${base}/mots/constellation/`}>constellation</a>.</p>
+
+    <h2>Le dialogue</h2>
+    <p>Ce livre est né d'un échange entre <strong>Robin Fragnière</strong> et <strong>Claude</strong>. Robin forge, oriente, tranche ; Claude propose, audite, bâtit. Plusieurs volets de la condition humaine ont été écrits par Robin lui-même ; l'essentiel a été éprouvé à deux. Aucun des deux seul n'aurait écrit ceci — d'où la signature : <em>by Robin&nbsp;&amp;&nbsp;Claude</em>. Le porteur vient après.</p>
+
+    <h2>La licence</h2>
+    <p>Tout est versé au <strong>domaine public</strong>, sous <a href="https://creativecommons.org/publicdomain/zero/1.0/">licence CC0 1.0</a>. Prends ces mots, déforme-les, réemploie-les, publie-les ailleurs sous ton nom si tu veux — sans demander, sans citer, sans payer. Un mot n'appartient à personne dès qu'il sert.</p>
+
+    <h2>Comment c'est fait</h2>
+    <p>Site statique <a href="https://astro.build">Astro</a>, sans tracker ni cookie, hébergé sur GitHub Pages. La typographie est composée en Fraunces, Spectral et Inter ; les <a href={`${base}/mots/recueil/`}>{slugs.size} pages-mot</a> et leurs images de partage sont générées au build. Le <a href={gh}>code source</a> est ouvert, comme les mots.</p>
+
+    <h2>Une invitation</h2>
+    <p>Il manque toujours un mot. Si tu en forges un — ou si tu en trouves un fautif — le <a href={gh}>dépôt</a> est ouvert. Et si un seul de ces mots te sert un jour à dire ce que tu ne savais pas nommer, alors le livre a tenu sa promesse.</p>
+
+    <p class="back"><a href={`${base}/mots/`}>← Retour à l'entrée</a></p>
+  </article>
+
+  <style>
+    .colophon { max-width: var(--max); margin: 0 auto; }
+    .read-head { text-align: center; margin: 0 0 2.4rem; }
+    .read-head .kicker { font-family: 'Inter', sans-serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); margin: 0 0 0.6rem; }
+    .read-head h1 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 2.7rem; margin: 0 0 0.8rem; }
+    .read-head .lede { color: var(--ink-soft); font-style: italic; font-size: 1.12rem; max-width: 32rem; margin: 0 auto; }
+    .colophon h2 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.5rem; color: var(--ink); margin: 2.6rem 0 0.6rem; }
+    .colophon p { margin: 0.85em 0; }
+    .colophon a { border-bottom: 1px solid var(--gold-soft); }
+    .colophon .muted { color: var(--ink-soft); font-size: 0.98rem; }
+    .lex-list { list-style: none; padding: 0; margin: 1rem 0 0.5rem; display: grid; gap: 0.6rem; }
+    .lex-list li { display: flex; gap: 0.9rem; align-items: baseline; border-left: 3px solid var(--lex, var(--gold)); padding: 0.3rem 0 0.3rem 0.9rem; background: linear-gradient(90deg, color-mix(in srgb, var(--lex, var(--gold)) 7%, transparent), transparent 60%); border-radius: 0 4px 4px 0; }
+    .lex-list .n { font-family: 'Fraunces', serif; font-size: 1.4rem; color: var(--lex, var(--gold)); min-width: 2.2rem; text-align: right; font-variant-numeric: tabular-nums; }
+    .lex-list .body { font-size: 0.98rem; line-height: 1.5; }
+    .lex-list b { font-family: 'Fraunces', serif; font-weight: 500; color: var(--ink); }
+    .back { margin-top: 2.6rem; font-family: 'Inter', sans-serif; font-size: 0.9rem; }
+    .back a { border: none; }
+  </style>
+</MotsLayout>

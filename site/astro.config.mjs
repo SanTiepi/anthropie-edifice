@@ -10,8 +10,8 @@ export default defineConfig({
 	site: 'https://anthropie.org',
 	integrations: [
 		sitemap({
-			// Les endpoints d'images OG (/mots/og/*.png) ne sont pas des pages à indexer.
-			filter: (page) => !page.includes('/mots/og/'),
+			// Les endpoints non-HTML (images OG, flux RSS) ne sont pas des pages à indexer.
+			filter: (page) => !page.includes('/mots/og/') && !page.endsWith('/feed.xml'),
 		}),
 	],
 });

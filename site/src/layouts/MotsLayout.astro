@@ -21,6 +21,9 @@ const nav = [
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+    <link rel="alternate" type="application/rss+xml" title="Les mots — le recueil en flux" href={`${base}/mots/feed.xml`} />
+    <link rel="manifest" href={`${base}/mots.webmanifest`} />
+    <link rel="apple-touch-icon" href={`${base}/mots-icon-192.png`} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={desc || `${title} — Les mots, dictionnaire augmenté. by Robin & Claude. CC0.`} />
@@ -212,7 +215,7 @@ const nav = [
       <slot />
     </main>
     <footer>
-      <p>478 néologismes gréco-latins · sept lexiques · <a href="https://creativecommons.org/publicdomain/zero/1.0/">domaine public CC0</a> · <a href={`${gh}/LEXIQUE.md`}>source</a></p>
+      <p>478 néologismes gréco-latins · sept lexiques · <a href={`${base}/mots/colophon/`}>colophon</a> · <a href={`${base}/mots/feed.xml`}>flux RSS</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/">domaine public CC0</a> · <a href={`${gh}/LEXIQUE.md`}>source</a></p>
       <p class="dialogue">by Robin &amp; Claude — le porteur vient après.</p>
     </footer>
     <script>

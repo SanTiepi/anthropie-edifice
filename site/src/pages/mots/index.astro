@@ -80,6 +80,10 @@ const jsonld = {
         <p class="corps" id="mdj-corps" set:html={inline(teaser(star.corps))}></p>
         <p class="more"><a id="mdj-more" href={`${base}/mots/m/${star.slug}/`}>→ lire le mot</a></p>
       </article>
+      <div class="mdj-prev" id="mdj-prev" hidden>
+        <p class="cap">Les jours précédents</p>
+        <nav class="mdj-archive" id="mdj-archive" aria-label="Mots des jours précédents"></nav>
+      </div>
       <script type="application/json" id="daily-data" data-base={base} is:inline set:html={dailyJson}></script>
       <script is:inline>
         (function () {
@@ -88,11 +92,12 @@ const jsonld = {
           var data; try { data = JSON.parse(el.textContent); } catch (e) { return; }
           if (!data || !data.length) return;
           var BASE = el.getAttribute('data-base') || '';
+          function hash(key) { var h = 2166136261; for (var i = 0; i < key.length; i++) { h ^= key.charCodeAt(i); h = (h * 16777619) >>> 0; } return h; }
+          function keyOf(dt) { return dt.getFullYear() + '-' + (dt.getMonth() + 1) + '-' + dt.getDate(); }
+          function wordFor(dt) { return data[hash(keyOf(dt)) % data.length]; }
           var now = new Date();
-          var key = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
-          var h = 2166136261;
-          for (var i = 0; i < key.length; i++) { h ^= key.charCodeAt(i); h = (h * 16777619) >>> 0; }
-          var w = data[h % data.length];
+          var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+          var w = wordFor(today);
           var art = document.getElementById('mot-du-jour');
           if (art) art.style.setProperty('--lex', 'var(--lex-' + w.l + ')');
           var url = BASE + '/mots/m/' + w.s + '/';
@@ -103,6 +108,23 @@ const jsonld = {
           var lt = document.getElementById('mdj-lextag'); if (lt) lt.textContent = w.ll;
           var et = document.getElementById('mdj-etym'); if (et) et.textContent = w.e;
           var co = document.getElementById('mdj-corps'); if (co) co.textContent = w.c;
+          // archive : les jours précédents (même date-hash, mêmes données déjà inlinées)
+          var arch = document.getElementById('mdj-archive');
+          if (arch) {
+            var MO = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juill.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];
+            var frag = '';
+            for (var d = 1; d <= 7; d++) {
+              // constructeur (pas de soustraction en ms) : normalise le passage de mois, immunisé DST
+              var dt = new Date(today.getFullYear(), today.getMonth(), today.getDate() - d);
+              var pw = wordFor(dt);
+              frag += '<a class="day lex-' + pw.l + '" href="' + BASE + '/mots/m/' + pw.s + '/">' +
+                '<span class="dd">' + dt.getDate() + ' ' + MO[dt.getMonth()] + '</span>' +
+                '<span class="dm">' + pw.m + '</span></a>';
+            }
+            arch.innerHTML = frag;
+            var prev = document.getElementById('mdj-prev');
+            if (prev) prev.hidden = false;
+          }
         })();
       </script>
     </section>
@@ -155,6 +177,13 @@ const jsonld = {
     .mdj-card .lemma { font-size: 1.95rem; }
     .mdj-card .more { margin: 0.9rem 0 0; font-family: 'Inter', sans-serif; font-size: 0.82rem; }
     .mdj-card .more a { border-bottom: 1px solid var(--gold-soft); }
+    .mdj-prev { margin-top: 1.2rem; }
+    .mdj-prev .cap { font-family: 'Inter', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink-soft); margin: 0 0 0.55rem; }
+    .mdj-archive { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .mdj-archive .day { display: inline-flex; flex-direction: column; gap: 0.02rem; padding: 0.4rem 0.7rem; border: 1px solid var(--rule); border-left: 3px solid var(--lex, var(--gold)); border-radius: 4px; background: var(--card); color: var(--ink); transition: transform .15s, box-shadow .15s, border-color .2s; }
+    .mdj-archive .day:hover { transform: translateY(-2px); box-shadow: 0 6px 16px var(--shadow); }
+    .mdj-archive .day .dd { font-family: 'Inter', sans-serif; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-soft); }
+    .mdj-archive .day .dm { font-family: 'Fraunces', serif; font-size: 1rem; color: var(--lex, var(--ink)); }
     @keyframes riseIn { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
     .hero .kicker { animation: riseIn .7s .05s both; }
     .hero h1 { animation: riseIn .9s .12s both; }
