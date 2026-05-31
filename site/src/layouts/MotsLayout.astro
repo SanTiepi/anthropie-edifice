@@ -1,9 +1,9 @@
 ---
-const { title, subtitle, active = '', wide = false } = Astro.props;
+const { title, active = '', wide = false, home = false } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const gh = "https://github.com/SanTiepi/anthropie-edifice/blob/master";
 const nav = [
-  { key: 'atlas',     href: `${base}/mots/`,            label: 'Atlas' },
+  { key: 'atlas',     href: `${base}/mots/atlas/`,      label: 'Atlas' },
   { key: 'humaine',   href: `${base}/mots/humaine/`,    label: 'Humaine' },
   { key: 'numerique', href: `${base}/mots/numerique/`,  label: 'Numérique' },
   { key: 'agent',     href: `${base}/mots/agent/`,      label: 'Agent' },
@@ -17,8 +17,8 @@ const nav = [
     <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={`${title} — Les mots, un dialogue Robin Fragnière × Claude. Domaine public CC0.`} />
-    <meta name="theme-color" content="#4a6741" />
+    <meta name="description" content={`${title} — Les mots, dictionnaire augmenté. Un dialogue Robin Fragnière × Claude. CC0.`} />
+    <meta name="theme-color" content="#2b2118" />
     <meta name="author" content="Robin Fragnière × Claude" />
     <meta name="dcterms.rights" content="CC0 1.0 Universal — Public Domain Dedication" />
     <meta property="og:title" content={`${title} — Les mots`} />
@@ -26,120 +26,139 @@ const nav = [
     <meta property="og:locale" content="fr_FR" />
     <meta property="og:image" content="https://anthropie.org/og-image.svg" />
     <title>{title} — Les mots · L'Anthropie</title>
-    <style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style is:global>
       :root {
-        --text: #1a1a1a; --muted: #5a5a5a; --bg: #fdfdfb; --bg-alt: #f4f2ec;
-        --accent: #4a6741; --accent-dark: #3a5631; --border: #e2dfd6;
-        --max: 760px; --max-wide: 1080px;
+        --ink: #2b2118; --ink-soft: #6f6048; --vellum: #f4ead4; --vellum-2: #efe2c6;
+        --card: #fbf6e9; --card-2: #f7f0de; --gold: #a9842b; --gold-soft: #c6a652;
+        --rule: #e2d4b0; --rule-soft: #ece0c2; --shadow: rgba(70,52,20,0.12);
+        --lex-generaux: #b07d10; --lex-anthropie: #6a4c93; --lex-lutte: #9b2226;
+        --lex-agent: #2f4b7c; --lex-numerique: #1f7a73; --lex-humaine: #b0491f; --lex-vivant: #517f33;
+        --max: 720px; --max-wide: 1180px;
       }
       * { box-sizing: border-box; }
       html { scroll-behavior: smooth; }
       body {
-        font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Hoefler Text', Georgia, serif;
-        font-size: 17px; line-height: 1.65; color: var(--text);
-        background-color: var(--bg); margin: 0; padding: 0;
+        margin: 0; color: var(--ink);
+        font-family: 'Spectral', 'Iowan Old Style', Palatino, Georgia, serif;
+        font-size: 18px; line-height: 1.62;
+        background-color: var(--vellum);
+        background-image:
+          radial-gradient(1200px 600px at 80% -5%, rgba(201,166,82,0.10), transparent 60%),
+          radial-gradient(900px 500px at -5% 10%, rgba(106,76,147,0.05), transparent 55%);
+        background-attachment: fixed;
       }
-      .skip-link { position: absolute; left: -9999px; top: 0; background: var(--accent); color: var(--bg); padding: 0.5rem 1rem; z-index: 100; }
+      a { color: var(--gold); text-decoration: none; }
+      ::selection { background: rgba(169,132,43,0.25); }
+      :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+      .skip-link { position: absolute; left: -9999px; background: var(--ink); color: var(--vellum); padding: 0.5rem 1rem; z-index: 100; }
       .skip-link:focus { left: 0.5rem; top: 0.5rem; }
-      :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      .lex-generaux { --lex: var(--lex-generaux); } .lex-anthropie { --lex: var(--lex-anthropie); }
+      .lex-lutte { --lex: var(--lex-lutte); } .lex-agent { --lex: var(--lex-agent); }
+      .lex-numerique { --lex: var(--lex-numerique); } .lex-humaine { --lex: var(--lex-humaine); }
+      .lex-vivant { --lex: var(--lex-vivant); }
+
+      /* ── chrome ── */
+      .goldbar { height: 3px; background: linear-gradient(90deg, var(--gold-soft), var(--gold), var(--gold-soft)); }
       .topnav {
-        border-bottom: 1px solid var(--border); padding: 0.9rem 1.5rem;
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 0.85rem;
-        display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.6rem; align-items: baseline;
-        color: var(--muted);
+        max-width: var(--max-wide); margin: 0 auto; padding: 1.1rem 1.5rem 0.4rem;
+        display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem;
       }
-      .topnav a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(74,103,65,0.3); }
-      .topnav a:hover { border-bottom-color: var(--accent); }
-      .topnav .left { display: flex; gap: 1rem; flex-wrap: wrap; }
-      /* section sub-nav */
+      .brand { font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.35rem; color: var(--ink); letter-spacing: 0.01em; }
+      .brand:hover { color: var(--gold); }
+      .brand .amp { color: var(--gold); font-style: italic; }
+      .topnav .tagline { font-family: 'Inter', sans-serif; font-size: 0.74rem; letter-spacing: 0.04em; color: var(--ink-soft); font-style: italic; }
       .subnav {
-        border-bottom: 1px solid var(--border); padding: 0.55rem 1.5rem;
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 0.82rem;
-        display: flex; gap: 1.1rem; flex-wrap: wrap; background: var(--bg-alt);
+        max-width: var(--max-wide); margin: 0 auto; padding: 0.5rem 1.5rem 1rem;
+        display: flex; gap: 0.3rem; flex-wrap: wrap; font-family: 'Inter', sans-serif; font-size: 0.82rem;
+        border-bottom: 1px solid var(--rule);
       }
-      .subnav a { color: var(--muted); text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 1px; }
-      .subnav a:hover { color: var(--accent); }
-      .subnav a.active { color: var(--accent-dark); border-bottom-color: var(--accent); font-weight: 600; }
-      /* section header */
-      .mots-header { max-width: var(--max); margin: 0 auto; padding: 3rem 1.5rem 1.5rem; text-align: center; }
-      .mots-header .kicker {
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 0.75rem;
-        text-transform: uppercase; letter-spacing: 0.22em; color: var(--accent); margin: 0 0 0.8rem;
-      }
-      .mots-header h1 { font-size: 2.3rem; font-weight: 400; letter-spacing: 0.01em; margin: 0 0 0.8rem; }
-      .mots-header .subtitle { color: var(--muted); font-style: italic; font-size: 1.08rem; max-width: 38rem; margin: 0 auto; }
-      main { max-width: var(--max); margin: 0 auto; padding: 1.5rem 1.5rem 4rem; }
+      .subnav a { color: var(--ink-soft); padding: 0.28rem 0.7rem; border-radius: 999px; transition: all .15s; }
+      .subnav a:hover { color: var(--ink); background: var(--vellum-2); }
+      .subnav a.active { color: #fff; background: var(--ink); }
+      main { max-width: var(--max); margin: 0 auto; padding: 2.4rem 1.5rem 5rem; }
       main.wide { max-width: var(--max-wide); }
-      main h1 { font-size: 2rem; font-weight: 400; margin: 0 0 1.4rem; }
-      main h2 {
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 0.95rem; font-weight: 600;
-        text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent);
-        margin: 2.6rem 0 1rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--border);
-      }
-      main h3 { font-size: 1.2rem; font-weight: 500; margin: 1.6rem 0 0.6rem; }
-      main p { margin: 0.8em 0; }
-      main a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(74,103,65,0.3); }
-      main a:hover { border-bottom-color: var(--accent); }
+
+      /* ── prose (atlas MD render) ── */
+      main h1 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 2.4rem; letter-spacing: 0.01em; margin: 0 0 1rem; }
+      main h2 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.5rem; margin: 2.6rem 0 0.8rem; color: var(--ink); }
+      main h2 + p, main h3 + p { margin-top: 0.4rem; }
+      main h3 { font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.13em; color: var(--gold); margin: 2rem 0 0.6rem; }
+      main p { margin: 0.85em 0; }
       main strong { font-weight: 600; }
-      main em { color: var(--muted); }
-      main blockquote { border-left: 3px solid var(--accent); padding: 0.2rem 0 0.2rem 1.2rem; margin: 1.4rem 0; color: var(--muted); font-style: italic; }
-      main code { font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: 0.9em; background: var(--bg-alt); padding: 0.05em 0.35em; border-radius: 3px; }
-      main table { width: 100%; border-collapse: collapse; margin: 1.3rem 0; font-size: 0.92rem; }
-      main th, main td { border-bottom: 1px solid var(--border); padding: 0.5rem 0.5rem; text-align: left; vertical-align: top; }
-      main th { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 0.74rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
-      main hr { border: none; border-top: 1px solid var(--border); margin: 2.2rem 0; }
-      /* lexicon entry */
-      .facette { margin: 2.6rem 0 0.4rem; }
-      .facette h2 { border-bottom: 1px solid var(--border); }
-      .lex-entry { margin: 1.6rem 0; scroll-margin-top: 5rem; }
-      .lex-entry .lemma { font-size: 1.32rem; font-weight: 600; margin: 0 0 0.15rem; letter-spacing: 0.01em; }
-      .lex-entry .lemma a { color: var(--text); border: none; }
-      .lex-entry .lemma a:hover { color: var(--accent); }
-      .lex-entry .lemma a::before { content: '§'; color: var(--border); font-size: 0.8rem; margin-right: 0.45rem; vertical-align: 0.08em; transition: color 0.15s; }
-      .lex-entry .lemma a:hover::before { color: var(--accent); }
-      .lex-entry .etym { font-style: italic; color: var(--accent-dark); font-size: 0.96rem; margin: 0 0 0.4rem; }
-      .lex-entry .etym code, .lex-entry .corps code { background: none; padding: 0; font-style: normal; color: var(--accent-dark); }
-      .lex-entry .corps { margin: 0; }
-      footer {
-        border-top: 1px solid var(--border); padding: 2.2rem 1.5rem; text-align: center;
-        color: var(--muted); font-size: 0.86rem; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      main em { color: var(--ink-soft); font-style: italic; }
+      main blockquote { border-left: 2px solid var(--gold); padding: 0.1rem 0 0.1rem 1.2rem; margin: 1.3rem 0; color: var(--ink-soft); font-style: italic; }
+      main code { font-family: 'Fraunces', serif; font-style: italic; font-weight: 500; font-size: 1.02em; background: none; color: var(--ink); }
+      main hr { border: none; border-top: 1px solid var(--rule); margin: 2.6rem 0; }
+      main table { width: 100%; border-collapse: collapse; margin: 1.4rem 0; font-size: 0.92rem; background: var(--card); box-shadow: 0 1px 0 var(--shadow); }
+      main th, main td { border-bottom: 1px solid var(--rule); padding: 0.55rem 0.6rem; text-align: left; vertical-align: top; }
+      main thead th { font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); background: var(--card-2); }
+      main tbody td:first-child { color: var(--ink-soft); font-size: 0.9rem; }
+      main td code { font-style: normal; font-family: 'Fraunces', serif; font-weight: 500; }
+
+      /* ── entry card ── */
+      .entry { position: relative; background: var(--card); border: 1px solid var(--rule); border-left: 4px solid var(--lex, var(--gold));
+        border-radius: 3px; padding: 1.15rem 1.3rem 1.05rem; margin: 1.1rem 0; box-shadow: 0 1px 2px var(--shadow); scroll-margin-top: 5rem; transition: box-shadow .18s, transform .18s; }
+      .entry:hover { box-shadow: 0 6px 20px var(--shadow); }
+      .entry:target { box-shadow: 0 0 0 2px var(--lex, var(--gold)), 0 6px 20px var(--shadow); }
+      .entry-head { display: flex; align-items: baseline; justify-content: space-between; gap: 0.8rem; flex-wrap: wrap; }
+      .lemma { font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.7rem; line-height: 1.1; margin: 0; color: var(--lex, var(--ink)); letter-spacing: 0.005em; }
+      .lemma a { color: inherit; }
+      .lemma a:hover { color: var(--gold); }
+      .tags { display: flex; gap: 0.35rem; align-items: center; flex-shrink: 0; }
+      .langue, .lex-tag { font-family: 'Inter', sans-serif; font-size: 0.62rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.12rem 0.5rem; border-radius: 999px; white-space: nowrap; }
+      .langue { color: var(--ink-soft); border: 1px solid var(--rule); }
+      .lex-tag { color: #fff; background: var(--lex, var(--gold)); }
+      .etym { font-style: italic; color: var(--ink-soft); font-size: 0.98rem; margin: 0.28rem 0 0.55rem; }
+      .etym .lang { font-style: normal; font-family: 'Inter', sans-serif; font-size: 0.62rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gold); margin-right: 0.35rem; }
+      .corps { margin: 0; }
+      .corps code { font-family: 'Fraunces', serif; font-style: italic; font-weight: 500; }
+      .miroirs { margin: 0.8rem 0 0; padding-top: 0.6rem; border-top: 1px dotted var(--rule); font-family: 'Inter', sans-serif; font-size: 0.78rem; display: flex; flex-wrap: wrap; gap: 0.4rem 0.5rem; align-items: center; }
+      .miroirs .mlabel { color: var(--ink-soft); font-style: italic; font-family: 'Spectral', serif; }
+      .miroir { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.12rem 0.55rem; border-radius: 999px; border: 1px solid var(--rule); color: var(--ink); background: var(--vellum); }
+      .miroir:hover { border-color: var(--mlex, var(--gold)); background: var(--card-2); }
+      .miroir .dot { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--mlex, var(--gold)); }
+      .miroir .rel { color: var(--ink-soft); font-size: 0.68rem; }
+
+      /* ── facet section ── */
+      .facette { margin: 2.8rem 0 0.6rem; }
+      .facette > h2 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.35rem; color: var(--ink); margin: 0 0 0.2rem; display: flex; align-items: baseline; gap: 0.6rem; }
+      .facette > h2::before { content: ''; width: 1.6rem; height: 2px; background: var(--gold); display: inline-block; }
+
+      footer { border-top: 1px solid var(--rule); margin-top: 3rem; padding: 2.4rem 1.5rem; text-align: center; font-family: 'Inter', sans-serif; font-size: 0.82rem; color: var(--ink-soft); }
+      footer a { color: var(--gold); }
+      footer .dialogue { font-family: 'Spectral', serif; font-style: italic; margin-top: 0.4rem; font-size: 0.92rem; }
+
+      @media (max-width: 680px) {
+        body { font-size: 17px; }
+        main { padding: 1.6rem 1.1rem 3.5rem; }
+        .lemma { font-size: 1.45rem; }
+        main table { display: block; overflow-x: auto; }
+        main th, main td { min-width: 8rem; } main td:first-child { min-width: 13rem; }
       }
-      footer a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(74,103,65,0.3); }
-      footer .dialogue { font-style: italic; margin-top: 0.4rem; }
-      @media (max-width: 600px) {
-        body { font-size: 16px; }
-        main { padding: 1.2rem 1rem 3rem; }
-        .mots-header { padding: 2rem 1rem 1rem; } .mots-header h1 { font-size: 1.8rem; }
-        .topnav, .subnav { padding-left: 1rem; padding-right: 1rem; }
-      }
-      @media print { .topnav, .subnav, footer { border: none; } main { max-width: none; } body { font-size: 11pt; } }
+      @media print { .topnav, .subnav, footer, .goldbar { display: none; } main { max-width: none; } .entry { break-inside: avoid; box-shadow: none; } }
     </style>
   </head>
   <body>
     <a class="skip-link" href="#main">Aller au contenu</a>
-    <nav class="topnav" aria-label="Navigation site">
-      <div class="left">
-        <a href={`${base}/`}>← anthropie.org</a>
-        <a href={`${base}/mots/`}>Les mots</a>
-      </div>
-      <div class="right"><em>un dialogue Robin × Claude</em></div>
-    </nav>
-    <nav class="subnav" aria-label="Sections des mots">
+    <div class="goldbar"></div>
+    <div class="topnav">
+      <a class="brand" href={`${base}/mots/`}>Les mots</a>
+      <span class="tagline">un dialogue Robin <span class="amp">×</span> Claude</span>
+    </div>
+    <nav class="subnav" aria-label="Sections">
       {nav.map((n) => (
         <a href={n.href} class={active === n.key ? 'active' : ''} aria-current={active === n.key ? 'page' : undefined}>{n.label}</a>
       ))}
     </nav>
-    <header class="mots-header">
-      <p class="kicker">Les mots forgés</p>
-      <h1>{title}</h1>
-      {subtitle && <p class="subtitle" set:html={subtitle}></p>}
-    </header>
     <main id="main" class={wide ? 'wide' : ''}>
       <slot />
     </main>
     <footer>
-      <p>478 néologismes gréco-latins · sept lexiques · <a href={`${gh}/LEXIQUE.md`}>domaine public CC0</a></p>
-      <p class="dialogue">Un dialogue entre Robin Fragnière et Claude (Anthropic). Le porteur vient après.</p>
+      <p>478 néologismes gréco-latins · sept lexiques · <a href="https://creativecommons.org/publicdomain/zero/1.0/">domaine public CC0</a> · <a href={`${gh}/LEXIQUE.md`}>source</a></p>
+      <p class="dialogue">Forgés dans un dialogue entre Robin Fragnière et Claude. Le porteur vient après.</p>
     </footer>
   </body>
 </html>

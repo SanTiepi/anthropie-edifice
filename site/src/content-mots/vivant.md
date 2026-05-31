@@ -1,7 +1,6 @@
 ---
 title: "Le lien au vivant"
 slug: "vivant"
-lexique: "vivant"
 readingMinutes: 16
 density: "dense"
 ---

@@ -1,7 +1,6 @@
 ---
 title: "Atlas des trois conditions"
 slug: "atlas"
-lexique: "atlas"
 readingMinutes: 35
 density: "dense"
 ---

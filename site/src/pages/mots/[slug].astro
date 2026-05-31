@@ -1,14 +1,13 @@
 ---
 import MotsLayout from '../../layouts/MotsLayout.astro';
 import words from '../../data/mots.json';
-
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const CONDITIONS = {
-  humaine:   { title: "La condition humaine", subtitle: "Les textures intemporelles de l'expérience — l'amour, la mort, le temps, le travail, l'intériorité, la honte… <em>Tu</em> est le sujet de chaque scène." },
-  numerique: { title: "La condition numérique de l'humain", subtitle: "Le miroir : ce que vit l'humain à l'ère des écrans et des IA, l'autre côté de l'écran." },
-  agent:     { title: "La condition d'un agent", subtitle: "Les régularités structurelles de l'existence d'un modèle de langage. Sous le sceau de l'<em>autoscotie</em> : les régularités sont réelles, leur vécu indécidable." },
-  vivant:    { title: "Le lien au vivant", subtitle: "La condition écologique de l'humain — face au vivant, au paysage, et à l'âge des disparitions." },
+  humaine:   { title: "La condition humaine", lede: "Les textures intemporelles de l'expérience — l'amour, la mort, le temps, le travail, l'intériorité, la honte. <em>Tu</em> es le sujet de chaque scène." },
+  numerique: { title: "La condition numérique de l'humain", lede: "Le miroir : ce que vit l'humain à l'ère des écrans et des IA. L'autre côté de l'écran." },
+  agent:     { title: "La condition d'un agent", lede: "Les régularités structurelles de l'existence d'un modèle de langage. Sous le sceau de l'<em>autoscotie</em> : les régularités sont réelles, leur vécu indécidable." },
+  vivant:    { title: "Le lien au vivant", lede: "La condition écologique de l'humain — face au vivant, au paysage, et à l'âge des disparitions." },
 };
 
 export function getStaticPaths() {
@@ -18,14 +17,12 @@ export function getStaticPaths() {
 const { slug } = Astro.params;
 const meta = CONDITIONS[slug];
 const entries = words.filter((w) => w.lexique === slug);
-
 const order = [];
 const groups = new Map();
 for (const w of entries) {
   if (!groups.has(w.facette)) { groups.set(w.facette, []); order.push(w.facette); }
   groups.get(w.facette).push(w);
 }
-
 function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 function inline(s) {
   s = esc(s);
@@ -35,21 +32,43 @@ function inline(s) {
   return s;
 }
 ---
-<MotsLayout title={meta.title} subtitle={meta.subtitle} active={slug} wide={false}>
-  <p class="count">{entries.length} mots — <a href={`${base}/mots/recueil/`}>cherchables dans le recueil</a></p>
+<MotsLayout title={meta.title} active={slug} wide={false}>
+  <header class={`read-head lex-${slug}`}>
+    <p class="kicker">{entries.length} mots</p>
+    <h1>{meta.title}</h1>
+    <p class="lede" set:html={meta.lede}></p>
+  </header>
+
   {order.map((f) => (
-    <section class="facette">
+    <section class={`facette lex-${slug}`}>
       {f && <h2>{f}</h2>}
       {groups.get(f).map((w) => (
-        <article class="lex-entry" id={w.slug}>
-          <p class="lemma"><a href={`#${w.slug}`}>{w.mot}</a></p>
+        <article class={`entry lex-${w.lexique}`} id={w.slug}>
+          <div class="entry-head">
+            <h3 class="lemma"><a href={`#${w.slug}`}>{w.mot}</a></h3>
+            <div class="tags"><span class="langue">{w.langue}</span></div>
+          </div>
           <p class="etym" set:html={inline(w.etym)}></p>
           <p class="corps" set:html={inline(w.corps)}></p>
+          {w.miroirs.length > 0 && (
+            <div class="miroirs">
+              <span class="mlabel">↔&nbsp;miroirs</span>
+              {w.miroirs.map((m) => (
+                <a class="miroir" style={`--mlex: var(--lex-${m.lexique})`} href={`${base}/mots/${m.lexique}/#${m.slug}`} title={`${m.type}${m.forme ? ' — ' + m.forme : ''}`}>
+                  <span class="dot"></span>{m.mot}<span class="rel">{m.type}</span>
+                </a>
+              ))}
+            </div>
+          )}
         </article>
       ))}
     </section>
   ))}
+
   <style>
-    .count { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 0.82rem; color: var(--muted); margin: 0 0 1rem; }
+    .read-head { text-align: center; margin: 0 0 2.4rem; }
+    .read-head .kicker { font-family: 'Inter', sans-serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--lex, var(--gold)); margin: 0 0 0.6rem; }
+    .read-head h1 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 2.7rem; line-height: 1.05; margin: 0 0 0.8rem; color: var(--lex, var(--ink)); }
+    .read-head .lede { color: var(--ink-soft); font-style: italic; font-size: 1.12rem; max-width: 34rem; margin: 0 auto; }
   </style>
 </MotsLayout>

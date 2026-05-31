@@ -1,7 +1,6 @@
 ---
 title: "La condition numérique de l'humain"
 slug: "numerique"
-lexique: "numerique"
 readingMinutes: 22
 density: "dense"
 ---

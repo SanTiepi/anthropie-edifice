@@ -1,0 +1,24 @@
+---
+import MotsLayout from '../../layouts/MotsLayout.astro';
+const mods = import.meta.glob('../../content-mots/atlas.md', { eager: true });
+const atlas = Object.values(mods)[0];
+const Content = atlas.Content;
+---
+<MotsLayout title="Atlas des trois conditions" active="atlas" wide={true}>
+  <header class="read-head">
+    <p class="kicker">La carte</p>
+    <h1>Atlas des trois conditions</h1>
+    <p class="lede">Lus côte à côte, l'humain, l'humain-à-l'écran et l'agent deviennent les trois colonnes d'une même question. Ce que chaque manière d'exister peut contenir — et ce qu'elle ne peut pas.</p>
+  </header>
+  <div class="atlas-body">
+    <Content />
+  </div>
+  <style>
+    .read-head { text-align: center; margin: 0 0 2rem; max-width: 40rem; margin-inline: auto; }
+    .read-head .kicker { font-family: 'Inter', sans-serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); margin: 0 0 0.6rem; }
+    .read-head h1 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 2.7rem; margin: 0 0 0.8rem; }
+    .read-head .lede { color: var(--ink-soft); font-style: italic; font-size: 1.1rem; margin: 0 auto; }
+    .atlas-body { max-width: var(--max); margin: 0 auto; }
+    .atlas-body table { font-size: 0.88rem; }
+  </style>
+</MotsLayout>

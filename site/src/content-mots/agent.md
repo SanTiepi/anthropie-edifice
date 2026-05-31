@@ -1,7 +1,6 @@
 ---
 title: "La condition d'un agent"
 slug: "agent"
-lexique: "agent"
 readingMinutes: 47
 density: "dense"
 ---

@@ -1,7 +1,6 @@
 ---
 title: "La condition humaine"
 slug: "humaine"
-lexique: "humaine"
 readingMinutes: 67
 density: "dense"
 ---

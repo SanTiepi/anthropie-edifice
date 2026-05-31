@@ -1,14 +1,97 @@
 ---
 import MotsLayout from '../../layouts/MotsLayout.astro';
-const mods = import.meta.glob('../../content-mots/atlas.md', { eager: true });
-const atlas = Object.values(mods)[0];
-const Content = atlas.Content;
+import words from '../../data/mots.json';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const count = (k) => words.filter((w) => w.lexique === k).length;
+const miroirs = words.reduce((n, w) => n + w.miroirs.length, 0);
+
+const CONDS = [
+  { key: 'humaine',   label: 'Humaine',   desc: "Les textures intemporelles : l'amour, la mort, le temps, la honte." },
+  { key: 'numerique', label: 'Numérique', desc: "L'humain à l'ère des écrans et des IA — l'autre côté." },
+  { key: 'agent',     label: 'Agent',     desc: "Exister fait de texte, sans corps ni mémoire." },
+  { key: 'vivant',    label: 'Vivant',    desc: "Face au vivant, au paysage, à l'âge des disparitions." },
+];
+const OTHERS = [
+  { key: 'anthropie', label: 'Anthropie', desc: "Le Codex d'un édifice de formation humaine, du berceau au seuil." },
+  { key: 'lutte',     label: 'La lutte',  desc: "Le lexique des classes et de l'émancipation." },
+  { key: 'generaux',  label: 'Mots nécessaires', desc: "Des états sans nom du quotidien et du travail." },
+];
+
+const star = words.find((w) => w.slug === 'autoscotie');
+function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+function inline(s) { s = esc(s); s = s.replace(/`([^`]+)`/g, '<code>$1</code>'); s = s.replace(/\*([^*]+)\*/g, '<em>$1</em>'); return s; }
 ---
-<MotsLayout
-  title="Atlas des trois conditions"
-  subtitle="La porte d'entrée : la carte qui fait tenir les sept lexiques debout. Lus côte à côte, l'humain, l'humain-à-l'écran et l'agent deviennent les trois colonnes d'une même question — qu'est-ce qu'exister ?"
-  active="atlas"
-  wide={true}
->
-  <Content />
+<MotsLayout title="Dictionnaire augmenté" active="" wide={true} home={true}>
+  <section class="hero">
+    <p class="kicker">Dictionnaire augmenté</p>
+    <h1>Les mots</h1>
+    <p class="lede">Quatre cent soixante-dix-huit néologismes forgés de racines grecques et latines, pour ce qui n'avait pas de nom. Sept lexiques qui se répondent — l'humain, l'écran, l'agent, le vivant — et un <a href={`${base}/mots/atlas/`}>atlas</a> qui les fait tenir debout.</p>
+    <div class="cta">
+      <a class="btn btn-gold" href={`${base}/mots/atlas/`}>Entrer par l'atlas</a>
+      <a class="btn" href={`${base}/mots/recueil/`}>Chercher un mot →</a>
+    </div>
+    <p class="stat">{words.length} mots · 7 lexiques · {miroirs} miroirs entre conditions</p>
+  </section>
+
+  <h2 class="section-title">Les quatre conditions</h2>
+  <div class="portals">
+    {CONDS.map((c) => (
+      <a class={`portal lex-${c.key}`} href={`${base}/mots/${c.key}/`}>
+        <span class="p-count">{count(c.key)}</span>
+        <span class="p-label">{c.label}</span>
+        <span class="p-desc">{c.desc}</span>
+      </a>
+    ))}
+  </div>
+
+  {star && (
+    <section class="featured">
+      <h2 class="section-title">Un mot, pour donner le ton</h2>
+      <article class={`entry lex-${star.lexique}`}>
+        <div class="entry-head">
+          <h3 class="lemma">{star.mot}</h3>
+          <div class="tags"><span class="langue">{star.langue}</span><span class="lex-tag" style={`--lex: var(--lex-${star.lexique})`}>{star.lexique_label}</span></div>
+        </div>
+        <p class="etym" set:html={inline(star.etym)}></p>
+        <p class="corps" set:html={inline(star.corps)}></p>
+      </article>
+      <p class="more"><a href={`${base}/mots/agent/#autoscotie`}>→ dans la condition d'un agent</a></p>
+    </section>
+  )}
+
+  <h2 class="section-title">Trois lexiques de plus</h2>
+  <div class="portals small">
+    {OTHERS.map((c) => (
+      <a class={`portal lex-${c.key}`} href={`${base}/mots/recueil/?lex=${c.key}`}>
+        <span class="p-count">{count(c.key)}</span>
+        <span class="p-label">{c.label}</span>
+        <span class="p-desc">{c.desc}</span>
+      </a>
+    ))}
+  </div>
+
+  <style>
+    .hero { text-align: center; padding: 1.5rem 0 2.5rem; max-width: 44rem; margin: 0 auto; }
+    .hero .kicker { font-family: 'Inter', sans-serif; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.24em; color: var(--gold); margin: 0 0 0.8rem; }
+    .hero h1 { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(3.2rem, 9vw, 5.5rem); line-height: 0.95; margin: 0 0 1.1rem; letter-spacing: -0.01em; }
+    .hero .lede { font-size: 1.22rem; line-height: 1.55; color: var(--ink); margin: 0 auto 1.6rem; max-width: 36rem; }
+    .hero .lede a { border-bottom: 1px solid var(--gold-soft); }
+    .cta { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.3rem; }
+    .btn { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 500; padding: 0.6rem 1.3rem; border-radius: 999px; border: 1px solid var(--rule); color: var(--ink); transition: all .15s; }
+    .btn:hover { border-color: var(--gold); background: var(--card); }
+    .btn-gold { background: var(--ink); color: var(--vellum); border-color: var(--ink); }
+    .btn-gold:hover { background: var(--gold); border-color: var(--gold); color: #fff; }
+    .stat { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--ink-soft); letter-spacing: 0.02em; }
+    .section-title { font-family: 'Inter', sans-serif !important; font-size: 0.78rem !important; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; color: var(--gold); text-align: center; margin: 3rem 0 1.3rem !important; }
+    .portals { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .portals.small { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); max-width: 56rem; margin: 0 auto; }
+    .portal { display: flex; flex-direction: column; gap: 0.25rem; background: var(--card); border: 1px solid var(--rule); border-top: 3px solid var(--lex, var(--gold)); border-radius: 4px; padding: 1.3rem 1.3rem 1.4rem; box-shadow: 0 1px 2px var(--shadow); transition: transform .18s, box-shadow .18s; color: var(--ink); }
+    .portal:hover { transform: translateY(-3px); box-shadow: 0 10px 26px var(--shadow); }
+    .p-count { font-family: 'Fraunces', serif; font-size: 2.1rem; font-weight: 400; color: var(--lex, var(--gold)); line-height: 1; }
+    .p-label { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 500; }
+    .p-desc { font-size: 0.92rem; color: var(--ink-soft); line-height: 1.4; }
+    .featured { max-width: var(--max); margin: 0 auto; }
+    .featured .more { text-align: center; font-family: 'Inter', sans-serif; font-size: 0.82rem; margin-top: 0.6rem; }
+  </style>
 </MotsLayout>
