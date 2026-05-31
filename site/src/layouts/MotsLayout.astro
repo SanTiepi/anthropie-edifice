@@ -1,5 +1,5 @@
 ---
-const { title, active = '', wide = false, home = false, desc = '' } = Astro.props;
+const { title, active = '', wide = false, home = false, desc = '', ogImage = '' } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const gh = "https://github.com/SanTiepi/anthropie-edifice/blob/master";
 const nav = [
@@ -26,7 +26,9 @@ const nav = [
     <meta property="og:description" content={desc || "Dictionnaire augmenté — 478 mots forgés. by Robin & Claude."} />
     <meta property="og:type" content="article" />
     <meta property="og:locale" content="fr_FR" />
-    <meta property="og:image" content="https://anthropie.org/og-image.svg" />
+    <meta property="og:image" content={ogImage || "https://anthropie.org/og-image.svg"} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage || "https://anthropie.org/og-image.svg"} />
     <title>{title} — Les mots · L'Anthropie</title>
     <script is:inline>
       (function () { document.documentElement.classList.add('js'); try { var t = localStorage.getItem('mots-theme'); if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; document.documentElement.setAttribute('data-theme', t); } catch (e) {} })();

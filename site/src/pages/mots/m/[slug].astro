@@ -49,7 +49,7 @@ function splitRoot(atom) {
 }
 const ogdesc = (w.etym + ' — ' + w.corps).replace(/[`*]/g, '').slice(0, 185);
 ---
-<MotsLayout title={w.mot} desc={ogdesc} active={w.lexique} wide={false}>
+<MotsLayout title={w.mot} desc={ogdesc} ogImage={`https://anthropie.org/mots/og/${w.slug}.png`} active={w.lexique} wide={false}>
   <article class={`word lex-${w.lexique}`}>
     <nav class="crumb" aria-label="Fil d'Ariane">
       <a href={`${base}/mots/`}>Les mots</a> <span class="sep">›</span>
