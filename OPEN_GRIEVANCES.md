@@ -145,6 +145,18 @@ CC0 1.0 Universal. Document évolutif — un grief résolu sort de cette page et
 
 ---
 
+### G-012 — Participation enfant effective manquante : doctrine sur les enfants, pas avec eux
+
+- **Grief (formulation hostile, une phrase)** : *« Vous écrivez une doctrine complète sur l'apprentissage / le développement des enfants — en invoquant leur droit à la parole — sans qu'un seul enfant n'ait co-écrit ni validé une ligne ; vous parlez à leur place, au nom de leur voix. »*
+- **Source** : `OBJECTIONS.md §2` (la base reconnaît elle-même *« c'est un défaut »* et déclare la pratique *« reste à inventer »*) ; `ANTHROPIE_KERNEL` art. 31quater (la participation est *prescrite par* la doctrine) ; Couche 4 (Cercles / Assemblée des Voix) et Couche 5 (siège ados) **inscrivent** la participation dans le contenu, mais **aucune participation n'a eu lieu sur la production du contenu** ; absence totale des cadres de participation de l'enfant — Arnstein (1969), Lundy (2007), Hart (1992), Shier (2001).
+- **Date d'ouverture** : 2026-05-31.
+- **Propriétaire actuel** : `vacant`. Profil idéal : praticien·ne de la participation des enfants / chercheur·euse droits de l'enfant (CRC art. 12, lignée Lundy), acceptant CC0 **et** les garde-fous protection des mineurs.
+- **Seuil de preuve attendu** : **au moins une section ou couche existante effectivement co-réécrite avec des enfants/adolescents concernés** — un diff publié, pas une nouvelle promesse — satisfaisant : (1) co-réécriture réelle (pas relecture) ; (2) assentiment enfant + consentement parent/tuteur ; (3) **droit de retrait** : possible avant publication ; après publication, retrait du repo principal + anonymisation renforcée, mais **impossibilité de garantir l'effacement des forks CC0 déjà publiés** ; (4) aucune donnée personnelle publiée ; (5) adulte garant indépendant ; (6) retour aux enfants en langage accessible (accepté/refusé + pourquoi — le *Influence* de Lundy) ; (7) diff anonymisé publié ; (8) si une tradition vivante est mobilisée → bascule vers `G-001` / FPIC (délégation reconnue, rémunération, tension CC0 explicitée *avant* tout consentement). *G-012 ne règle pas G-001 ; il s'y arrête et y renvoie.*
+- **Raison du non-traitement actuel** : ADR-0014 gèle les nouveaux dispositifs/toolkits/couches mais **autorise les modifications de fichiers existants** ; une co-réécriture n'est compatible que si elle **modifie une section/couche existante sans créer de format nouveau**, sous garde-fous SAFETY / protection des mineurs (FPIC seulement si tradition vivante). Le co-design enfant prend par ailleurs *« le temps des cohortes »* (`OBJECTIONS §2`), pas 12 mois.
+- **Statut** : `ouvert structurel` — limite de **légitimité**, pas bug ponctuel. Niveau Arnstein actuel assumé : tokenisme (échelons 3-5).
+
+---
+
 ## Note méta — sur l'audit externe de mai 2026
 
 L'audit externe (deep-research ChatGPT, mai 2026) a identifié **12 points** dans son tableau de priorités. Une cartographie point-par-point établit que :

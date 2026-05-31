@@ -24,6 +24,24 @@ Les cinq inventions civilisationnelles de l'édifice : Discipline de Prédiction
 
 ---
 
+## Note de cadrage développemental — le mécanisme, pas les lieux
+
+> *Ajout 2026 — note transversale, non normative. Ne crée ni couche ni dispositif ; recadre la lecture des douze couches.*
+
+**Les douze couches ne sont pas douze machines à produire des effets uniformes. Ce sont douze _contextes_ d'un même mécanisme : l'interaction réciproque, soutenue et protégée, entre l'enfant et un environnement suffisamment stable et répondant, d'abord humain.** Chaque couche *protège ce processus* à un âge donné — elle n'administre pas un résultat.
+
+Ce cadrage s'appuie sur quatre acquis établis de la science du développement :
+1. **Le moteur est le processus, pas le lieu** — modèle *bioécologique PPCT* de Bronfenbrenner & Morris (2006) : les *proximal processes* (interactions réciproques de complexité croissante) sont les moteurs primaires du développement ; l'environnement les module, ne les remplace pas. Forme opérationnelle et mesurable : le *serve-and-return* (Center on the Developing Child, Harvard — Shonkoff).
+2. **La résilience naît de systèmes ordinaires** — Ann Masten, *Ordinary Magic* (2001/2014) : attachement, autorégulation, agentivité, communauté — pas un dispositif extraordinaire. Une couche réussie *protège l'ordinaire*, elle n'ajoute pas de l'exceptionnel.
+3. **L'effet dépend de l'enfant** — *goodness-of-fit* (Thomas & Chess) : ce qui régule un tempérament en dérègle un autre.
+4. **Sensibilité différentielle** — Belsky & Pluess ; Boyce & Ellis : une minorité d'enfants est plus sensible au contexte (au meilleur **comme** au pire), la plupart le sont moins. Un même contexte produit donc des trajectoires **divergentes**, pas convergentes.
+
+**Garde-fou anti-scoring.** Puisque les effets divergent selon l'enfant, **aucun seuil chiffré de l'édifice — 90 min de silence, 70-90 % de contact, ratios de figures, « cibles » de sécurité d'attachement — ne doit devenir une norme individuelle ni un critère d'évaluation d'un enfant.** Ce sont des moyennes de *contexte*, pas des objectifs par tête. Ce garde-fou prolonge les interdits absolus déjà inscrits (`anthropie_couche_01_matrice.md` : « tests normés de qualité de présence » et « classement des enfants par attachement secure » = interdits).
+
+*Contrepartie « processus » de la rétrogradation de la théorie polyvagale (cf. PR Polyvagal 2026) : moins de neuro spéculative, mieux assumer le mécanisme établi.*
+
+---
+
 ## 2. Niveau A — Preuves robustes (à attaquer en dernier)
 
 | Claim | Couche | Source primaire | Statut |

@@ -43,17 +43,17 @@ function inline(s) {
     <section class={`facette lex-${slug}`}>
       {f && <h2>{f}</h2>}
       {groups.get(f).map((w) => (
-        <article class={`entry lex-${w.lexique}`} id={w.slug}>
+        <article class={`entry reveal lex-${w.lexique}`} id={w.slug}>
           <div class="entry-head">
             <h3 class="lemma"><a href={`${base}/mots/m/${w.slug}/`}>{w.mot}</a></h3>
             <div class="tags"><span class="langue">{w.langue}</span></div>
           </div>
           <p class="etym" set:html={inline(w.etym)}></p>
           <p class="corps" set:html={inline(w.corps)}></p>
-          {w.miroirs.length > 0 && (
+          {w.miroirs.filter((m) => m.slug !== w.slug).length > 0 && (
             <div class="miroirs">
               <span class="mlabel">↔&nbsp;miroirs</span>
-              {w.miroirs.map((m) => (
+              {w.miroirs.filter((m) => m.slug !== w.slug).map((m) => (
                 <a class="miroir" style={`--mlex: var(--lex-${m.lexique})`} href={`${base}/mots/m/${m.slug}/`} title={`${m.type}${m.forme ? ' — ' + m.forme : ''}`}>
                   <span class="dot"></span>{m.mot}<span class="rel">{m.type}</span>
                 </a>

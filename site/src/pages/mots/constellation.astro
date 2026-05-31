@@ -1,0 +1,262 @@
+---
+import MotsLayout from '../../layouts/MotsLayout.astro';
+import words from '../../data/mots.json';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const LEXLABEL = {
+  humaine: "La condition humaine",
+  numerique: "La condition numérique",
+  agent: "La condition d'un agent",
+  vivant: "Le lien au vivant",
+  anthropie: "L'Anthropie",
+  lutte: "La lutte",
+  generaux: "Mots nécessaires",
+};
+const SHORT = { humaine: 'Humain', numerique: 'Numérique', agent: 'Agent' };
+const RELS = [
+  { key: 'triptyque', label: 'Triptyques' },
+  { key: 'diptyque', label: 'Diptyques' },
+  { key: 'antithese', label: 'Antithèses' },
+  { key: 'echo', label: 'Échos' },
+];
+const CENTERS = {
+  humaine: { x: 260, y: 430 },
+  numerique: { x: 500, y: 165 },
+  agent: { x: 740, y: 430 },
+};
+
+const bySlug = new Map();
+for (const w of words) if (!bySlug.has(w.slug)) bySlug.set(w.slug, w);
+
+function relKey(s) {
+  return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '').toLowerCase();
+}
+
+const seen = new Set();
+const degree = new Map();
+const edgeList = [];
+for (const w of words) {
+  for (const m of w.miroirs || []) {
+    if (!bySlug.has(m.slug) || w.slug === m.slug) continue;
+    const key = [w.slug, m.slug].sort().join('|');
+    if (seen.has(key)) continue;
+    seen.add(key);
+    degree.set(w.slug, (degree.get(w.slug) || 0) + 1);
+    degree.set(m.slug, (degree.get(m.slug) || 0) + 1);
+    edgeList.push({ from: w.slug, to: m.slug, type: m.type, rel: relKey(m.type) });
+  }
+}
+
+const grouped = new Map();
+for (const slug of degree.keys()) {
+  const w = bySlug.get(slug);
+  if (!w || !CENTERS[w.lexique]) continue;
+  if (!grouped.has(w.lexique)) grouped.set(w.lexique, []);
+  grouped.get(w.lexique).push(w);
+}
+for (const group of grouped.values()) {
+  group.sort((a, b) => (degree.get(b.slug) || 0) - (degree.get(a.slug) || 0) || a.mot.localeCompare(b.mot, 'fr'));
+}
+
+const positions = new Map();
+for (const [lex, group] of grouped) {
+  const c = CENTERS[lex];
+  group.forEach((w, i) => {
+    const angle = i * 2.399963229728653;
+    const radius = 13.5 * Math.sqrt(i);
+    positions.set(w.slug, {
+      x: c.x + Math.cos(angle) * radius,
+      y: c.y + Math.sin(angle) * radius,
+    });
+  });
+}
+
+const edges = edgeList
+  .filter((e) => positions.has(e.from) && positions.has(e.to))
+  .map((e, i) => ({ ...e, i, a: bySlug.get(e.from), b: bySlug.get(e.to), p1: positions.get(e.from), p2: positions.get(e.to) }));
+
+const nodes = [...positions.keys()].map((slug, i) => {
+  const w = bySlug.get(slug);
+  const p = positions.get(slug);
+  const d = degree.get(slug) || 1;
+  return { ...w, ...p, i, degree: d, r: 3.8 + Math.min(4.2, d * 0.75), keep: d >= 4 };
+});
+
+const relCounts = new Map();
+for (const e of edges) relCounts.set(e.rel, (relCounts.get(e.rel) || 0) + 1);
+---
+<MotsLayout title="Constellation des miroirs" active="constellation" wide={true} desc={`${nodes.length} mots reliés par ${edges.length} miroirs entre conditions.`}>
+  <header class="constellation-head">
+    <p class="kicker">{nodes.length} mots reliés · {edges.length} miroirs</p>
+    <h1>Constellation</h1>
+    <p class="lede">Le réseau des formes qui se répondent entre condition humaine, condition numérique et condition d'agent.</p>
+  </header>
+
+  <section class="constellation" aria-labelledby="constellation-title">
+    <div class="toolbar" aria-label="Filtrer par relation">
+      <button class="filter active" type="button" data-rel="">Tous <i>{edges.length}</i></button>
+      {RELS.map((r) => relCounts.has(r.key) && (
+        <button class="filter" type="button" data-rel={r.key}>{r.label} <i>{relCounts.get(r.key)}</i></button>
+      ))}
+    </div>
+    <p class="focusline" id="constellation-focus" aria-live="polite">Chaque point est un mot ; chaque trait, une relation de l'atlas.</p>
+
+    <div class="sky" id="constellation-stage">
+      <div class="sky-scroll">
+        <svg class="map" viewBox="0 0 1000 650" role="img" aria-labelledby="constellation-title constellation-desc">
+          <title id="constellation-title">Constellation des miroirs</title>
+          <desc id="constellation-desc">Graphe des mots reliés par les relations de l'atlas.</desc>
+          <g class="cluster-labels" aria-hidden="true">
+            {Object.entries(CENTERS).map(([lex, p]) => (
+              <text class={`cluster-label lex-${lex}`} x={p.x} y={p.y - 132}>{SHORT[lex]}</text>
+            ))}
+          </g>
+          <g class="edges">
+            {edges.map((e) => (
+              <line
+                class={`edge rel-${e.rel}`}
+                data-from={e.from}
+                data-to={e.to}
+                data-rel={e.rel}
+                x1={e.p1.x}
+                y1={e.p1.y}
+                x2={e.p2.x}
+                y2={e.p2.y}
+                pathLength="1"
+                style={`--delay:${Math.min(e.i * 7, 520)}ms`}
+              >
+                <title>{e.a.mot} ↔ {e.b.mot} — {e.type}</title>
+              </line>
+            ))}
+          </g>
+          <g class="nodes">
+            {nodes.map((n) => (
+              <a class={`node lex-${n.lexique}`} href={`${base}/mots/m/${n.slug}/`} data-node={n.slug} data-mot={n.mot} data-lex={LEXLABEL[n.lexique]} style={`--delay:${Math.min(n.i * 9, 620)}ms`}>
+                <circle cx={n.x} cy={n.y} r={n.r}></circle>
+                <text class={`node-label ${n.keep ? 'keep' : ''}`} x={n.x + n.r + 5} y={n.y - n.r}>{n.mot}</text>
+                <title>{n.mot} — {LEXLABEL[n.lexique]} — {n.degree} {n.degree > 1 ? 'miroirs' : 'miroir'}</title>
+              </a>
+            ))}
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .constellation-head { text-align: center; max-width: 44rem; margin: 0 auto 1.5rem; }
+    .constellation-head .kicker { font-family: 'Inter', sans-serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); margin: 0 0 0.6rem; }
+    .constellation-head h1 { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(2.8rem, 7vw, 4.6rem); line-height: 1; margin: 0 0 0.8rem; letter-spacing: 0; }
+    .constellation-head .lede { color: var(--ink-soft); font-style: italic; font-size: 1.12rem; margin: 0 auto; }
+    .toolbar { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.45rem; margin: 0 0 0.8rem; font-family: 'Inter', sans-serif; }
+    .filter { font: inherit; font-size: 0.78rem; padding: 0.32rem 0.78rem; border: 1px solid var(--rule); border-radius: 999px; background: var(--card); color: var(--ink-soft); cursor: pointer; transition: color .15s, border-color .15s, background-color .15s; }
+    .filter:hover { color: var(--ink); border-color: var(--gold); }
+    .filter.active { background: var(--ink); color: var(--vellum); border-color: var(--ink); }
+    .filter i { font-style: normal; opacity: 0.65; margin-left: 0.18rem; }
+    .focusline { min-height: 1.4rem; text-align: center; color: var(--ink-soft); font-family: 'Inter', sans-serif; font-size: 0.8rem; margin: 0 0 1rem; }
+    .sky { background: var(--card); border: 1px solid var(--rule); border-radius: 6px; box-shadow: 0 2px 14px var(--shadow); overflow: hidden; }
+    .sky-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .map { display: block; width: 100%; min-width: 820px; height: auto; background: linear-gradient(180deg, color-mix(in srgb, var(--card-2) 70%, transparent), var(--card)); }
+    .cluster-label { text-anchor: middle; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 12px; letter-spacing: 0.16em; fill: var(--ink-soft); opacity: 0.72; }
+    .edge { stroke: var(--rule); stroke-width: 1.05; stroke-linecap: round; opacity: 0.44; vector-effect: non-scaling-stroke; transition: opacity .16s, stroke-width .16s, stroke .16s; }
+    .edge.rel-triptyque { stroke: color-mix(in srgb, var(--gold) 55%, var(--rule)); }
+    .edge.rel-diptyque { stroke: color-mix(in srgb, var(--lex-numerique) 48%, var(--rule)); }
+    .edge.rel-antithese { stroke: color-mix(in srgb, var(--lex-humaine) 55%, var(--rule)); }
+    .edge.rel-echo { stroke: color-mix(in srgb, var(--ink-soft) 55%, var(--rule)); stroke-dasharray: 4 5; }
+    .node { cursor: pointer; outline: none; }
+    .node circle { fill: var(--lex, var(--gold)); stroke: var(--card); stroke-width: 2.3; transition: opacity .16s, r .16s, stroke-width .16s, filter .16s; }
+    .node:hover circle, .node:focus circle, .node.is-active circle { r: 9px; stroke-width: 3; filter: drop-shadow(0 2px 5px var(--shadow)); }
+    .node-label { opacity: 0; pointer-events: none; font-family: 'Inter', sans-serif; font-size: 11px; fill: var(--ink); paint-order: stroke; stroke: var(--card); stroke-width: 4px; stroke-linejoin: round; transition: opacity .16s; }
+    .node-label.keep { opacity: 0.76; }
+    .node:hover .node-label, .node:focus .node-label, .node.is-active .node-label, .node.is-linked .node-label { opacity: 1; }
+    .sky.has-focus .edge { opacity: 0.07; }
+    .sky.has-focus .edge.is-active { opacity: 0.9; stroke-width: 2.3; }
+    .sky.has-focus .node:not(.is-active):not(.is-linked) circle { opacity: 0.22; }
+    .sky.has-focus .node.is-linked circle { stroke-width: 3; }
+    .edge.is-hidden, .node.is-filtered-out { opacity: 0.08; pointer-events: none; }
+    @keyframes line-in { from { stroke-dashoffset: 1; opacity: 0; } }
+    @keyframes node-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: no-preference) {
+      :root.js .edge { stroke-dasharray: 1; animation: line-in .9s ease var(--delay) both; }
+      :root.js .node { opacity: 0; transform-box: fill-box; transform-origin: center; animation: node-in .38s ease var(--delay) both; }
+    }
+    @media (max-width: 680px) {
+      .constellation-head { margin-bottom: 1.2rem; }
+      .toolbar { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.2rem; }
+      .filter { white-space: nowrap; }
+      .sky { margin: 0 -1.1rem; border-left: 0; border-right: 0; border-radius: 0; }
+      .map { min-width: 900px; }
+      .node-label.keep { opacity: 0; }
+    }
+  </style>
+
+  <script is:inline>
+    (function () {
+      var stage = document.getElementById('constellation-stage');
+      if (!stage) return;
+      var focus = document.getElementById('constellation-focus');
+      var baseText = focus ? focus.textContent : '';
+      var edges = Array.prototype.slice.call(stage.querySelectorAll('.edge'));
+      var nodes = Array.prototype.slice.call(stage.querySelectorAll('.node'));
+      var buttons = Array.prototype.slice.call(document.querySelectorAll('.filter'));
+      var edgeByNode = {};
+      edges.forEach(function (e) {
+        var a = e.getAttribute('data-from'), b = e.getAttribute('data-to');
+        (edgeByNode[a] || (edgeByNode[a] = [])).push(e);
+        (edgeByNode[b] || (edgeByNode[b] = [])).push(e);
+      });
+      function clearFocus() {
+        stage.classList.remove('has-focus');
+        edges.forEach(function (e) { e.classList.remove('is-active'); });
+        nodes.forEach(function (n) { n.classList.remove('is-active', 'is-linked'); });
+        if (focus) focus.textContent = baseText;
+      }
+      function show(slug) {
+        clearFocus();
+        var node = nodes.filter(function (n) { return n.getAttribute('data-node') === slug; })[0];
+        if (!node) return;
+        var related = edgeByNode[slug] || [];
+        stage.classList.add('has-focus');
+        node.classList.add('is-active');
+        related.forEach(function (e) {
+          e.classList.add('is-active');
+          var other = e.getAttribute('data-from') === slug ? e.getAttribute('data-to') : e.getAttribute('data-from');
+          var linked = nodes.filter(function (n) { return n.getAttribute('data-node') === other; })[0];
+          if (linked) linked.classList.add('is-linked');
+        });
+        if (focus) focus.textContent = node.getAttribute('data-mot') + ' · ' + related.length + (related.length > 1 ? ' miroirs directs' : ' miroir direct') + ' · ' + node.getAttribute('data-lex');
+      }
+      function filter(rel) {
+        var visibleNodes = {};
+        edges.forEach(function (e) {
+          var on = !rel || e.getAttribute('data-rel') === rel;
+          e.classList.toggle('is-hidden', !on);
+          if (on) {
+            visibleNodes[e.getAttribute('data-from')] = true;
+            visibleNodes[e.getAttribute('data-to')] = true;
+          }
+        });
+        nodes.forEach(function (n) {
+          n.classList.toggle('is-filtered-out', !!rel && !visibleNodes[n.getAttribute('data-node')]);
+        });
+      }
+      buttons.forEach(function (b) {
+        b.addEventListener('click', function () {
+          buttons.forEach(function (x) { x.classList.remove('active'); });
+          b.classList.add('active');
+          clearFocus();
+          filter(b.getAttribute('data-rel'));
+        });
+      });
+      nodes.forEach(function (n) {
+        var slug = n.getAttribute('data-node');
+        n.addEventListener('mouseenter', function () { show(slug); });
+        n.addEventListener('focus', function () { show(slug); });
+        n.addEventListener('mouseleave', clearFocus);
+        n.addEventListener('blur', clearFocus);
+      });
+      var wanted = new URLSearchParams(location.search).get('mot');
+      if (wanted) show(wanted);
+    })();
+  </script>
+</MotsLayout>

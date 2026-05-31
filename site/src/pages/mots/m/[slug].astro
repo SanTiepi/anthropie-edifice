@@ -33,7 +33,7 @@ const isRead = ['humaine', 'numerique', 'agent', 'vivant'].includes(w.lexique);
 const lexTags = [...new Set(entries.map((e) => e.lexique_label))];
 const allMiroirs = [];
 const seen = new Set();
-for (const e of entries) for (const m of e.miroirs) { if (!seen.has(m.slug)) { seen.add(m.slug); allMiroirs.push(m); } }
+for (const e of entries) for (const m of e.miroirs) { if (m.slug !== e.slug && !seen.has(m.slug)) { seen.add(m.slug); allMiroirs.push(m); } }
 
 function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 function inline(s) {
@@ -86,7 +86,7 @@ const ogdesc = (w.etym + ' — ' + w.corps).replace(/[`*]/g, '').slice(0, 185);
         <ul class="net-list">
           {allMiroirs.map((m) => (
             <li>
-              <a class={`miroir-card lex-${m.lexique}`} href={`${base}/mots/m/${m.slug}/`}>
+              <a class={`miroir-card reveal lex-${m.lexique}`} href={`${base}/mots/m/${m.slug}/`}>
                 <span class="mc-rel">{m.type}</span>
                 <span class="mc-mot">{m.mot}</span>
                 <span class="mc-lex">{LEXLABEL[m.lexique]}</span>
@@ -101,6 +101,7 @@ const ogdesc = (w.etym + ' — ' + w.corps).replace(/[`*]/g, '').slice(0, 185);
     <div class="word-actions">
       <button id="copylink" class="act" type="button" data-url={`https://anthropie.org/mots/m/${w.slug}/`}>⧉&nbsp;Copier le lien</button>
       {isRead && <a class="act" href={`${base}/mots/${w.lexique}/#${w.slug}`}>Voir dans la lecture →</a>}
+      {allMiroirs.length > 0 && <a class="act" href={`${base}/mots/constellation/?mot=${w.slug}`}>Constellation</a>}
       <a class="act" href={`${base}/mots/recueil/`}>Tout le recueil</a>
     </div>
 
@@ -117,7 +118,7 @@ const ogdesc = (w.etym + ' — ' + w.corps).replace(/[`*]/g, '').slice(0, 185);
     .crumb .sep { color: var(--rule); margin: 0 0.2rem; }
     .crumb .cr-facette { color: var(--lex, var(--gold)); }
     .word-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
-    .lemma-xl { font-family: 'Fraunces', serif; font-weight: 500; font-size: clamp(2.6rem, 7vw, 4rem); line-height: 1; margin: 0; color: var(--lex, var(--ink)); letter-spacing: -0.005em; }
+    .lemma-xl { font-family: 'Fraunces', serif; font-weight: 500; font-size: clamp(2.6rem, 7vw, 4rem); line-height: 1; margin: 0; color: var(--lex, var(--ink)); letter-spacing: 0; }
     .sense + .sense { border-top: 1px dashed var(--rule); margin-top: 1.6rem; padding-top: 1.4rem; }
     .lex-context { font-family: 'Inter', sans-serif; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--lex, var(--gold)); margin: 0 0 0.4rem; }
     .etym-xl { font-family: 'Spectral', serif; font-style: italic; font-size: 1.18rem; color: var(--ink-soft); margin: 0.4rem 0 0.9rem; }
@@ -126,6 +127,7 @@ const ogdesc = (w.etym + ' — ' + w.corps).replace(/[`*]/g, '').slice(0, 185);
     .racine b { font-family: 'Fraunces', serif; font-weight: 500; color: var(--lex, var(--ink)); }
     .racine i { color: var(--ink-soft); font-style: italic; }
     .corps-xl { font-size: 1.16rem; line-height: 1.66; margin: 0; }
+    .sense:first-of-type .corps-xl::first-letter { font-family: 'Fraunces', serif; font-weight: 500; font-size: 3em; line-height: 0.78; float: left; margin: 0.06em 0.12em 0 0; color: var(--lex, var(--gold)); }
     .miroir-net { border-top: 1px solid var(--rule); padding-top: 1.6rem; margin-top: 2rem; }
     .miroir-net h2 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.4rem; color: var(--ink); margin: 0 0 0.2rem; }
     .net-lede { color: var(--ink-soft); font-style: italic; margin: 0 0 1.1rem; }
@@ -157,6 +159,29 @@ const ogdesc = (w.etym + ' — ' + w.corps).replace(/[`*]/g, '').slice(0, 185);
         if (navigator.clipboard) { navigator.clipboard.writeText(url).then(done, done); }
         else { var i = document.createElement('input'); i.value = url; document.body.appendChild(i); i.select(); try { document.execCommand('copy'); } catch (e) {} document.body.removeChild(i); done(); }
       });
+    })();
+  </script>
+  <script is:inline>
+    (function () {
+      var pn = document.querySelectorAll('.prevnext .pn');
+      if (pn.length < 2) return;
+      var prevHref = pn[0].getAttribute('href'), nextHref = pn[1].getAttribute('href');
+      document.addEventListener('keydown', function (e) {
+        if (e.metaKey || e.ctrlKey || e.altKey) return;
+        var tag = (e.target && e.target.tagName) || '';
+        if (/INPUT|TEXTAREA|SELECT/.test(tag)) return;
+        if (e.key === 'ArrowLeft') location.href = prevHref;
+        else if (e.key === 'ArrowRight') location.href = nextHref;
+      });
+      var x0 = null, y0 = null;
+      document.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+      document.addEventListener('touchend', function (e) {
+        if (x0 === null) return;
+        var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+        x0 = null; y0 = null;
+        if (Math.abs(dx) < 80 || Math.abs(dx) < Math.abs(dy) * 1.6) return;
+        location.href = dx > 0 ? prevHref : nextHref;
+      }, { passive: true });
     })();
   </script>
 </MotsLayout>

@@ -4,6 +4,8 @@
 
 CC0 1.0 Universal. Audit méta. Modification possible par PR avec discussion publique 7 jours.
 
+> **Renvoi (2026)** : voir la *note de cadrage développemental* (`EVIDENCE_MAP`) — les douze couches sont des contextes d'un même mécanisme (interaction réciproque protégée), pas des machines à effets uniformes ; les effets divergent selon l'enfant (sensibilité différentielle).
+
 ---
 
 ## 1. Vue d'ensemble — 12 audits, 12 mandats spécifiques

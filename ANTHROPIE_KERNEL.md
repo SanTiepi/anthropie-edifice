@@ -31,6 +31,8 @@ L'Anthropie est un édifice civilisationnel d'apprentissage humain à **douze co
 
 Légende : 🟢 robuste = convergence empirique ou précédent juridique fort ; 🟡 sensible = arbitrages culturels, juridiques ou opérationnels en cours.
 
+> **Cadrage** : ces douze couches sont douze *contextes* d'un même mécanisme — l'interaction réciproque protégée (processus proximal, Bronfenbrenner-Morris) —, non des machines à effets uniformes. Les effets divergent selon l'enfant : aucun seuil n'est une norme individuelle. Cf. *note de cadrage développemental* (`EVIDENCE_MAP`).
+
 ---
 
 ## Les onze articles 31bis-duodecies
