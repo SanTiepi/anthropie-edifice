@@ -72,7 +72,7 @@ Si une partie de l'édifice citée incorrectement votre tradition, écrivez-nous
 
 L'édifice est synthèse rapide d'évidence existante 2024-2025. Aucune validation longitudinale propre. Premières cohortes seront laboratoires. Sources détaillées en fin de chaque fichier de couche (~88 sources scientifiques mobilisées). Critique radicale bienvenue, surtout pour démolir ce qui ne tient pas.
 
-Vocabulaire : voir [GLOSSARY.md](GLOSSARY.md) (douze termes définis en une phrase chacun).
+Vocabulaire : voir [GLOSSARY.md](GLOSSARY.md) (treize termes définis en une phrase chacun).
 
 ## Citer l'édifice
 

@@ -264,6 +264,16 @@ ADR-0014 gèle « tout nouveau dispositif » mais ne disait rien de la *diffusio
 
 **Raison** : garder le projet vivant et attaquable sans faire croître son autorité publique pendant que le noyau doit être corrigé. (Conforme à « ne jamais faire mentir l'outil » : le mot « moratoire » cesse d'être ambigu.)
 
+### Constat de dégel de la projection publique forte — 2026-06-10 (*Proposed*)
+
+- **Statut** : *Proposed* — à valider par discussion publique sur la Pull Request portant ce constat (processus ADR standard, 7 jours).
+- **Constat factuel** : les trois conditions du critère de dégel ci-dessus sont remplies au 2026-06-10 :
+  - **(a)** Théorie polyvagale rétrogradée A→C dans [`EVIDENCE_MAP.md`](https://github.com/SanTiepi/anthropie-edifice/blob/master/EVIDENCE_MAP.md) (commit `563819a`, 2026-05-31) — le claim co-régulation s'appuie désormais sur Tronick/Schore, fragilisation du dispositif PAV assumée.
+  - **(b)** Note de cadrage développemental transversale ajoutée dans `EVIDENCE_MAP` + `ANTHROPIE_KERNEL` + `AUDIT_TRANSVERSAL` (commit `3db1dba`, 2026-05-31).
+  - **(c)** La clause de clarification est publiée sur le site ([/lire/decisions/](https://anthropie.org/lire/decisions/)) depuis le déploiement du 2026-05-31.
+- **Conséquence si validé** : le registre 2 (*projection publique forte*) redevient permis — outreach des porteurs, pitch médias, dépôts institutionnels — selon `ROADMAP.md` Phase 2. Le registre 1 (production doctrinale) reste gelé jusqu'au 2026-08-02 (ADR-0014 inchangé). Le registre 3 (exposition critique) reste la posture d'entrée recommandée pour tout premier contact.
+- **Note** : ce constat ne crée aucun dispositif ; il documente la satisfaction de conditions déjà inscrites (modification de fichier existant, permise par ADR-0014).
+
 ---
 
 ## Modèle pour ajouter une nouvelle ADR

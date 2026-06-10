@@ -1,6 +1,6 @@
 # L'Anthropie — Glossaire minimal
 
-> *Douze termes de l'édifice définis en une phrase. Pour ne pas perdre un lecteur sur un flou lexical avant qu'il ait pu décider.*
+> *Treize termes de l'édifice définis en une phrase. Pour ne pas perdre un lecteur sur un flou lexical avant qu'il ait pu décider.*
 
 CC0 1.0 Universal. Glossaire non-exhaustif — pour la définition rigoureuse, voir le fichier de la couche source indiqué entre parenthèses.
 
