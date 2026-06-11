@@ -1,15 +1,16 @@
 import type { APIRoute } from 'astro';
 import { Resvg } from '@resvg/resvg-js';
-import fs from 'node:fs';
 import path from 'node:path';
 import words from '../../../../data/mots.json';
 
 // Images Open Graph des pages-hub (home, atlas, recueil, constellation, 4 conditions).
 // Même gabarit « Vélin & or » que les cartes par mot (/mots/og/[slug].png).
 const FONT_DIR = path.join(process.cwd(), 'src', 'og-fonts');
-const fontBuffers = [
-  fs.readFileSync(path.join(FONT_DIR, 'Cardo-Bold.ttf')),
-  fs.readFileSync(path.join(FONT_DIR, 'Cardo-Regular.ttf')),
+// `fontFiles` et non `fontBuffers` : dans resvg-js 2.6.2, fontBuffers est ignoré
+// et le rendu retombe sur un sans-serif de secours au lieu de Cardo.
+const fontFiles = [
+  path.join(FONT_DIR, 'Cardo-Bold.ttf'),
+  path.join(FONT_DIR, 'Cardo-Regular.ttf'),
 ];
 
 const LEXC: Record<string, string> = {
@@ -103,7 +104,7 @@ export const GET: APIRoute = ({ props }) => {
 </svg>`;
 
   const png = new Resvg(svg, {
-    font: { fontBuffers, loadSystemFonts: false, defaultFontFamily: 'Cardo' },
+    font: { fontFiles, loadSystemFonts: false, defaultFontFamily: 'Cardo' },
     fitTo: { mode: 'width', value: 1200 },
   }).render().asPng();
   return new Response(png, {

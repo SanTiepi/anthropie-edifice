@@ -16,12 +16,16 @@ const readingLabel = readingMinutes ? (readingMinutes === 1 ? '~1 min' : `~${rea
 		<meta name="author" content="Anthropie Network" />
 		<meta name="dcterms.rights" content="CC0 1.0 Universal — Public Domain Dedication" />
 		<meta property="og:title" content={`${title} — L'Anthropie`} />
+		<meta property="og:site_name" content="L'Anthropie" />
 		<meta property="og:type" content="article" />
 		<meta property="og:url" content={`https://anthropie.org/lire/${slug}/`} />
-		<meta property="og:image" content="https://anthropie.org/og-image.svg" />
+		<meta property="og:image" content={`https://anthropie.org/og/${slug}.png`} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content={`${title} — L'Anthropie, édifice CC0`} />
 		<meta property="og:locale" content="fr_FR" />
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:image" content="https://anthropie.org/og-image.svg" />
+		<meta name="twitter:image" content={`https://anthropie.org/og/${slug}.png`} />
 		<link rel="canonical" href={`https://anthropie.org/lire/${slug}/`} />
 		<title>{title} — L'Anthropie</title>
 		<style>

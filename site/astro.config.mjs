@@ -11,7 +11,7 @@ export default defineConfig({
 	integrations: [
 		sitemap({
 			// Les endpoints non-HTML (images OG, flux RSS) ne sont pas des pages à indexer.
-			filter: (page) => !page.includes('/mots/og/') && !page.endsWith('/feed.xml'),
+			filter: (page) => !page.includes('/mots/og/') && !page.includes('/og/') && !page.endsWith('/feed.xml'),
 		}),
 	],
 });
