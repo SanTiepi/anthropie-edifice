@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atlas des cliquets — anthropie</title>
+<style>
+  :root{
+    --paper:#f4f1ea;
+    --paper-2:#ece7dc;
+    --ink:#1c1b18;
+    --ink-soft:#55514a;
+    --line:#d8d1c2;
+    --accent:#9a3b27;       /* terre cuite */
+    --gold:#b08534;
+    --temps:#3f6b5f;
+    --argent:#8a6d2f;
+    --attention:#5b5391;
+    --lien:#9a3b51;
+    --ville:#3d6478;
+    --travail:#7b5e34;
+    --deuil:#56505c;
+    --corps:#9c5a45;
+    --noyau:#b08534;
+    --limite:#44506b;
+    --maison:#3d6478;
+    --seed:#6b6258;
+    --max:760px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    line-height:1.55;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+
+  /* ---------- en-tête ---------- */
+  header.hero{padding:72px 0 34px;border-bottom:1px solid var(--line)}
+  .kicker{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+  h1{font-size:2.9rem;line-height:1.05;margin:0 0 .35em;font-weight:600;letter-spacing:-.01em}
+  .lede{font-size:1.18rem;color:var(--ink-soft);margin:0 0 1.4em;max-width:60ch}
+  .formula{
+    display:inline-block;font-size:1rem;color:var(--ink);
+    border:1px solid var(--line);background:var(--paper-2);
+    padding:10px 16px;border-radius:3px;margin-bottom:6px;
+  }
+  .formula b{color:var(--accent)}
+  .note{font-size:.95rem;color:var(--ink-soft);margin:14px 0 0;max-width:64ch}
+  .note code{background:var(--paper-2);padding:1px 6px;border-radius:3px;font-size:.85em}
+  .founding{font-size:1.12rem;font-style:italic;color:var(--ink);margin:22px 0 0;padding-left:16px;border-left:2px solid var(--accent);max-width:60ch;line-height:1.45}
+
+  /* ---------- barre de filtres ---------- */
+  .filters{position:sticky;top:0;z-index:5;background:rgba(244,241,234,.93);
+    backdrop-filter:blur(6px);border-bottom:1px solid var(--line);padding:14px 0}
+  .filters .wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .pill{font:inherit;font-size:.9rem;cursor:pointer;border:1px solid var(--line);
+    background:transparent;color:var(--ink-soft);padding:6px 14px;border-radius:999px;transition:.18s}
+  .pill:hover{border-color:var(--ink-soft);color:var(--ink)}
+  .pill[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .count{margin-left:auto;font-size:.82rem;color:var(--ink-soft)}
+
+  /* ---------- sections ---------- */
+  section{padding:42px 0 8px}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
+  .sec-head h2{font-size:1.5rem;margin:0;font-weight:600}
+  .sec-head .dot{width:11px;height:11px;border-radius:50%;flex:0 0 auto;transform:translateY(-1px)}
+  .sec-sub{color:var(--ink-soft);font-size:.96rem;margin:0 0 20px}
+
+  /* ---------- cartes ---------- */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:640px){.grid{grid-template-columns:1fr}h1{font-size:2.2rem}}
+  .card{border:1px solid var(--line);background:var(--paper-2);border-radius:6px;
+    padding:18px 18px 16px;cursor:pointer;transition:.18s;position:relative;overflow:hidden}
+  .card:hover{border-color:var(--c,var(--ink-soft));transform:translateY(-2px);
+    box-shadow:0 8px 24px -16px rgba(0,0,0,.4)}
+  .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c,var(--seed))}
+  .card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+  .card h3{font-size:1.18rem;margin:0;font-weight:600;letter-spacing:-.01em}
+  .tag{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--c,var(--seed));
+    border:1px solid var(--c,var(--line));padding:2px 7px;border-radius:999px;white-space:nowrap}
+  .visible{color:var(--ink-soft);font-size:.98rem;margin:9px 0 13px}
+
+  /* jauge à crans */
+  .gauge{display:flex;align-items:center;gap:10px;margin-bottom:2px}
+  .ratchet{display:flex;gap:2px;flex:1}
+  .tooth{height:13px;flex:1;background:var(--line);border-radius:1px;transition:background .02s}
+  .tooth.on{background:var(--c,var(--seed))}
+  .score{font-size:.92rem;font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap}
+  .score b{font-size:1.05rem}
+  .gauge-label{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin:11px 0 3px}
+
+  /* détail dépliable */
+  .detail{max-height:0;opacity:0;overflow:hidden;transition:max-height .35s ease,opacity .3s}
+  .card.open .detail{max-height:420px;opacity:1;margin-top:14px}
+  .detail .row{font-size:.95rem;margin:8px 0;padding-top:8px;border-top:1px dashed var(--line)}
+  .detail .row:first-child{border-top:none;padding-top:0}
+  .detail .k{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--c,var(--seed));display:block;margin-bottom:2px}
+  .unit{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:.86rem}
+  .hint{font-size:.74rem;color:var(--ink-soft);margin-top:11px;opacity:.7}
+
+  /* ---------- pied ---------- */
+  footer{border-top:1px solid var(--line);margin-top:48px;padding:34px 0 70px;color:var(--ink-soft);font-size:.92rem}
+  footer .wrap{max-width:64ch}
+  footer a{color:var(--accent)}
+  .reveal{opacity:0;transform:translateY(10px);transition:.5s}
+  .reveal.in{opacity:1;transform:none}
+  .laws{border-top:1px solid var(--line);margin-top:46px;padding-top:34px}
+  .laws h2{font-size:1.4rem;margin:0 0 6px;font-weight:600}
+  .laws .sec-sub{margin-bottom:18px}
+  .laws ol{margin:0;padding-left:1.1em;max-width:70ch}
+  .laws li{margin:9px 0;padding-left:6px}
+  .laws li b{color:var(--accent)}
+  .instrument{display:block;margin:30px 0 0;padding:18px 20px;border:1px solid var(--line);border-radius:7px;
+    background:var(--paper-2);text-decoration:none;color:var(--ink);transition:.18s;max-width:70ch}
+  .instrument:hover{border-color:var(--maison);transform:translateY(-2px)}
+  .instrument b{color:var(--maison)}
+  .instrument span{display:block;color:var(--ink-soft);font-size:.92rem;margin-top:3px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">anthropie · annexe</p>
+    <h1>Atlas des cliquets</h1>
+    <p class="lede">Des choses qui n'avaient pas de nom. On les nomme, on leur donne une unité de mesure — sans oublier ce qui échappe. Chacune est un <em>cliquet</em> : une fois vue, impossible à dé-voir.</p>
+    <span class="formula">distinction&nbsp;+&nbsp;<b>nom</b>&nbsp;+&nbsp;unité&nbsp;+&nbsp;reste&nbsp;+&nbsp;perte</span>
+    <p class="note"><b>L'indice de cliquet (0–100)</b> mesure à quel point la chose, une fois posée, ne peut plus reculer. La jauge à crans ne se remplit que dans un sens. Deux familles cohabitent ici : les cliquets de <b>perception</b> (mieux voir) et les cliquets de <b>limite</b> (ne pas croire qu'on voit tout). Frère du recueil <em>Les Mots</em>.</p>
+    <p class="founding">Il existe des choses sans nom. Il existe des noms qui sauvent. Il existe des noms qui abîment.<br>Anthropie commence quand on apprend à distinguer les trois.</p>
+  </div>
+</header>
+
+<nav class="filters">
+  <div class="wrap" id="filterBar">
+    <button class="pill" data-f="all" aria-pressed="true">Tout</button>
+    <button class="pill" data-f="noyau" aria-pressed="false">Le noyau</button>
+    <button class="pill" data-f="limite" aria-pressed="false">La limite</button>
+    <button class="pill" data-f="seed" aria-pressed="false">Graines</button>
+    <button class="pill" data-f="temps" aria-pressed="false">Le temps</button>
+    <button class="pill" data-f="argent" aria-pressed="false">L'argent</button>
+    <button class="pill" data-f="attention" aria-pressed="false">L'attention</button>
+    <button class="pill" data-f="lien" aria-pressed="false">Le lien</button>
+    <button class="pill" data-f="ville" aria-pressed="false">La ville</button>
+    <button class="pill" data-f="travail" aria-pressed="false">Le travail</button>
+    <button class="pill" data-f="deuil" aria-pressed="false">Le deuil</button>
+    <button class="pill" data-f="corps" aria-pressed="false">Le corps</button>
+    <span class="count" id="count"></span>
+  </div>
+</nav>
+
+<main class="wrap" id="atlas"></main>
+
+<section class="wrap laws">
+  <h2>Les sept lois de la nomination</h2>
+  <p class="sec-sub">Elles gouvernent les deux familles. Un atlas qui n'aurait que la perception deviendrait une machine à étiqueter le monde ; ce sont ces lois qui le gardent lucide.</p>
+  <ol>
+    <li><b>Toute nomination est une opération.</b> Nommer isole, stabilise, rend transmissible — et appauvrit. Un nom est un outil, pas une vérité.</li>
+    <li><b>Tout concept crée un reste.</b> Même excellent, il laisse du réel dehors.</li>
+    <li><b>L'invisible n'est pas toujours à révéler.</b> Certaines choses doivent être nommées ; d'autres protégées de la nomination.</li>
+    <li><b>Le flou peut être une dette ou un abri.</b> Lâche, protecteur, fertile, manipulateur, de maturation, d'évitement — ne jamais présumer qu'il est mauvais.</li>
+    <li><b>Toute incarnation sacrifie des possibles.</b> La vraie question : quelles formes suis-je prêt à perdre ?</li>
+    <li><b>Ce qui n'a pas eu lieu peut avoir une masse.</b> Les absences ne sont pas vides.</li>
+    <li><b>Le vrai noyau survit à ses mauvais noms.</b> Retire le style, change le nom : s'il reste une distinction utilisable, le cliquet est solide.</li>
+  </ol>
+  <a class="instrument" href="diagnostic-anthropique-lieu.html">
+    <b>→ Instrument I : le diagnostic anthropique d'un lieu</b>
+    <span>Lire une maison comme une archive habitée — densité de trace, dépôt de soi, mémoire déléguée, score de transmission.</span>
+  </a>
+  <a class="instrument" href="diagnostic-de-passage.html">
+    <b>→ Instrument II : le diagnostic de passage</b>
+    <span>Lire une transition — rupture, reconversion, deuil, reprise — par ses futurs morts, sa mue différée, son choix déjà choisi.</span>
+  </a>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Méthode.</strong> Chaque salve passe une gate de vérification tenue par un relecteur indépendant : test d'originalité (« quel chercheur a déjà nommé ça&nbsp;? »), test de mesurabilité (une unité concrète, falsifiable), test de non-redondance. Salve&nbsp;I : 28 cliquets, 6 refondus, 5 renommés. Salve&nbsp;II : 28 forgés, 8 refondus, et l'univers du deuil volontairement resserré à 5 — un champ déjà saturé ne reçoit que des distinctions à la mesure réellement inédite.</p>
+    <p>Garde-fous : original (pas un synonyme d'un mot existant) · mesurable (si on ne peut pas l'imaginer mesuré, ce n'est pas fini) · évocateur mais rigoureux. Le lexique est versionné et s'accumule — il grandit fichier après fichier, et devient lui-même un cliquet.</p>
+    <p>Deux familles cohabitent : <b>A · perception</b> (mieux voir le réel) et <b>B · limite</b> (ne pas croire qu'on voit tout). Le noyau et la couche limite ont chacun passé une gate indépendante ; presque tous les cliquets sont « ancrés » — ils ne prétendent pas à l'originalité absolue, ils tiennent par leur unité de mesure, et déclarent leur parenté.</p>
+    <p>La formule mûre du projet : <b>distinction + nom + unité + reste + perte</b>. Documents : protocole, lexique (salves I–II), salve III (autres formes), noyau (Famille A), couche limite (Famille B), diagnostics. Frère du recueil <em>Les Mots</em>.</p>
+  </div>
+</footer>
+
+<script>
+const U = {
+  seed:{name:"Graine",color:"var(--seed)"},
+  temps:{name:"Le temps",color:"var(--temps)"},
+  argent:{name:"L'argent",color:"var(--argent)"},
+  attention:{name:"L'attention",color:"var(--attention)"},
+  lien:{name:"Le lien",color:"var(--lien)"},
+  ville:{name:"La ville",color:"var(--ville)"},
+  travail:{name:"Le travail",color:"var(--travail)"},
+  deuil:{name:"Le deuil",color:"var(--deuil)"},
+  corps:{name:"Le corps",color:"var(--corps)"},
+  noyau:{name:"Le noyau",color:"var(--noyau)"},
+  limite:{name:"La limite",color:"var(--limite)"}
+};
+
+const DATA = [
+  // ---- graines ----
+  {u:"seed",n:"Le cliquet",v:"Ce qui ne peut qu'avancer, jamais reculer.",unit:"crans (0–100)",ex:"Un mot appris = 100 · une humeur = 0.",s:100},
+  {u:"seed",n:"La latence morale",v:"L'écart entre savoir le juste et le faire.",unit:"la dérive (heures)",ex:"« Je devrais rappeler maman » → 144 h de dérive.",s:64},
+  {u:"seed",n:"Le coût de réveil",v:"L'énergie pour reprendre une chose mise en pause.",unit:"minutes de réveil",ex:"Projet sans notes = 90 min · avec bon handoff = 4 min.",s:72},
+  {u:"seed",n:"La demi-vie d'une intention",v:"Le délai au bout duquel une intention a 50% de chances d'être morte.",unit:"jours",ex:"« Lundi je m'y mets » → demi-vie 2,3 jours.",s:58},
+  {u:"seed",n:"La densité de présence",v:"La fraction de toi réellement ici, maintenant.",unit:"présence %",ex:"Dîner avec le téléphone sur la table = 38%.",s:30},
+  {u:"seed",n:"La dette d'attention",v:"Les sollicitations ouvertes, non soldées, qui réclameront ton attention future.",unit:"charge ouverte",ex:"47 onglets ouverts = dette élevée.",s:55},
+  {u:"seed",n:"L'empreinte d'irréversible",v:"La part d'un acte qu'on ne pourra jamais défaire.",unit:"% irréversible",ex:"Un mot blessant = 70% · un mur peint = 5%.",s:88},
+  {u:"seed",n:"La portée d'un nom",v:"Combien d'esprits peuvent désormais penser une chose, parce qu'elle a un nom.",unit:"esprits ouverts",ex:"« FOMO » → des millions d'esprits, irréversiblement.",s:94},
+
+  // ---- le temps ----
+  {u:"temps",n:"Le temps de redescente",v:"La persistance, dans le corps, du régime d'une tâche (tension, rythme) après qu'elle est finie.",unit:"minutes de redescente",ex:"Réunion tendue close à 15 h 00 · corps apaisé à 15 h 37 → 37 min facturées en douce à la tâche suivante.",s:61},
+  {u:"temps",n:"Le délai du refus",v:"Le temps qu'on met à dire non, pendant lequel l'engagement non désiré s'installe.",unit:"heures avant le non",ex:"Trois jours pour décliner une invitation → l'hôte a déjà réservé ; le non d'aujourd'hui coûte dix fois celui d'hier.",s:58},
+  {u:"temps",n:"Le temps de garde d'une promesse",v:"La durée pendant laquelle l'autre tient encore compte d'une promesse avant de la classer morte.",unit:"jours de crédit",ex:"« Je m'en occupe cette semaine » → 9 jours de crédit, après quoi l'autre a refait son plan sans toi.",s:60},
+  {u:"temps",n:"Le couloir d'un geste",v:"La fenêtre pendant laquelle un acte est encore facile, avant qu'il ne devienne coûteux ou impossible.",unit:"largeur de couloir (heures)",ex:"Annuler une commande en ligne → couloir de 2 h, puis le colis part et le couloir se ferme.",s:58},
+  {u:"temps",n:"La traîne d'une habitude",v:"La persistance des gestes automatiques après qu'on a décidé d'arrêter — le corps ne le sait pas encore.",unit:"jours de traîne",ex:"Arrêter le sucre → la main cherche encore le placard 18 jours avant que le réflexe tombe.",s:50},
+  {u:"temps",n:"Le délai de réalité",v:"L'écart entre le moment où un fait devient vrai et le moment où on agit pour la première fois comme s'il l'était.",unit:"jours de décalage",ex:"Une rupture annoncée → vraie à J0, premier geste réorganisé à J+11. Le corps a un fuseau à lui.",s:66},
+  {u:"temps",n:"Le temps capté par une attente",v:"La fraction d'un délai pendant laquelle on ne peut rien faire d'autre parce qu'on guette.",unit:"% capté",ex:"Attendre un résultat médical → 5 jours, dont 60% captés : présent mais inutilisable.",s:52},
+
+  // ---- l'argent ----
+  {u:"argent",n:"Le prix du non-dérangement",v:"La somme qu'on paie en trop juste pour s'épargner une démarche, un appel, une résiliation.",unit:"francs de paresse (CHF/an)",ex:"Un abonnement inutile jamais résilié → 240 CHF/an de pur non-dérangement.",s:64},
+  {u:"argent",n:"Le coussin de panique",v:"La part de ton argent gelée bien au-delà du besoin objectif, juste parce que la voir te rassure.",unit:"% gelé au-delà du besoin",ex:"30 000 CHF à 0% quand 3 mois de charges suffiraient → ~60% immobilisé par l'angoisse, pas le calcul.",s:58},
+  {u:"argent",n:"La taxe de brouillard",v:"Ce qu'une dépense te coûte en plus parce que tu ne peux pas comparer le vrai prix.",unit:"surcoût faute de comparaison (%)",ex:"Un forfait groupé → 35% de plus que le même service à la carte, payés parce que le brouillard empêche de voir.",s:62},
+  {u:"argent",n:"L'argent muet",v:"La part de tes dépenses qui n'achète ni souvenir ni utilité ressentie — l'argent qui sort sans jamais « parler ».",unit:"% muet du budget",ex:"22% du mois part en dépenses dont tu ne te souviens plus une semaine après. Ni regret ni plaisir.",s:60},
+  {u:"argent",n:"Le seuil d'indifférence",v:"Le montant en dessous duquel tu cesses de compter — et qui, agrégé, te coûte le plus.",unit:"franc-seuil (CHF)",ex:"Seuil à 15 CHF → 1 900 CHF/an de micro-dépenses passent sous le radar.",s:66},
+  {u:"argent",n:"La rente de réputation",v:"La valeur monétaire dormante d'une confiance accumulée, qu'on encaisse lentement ou détruit d'un coup.",unit:"crédit encaissable (CHF)",ex:"Un artisan, 12 ans de bouche-à-oreille → ~40 000 CHF de rente, brûlables en un seul mauvais chantier.",s:60},
+  {u:"argent",n:"Le coût de la mauvaise unité",v:"Ce qu'on perd à raisonner dans la mauvaise unité de mesure (mensuel au lieu d'annuel, prix au lieu de prix/usage).",unit:"facteur d'illusion (×)",ex:"« 9,90/mois » pensé mensuel → ×12 = 119/an : illusion d'un facteur 12. C'est l'erreur que tout l'atlas combat.",s:63},
+
+  // ---- l'attention ----
+  {u:"attention",n:"La rémanence d'écran",v:"La persistance d'un contenu vu dans ta tête après avoir lâché l'appareil — boucle, image, phrase intrusive.",unit:"minutes de rémanence",ex:"Une vidéo dérangeante → 40 min de rémanence avant de redevenir disponible à ce qui t'entoure.",s:58},
+  {u:"attention",n:"Le scroll mort",v:"Le défilement qui continue après que le fil a cessé d'apporter la moindre information neuve.",unit:"scrolls après saturation",ex:"Fil saturé dès le 12ᵉ item, parcouru jusqu'au 60ᵉ → 48 scrolls morts, pur entraînement du pouce.",s:58},
+  {u:"attention",n:"Le seuil d'ennui",v:"Le temps qu'on tolère sans aucune stimulation avant de saisir un écran.",unit:"secondes avant l'écran",ex:"Dans une file → 9 secondes avant que la main sorte le téléphone. Il y a dix ans, c'était des minutes.",s:58},
+  {u:"attention",n:"L'aimant du badge",v:"L'attraction qu'exerce une pastille de notification non lue, indépendamment de son contenu.",unit:"ouvertures par le badge seul",ex:"Un badge « 1 » → 6 ouvertures dans l'heure pour un contenu nul. Ce n'est pas l'info, c'est la tache rouge.",s:57},
+  {u:"attention",n:"La surface de retour",v:"Combien de copies, captures et index d'un contenu publié existent hors de ton contrôle.",unit:"occurrences potentielles",ex:"Un message supprimé mais capturé et reposté → surface ouverte à vie. Tu as effacé l'original, pas la surface.",s:70},
+  {u:"attention",n:"Le bruit de fond cognitif",v:"Le niveau de sollicitation ambiante permanente qui empêche le silence mental, même appareil posé.",unit:"décibels cognitifs (0–100)",ex:"Un profil hyper-connecté → 72 dB cognitifs, jamais sous 40, même en vacances.",s:54},
+  {u:"attention",n:"Le délai parlant",v:"Le temps au-delà duquel ton silence se met à parler à ta place — lu comme froideur ou négligence.",unit:"heures avant que le silence parle",ex:"Un message d'un proche → seuil à 5 h ; passé ce délai, ne rien répondre dit déjà quelque chose.",s:60},
+
+  // ---- le lien ----
+  {u:"lien",n:"La dette de premiers pas",v:"L'accumulation chiffrée du déséquilibre d'initiative — la dette qui finit par lasser celui qui la porte.",unit:"ratio d'initiation cumulé",ex:"Un ami qui n'écrit jamais le premier → ratio 9:1 sur l'année. Pas un message manqué : une dette de 80.",s:62},
+  {u:"lien",n:"Le point de tiédeur",v:"Le seuil de temps sans contact après lequel reprendre demande un effort disproportionné.",unit:"mois avant tiédeur",ex:"Un ami proche → tiédeur vers 8 mois ; après, « ça fait trop longtemps » devient l'excuse qui scelle.",s:58},
+  {u:"lien",n:"L'écart de besoin de contact",v:"La différence entre la fréquence de contact dont chacun a besoin pour se sentir lié — ni faute ni tiédeur.",unit:"écart de fréquence (/semaine)",ex:"L'un a besoin de 4 échanges/semaine, l'autre d'un par mois → écart de ~3,8, vécu comme du reproche des deux côtés.",s:60},
+  {u:"lien",n:"Le coût de vulnérabilité",v:"L'énergie et le risque pour dire la chose vraie non dite — et chaque jour de report en rajoute.",unit:"seuil de dicible (0–100)",ex:"Dire « je t'aime » le premier → seuil à 85 ; non dit aujourd'hui, il sera à 88 demain. La vulnérabilité a des intérêts.",s:56},
+  {u:"lien",n:"Le sillage d'une dispute",v:"La durée pendant laquelle une dispute officiellement close continue d'altérer le ton.",unit:"heures de sillage",ex:"Dispute résolue à 22 h → 14 h de sillage le lendemain, où chaque phrase pèse plus lourd qu'elle ne devrait.",s:57},
+  {u:"lien",n:"Le taux de pardon",v:"Combien de petites preuves d'attention un seul manquement consomme — le taux de change entre une faute et le crédit accumulé.",unit:"preuves brûlées par manquement",ex:"Oublier un anniversaire → brûle d'un coup ~15 attentions de réserve. Un lien à sec passe alors dans le rouge.",s:59},
+  {u:"lien",n:"L'asymétrie d'avenir",v:"L'écart entre deux personnes sur la place qu'elles s'imaginent l'une dans l'autre, plus tard.",unit:"écart d'horizon (années)",ex:"L'un projette 10 ans, l'autre 1 an → asymétrie de 9 ans. Le lien tient sur un malentendu de calendrier.",s:64},
+
+  // ---- la ville ----
+  {u:"ville",n:"Le délai de banalisation",v:"La vitesse à laquelle un élément neuf d'un lieu cesse d'être perçu — il est toujours là, mais plus pour personne.",unit:"jours avant invisibilité",ex:"Une fresque neuve → remarquée 9 jours, puis fondue dans le décor. Le neuf a une demi-vie de regard très courte.",s:52},
+  {u:"ville",n:"Le temps de possession d'un lieu",v:"Combien de temps il faut fréquenter un lieu pour le sentir « à soi » — cesser d'être touriste de son propre quartier.",unit:"jours avant appropriation",ex:"Un nouveau quartier → ~40 jours avant de marcher sans lire les noms de rue, le corps qui sait où tourner.",s:54},
+  {u:"ville",n:"Le coût d'anonymat",v:"Ce qu'une ville te permet de cacher de toi — libérateur ou isolant selon le jour.",unit:"reconnaissances par jour",ex:"Une métropole → ~0 reconnaissance/jour : pleurer dans le métro sans qu'un regard te cueille. Un village → 30/jour, jamais seul ni jamais libre.",s:56},
+  {u:"ville",n:"La ville au-dessus des yeux",v:"La fraction d'une ville qu'on ne regarde jamais parce qu'elle est au-dessus de la ligne du regard (étages, toits, ciel).",unit:"% jamais regardé en hauteur",ex:"~92% de la ville jamais vue au-dessus du 1er étage. On habite une bande de trois mètres et on croit connaître la ville.",s:54},
+  {u:"ville",n:"La friction d'un seuil",v:"L'effort minuscule (porte lourde, code, trois marches) qui décide en silence qui peut entrer dans un lieu public.",unit:"% d'usagers exclus par geste",ex:"Un square avec digicode → chaque geste d'entrée ajouté exclut ~8% des usagers possibles. La barrière ne dit pas son nom.",s:55},
+  {u:"ville",n:"La mémoire d'un lieu disparu",v:"Combien de temps un commerce fermé continue d'être nommé par ses anciens, après que l'enseigne a changé.",unit:"années de survivance du nom",ex:"« On se retrouve à l'ancienne pharmacie » → 12 ans après sa fermeture, deux métiers plus tard. Le nom survit au lieu.",s:60},
+  {u:"ville",n:"Le coût de la flèche bleue",v:"Ce que la navigation optimale (le GPS) te fait perdre en connaissance réelle d'une ville : tu atteins tout, tu n'apprends rien.",unit:"% de trajets en pilotage assisté",ex:"95% des trajets en suivant la flèche → carte mentale jamais construite ; dix ans dans une ville sans jamais la posséder.",s:56},
+
+  // ---- le travail ----
+  {u:"travail",n:"Le temps de prétravail",v:"Le rituel d'amorçage à froid avant la première vraie tâche — démarrer de zéro, pas reprendre une chose en pause.",unit:"minutes de prétravail",ex:"25 min de prétravail chaque matin ; multiplié par chaque redémarrage de la journée, c'en est la moitié.",s:52},
+  {u:"travail",n:"La taxe de traduction",v:"Le temps passé à ré-emballer la même information pour des publics et des outils différents — zéro contenu neuf.",unit:"heures de ré-emballage/semaine",ex:"La même décision en mail, slide, ticket, compte rendu → ~4 h/semaine de pure traduction, invisible au bilan.",s:56},
+  {u:"travail",n:"La latence de reconnaissance",v:"Le délai entre un bon travail accompli et le moment où quelqu'un le voit — s'il le voit.",unit:"jours avant reconnaissance",ex:"Une refonte propre livrée en mars → vue à l'entretien annuel onze mois plus tard, en une phrase. Le mérite a une latence, parfois infinie.",s:56},
+  {u:"travail",n:"Le rituel survivant",v:"Une routine de travail qu'on continue d'exécuter longtemps après que sa raison d'être est morte.",unit:"années de survie post-utilité",ex:"Un rapport hebdo que plus personne ne lit → 6 ans après que son destinataire a quitté la boîte. Il tourne à vide.",s:60},
+  {u:"travail",n:"Le temps de demi-tour",v:"Le délai qu'une organisation met à annuler une décision qu'elle sait déjà mauvaise.",unit:"jours avant rétropédalage",ex:"Une réorg reconnue ratée en deux semaines → annulée 8 mois plus tard. Tout le monde voyait le mur ; personne n'avait le droit de freiner.",s:55},
+  {u:"travail",n:"La vitesse de péremption d'une priorité",v:"La rapidité avec laquelle la priorité numéro un d'aujourd'hui est déclassée par la suivante.",unit:"jours avant déclassement",ex:"La priorité absolue du lundi → déclassée le mercredi, jamais enterrée officiellement. On collectionne des numéro-un morts.",s:53},
+  {u:"travail",n:"Le résidu du soir",v:"Non pas que l'énergie baisse, mais qui en reçoit le meilleur : le travail prend le pic, les proches héritent du fond du verre.",unit:"% de réserve restante pour la vie",ex:"Une journée dense → 12% de réserve à 19 h pour ceux qu'on aime. Le déséquilibre n'est pas la fatigue, c'est son partage.",s:54},
+
+  // ---- le deuil ----
+  {u:"deuil",n:"La présence d'une absence",v:"Combien un absent occupe encore d'espace, par les gestes et les réflexes qui le cherchent.",unit:"rappels involontaires/jour",ex:"Le premier mois → ~11 fois par jour la main tend vers le téléphone pour appeler quelqu'un qui ne répondra plus.",s:62},
+  {u:"deuil",n:"Le temps de dégel",v:"Le délai avant de pouvoir prononcer le nom de l'absent sans que la voix se brise.",unit:"mois avant de pouvoir le nommer",ex:"~7 mois avant de dire son prénom à voix haute en restant entier. Le dégel n'est pas l'oubli : c'est quand le nom redevient habitable.",s:58},
+  {u:"deuil",n:"Le gel d'un objet",v:"La durée pendant laquelle un objet ordinaire du disparu devient impossible à déplacer.",unit:"années avant de pouvoir le bouger",ex:"Ses lunettes restées sur la table → 4 ans. Déplacer l'objet, c'est admettre l'absence ; alors l'objet reste, gelé.",s:60},
+  {u:"deuil",n:"L'administration d'un absent",v:"Les comptes, abonnements et contrats qui survivent à une personne et qu'il faut clore un à un, chacun rouvrant la plaie.",unit:"démarches à clore",ex:"~23 comptes et contrats à fermer → chaque appel au service client te fait redire « il est décédé ». La paperasse devient un deuil à part.",s:58},
+  {u:"deuil",n:"Le surnom orphelin",v:"Les mots, surnoms et rituels privés qui n'existaient qu'avec cette personne, et que plus personne ne prononcera jamais.",unit:"mots morts avec elle",ex:"Le surnom qu'elle seule te donnait → 1 mot mort, retiré de la langue. On perd une langue privée dont on était les deux seuls locuteurs.",s:60},
+
+  // ---- le corps ----
+  {u:"corps",n:"Le délai d'écoute du corps",v:"Combien de paliers d'intensité un signal du corps doit franchir — du chuchotement au cri — avant qu'on l'écoute.",unit:"paliers ignorés avant l'arrêt forcé",ex:"De la gêne (ignorée) à la nuit blanche (ignorée) à l'impossibilité de marcher → 3 paliers avant qu'elle prenne le rendez-vous à ta place.",s:58},
+  {u:"corps",n:"La facture qui monte",v:"Non pas que le corps récupère, mais que le même excès se facture plus cher à chaque décennie.",unit:"jours de récupération par excès, par âge",ex:"Une nuit blanche → 1 jour de réparation à 20 ans, 4 jours à 40. Le tarif monte sans que le plaisir change.",s:57},
+  {u:"corps",n:"L'heure pleine",v:"L'illusion comptable de remplir 14 heures comme si elles se valaient, alors que le corps n'est à plein régime que quelques-unes.",unit:"heures/jour réellement à 100%",ex:"~3,5 h/jour de pleine capacité ; le reste est emprunté, et on planifie pourtant les 14 au même tarif.",s:52},
+  {u:"corps",n:"La douleur naturalisée",v:"Les inconforts permanents devenus si familiers qu'on ne les nomme même plus comme douleurs.",unit:"inconforts de fond non nommés",ex:"3 inconforts permanents (le dos, la mâchoire, le ventre) devenus le bruit de fond du corps. On ne soigne pas ce qu'on ne nomme plus.",s:55},
+  {u:"corps",n:"Le seuil de plainte",v:"Non pas le seuil où la douleur est perçue, mais celui, social, où on accepte de la dire à voix haute.",unit:"douleur (0–10) avant de la dire",ex:"Seuil à 7/10 → on endure en silence jusqu'à 7, et on s'excuse encore en l'avouant. Le seuil se règle à la culture, pas aux nerfs.",s:56},
+  {u:"corps",n:"L'impôt du confort",v:"Chaque confort (la chaise, l'ascenseur, la livraison) retire au corps un micro-effort dont il avait besoin.",unit:"micro-efforts soustraits/jour",ex:"Ascenseur + voiture + courses livrées → ~600 micro-mouvements soustraits/jour. Le confort se paie en atrophie lente.",s:55},
+  {u:"corps",n:"L'asymétrie du corps",v:"Le corps perd bien plus vite qu'il ne gagne — des semaines pour bâtir, des jours pour défaire.",unit:"ratio perte/gain (temps)",ex:"2 semaines d'arrêt effacent 6 semaines de progrès → asymétrie 3:1. Construire est lent et coûteux, se déconstruire est gratuit.",s:55},
+
+  // ---- le noyau (Famille A — fiches complètes dans noyau-anthropie-fiches.md) ----
+  {u:"noyau",fam:"Temps et futurs morts",n:"Futurdette",v:"Loyauté persistante envers un futur imaginé ou promis, mais devenu impossible.",unit:"promesses mortes actives",ex:"Après une rupture : maison, enfants, voyages, vieillesse ensemble, identité de couple = 5 promesses mortes actives.",col:"possible selves (Markus & Nurius) — l'unité dénombrable est l'apport.",s:97},
+  {u:"noyau",fam:"Temps et futurs morts",n:"Mue différée",v:"Transformation déjà nécessaire mais repoussée par attachement à l'ancienne forme.",unit:"jours de retard de mue",ex:"Entreprise reprise, relation finie, mode de vie dépassé, forme précédente maintenue → 400 jours de retard.",col:"sunk cost / lock-in — l'unité fait d'un état une dette qui court.",s:94},
+  {u:"noyau",fam:"Temps et futurs morts",n:"Point de non-neutralité",v:"Le moment où ne pas choisir devient déjà un choix actif.",unit:"coût d'inaction (par jour)",ex:"Ne pas répondre, trancher, réparer → chaque jour ajoute un effet ; au jour 12, l'inaction a fait plus que toute action.",col:"omission bias (Ritov & Baron) — le seuil temporel est neuf.",s:96},
+  {u:"noyau",fam:"Temps et futurs morts",n:"Charge de non-clôture",v:"Énergie mentale consommée par une chose ni active ni fermée.",unit:"boucles ouvertes × retours/semaine",ex:"Un conflit non terminé → 6 retours mentaux/semaine, 0 décision. La boucle coûte sans rien produire.",col:"effet Zeigarnik / open loops — on mesure la fréquence de rumination.",s:94},
+  {u:"noyau",fam:"Forme et création",n:"Forme-dette",v:"Accumulation d'idées, notes et fragments qui réclament une structure.",unit:"formes dues",ex:"120 notes, 8 conversations, 4 fichiers, 0 structure stable = forte forme-dette.",col:"idea debt (Kibuishi) — recentré sur le manque de structure.",s:95},
+  {u:"noyau",fam:"Forme et création",n:"Formaturation",v:"Le moment où une idée est trop développée pour rester mentale et exige un corps.",unit:"pression de forme (récurrences × contextes × fragments)",ex:"Une idée revient 9 fois, dans 3 contextes, attire 12 fragments → formaturation atteinte.",col:"extended mind (Clark & Chalmers) — la métrique de maturité est l'apport.",s:96},
+  {u:"noyau",fam:"Maison, mémoire, patrimoine",n:"Valeur-trace",v:"Valeur d'un lieu liée au vécu qu'il porte : l'écart entre valeur marchande et valeur biographique.",unit:"traces actives",ex:"Maison à 900 000 CHF contenant 38 traces actives : repas, décès, jeux, odeurs, seuils, saisons.",col:"extended self (Belk) — l'unité objective le sentimental.",s:96},
+  {u:"noyau",fam:"Maison, mémoire, patrimoine",n:"Densité de trace",v:"Quantité d'événements et d'usages concentrés dans une pièce ou un objet.",unit:"traces par m² (ou par objet)",ex:"Cuisine familiale = 24 traces actives ; couloir anonyme = 1.",col:"place attachment (Tuan) — mesure intensive de la valeur-trace.",s:95},
+  {u:"noyau",fam:"Maison, mémoire, patrimoine",n:"Dépôt de soi",v:"Part d'identité laissée dans un lieu, un projet, une personne ou un objet.",unit:"fragments déposés",ex:"Un atelier de 20 ans, une entreprise familiale, une relation longue → on n'en sort jamais entier.",col:"extended self (Belk) — assumé ; angle identitaire + unité.",s:91},
+  {u:"noyau",fam:"Lucidité et action",n:"Coût de clairvoyance",v:"Charge nouvelle créée par une compréhension qui oblige à agir.",unit:"actions dues",ex:"Une fois le problème clairement vu → 3 actions deviennent dues : dire, trancher, modifier.",col:"burden of knowledge — l'unité chiffre la dette d'action.",s:92},
+  {u:"noyau",fam:"Lucidité et action",n:"Pacification creuse",v:"Calme obtenu par suspension des vrais sujets, et non par résolution.",unit:"sujets suspendus",ex:"« Tout va mieux » avec 11 sujets majeurs non ouverts = pacification creuse élevée.",col:"negative peace (Galtung) — l'unité rend dénombrable un calme qualitatif.",s:88},
+
+  // ---- la limite (Famille B — fiches complètes dans couche-limite-cliquets.md) ----
+  {u:"limite",fam:"Couche limite",n:"L'avant-nom",v:"Une intuition déjà active — qui oriente l'attention et infléchit des décisions — mais qu'aucun mot ne tient encore.",unit:"pression de nomination (0–100)",ex:"Une idée revient 14 fois en 3 semaines, infléchit 4 décisions, sans nom → 91/100.",col:"felt sense (Gendlin), tacit knowing (Polanyi).",trahit:"Nommée, elle cesse d'être un appel vivant : objet stable, plus pauvre.",s:98},
+  {u:"limite",fam:"Couche limite",n:"La prise imparfaite et le reste de réel",v:"Un nom est une poignée incomplète ; toute chose, même bien nommée, laisse une part hors de toute saisie.",unit:"taux de prise % / reste intraduit %",ex:"« Futurdette » → 70% de prise, 30% de reste. Une maison entièrement décrite → ~62% de reste.",col:"le Réel (Lacan), le noumène (Kant), la carte ≠ le territoire (Korzybski).",trahit:"L'illusion qu'un bon système peut tout contenir.",s:100},
+  {u:"limite",fam:"Couche limite",n:"La preuve faible du vrai",v:"L'écart entre une vérité certaine au-dedans et sa prouvabilité devant le monde.",unit:"écart de preuve (certitude − prouvabilité)",ex:"Certitude 95, preuve montrable 28 → écart de preuve 67.",col:"vérité ≠ démontrabilité (Gödel), knowledge vs justification (Gettier).",trahit:"Peut faire croire que l'intérieur suffit ; le monde demande des preuves.",s:96},
+  {u:"limite",fam:"Couche limite",n:"La vie non convertible",v:"La part du vécu qui ne se convertit pas proprement en récit, donnée, preuve, archive ou argent.",unit:"perte de conversion %",ex:"Maison familiale → valeur réellement convertissable ~30%, perte 70%.",col:"réification / colonisation du monde vécu (Habermas, Marx).",trahit:"Faire semblant que l'inconvertible est mesurable.",s:94},
+  {u:"limite",fam:"Couche limite",n:"Le presque-su",v:"Ce qu'on sait déjà mais pas assez pour se l'avouer — la connaissance en retard sur elle-même.",unit:"retard d'aveu (temps)",ex:"Savoir depuis 8 mois qu'une situation est morte, l'admettre cette semaine → 8 mois.",col:"mauvaise foi (Sartre), dissonance cognitive (Festinger).",trahit:"Simplifie une zone où savoir, nier, espérer et craindre se mêlent.",s:97},
+  {u:"limite",fam:"Couche limite",n:"Le choix déjà choisi",v:"Une décision déjà prise dans les actes, mais pas encore reconnue dans le discours.",unit:"jours d'avance comportementale",ex:"« Je ne sais pas encore » mais agit depuis 43 jours comme si c'était décidé.",col:"revealed preference (Samuelson), mauvaise foi (Sartre).",trahit:"Peut rendre brutal ce qui était encore fragile.",s:96},
+  {u:"limite",fam:"Couche limite",n:"La fidélité au flou",v:"L'attachement à une situation confuse parce que la clarifier ferait perdre des possibilités imaginaires.",unit:"possibles protégés",ex:"Ne pas clarifier une relation garde 5 futurs imaginaires ouverts à la fois.",col:"keeping options open (Shin & Ariely), le fantasme (Lacan).",trahit:"Peut juger trop vite ; parfois le flou protège.",s:98},
+  {u:"limite",fam:"Couche limite",n:"L'abri du pas-encore",v:"Un projet non commencé garde 100% de potentiel imaginaire ; le tester le fait chuter.",unit:"possibilité intacte %",ex:"Jamais lancé 100% → après le 1er test 37% imaginaire, mais 12% de réel gagné.",col:"fantasy vs reality (Oettingen), Gollwitzer.",trahit:"Expose la lâcheté possible — mais aussi la maturation nécessaire.",s:97},
+  {u:"limite",fam:"Couche limite",n:"La perte par réalisation",v:"Ce qu'une idée perd en devenant réelle : toute incarnation tue des alternatives.",unit:"possibles sacrifiés",ex:"Une idée pouvait être livre/site/jeu/rituel/app/atlas/méthode → on en choisit une, 6 meurent.",col:"coût d'opportunité ; actualisation du virtuel (Bergson, Deleuze).",trahit:"Peut rendre toute action tragique ; or agir exige de perdre.",s:99},
+  {u:"limite",fam:"Couche limite",n:"Le poids du non-arrivé",v:"La charge d'un événement qui n'a pas eu lieu mais pèse comme une absence structurante.",unit:"absences actives",ex:"La conversation jamais eue, l'enfant jamais né, le pardon jamais demandé → 5 absences actives.",col:"ambiguous loss (Boss), pensée contrefactuelle (Kahneman), l'objet a (Lacan).",trahit:"Donne une forme à l'absence — qui reste justement sans forme.",s:100},
+  {u:"limite",fam:"Couche limite",n:"L'événement sans événement",v:"Une bascule réelle sans scène ni seuil identifiable — pas de « jour », et pourtant après, ce n'est plus pareil.",unit:"bascule diffuse (% perdu/intervalle)",ex:"Une relation perd 2%/semaine pendant 18 mois, sans jour de rupture.",col:"creeping normalcy (Diamond), shifting baseline (Pauly), paradoxe sorite.",trahit:"Fabrique un événement là où il n'y avait qu'une érosion.",s:98},
+  {u:"limite",fam:"Couche limite",n:"La dignité du non-formulé",v:"La valeur propre d'une chose qu'il vaut mieux ne pas réduire en mots — la limite éthique du projet.",unit:"taux d'inviolabilité (0–100)",ex:"Un souvenir à 90/100 : le rendre public serait une perte nette.",col:"l'ineffable (Wittgenstein), le sacré (Otto), la pudeur (Jankélévitch). Seul jugé original.",trahit:"Il nomme ce qui demandait à rester hors nom — il se mord la queue.",s:99}
+];
+
+const atlas = document.getElementById('atlas');
+const order = ["noyau","limite","seed","temps","argent","attention","lien","ville","travail","deuil","corps"];
+const subtitles = {
+  noyau:"Famille A · perception — la grammaire centrale. Fiches complètes dans noyau-anthropie-fiches.md ; chaque carte déclare sa collision connue. (Deux autres centraux sont des graines : réveillabilité = coût de réveil, intentiodemie = demi-vie d'une intention.)",
+  limite:"Famille B · limite — les cliquets sur l'acte même de nommer. Ils empêchent l'atlas de croire qu'il voit tout. Chaque carte déclare ce qu'elle trahit. Fiches dans couche-limite-cliquets.md.",
+  seed:"L'atlas fondateur — les huit premières distinctions.",
+  temps:"Délais, latences, fenêtres — le temps mesuré par ses crans cachés.",
+  argent:"Ce que l'argent coûte vraiment quand on change d'unité de mesure.",
+  attention:"L'attention et le numérique — ce qui capte, ce qui reste, ce qui revient.",
+  lien:"Le lien et l'amour — les asymétries silencieuses qui font ou défont.",
+  ville:"La ville — ce qu'on cesse de voir, ce qu'on n'habite jamais vraiment.",
+  travail:"Le travail — les coûts invisibles que le bilan n'enregistre pas.",
+  deuil:"Le deuil — univers resserré : cinq distinctions à la mesure inédite.",
+  corps:"Le corps — ses signaux, ses factures différées, ses asymétries."
+};
+
+function teeth(score){
+  const N=20, on=Math.round(score/100*N);
+  let h='';
+  for(let i=0;i<N;i++) h+=`<span class="tooth${i<on?' on':''}"></span>`;
+  return h;
+}
+
+function cardHTML(d){
+  return `<article class="card" style="--c:${U[d.u].color}">
+    <div class="top">
+      <h3>${d.n}</h3>
+      <span class="tag">${d.fam||U[d.u].name}</span>
+    </div>
+    <p class="visible">${d.v}</p>
+    <div class="gauge-label">Indice de cliquet</div>
+    <div class="gauge">
+      <span class="ratchet">${teeth(d.s)}</span>
+      <span class="score"><b>${d.s}</b>/100</span>
+    </div>
+    <div class="detail">
+      <div class="row"><span class="k">Unité de mesure</span><span class="unit">${d.unit}</span></div>
+      <div class="row"><span class="k">Exemple chiffré</span>${d.ex}</div>
+      ${d.trahit?`<div class="row"><span class="k">Ce que ça trahit</span>${d.trahit}</div>`:''}
+      ${d.col?`<div class="row"><span class="k">Collision connue · statut ancré</span>${d.col}</div>`:''}
+    </div>
+    <div class="hint">Cliquer pour l'unité et l'exemple</div>
+  </article>`;
+}
+
+function render(filter){
+  atlas.innerHTML='';
+  let total=0;
+  order.forEach(u=>{
+    if(filter!=='all' && filter!==u) return;
+    const items=DATA.filter(d=>d.u===u);
+    total+=items.length;
+    const sec=document.createElement('section');
+    sec.innerHTML=`<div class="sec-head"><span class="dot" style="background:${U[u].color}"></span><h2>${u==='seed'?'Graines':U[u].name}</h2></div>
+      <p class="sec-sub">${subtitles[u]}</p>
+      <div class="grid">${items.map(cardHTML).join('')}</div>`;
+    atlas.appendChild(sec);
+  });
+  document.getElementById('count').textContent=total+' cliquets';
+  bindCards(); observe();
+}
+
+function bindCards(){
+  document.querySelectorAll('.card').forEach(c=>{
+    c.addEventListener('click',()=>c.classList.toggle('open'));
+  });
+}
+
+// filtres
+document.getElementById('filterBar').addEventListener('click',e=>{
+  const b=e.target.closest('.pill'); if(!b) return;
+  document.querySelectorAll('.pill').forEach(p=>p.setAttribute('aria-pressed','false'));
+  b.setAttribute('aria-pressed','true');
+  render(b.dataset.f);
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+// révélation au scroll
+let io;
+function observe(){
+  if(io) io.disconnect();
+  io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting)en.target.classList.add('in')}),{threshold:.08});
+  document.querySelectorAll('section').forEach(s=>{s.classList.add('reveal');io.observe(s)});
+}
+
+render('all');
+</script>
+</body>
+</html>

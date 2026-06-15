@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le protocole Anthropie — forger des cliquets — Anthropie</title>
+<style>
+  :root{
+    --paper:#f4f1ea; --paper-2:#ece7dc; --ink:#1c1b18; --ink-soft:#55514a;
+    --line:#d8d1c2; --accent:#9a3b27; --max:760px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;line-height:1.65;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  a{color:var(--accent)}
+  .topbar{border-bottom:1px solid var(--line);padding:18px 0;background:var(--paper-2)}
+  .back{font-size:.82rem;letter-spacing:.06em;text-decoration:none;color:var(--accent)}
+  .back:hover{text-decoration:underline}
+  main.doc{padding:46px 0 24px}
+  h1{font-size:2.4rem;line-height:1.08;margin:0 0 .5em;font-weight:600;letter-spacing:-.015em}
+  h2{font-size:1.5rem;font-weight:600;margin:1.8em 0 .35em;letter-spacing:-.01em;
+    padding-top:.3em;border-top:1px solid var(--line)}
+  h3{font-size:1.18rem;font-weight:600;margin:1.4em 0 .25em;color:var(--ink)}
+  h4,h5,h6{font-size:1.02rem;font-weight:600;margin:1.2em 0 .2em}
+  p{margin:0 0 1em}
+  ul,ol{margin:0 0 1.1em;padding-left:1.4em}
+  li{margin:.3em 0}
+  strong{color:var(--ink)}
+  em{color:var(--ink-soft)}
+  blockquote{margin:1.2em 0;padding:.4em 0 .4em 18px;border-left:3px solid var(--accent);
+    color:var(--ink-soft);font-style:italic}
+  blockquote p{margin:.3em 0}
+  blockquote strong{color:var(--accent);font-style:normal}
+  code{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:.86em;background:var(--paper-2);
+    border:1px solid var(--line);border-radius:3px;padding:.08em .35em;font-style:normal}
+  pre{background:var(--paper-2);border:1px solid var(--line);border-radius:6px;
+    padding:16px 18px;overflow:auto;margin:1.2em 0}
+  pre code{background:none;border:none;padding:0;font-size:.82em;line-height:1.5;white-space:pre}
+  table{border-collapse:collapse;width:100%;margin:1.2em 0;font-size:.92rem}
+  th,td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+  th{background:var(--paper-2);font-weight:600}
+  tbody tr:nth-child(even){background:rgba(0,0,0,.018)}
+  hr{border:none;border-top:1px solid var(--line);margin:2em 0}
+  footer{border-top:1px solid var(--line);margin-top:34px;padding:26px 0 70px;
+    color:var(--ink-soft);font-size:.9rem}
+  footer a{font-weight:600}
+  @media(max-width:680px){h1{font-size:1.9rem}main.doc{padding:34px 0 20px}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="wrap"><a class="back" href="index.html">&larr; anthropie · l’atlas des cliquets</a></div></header>
+<main class="doc"><div class="wrap">
+<h1>Le protocole Anthropie — forger des cliquets</h1>
+<blockquote><p><em>Anthropie n'est pas un dictionnaire de mots inventés. C'est un protocole pour produire des formes de perception : nommer ce qui n'avait pas de nom, mesurer ce qui n'avait pas d'échelle, le vérifier, le classer, et le relier en atlas.</em></p></blockquote>
+<p>Ce fichier décrit <strong>la méthode</strong>, pas son contenu (le contenu vit dans <code>lexique-des-cliquets.md</code> et <code>noyau-anthropie-fiches.md</code>). Le protocole est l'actif : reproductible, il produit un atlas qui s'accumule.</p>
+<hr>
+<h2>1. Ce qu'est un cliquet</h2>
+<p>Une <strong>distinction irréversible, nommée et rendue mesurable</strong>.</p>
+<blockquote><p><strong>Formule.</strong> distinction + nom + unité + <strong>reste + perte</strong>.</p></blockquote>
+<ul><li>la <strong>distinction</strong> rend visible une réalité peu vue ;</li><li>le <strong>nom</strong> la rend partageable ;</li><li>l'<strong>unité</strong> la rend comparable ;</li><li>le <strong>reste</strong> rappelle ce que la nomination laisse dehors ;</li><li>la <strong>perte</strong> rappelle ce que nommer ou réaliser abîme ou tue.</li></ul>
+<p>Un mot seul reste poétique. Un mot mesurable devient un instrument. Mais un instrument qui s'ignore colonise le vécu : c'est pourquoi la formule mûre intègre le reste et la perte (voir <code>couche-limite-cliquets.md</code>). C'est l'unité qui fait la différence entre une jolie tournure et un cliquet ; c'est le reste qui empêche le cliquet de devenir une cage.</p>
+<hr>
+<h2>2. Les six tests de qualité</h2>
+<p>Un cliquet fort en réussit au moins cinq.</p>
+<ol><li>Il <strong>isole</strong> une réalité confuse ou peu visible.</li><li>Il se <strong>comprend</strong> vite.</li><li>Il s'<strong>emploie</strong> dans une situation réelle.</li><li>Il se <strong>mesure</strong> ou s'estime (une unité concrète).</li><li>Il <strong>change</strong> une décision, une conversation ou une perception.</li><li>Il <strong>survit sans l'effet poétique</strong> — utile même dépouillé de sa belle formulation.</li></ol>
+<p>Et un interdit, le danger principal : <strong>ne pas être un simple synonyme d'un concept déjà nommé</strong> sans rien y ajouter. La poésie conceptuelle sans prise sur le réel est l'échec type.</p>
+<hr>
+<h2>3. Les six étapes du protocole</h2>
+<h3>a. Forger (divergence)</h3>
+<p>Viser une réalité peu visible — un état, un écart, un reste, un seuil. Forger large, sans s'auto-censurer. C'est l'étape où l'on cherche des distinctions, pas encore des noms parfaits.</p>
+<h3>b. Mesurer</h3>
+<p>Donner une <strong>unité</strong>, même estimée ou auto-évaluée (présence %, charge ouverte, jours, traces actives). Règle dure : <em>si on ne peut pas l'imaginer mesurée, ce n'est pas fini.</em> L'unité est ce qui transforme l'intuition en instrument.</p>
+<h3>c. Vérifier — la gate</h3>
+<p><strong>Une gate de vérification tenue par un relecteur indépendant (reviewer ≠ auteur).</strong> C'est le cœur sérieux du protocole, hérité de la discipline du repo (<code>PATTERN-VERIFICATION-GATE</code>). Pour chaque cliquet, trois questions sans complaisance :</p>
+<ul><li><strong>Originalité</strong> — « quel chercheur, quel terme a déjà nommé ça ? » On cherche activement le concept existant. On ne se félicite pas : on tente de tuer le cliquet.</li><li><strong>Mesurabilité</strong> — l'unité est-elle réellement estimable, ou vague ?</li><li><strong>Non-redondance</strong> — fait-il doublon avec un autre cliquet (y compris les graines) ?</li></ul>
+<p>La gate ne rend pas un verdict binaire mais l'un de trois (voir §4).</p>
+<h3>d. Nommer et renommer</h3>
+<p>Itérer le nom jusqu'à ce qu'il claque <strong>et</strong> tienne debout. Voix : <strong>français, sentence case, direct.</strong> Éviter les noms contaminés :</p>
+<ul><li><em>jargon académique</em> (ça fait synonyme savant) ;</li><li><em>métaphore marketing</em> (« idée-aimant » sonne pub → « noyau attracteur » ou mieux) ;</li><li><em>spiritualité / métaphysique</em> (« seuil d'incarnation » → « formaturation ») ;</li><li><em>terme déjà lourdement chargé</em> (« survivance » → autre chose).</li></ul>
+<p>Un même cliquet peut changer de nom plusieurs fois ; c'est normal.</p>
+<h3>e. Classer</h3>
+<p>Ranger dans une <strong>famille</strong>, attribuer un <strong>indice de cliquet (0–100)</strong> — à quel point, une fois posé, il ne peut plus reculer — et un <strong>statut</strong> (voir §6).</p>
+<h3>f. Relier</h3>
+<p>Verser dans l'<strong>atlas</strong> : renvois entre cliquets, familles, symboles. Le réseau ne fait que se densifier — et le lexique lui-même, en grandissant, devient un cliquet (il résout sa propre forme-dette).</p>
+<hr>
+<h2>4. L'originalité comme transparence</h2>
+<p>C'est le tournant méthodologique (v0.2). Le corpus des sciences humaines couvre presque tout : exiger l'originalité absolue tuerait des cliquets utiles. On remplace donc le filtre binaire par une <strong>déclaration honnête</strong>. Trois verdicts de gate :</p>
+<ul><li><strong>ORIGINAL</strong> — pas de collision sérieuse connue. Rare.</li><li><strong>ANCRÉ</strong> — collision réelle avec un concept nommé, <strong>mais l'unité de mesure apporte une opérationnalisation neuve</strong>. Publiable <strong>à condition de déclarer la collision</strong>. C'est le cas le plus fréquent et le plus honnête : <em>rendre mesurable une intuition qui existait déjà</em> est un apport légitime.</li><li><strong>REDONDANT</strong> — n'ajoute rien à un concept existant, ou duplique un autre cliquet. À fusionner ou retirer.</li></ul>
+<p>Chaque fiche porte donc deux champs obligatoires : <strong>statut d'originalité</strong> et <strong>collisions connues</strong>. On ne cache pas la parenté — on la cite. Un cliquet « ancré » assumé est plus solide qu'un cliquet « original » qui se ferait démasquer.</p>
+<hr>
+<h2>5. Le format standard d'une fiche</h2>
+<pre><code>Nom :                       (+ ancien nom si renommé)
+Famille :
+Définition :
+Ce que ça rend visible :
+Ce que ça distingue :       (vs les concepts adjacents)
+Unité :
+Exemple chiffré :
+Indice de cliquet :         (0–100)
+Question associée :
+Symbole possible :
+Rituel possible :
+Diagnostic associé :
+Ce que ça trahit :          (ce que le nom appauvrit ou fige)
+Ce que ça laisse dehors :   (le reste de réel non capturé)
+Quand ne pas l'utiliser :   (les limites du concept)
+Statut d'originalité :      (ORIGINAL / ANCRÉ / REDONDANT)
+Collisions connues :        (termes + auteurs)
+Version courte partageable :</code></pre>
+<p>Les trois champs ajoutés (<em>trahit · laisse dehors · quand ne pas l'utiliser</em>) sont la marque d'un concept mature : il connaît ses limites. Ils sont obligatoires pour la Famille B (voir §9).</p>
+<p>Les fiches concises de l'atlas (<code>lexique-des-cliquets.md</code>) n'en gardent qu'un sous-ensemble (nom · rend visible · unité · exemple · indice). Le format complet est réservé aux cliquets <strong>centraux</strong>, qui forment la grammaire opératoire.</p>
+<hr>
+<h2>6. Les statuts</h2>
+<p><code>brut</code> · <code>prometteur</code> · <code>à vérifier</code> · <code>à renommer</code> · <code>ancré</code> · <code>validé</code> · <code>central</code> · <code>retiré</code></p>
+<p>Un cliquet circule entre ces statuts. « Retiré » n'efface pas : on garde la trace de pourquoi (souvent : collision trop forte révélée par la gate).</p>
+<hr>
+<h2>7. Les garde-fous (les pièges récurrents)</h2>
+<ul><li><strong>La poésie sans prise.</strong> Un beau nom sans unité ni usage. Test : enlève la belle phrase — reste-t-il un instrument ?</li><li><strong>Le synonyme déguisé.</strong> Vérifié par la gate ; si la gate dit REDONDANT, on fusionne.</li><li><strong>L'unité vague.</strong> « Charge », « densité » sans protocole d'estimation. Préciser comment on mesurerait (même grossièrement).</li><li><strong>Le double comptage.</strong> Deux cliquets qui mesurent la même chose (ex. une mesure et sa version normalisée). Les articuler explicitement ou n'en garder qu'un.</li><li><strong>Le nom contaminé.</strong> Marketing, spiritualité, terme chargé. Renommer.</li><li><strong>Le champ saturé.</strong> Certains domaines (le deuil, l'économie comportementale) sont déjà densément nommés : n'y entrer qu'avec une mesure réellement inédite, et accepter d'y forger moins.</li></ul>
+<hr>
+<h2>8. Pourquoi c'est l'actif</h2>
+<p>Les mots sont l'entrée. Mais la valeur durable est le <strong>protocole</strong> : il est reproductible (n'importe quel univers humain peut être passé à la moulinette), il produit un atlas qui <strong>s'accumule</strong> (chaque salve enrichit le réseau), et il porte sa propre garantie de sérieux (la gate indépendante). </p>
+<blockquote><p>Nommer ce qui n'avait pas de nom. Mesurer ce qui n'avait pas d'échelle. Vérifier au lieu de s'auto-congratuler. Cartographier ce qui n'avait pas de territoire. Anthropie est un atelier de formes pour les réalités humaines invisibles.</p></blockquote>
+<hr>
+<h2>9. Les deux familles</h2>
+<p>Tout cliquet appartient à l'une de deux familles, et un atlas sain a besoin des deux.</p>
+<ul><li><strong>Famille A — les cliquets de perception.</strong> Ils servent à mieux voir le réel : futurdette, valeur-trace, point de non-neutralité, réveillabilité… (voir <code>noyau-anthropie-fiches.md</code>, <code>lexique-des-cliquets.md</code>).</li><li><strong>Famille B — les cliquets de limite.</strong> Ils servent à critiquer l'acte même de voir et de nommer : le reste de réel, la prise imparfaite, la dignité du non-formulé… (voir <code>couche-limite-cliquets.md</code>).</li></ul>
+<blockquote><p>Un système qui n'a que la Famille A devient <strong>arrogant</strong> — une machine à étiqueter le monde. Un système qui inclut la Famille B devient <strong>lucide</strong> — il donne des prises sans prétendre posséder.</p></blockquote>
+<p>Les <strong>sept lois de la nomination</strong> (détaillées dans <code>couche-limite-cliquets.md</code>) gouvernent les deux familles : toute nomination est une opération ; tout concept crée un reste ; l'invisible n'est pas toujours à révéler ; le flou peut être dette ou abri ; toute incarnation sacrifie des possibles ; ce qui n'a pas eu lieu peut avoir une masse ; le vrai noyau survit à ses mauvais noms.</p>
+<h2>10. La phrase fondatrice</h2>
+<blockquote><p>Il existe des choses sans nom.<br>Il existe des noms qui sauvent.<br>Il existe des noms qui abîment.<br><strong>Anthropie commence quand on apprend à distinguer les trois.</strong></p></blockquote>
+<p>Ou, plus compact : <em>nommer sans posséder, mesurer sans réduire, archiver sans épuiser, ritualiser sans figer.</em></p>
+<hr>
+<p><em>Voir : <code>lexique-des-cliquets.md</code> (62 cliquets, salves I-II) · <code>salve-III-autres-formes.md</code> (notations, questions, standards, archives, liens) · <code>noyau-anthropie-fiches.md</code> (13 fiches centrales, Famille A) · <code>couche-limite-cliquets.md</code> (12 cliquets-limites, Famille B) · <code>diagnostic-anthropique-lieu.html</code> et <code>diagnostic-de-passage.html</code> (les instruments) · <code>atlas-des-cliquets.html</code> (atlas interactif) · <code>constellation-des-cliquets.html</code> (le réseau).</em></p>
+</div></main>
+<footer><div class="wrap"><a href="index.html">&larr; Retour à l’atlas des cliquets</a></div></footer>
+</body>
+</html>

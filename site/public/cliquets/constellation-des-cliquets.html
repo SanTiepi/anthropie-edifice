@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La constellation des cliquets — Anthropie</title>
+<style>
+  :root{
+    --paper:#f4f1ea; --paper-2:#ece7dc; --ink:#1c1b18; --ink-soft:#55514a;
+    --line:#d8d1c2; --accent:#9a3b27;
+    --seed:#6b6258; --noyau:#b08534; --limite:#44506b;
+    --greffe:#b08534; --complement:#3f6b5f; --critique:#9a3b27; --famille:#bcae97;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{background:var(--paper);color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;overflow:hidden}
+  #stage{position:fixed;inset:0}
+  svg{width:100%;height:100%;display:block;cursor:grab}
+  svg.dragging{cursor:grabbing}
+  .edge{stroke-width:1;opacity:.30;transition:opacity .2s,stroke-width .2s}
+  .edge.greffe{stroke:var(--greffe)}
+  .edge.complement{stroke:var(--complement)}
+  .edge.critique{stroke:var(--critique);stroke-dasharray:4 3}
+  .edge.famille{stroke:var(--famille)}
+  .node circle{stroke:var(--paper);stroke-width:1.5;transition:opacity .2s}
+  .node text{font-size:11px;fill:var(--ink);paint-order:stroke;stroke:var(--paper);stroke-width:3px;
+    pointer-events:none;transition:opacity .2s}
+  .node.seed circle{fill:var(--seed)} .node.noyau circle{fill:var(--noyau)} .node.limite circle{fill:var(--limite)}
+  .dim{opacity:.08}
+  .dim text{opacity:.15}
+
+  .panel{position:fixed;top:18px;left:18px;max-width:340px;background:rgba(244,241,234,.94);
+    backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:8px;padding:16px 18px}
+  .panel h1{font-size:1.15rem;margin:0 0 6px;font-weight:600}
+  .panel p{font-size:.86rem;color:var(--ink-soft);margin:6px 0 0;line-height:1.45}
+  .legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;font-size:.74rem}
+  .legend span{display:flex;align-items:center;gap:5px;color:var(--ink-soft)}
+  .dot{width:10px;height:10px;border-radius:50%}
+  .ln{width:16px;height:0;border-top:2px solid}
+  .btn{font:inherit;font-size:.82rem;cursor:pointer;border:1px solid var(--line);background:transparent;
+    color:var(--ink-soft);border-radius:999px;padding:5px 12px;margin-top:12px}
+  .btn:hover{border-color:var(--ink-soft);color:var(--ink)}
+
+  #info{position:fixed;bottom:18px;right:18px;max-width:330px;background:rgba(236,231,220,.96);
+    border:1px solid var(--line);border-radius:8px;padding:15px 17px;opacity:0;transform:translateY(8px);
+    transition:.25s;pointer-events:none}
+  #info.on{opacity:1;transform:none}
+  #info .tag{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+  #info h2{font-size:1.1rem;margin:3px 0 6px;font-weight:600}
+  #info .desc{font-size:.88rem;color:var(--ink-soft);margin:0 0 9px;line-height:1.45}
+  #info .links{font-size:.8rem}
+  #info .links b{color:var(--ink)}
+  #info .links em{color:var(--ink-soft);font-style:normal}
+</style>
+</head>
+<body>
+<div id="stage"><svg id="svg"></svg></div>
+
+<div class="panel">
+  <h1>La constellation des cliquets</h1>
+  <p>L'atlas vu comme le réseau qu'il décrit : chaque distinction est un nœud, chaque arête un lien qui ne se dé-trace plus. Clique un cliquet pour isoler ses liens. Glisse pour réorganiser.</p>
+  <div class="legend">
+    <span><i class="dot" style="background:var(--seed)"></i>graine</span>
+    <span><i class="dot" style="background:var(--noyau)"></i>perception</span>
+    <span><i class="dot" style="background:var(--limite)"></i>limite</span>
+  </div>
+  <div class="legend">
+    <span><i class="ln" style="border-color:var(--greffe)"></i>greffe</span>
+    <span><i class="ln" style="border-color:var(--complement)"></i>complément</span>
+    <span><i class="ln" style="border-color:var(--critique);border-top-style:dashed"></i>critique</span>
+    <span><i class="ln" style="border-color:var(--famille)"></i>famille</span>
+  </div>
+  <button class="btn" onclick="reheat()">Réorganiser</button>
+</div>
+
+<div id="info"></div>
+
+<script>
+const N = [
+  // seeds
+  {id:"cliquet",l:"Le cliquet",fam:"seed",s:100,d:"Ce qui ne peut qu'avancer. Le concept-racine : il classe tout selon son degré d'irréversibilité."},
+  {id:"empreinte",l:"Empreinte d'irréversible",fam:"seed",s:88,d:"La part d'un acte qu'on ne pourra jamais défaire."},
+  {id:"portee_nom",l:"Portée d'un nom",fam:"seed",s:94,d:"Combien d'esprits peuvent désormais penser une chose, parce qu'elle a un nom."},
+  {id:"latence_morale",l:"Latence morale",fam:"seed",s:64,d:"L'écart entre savoir le juste et le faire."},
+  {id:"cout_reveil",l:"Coût de réveil",fam:"seed",s:72,d:"L'énergie pour reprendre une chose mise en pause."},
+  {id:"demivie",l:"Demi-vie d'une intention",fam:"seed",s:58,d:"Le délai où une intention a 50% de chances d'être morte."},
+  {id:"presence",l:"Densité de présence",fam:"seed",s:40,d:"La fraction de toi réellement ici, maintenant."},
+  {id:"dette_att",l:"Dette d'attention",fam:"seed",s:55,d:"Les sollicitations ouvertes, non soldées, qui réclament ton attention future."},
+  // noyau (perception)
+  {id:"futurdette",l:"Futurdette",fam:"noyau",s:97,d:"Loyauté envers un futur imaginé devenu impossible."},
+  {id:"mue",l:"Mue différée",fam:"noyau",s:94,d:"Transformation nécessaire mais repoussée par attachement à l'ancienne forme."},
+  {id:"non_neutralite",l:"Point de non-neutralité",fam:"noyau",s:96,d:"Le moment où ne pas choisir devient déjà un choix."},
+  {id:"non_cloture",l:"Charge de non-clôture",fam:"noyau",s:94,d:"L'énergie consommée par une chose ni active ni fermée."},
+  {id:"forme_dette",l:"Forme-dette",fam:"noyau",s:95,d:"Des fragments accumulés qui réclament une structure."},
+  {id:"formaturation",l:"Formaturation",fam:"noyau",s:96,d:"Le moment où une idée exige un corps."},
+  {id:"valeur_trace",l:"Valeur-trace",fam:"noyau",s:96,d:"L'écart entre valeur marchande et valeur biographique d'un lieu."},
+  {id:"densite_trace",l:"Densité de trace",fam:"noyau",s:95,d:"Le vécu concentré par unité d'espace ou par objet."},
+  {id:"depot_soi",l:"Dépôt de soi",fam:"noyau",s:91,d:"La part d'identité laissée dans un lieu, un projet, une personne."},
+  {id:"clairvoyance",l:"Coût de clairvoyance",fam:"noyau",s:92,d:"La charge créée par une compréhension qui oblige à agir."},
+  {id:"pacification",l:"Pacification creuse",fam:"noyau",s:88,d:"Le calme obtenu par suspension des vrais sujets."},
+  // limite
+  {id:"avant_nom",l:"L'avant-nom",fam:"limite",s:98,d:"Une intuition déjà active mais qu'aucun mot ne tient encore."},
+  {id:"reste_reel",l:"Reste de réel",fam:"limite",s:100,d:"La part qui demeure hors de toute saisie, même bien nommée. Le garde-fou central."},
+  {id:"preuve_faible",l:"Preuve faible du vrai",fam:"limite",s:96,d:"L'écart entre une vérité certaine dedans et sa prouvabilité dehors."},
+  {id:"non_convertible",l:"Vie non convertible",fam:"limite",s:94,d:"Le vécu qui ne se convertit pas en récit, donnée, archive ou argent."},
+  {id:"presque_su",l:"Le presque-su",fam:"limite",s:97,d:"Ce qu'on sait déjà mais pas assez pour se l'avouer."},
+  {id:"choix_choisi",l:"Choix déjà choisi",fam:"limite",s:96,d:"Une décision prise dans les actes, pas encore dans le discours."},
+  {id:"fidelite_flou",l:"Fidélité au flou",fam:"limite",s:98,d:"L'attachement au flou parce que clarifier ferait perdre des possibles."},
+  {id:"abri",l:"L'abri du pas-encore",fam:"limite",s:97,d:"Un projet non commencé garde 100% de potentiel imaginaire."},
+  {id:"perte_real",l:"Perte par réalisation",fam:"limite",s:99,d:"Ce qu'une idée perd en devenant réelle : incarner tue des alternatives."},
+  {id:"poids_non_arrive",l:"Poids du non-arrivé",fam:"limite",s:100,d:"La charge d'un événement qui n'a pas eu lieu mais pèse."},
+  {id:"evenement_sans",l:"Événement sans événement",fam:"limite",s:98,d:"Une bascule réelle sans scène ni date identifiable."},
+  {id:"dignite",l:"Dignité du non-formulé",fam:"limite",s:99,d:"Ce qu'il vaut mieux ne pas réduire en mots. La limite éthique du projet."}
+];
+
+const E = [
+  // racine
+  ["cliquet","empreinte","famille"],["cliquet","portee_nom","famille"],["cliquet","reste_reel","critique"],
+  ["cliquet","perte_real","complement"],["empreinte","perte_real","complement"],["empreinte","non_neutralite","complement"],
+  // greffe "dette"
+  ["dette_att","forme_dette","greffe"],["dette_att","non_cloture","greffe"],["forme_dette","futurdette","greffe"],
+  ["forme_dette","formaturation","complement"],["non_cloture","demivie","complement"],["dette_att","presence","complement"],
+  // greffe "demi-vie" / décroissance
+  ["demivie","evenement_sans","greffe"],["demivie","futurdette","complement"],["demivie","latence_morale","complement"],
+  // lucidité : savoir / agir
+  ["latence_morale","non_neutralite","complement"],["clairvoyance","non_neutralite","complement"],
+  ["clairvoyance","presque_su","complement"],["presque_su","choix_choisi","complement"],
+  ["choix_choisi","non_neutralite","complement"],["pacification","presque_su","complement"],
+  ["preuve_faible","presque_su","critique"],["latence_morale","cout_reveil","complement"],
+  // maison / trace
+  ["valeur_trace","densite_trace","complement"],["valeur_trace","depot_soi","complement"],
+  ["valeur_trace","non_convertible","critique"],["depot_soi","reste_reel","critique"],
+  ["valeur_trace","reste_reel","critique"],
+  // possibles / futurs (triade)
+  ["futurdette","poids_non_arrive","complement"],["futurdette","mue","complement"],
+  ["fidelite_flou","abri","complement"],["abri","perte_real","complement"],["fidelite_flou","perte_real","complement"],
+  ["perte_real","formaturation","critique"],["abri","formaturation","complement"],
+  // forme
+  ["avant_nom","formaturation","complement"],["avant_nom","portee_nom","complement"],
+  // limite critique perception
+  ["reste_reel","portee_nom","critique"],["reste_reel","non_convertible","complement"],
+  ["dignite","reste_reel","complement"],["dignite","depot_soi","critique"],["dignite","valeur_trace","critique"],
+  ["preuve_faible","non_convertible","complement"],
+  // mue / clôture
+  ["mue","non_cloture","complement"],["mue","choix_choisi","complement"],
+  ["cout_reveil","non_cloture","complement"]
+];
+
+const svg = document.getElementById('svg');
+const NS = "http://www.w3.org/2000/svg";
+let W = innerWidth, H = innerHeight;
+const byId = Object.fromEntries(N.map(n=>[n.id,n]));
+const adj = {}; N.forEach(n=>adj[n.id]=new Set());
+E.forEach(([a,b])=>{adj[a].add(b);adj[b].add(a);});
+
+// init positions on a circle
+N.forEach((n,i)=>{
+  const a = i/N.length*Math.PI*2;
+  n.x = W/2 + Math.cos(a)*Math.min(W,H)*0.32 + (Math.random()-.5)*40;
+  n.y = H/2 + Math.sin(a)*Math.min(W,H)*0.32 + (Math.random()-.5)*40;
+  n.vx=0; n.vy=0;
+  n.r = 6 + n.s/100*11;
+});
+
+function simulate(iter){
+  for(let t=0;t<iter;t++){
+    // repulsion
+    for(let i=0;i<N.length;i++) for(let j=i+1;j<N.length;j++){
+      const a=N[i],b=N[j]; let dx=a.x-b.x, dy=a.y-b.y; let d2=dx*dx+dy*dy||0.01;
+      const f = 5200/d2; const d=Math.sqrt(d2);
+      const fx=dx/d*f, fy=dy/d*f; a.vx+=fx; a.vy+=fy; b.vx-=fx; b.vy-=fy;
+    }
+    // springs
+    E.forEach(([ai,bi])=>{
+      const a=byId[ai],b=byId[bi]; let dx=b.x-a.x, dy=b.y-a.y; let d=Math.sqrt(dx*dx+dy*dy)||0.01;
+      const f=(d-120)*0.012; const fx=dx/d*f, fy=dy/d*f; a.vx+=fx; a.vy+=fy; b.vx-=fx; b.vy-=fy;
+    });
+    // centering + damping
+    N.forEach(n=>{
+      n.vx += (W/2-n.x)*0.0016; n.vy += (H/2-n.y)*0.0016;
+      n.vx*=0.82; n.vy*=0.82;
+      if(n!==dragging){ n.x+=n.vx; n.y+=n.vy; }
+      n.x=Math.max(n.r+8,Math.min(W-n.r-8,n.x)); n.y=Math.max(n.r+40,Math.min(H-n.r-8,n.y));
+    });
+  }
+}
+
+let edgeEls=[], nodeEls={}, dragging=null, focusId=null;
+function build(){
+  svg.innerHTML=""; edgeEls=[]; nodeEls={};
+  E.forEach(([a,b,type])=>{
+    const ln=document.createElementNS(NS,"line"); ln.setAttribute("class","edge "+type);
+    ln._a=a; ln._b=b; svg.appendChild(ln); edgeEls.push(ln);
+  });
+  N.forEach(n=>{
+    const g=document.createElementNS(NS,"g"); g.setAttribute("class","node "+n.fam); g.style.cursor="pointer";
+    const c=document.createElementNS(NS,"circle"); c.setAttribute("r",n.r);
+    const t=document.createElementNS(NS,"text"); t.setAttribute("x",n.r+3); t.setAttribute("y",4); t.textContent=n.l;
+    g.appendChild(c); g.appendChild(t); svg.appendChild(g);
+    g.addEventListener("pointerdown",e=>startDrag(e,n));
+    g.addEventListener("click",e=>{e.stopPropagation(); focus(n.id);});
+    nodeEls[n.id]=g;
+  });
+}
+function paint(){
+  edgeEls.forEach(ln=>{
+    const a=byId[ln._a],b=byId[ln._b];
+    ln.setAttribute("x1",a.x);ln.setAttribute("y1",a.y);ln.setAttribute("x2",b.x);ln.setAttribute("y2",b.y);
+    if(focusId){ const on = ln._a===focusId||ln._b===focusId;
+      ln.style.opacity= on?0.85:0.04; ln.style.strokeWidth= on?2:1; }
+    else { ln.style.opacity=""; ln.style.strokeWidth=""; }
+  });
+  N.forEach(n=>{
+    const g=nodeEls[n.id]; g.setAttribute("transform",`translate(${n.x},${n.y})`);
+    if(focusId){ const on = n.id===focusId||adj[focusId].has(n.id); g.classList.toggle("dim",!on); }
+    else g.classList.remove("dim");
+  });
+}
+function loop(){ simulate(1); paint(); requestAnimationFrame(loop); }
+
+// drag
+function startDrag(e,n){ dragging=n; svg.classList.add("dragging"); e.preventDefault(); }
+svg.addEventListener("pointermove",e=>{ if(dragging){ const r=svg.getBoundingClientRect();
+  dragging.x=e.clientX-r.left; dragging.y=e.clientY-r.top; dragging.vx=0; dragging.vy=0; }});
+addEventListener("pointerup",()=>{ dragging=null; svg.classList.remove("dragging"); });
+svg.addEventListener("click",()=>focus(null));
+
+const info=document.getElementById('info');
+const FAMN={seed:"Graine",noyau:"Perception (Famille A)",limite:"Limite (Famille B)"};
+function focus(id){
+  focusId=id;
+  if(!id){ info.classList.remove("on"); paint(); return; }
+  const n=byId[id]; const neigh=[...adj[id]].map(x=>byId[x].l);
+  info.innerHTML=`<div class="tag">${FAMN[n.fam]} · indice ${n.s}</div><h2>${n.l}</h2>
+    <p class="desc">${n.d}</p>
+    <div class="links"><b>Relié à ${neigh.length} cliquets :</b> <em>${neigh.join(" · ")}</em></div>`;
+  info.classList.add("on"); paint();
+}
+function reheat(){ N.forEach(n=>{ n.vx=(Math.random()-.5)*30; n.vy=(Math.random()-.5)*30; }); }
+
+addEventListener("resize",()=>{ W=innerWidth;H=innerHeight; });
+simulate(420); build(); paint(); loop();
+</script>
+</body>
+</html>
