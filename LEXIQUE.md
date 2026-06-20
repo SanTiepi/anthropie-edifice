@@ -151,7 +151,7 @@ L'apprentissage par la ville elle-même, tenue pour la véritable école.
 > *À douze ans, l'enfant entre en astépédie : la cité devient son manuel ouvert.*
 
 **Synchrèse** *· gr. syn + chrêsis (usage) · pur grec*
-Le réseau des ressources communautaires librement empruntables — le tissu d'apprentissage convivial d'Illich.
+Le réseau des ressources communautaires librement empruntables — d'après les *learning webs* d'Illich (*Deschooling Society*, 1971).
 > *L'atelier, le métier à tisser, la forge : versés à la synchrèse du quartier.*
 
 **Parathète** *· gr. pará (à côté) + thétês (celui qui pose, cf. nomothète) · pur grec*
