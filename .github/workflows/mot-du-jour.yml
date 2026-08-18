@@ -13,6 +13,14 @@ on:
         description: "Fabriquer les visuels sans publier"
         type: boolean
         default: false
+      sans_instagram:
+        description: "Ne pas publier sur Instagram (utile pour tester TikTok seul)"
+        type: boolean
+        default: false
+      sans_tiktok:
+        description: "Ne pas publier sur TikTok"
+        type: boolean
+        default: false
 
 concurrency:
   group: mot-du-jour
@@ -55,7 +63,9 @@ jobs:
         run: |
           python3 social/publier.py \
             ${{ github.event.inputs.date && format('--date {0}', github.event.inputs.date) || '' }} \
-            ${{ github.event.inputs.blanc == 'true' && '--blanc' || '' }}
+            ${{ github.event.inputs.blanc == 'true' && '--blanc' || '' }} \
+            ${{ github.event.inputs.sans_instagram == 'true' && '--sans-instagram' || '' }} \
+            ${{ github.event.inputs.sans_tiktok == 'true' && '--sans-tiktok' || '' }}
 
       - name: Garder une trace en cas d'échec
         if: failure()
