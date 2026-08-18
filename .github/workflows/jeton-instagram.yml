@@ -1,0 +1,25 @@
+name: Prolonger le jeton Instagram
+
+on:
+  schedule:
+    # Le 1er de chaque mois : un jeton longue durée expire au bout de 60 jours.
+    - cron: "20 5 1 * *"
+  workflow_dispatch:
+
+jobs:
+  prolonger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r social/requirements.txt
+      - env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_LOGIN_MODE: ${{ vars.IG_LOGIN_MODE || 'instagram' }}
+          FB_APP_ID: ${{ secrets.FB_APP_ID }}
+          FB_APP_SECRET: ${{ secrets.FB_APP_SECRET }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python3 social/publier.py --rafraichir-instagram
