@@ -40,9 +40,11 @@ FUSEAU = ZoneInfo("Europe/Zurich")
 
 
 def env(nom: str, obligatoire: bool = True) -> str:
+    """RuntimeError et non SystemExit : un secret manquant côté TikTok ne doit pas
+    tuer le script après une publication Instagram déjà réussie."""
     v = os.environ.get(nom, "").strip()
     if obligatoire and not v:
-        raise SystemExit(f"secret manquant : {nom}")
+        raise RuntimeError(f"secret manquant : {nom}")
     return v
 
 
@@ -90,6 +92,11 @@ def publier_jour(jour: date, avec_instagram: bool, avec_tiktok: bool, blanc: boo
             resultat["instagram_erreur"] = str(e)
             journal(etape="instagram", statut="échec", erreur=str(e))
             traceback.print_exc()
+
+    # TikTok non configuré : on saute proprement au lieu de faire échouer le run
+    if avec_tiktok and not os.environ.get("TIKTOK_CLIENT_KEY", "").strip():
+        journal(etape="tiktok", statut="ignoré", message="TIKTOK_CLIENT_KEY absent — canal non encore monté")
+        avec_tiktok = False
 
     if avec_tiktok:
         try:
