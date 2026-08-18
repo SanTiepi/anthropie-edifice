@@ -1,0 +1,66 @@
+name: Mot du jour — Instagram & TikTok
+
+on:
+  schedule:
+    # 06:05 UTC = 08:05 à Zurich en été, 07:05 en hiver.
+    - cron: "5 6 * * *"
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Date à publier (AAAA-MM-JJ). Vide = aujourd'hui."
+        required: false
+      blanc:
+        description: "Fabriquer les visuels sans publier"
+        type: boolean
+        default: false
+
+concurrency:
+  group: mot-du-jour
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Dépendances
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          pip install -r social/requirements.txt
+
+      - name: Publier
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_LOGIN_MODE: ${{ vars.IG_LOGIN_MODE || 'instagram' }}
+          FB_APP_ID: ${{ secrets.FB_APP_ID }}
+          FB_APP_SECRET: ${{ secrets.FB_APP_SECRET }}
+          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
+          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+          TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
+          TIKTOK_MODE: ${{ vars.TIKTOK_MODE || 'direct' }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          python3 social/publier.py \
+            ${{ github.event.inputs.date && format('--date {0}', github.event.inputs.date) || '' }} \
+            ${{ github.event.inputs.blanc == 'true' && '--blanc' || '' }}
+
+      - name: Garder une trace en cas d'échec
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mot-du-jour-${{ github.run_id }}
+          path: social/out/
+          retention-days: 14
