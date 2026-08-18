@@ -110,6 +110,8 @@ const FILES = [
   ['ACCESSIBILITY_AUDIT_2026_05_05.md', 'audit-accessibilite', "Audit accessibilité site — état 2026-05-05 (état des lieux pour Claude Design)"],
   ['ROADMAP.md',                 'roadmap',     "Roadmap — 4 phases"],
   ['CONTRIBUTING.md',            'contribuer',  "Contribuer à l'édifice"],
+  ['CONFIDENTIALITE.md',         'confidentialite', "Politique de confidentialité"],
+  ['CONDITIONS.md',              'conditions',  "Conditions d'utilisation"],
 ];
 
 // Source filename → /lire/<slug>/ — built from FILES above
