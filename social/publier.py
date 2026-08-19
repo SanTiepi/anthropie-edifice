@@ -85,7 +85,8 @@ def fabriquer(jour: date, pool=None) -> tuple[dict, dict[str, Path]]:
 
 
 def publier_jour(jour: date, avec_instagram: bool, avec_tiktok: bool, blanc: bool,
-                 avec_threads: bool = True, avec_facebook: bool = True) -> dict:
+                 avec_threads: bool = True, avec_facebook: bool = True,
+                 rattrapage: bool = False) -> dict:
     mot, fichiers = fabriquer(jour)
     journal(etape="visuels", mot=mot["mot"], lexique=mot["lexique"],
             **{k: str(v) for k, v in fichiers.items()})
@@ -94,6 +95,14 @@ def publier_jour(jour: date, avec_instagram: bool, avec_tiktok: bool, blanc: boo
     if blanc:
         journal(etape="blanc", message="aucune publication (--blanc)")
         return resultat
+
+    if rattrapage and avec_instagram:
+        # Le rattrapage tourne après coup : si le mot est déjà passé, on ne fait rien.
+        if instagram.deja_publie(env("IG_USER_ID"), env("IG_ACCESS_TOKEN"), mot["mot"]):
+            journal(etape="rattrapage", statut="rien à faire", mot=mot["mot"])
+            resultat["rattrapage"] = "déjà publié"
+            return resultat
+        journal(etape="rattrapage", statut="publication manquante — on rattrape", mot=mot["mot"])
 
     depot = env("GITHUB_REPOSITORY")
     urls = assets.pousser([fichiers["video"], fichiers["couverture"], fichiers["carte"]],
@@ -220,6 +229,8 @@ def main():
     p.add_argument("--sans-tiktok", action="store_true")
     p.add_argument("--sans-threads", action="store_true")
     p.add_argument("--sans-facebook", action="store_true")
+    p.add_argument("--rattrapage", action="store_true",
+                   help="ne publie que si le mot du jour n'est pas déjà passé sur Instagram")
     p.add_argument("--rafraichir-instagram", action="store_true",
                    help="prolonge le jeton Instagram (à lancer une fois par mois)")
     p.add_argument("--rafraichir-threads", action="store_true",
@@ -244,7 +255,7 @@ def main():
         return
 
     r = publier_jour(jour, not a.sans_instagram, not a.sans_tiktok, a.blanc,
-                     not a.sans_threads, not a.sans_facebook)
+                     not a.sans_threads, not a.sans_facebook, a.rattrapage)
     print(json.dumps(r, ensure_ascii=False, indent=2))
     if any(k.endswith("_erreur") for k in r):
         raise SystemExit(1)

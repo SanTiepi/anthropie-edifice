@@ -4,6 +4,9 @@ on:
   schedule:
     # 06:05 UTC = 08:05 à Zurich en été, 07:05 en hiver.
     - cron: "5 6 * * *"
+    # Rattrapage : si le run du matin a échoué ou n'est jamais parti, celui-ci
+    # publie ; si le mot est déjà passé, il ne fait rien.
+    - cron: "35 9 * * *"
   workflow_dispatch:
     inputs:
       date:
@@ -27,6 +30,10 @@ on:
         default: false
       sans_facebook:
         description: "Ne pas publier sur la Page Facebook"
+        type: boolean
+        default: false
+      rattrapage:
+        description: "Ne publier que si le mot du jour n'est pas déjà passé"
         type: boolean
         default: false
 
@@ -56,9 +63,37 @@ jobs:
           key: piper-fr_FR-siwis-medium-v1
 
       - name: Dépendances
+        timeout-minutes: 12
         run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
-          pip install -r social/requirements.txt
+          # Le 2026-08-19, apt s'est figé sans une ligne de sortie et a mangé les
+          # 40 minutes du job. D'où : ffmpeg est déjà là la plupart du temps, on ne
+          # l'installe que s'il manque, chaque commande est bornée, et on réessaie.
+          if ! command -v ffmpeg >/dev/null 2>&1; then
+            for essai in 1 2; do
+              if sudo timeout 120 apt-get update -qq && sudo timeout 240 apt-get install -y -qq ffmpeg; then
+                break
+              fi
+              echo "apt a échoué ou traîné (essai $essai) — on relâche les verrous et on réessaie"
+              sudo rm -f /var/lib/apt/lists/lock /var/cache/apt/archives/lock /var/lib/dpkg/lock*
+              sleep 20
+            done
+          fi
+          if ! command -v ffmpeg >/dev/null 2>&1; then
+            # Dernier recours, sans apt du tout : imageio-ffmpeg embarque un binaire
+            # statique, installé depuis PyPI. Le miroir Ubuntu peut mourir, pas la chaîne.
+            echo "apt indisponible — on prend le ffmpeg embarqué dans imageio-ffmpeg"
+            timeout 300 pip install imageio-ffmpeg
+            BIN=$(python3 -c "import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())")
+            sudo ln -sf "$BIN" /usr/local/bin/ffmpeg
+          fi
+          command -v ffmpeg >/dev/null 2>&1 || { echo "ffmpeg introuvable, même en dernier recours"; exit 1; }
+          ffmpeg -version | head -1
+          for essai in 1 2 3; do
+            if timeout 420 pip install -r social/requirements.txt; then break; fi
+            echo "pip a échoué (essai $essai)"
+            sleep 20
+          done
+          python3 -c "import PIL, requests, nacl, numpy; print('dépendances en place')"
 
       - name: Publier
         env:
@@ -86,7 +121,8 @@ jobs:
             ${{ github.event.inputs.sans_instagram == 'true' && '--sans-instagram' || '' }} \
             ${{ github.event.inputs.sans_tiktok == 'true' && '--sans-tiktok' || '' }} \
             ${{ github.event.inputs.sans_threads == 'true' && '--sans-threads' || '' }} \
-            ${{ github.event.inputs.sans_facebook == 'true' && '--sans-facebook' || '' }}
+            ${{ github.event.inputs.sans_facebook == 'true' && '--sans-facebook' || '' }} \
+            ${{ (github.event.inputs.rattrapage == 'true' || github.event.schedule == '35 9 * * *') && '--rattrapage' || '' }}
 
       - name: Garder une trace en cas d'échec
         if: failure()

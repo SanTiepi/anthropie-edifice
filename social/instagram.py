@@ -123,6 +123,27 @@ def echanger_longue_duree(token_court: str, app_secret: str) -> tuple[str, int]:
     return d["access_token"], int(d.get("expires_in", 0))
 
 
+def deja_publie(ig_user_id: str, token: str, marqueur: str, n: int = 8) -> bool:
+    """Le mot est-il déjà passé ? Sert au rattrapage, pour ne pas poster deux fois.
+
+    On regarde les dernières publications et on cherche le lemme en tête de
+    légende. En cas de doute (API muette, jeton fatigué), on répond « oui » :
+    mieux vaut un jour sans post qu'un doublon.
+    """
+    try:
+        d = _get(f"{ig_user_id}/media", fields="caption,timestamp",
+                 limit=n, access_token=token)
+    except Exception as e:  # noqa: BLE001
+        print(f"[instagram] impossible de vérifier les publications récentes ({e})", flush=True)
+        return True
+    cible = marqueur.strip().lower()
+    for m in d.get("data", []):
+        legende = (m.get("caption") or "").strip().lower()
+        if legende.startswith(cible):
+            return True
+    return False
+
+
 def diagnostic(ig_user_id: str, token: str) -> dict:
     """À lancer une fois au montage : vérifie que le jeton voit bien le compte."""
     champs = "id,username,name,media_count" if _mode() == "instagram" else \
