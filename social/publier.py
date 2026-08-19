@@ -196,6 +196,21 @@ def rafraichir_instagram():
     journal(etape="coffre", statut="IG_ACCESS_TOKEN prolongé", expire_dans_jours=round(duree / 86400, 1))
 
 
+def rafraichir_threads():
+    """Prolonge le jeton Threads longue durée et le réécrit dans les secrets.
+
+    Silencieux si le canal n'est pas encore monté : le contexte `secrets` n'est
+    pas lisible dans un `if:` de step, donc c'est ici qu'on décide de ne rien faire.
+    """
+    if not os.environ.get("THREADS_TOKEN", "").strip():
+        journal(etape="threads", statut="ignoré", message="THREADS_TOKEN absent — rien à prolonger")
+        return
+    import coffre
+    nouveau, duree = threads.rafraichir_token(env("THREADS_TOKEN"))
+    coffre.ecrire_secret(env("GITHUB_REPOSITORY"), "THREADS_TOKEN", nouveau, env("GH_PAT"))
+    journal(etape="coffre", statut="THREADS_TOKEN prolongé", expire_dans_jours=round(duree / 86400, 1))
+
+
 def main():
     p = argparse.ArgumentParser(description="Publie le mot du jour sur Instagram et TikTok.")
     p.add_argument("--date", help="AAAA-MM-JJ (défaut : aujourd'hui à Zurich)")
@@ -207,10 +222,16 @@ def main():
     p.add_argument("--sans-facebook", action="store_true")
     p.add_argument("--rafraichir-instagram", action="store_true",
                    help="prolonge le jeton Instagram (à lancer une fois par mois)")
+    p.add_argument("--rafraichir-threads", action="store_true",
+                   help="prolonge le jeton Threads (à lancer une fois par mois)")
     a = p.parse_args()
 
     if a.rafraichir_instagram:
         rafraichir_instagram()
+        return
+
+    if a.rafraichir_threads:
+        rafraichir_threads()
         return
 
     jour = date.fromisoformat(a.date) if a.date else datetime.now(FUSEAU).date()

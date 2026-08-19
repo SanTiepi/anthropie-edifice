@@ -1,4 +1,4 @@
-name: Prolonger le jeton Instagram
+name: Prolonger les jetons (Instagram, Threads)
 
 on:
   schedule:
@@ -23,3 +23,10 @@ jobs:
           GH_PAT: ${{ secrets.GH_PAT }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: python3 social/publier.py --rafraichir-instagram
+
+      - name: Threads
+        env:
+          THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python3 social/publier.py --rafraichir-threads
