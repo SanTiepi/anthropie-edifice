@@ -56,7 +56,8 @@ jobs:
           TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
           TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
           TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
-          TIKTOK_MODE: ${{ vars.TIKTOK_MODE || 'direct' }}
+          TIKTOK_MODE: ${{ vars.TIKTOK_MODE || 'direct' }}
+          TIKTOK_VISIBILITE: ${{ vars.TIKTOK_VISIBILITE || 'PUBLIC_TO_EVERYONE' }}
           GH_PAT: ${{ secrets.GH_PAT }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
