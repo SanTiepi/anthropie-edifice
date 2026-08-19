@@ -124,6 +124,8 @@ def publier_jour(jour: date, avec_instagram: bool, avec_tiktok: bool, blanc: boo
             jetons = tiktok.rafraichir_token(env("TIKTOK_CLIENT_KEY"), env("TIKTOK_CLIENT_SECRET"),
                                              env("TIKTOK_REFRESH_TOKEN"))
             _memoriser_refresh(jetons.get("refresh_token"))
+            if os.environ.get("TIKTOK_MODE", "direct") == "direct":
+                journal(etape="tiktok", createur=tiktok.info_createur(jetons["access_token"]))
             r = tiktok.publier(jetons["access_token"], fichiers["video"], legende.tiktok(mot),
                                mode=os.environ.get("TIKTOK_MODE", "direct"),
                                visibilite=os.environ.get("TIKTOK_VISIBILITE", "PUBLIC_TO_EVERYONE"))
