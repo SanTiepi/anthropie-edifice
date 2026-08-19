@@ -50,6 +50,35 @@ def tiktok(mot: dict) -> str:
     return txt[:2150]
 
 
+def threads(mot: dict) -> str:
+    """Threads est un fil de texte : le mot, ses racines, la définition, la source.
+
+    500 caractères maximum — on rogne la définition avant tout le reste, jamais
+    l'étymologie ni le lien.
+    """
+    etym = (mot.get("etym_court") or mot["etym_clean"])
+    queue = f"\n\n{SIGNATURE} — CC0"
+    tete = f"{mot['mot']}\n{etym}\n\n"
+    place = 500 - len(tete) - len(queue)
+    corps = mot["corps_clean"]
+    if len(corps) > place:
+        corps = resume_dur(corps, place)
+    return tete + corps + queue
+
+
+def resume_dur(s: str, n: int) -> str:
+    """Coupe à la phrase, sinon au mot, jamais au milieu d'un mot."""
+    if len(s) <= n:
+        return s
+    bout = s[:n]
+    for sep in (". ", " ; ", ", "):
+        i = bout.rfind(sep)
+        if i > n * 0.55:
+            return bout[:i + 1].rstrip()
+    i = bout.rfind(" ")
+    return (bout[:i] if i > 0 else bout).rstrip(" ,;") + "…"
+
+
 def alt_text(mot: dict) -> str:
     return (f"Carte typographique sur fond parchemin. Le mot « {mot['mot']} », son étymologie "
             f"({(mot.get('etym_court') or mot['etym_clean'])}) et sa définition : {mot['corps_court']}")

@@ -11,6 +11,7 @@ Usage :
 Secrets attendus dans l'environnement (voir social/README.md) :
     IG_USER_ID, IG_ACCESS_TOKEN, FB_APP_ID, FB_APP_SECRET
     TIKTOK_CLIENT_KEY, TIKTOK_CLIENT_SECRET, TIKTOK_REFRESH_TOKEN
+    THREADS_TOKEN, THREADS_USER_ID, FB_PAGE_ID, FB_PAGE_TOKEN
     GITHUB_REPOSITORY, GITHUB_TOKEN, GH_PAT
 """
 from __future__ import annotations
@@ -28,9 +29,11 @@ from datetime import datetime
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import assets
+import facebook
 import instagram
 import legende
 import render
+import threads
 import tiktok
 from motdujour import load_pool, mot_du_jour
 
@@ -81,7 +84,8 @@ def fabriquer(jour: date, pool=None) -> tuple[dict, dict[str, Path]]:
     return mot, fichiers
 
 
-def publier_jour(jour: date, avec_instagram: bool, avec_tiktok: bool, blanc: bool) -> dict:
+def publier_jour(jour: date, avec_instagram: bool, avec_tiktok: bool, blanc: bool,
+                 avec_threads: bool = True, avec_facebook: bool = True) -> dict:
     mot, fichiers = fabriquer(jour)
     journal(etape="visuels", mot=mot["mot"], lexique=mot["lexique"],
             **{k: str(v) for k, v in fichiers.items()})
@@ -113,6 +117,35 @@ def publier_jour(jour: date, avec_instagram: bool, avec_tiktok: bool, blanc: boo
             resultat["instagram_erreur"] = str(e)
             journal(etape="instagram", statut="échec", erreur=str(e))
             traceback.print_exc()
+
+    # Threads : même voix que le site, en texte, avec la carte en illustration
+    if avec_threads and os.environ.get("THREADS_TOKEN", "").strip():
+        try:
+            pid = threads.publier(env("THREADS_TOKEN"), legende.threads(mot),
+                                  image_url=urls[fichiers["carte"].name],
+                                  user_id=os.environ.get("THREADS_USER_ID") or None)
+            resultat["threads"] = pid
+            journal(etape="threads", statut="publié", post_id=pid)
+        except Exception as e:
+            resultat["threads_erreur"] = str(e)
+            journal(etape="threads", statut="échec", erreur=str(e))
+            traceback.print_exc()
+    elif avec_threads:
+        journal(etape="threads", statut="ignoré", message="THREADS_TOKEN absent — canal non encore monté")
+
+    # Page Facebook : dépôt d'archive, portée organique faible mais coût nul
+    if avec_facebook and os.environ.get("FB_PAGE_TOKEN", "").strip():
+        try:
+            pid = facebook.publier_photo(env("FB_PAGE_ID"), env("FB_PAGE_TOKEN"),
+                                         urls[fichiers["carte"].name], legende.instagram(mot))
+            resultat["facebook"] = pid
+            journal(etape="facebook", statut="publié", post_id=pid)
+        except Exception as e:
+            resultat["facebook_erreur"] = str(e)
+            journal(etape="facebook", statut="échec", erreur=str(e))
+            traceback.print_exc()
+    elif avec_facebook:
+        journal(etape="facebook", statut="ignoré", message="FB_PAGE_TOKEN absent — canal non encore monté")
 
     # TikTok non configuré : on saute proprement au lieu de faire échouer le run
     if avec_tiktok and not os.environ.get("TIKTOK_CLIENT_KEY", "").strip():
@@ -170,6 +203,8 @@ def main():
     p.add_argument("--lot", type=int, metavar="N", help="fabrique N jours d'avance, sans publier")
     p.add_argument("--sans-instagram", action="store_true")
     p.add_argument("--sans-tiktok", action="store_true")
+    p.add_argument("--sans-threads", action="store_true")
+    p.add_argument("--sans-facebook", action="store_true")
     p.add_argument("--rafraichir-instagram", action="store_true",
                    help="prolonge le jeton Instagram (à lancer une fois par mois)")
     a = p.parse_args()
@@ -187,9 +222,10 @@ def main():
             journal(etape="lot", jour=mot["date"], mot=mot["mot"])
         return
 
-    r = publier_jour(jour, not a.sans_instagram, not a.sans_tiktok, a.blanc)
+    r = publier_jour(jour, not a.sans_instagram, not a.sans_tiktok, a.blanc,
+                     not a.sans_threads, not a.sans_facebook)
     print(json.dumps(r, ensure_ascii=False, indent=2))
-    if r.get("instagram_erreur") or r.get("tiktok_erreur"):
+    if any(k.endswith("_erreur") for k in r):
         raise SystemExit(1)
 
 

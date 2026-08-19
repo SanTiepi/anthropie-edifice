@@ -21,6 +21,14 @@ on:
         description: "Ne pas publier sur TikTok"
         type: boolean
         default: false
+      sans_threads:
+        description: "Ne pas publier sur Threads"
+        type: boolean
+        default: false
+      sans_facebook:
+        description: "Ne pas publier sur la Page Facebook"
+        type: boolean
+        default: false
 
 concurrency:
   group: mot-du-jour
@@ -64,6 +72,10 @@ jobs:
           TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
           TIKTOK_MODE: ${{ vars.TIKTOK_MODE || 'direct' }}
           TIKTOK_VISIBILITE: ${{ vars.TIKTOK_VISIBILITE || 'PUBLIC_TO_EVERYONE' }}
+          THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
+          THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
           GH_PAT: ${{ secrets.GH_PAT }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
@@ -72,7 +84,9 @@ jobs:
             ${{ github.event.inputs.date && format('--date {0}', github.event.inputs.date) || '' }} \
             ${{ github.event.inputs.blanc == 'true' && '--blanc' || '' }} \
             ${{ github.event.inputs.sans_instagram == 'true' && '--sans-instagram' || '' }} \
-            ${{ github.event.inputs.sans_tiktok == 'true' && '--sans-tiktok' || '' }}
+            ${{ github.event.inputs.sans_tiktok == 'true' && '--sans-tiktok' || '' }} \
+            ${{ github.event.inputs.sans_threads == 'true' && '--sans-threads' || '' }} \
+            ${{ github.event.inputs.sans_facebook == 'true' && '--sans-facebook' || '' }}
 
       - name: Garder une trace en cas d'échec
         if: failure()

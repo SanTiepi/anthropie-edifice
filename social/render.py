@@ -93,20 +93,51 @@ def taille_lemme(mot: str, base: int) -> int:
     return int(base * ratio)
 
 
+_CACHE_HALO: dict = {}
+
+
 def fond(w: int, h: int, couleur: tuple[int, int, int], derive: float = 0.0) -> Image.Image:
     """Parchemin + halo radial de la couleur du lexique + grain fin."""
     img = Image.new("RGB", (w, h), PARCHEMIN)
-    halo = Image.new("L", (w // 4, h // 4), 0)
-    hd = ImageDraw.Draw(halo)
     cx, cy = int(w * 0.86) // 4, int(h * (-0.02 + derive)) // 4
     r = int(max(w, h) * 0.62) // 4
-    for i in range(28, 0, -1):
-        rr = r * i / 28
-        hd.ellipse([cx - rr, cy - rr, cx + rr, cy + rr], fill=int(46 * (1 - i / 28) ** 1.6))
-    halo = halo.resize((w, h), Image.LANCZOS).filter(ImageFilter.GaussianBlur(12))
+    # le halo ne dérive que de quelques pixels : on le calcule une fois par position
+    # utile au lieu de refaire un rééchantillonnage plein format à chaque image.
+    cle = (w, h, cx, cy, r)
+    halo = _CACHE_HALO.get(cle)
+    if halo is None:
+        halo = Image.new("L", (w // 4, h // 4), 0)
+        hd = ImageDraw.Draw(halo)
+        for i in range(28, 0, -1):
+            rr = r * i / 28
+            hd.ellipse([cx - rr, cy - rr, cx + rr, cy + rr], fill=int(46 * (1 - i / 28) ** 1.6))
+        halo = halo.resize((w, h), Image.LANCZOS).filter(ImageFilter.GaussianBlur(12))
+        if len(_CACHE_HALO) > 64:
+            _CACHE_HALO.clear()
+        _CACHE_HALO[cle] = halo
     img = Image.composite(Image.new("RGB", (w, h), couleur), img, halo)
-    grain = Image.effect_noise((w, h), 7).filter(ImageFilter.GaussianBlur(0.4)).point(lambda v: 128 + (v - 128) * 0.10)
-    return Image.blend(img, Image.merge("RGB", (grain, grain, grain)), 0.055)
+    return Image.blend(img, _grain(w, h), 0.055)
+
+
+_POOL_GRAIN: dict = {}
+_TOUR_GRAIN = [0]
+
+
+def _grain(w: int, h: int) -> Image.Image:
+    """Grain vivant, sans le recalculer à chaque image.
+
+    Dix textures suffisent : à trente images par seconde l'œil voit du bruit qui
+    bouge, pas une boucle. Les fabriquer toutes à chaque image coûtait plus cher
+    que tout le reste du rendu réuni.
+    """
+    pool = _POOL_GRAIN.setdefault((w, h), [])
+    if len(pool) < 10:
+        g = (Image.effect_noise((w, h), 7)
+             .filter(ImageFilter.GaussianBlur(0.4))
+             .point(lambda v: 128 + (v - 128) * 0.10))
+        pool.append(Image.merge("RGB", (g, g, g)))
+    _TOUR_GRAIN[0] = (_TOUR_GRAIN[0] + 1) % len(pool)
+    return pool[_TOUR_GRAIN[0]]
 
 
 def ease(t: float) -> float:
@@ -121,14 +152,25 @@ def fenetre(t: float, debut: float, duree: float) -> float:
 
 # ---------------------------------------------------------------- composition
 
+_CACHE_BLOC: dict = {}
+
+
 def _bloc(d, mot, maxw, tailles, dispo: float):
     """Compose le bloc central et le contraint à tenir dans `dispo` pixels.
 
     On dégrade dans cet ordre : taille du corps, puis longueur de l'extrait.
     Rien ne doit jamais chevaucher la règle du pied — d'où la boucle d'ajustement
     plutôt qu'une mise en page à hauteurs fixes.
+
+    La mise en page ne dépend pas de l'instant t : seules les opacités bougent
+    d'une image à l'autre. On la calcule donc une fois par mot et par gabarit,
+    sinon les quelque quatre cents images d'une vidéo la recalculent chacune.
     """
     from motdujour import resume
+
+    cle = (mot["slug"], maxw, tuple(sorted(tailles.items())), round(dispo, 1))
+    if cle in _CACHE_BLOC:
+        return _CACHE_BLOC[cle]
 
     f_m = font(True, taille_lemme(mot["mot"], tailles["lemme"]))
     f_e, l_e = ajuster(d, mot.get("etym_court") or mot["etym_clean"], maxw, tailles["etym"], 3)
@@ -158,8 +200,10 @@ def _bloc(d, mot, maxw, tailles, dispo: float):
     f_c, l_c = choix
 
     total = h_lemme + ecart1 + h_etym + ecart2 + len(l_c) * f_c.size * 1.46
-    return dict(f_m=f_m, f_e=f_e, l_e=l_e, f_c=f_c, l_c=l_c,
-                h=total, ecart1=ecart1, ecart2=ecart2, h_lemme=h_lemme, h_etym=h_etym)
+    b = dict(f_m=f_m, f_e=f_e, l_e=l_e, f_c=f_c, l_c=l_c,
+             h=total, ecart1=ecart1, ecart2=ecart2, h_lemme=h_lemme, h_etym=h_etym)
+    _CACHE_BLOC[cle] = b
+    return b
 
 
 def _dessiner_bloc(d, b, mot, M, y, t, t_mot, t_etym, t_def, a_mot):
