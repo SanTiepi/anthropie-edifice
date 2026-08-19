@@ -52,6 +52,26 @@ def journal(**kv):
     print(json.dumps(kv, ensure_ascii=False), flush=True)
 
 
+def resume_run(mot: dict, mode_tiktok: str):
+    """Affiche la legende TikTok dans le resume du run GitHub Actions.
+
+    L'endpoint inbox de TikTok n'accepte aucun champ post_info : la legende ne peut
+    pas etre transmise par l'API tant que l'application n'est pas auditee. On la
+    depose donc ici, en bloc copiable, pour la coller au moment de valider le
+    brouillon. En mode direct, la legende part avec la video et ce bloc n'est
+    qu'une trace.
+    """
+    chemin = os.environ.get("GITHUB_STEP_SUMMARY", "").strip()
+    if not chemin:
+        return
+    tete = ("Legende a coller dans TikTok (mode inbox : l'API ne peut pas l'envoyer)"
+            if mode_tiktok != "direct" else "Legende envoyee a TikTok")
+    with open(chemin, "a", encoding="utf-8") as f:
+        f.write(f"## {mot['mot']} — {mot['date']}\n\n### {tete}\n\n```\n"
+                f"{legende.tiktok(mot)}\n```\n\n<details><summary>Legende Instagram</summary>\n\n```\n"
+                f"{legende.instagram(mot)}\n```\n\n</details>\n\n")
+
+
 def fabriquer(jour: date, pool=None) -> tuple[dict, dict[str, Path]]:
     mot = mot_du_jour(jour, pool)
     fichiers = render.tout(mot, SORTIE)
@@ -66,6 +86,7 @@ def publier_jour(jour: date, avec_instagram: bool, avec_tiktok: bool, blanc: boo
     journal(etape="visuels", mot=mot["mot"], lexique=mot["lexique"],
             **{k: str(v) for k, v in fichiers.items()})
     resultat = {"date": mot["date"], "mot": mot["mot"], "slug": mot["slug"]}
+    resume_run(mot, os.environ.get("TIKTOK_MODE", "direct"))
     if blanc:
         journal(etape="blanc", message="aucune publication (--blanc)")
         return resultat
