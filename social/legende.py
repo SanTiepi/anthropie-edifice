@@ -31,7 +31,7 @@ def instagram(mot: dict) -> str:
     return "\n".join([
         f"{mot['mot']}",
         "",
-        mot["etym_clean"],
+        mot.get("etym_court") or mot["etym_clean"],
         "",
         mot["corps_clean"],
         "",
@@ -46,13 +46,13 @@ def instagram(mot: dict) -> str:
 def tiktok(mot: dict) -> str:
     """Le titre TikTok est court : le mot, sa définition ramassée, la source."""
     corps = mot["corps_court"] if len(mot["corps_clean"]) > 200 else mot["corps_clean"]
-    txt = f"{mot['mot']} — {corps}\n{mot['etym_clean']}\n{SIGNATURE} · CC0\n{_hashtags(mot, 8)}"
+    txt = f"{mot['mot']} — {corps}\n{(mot.get('etym_court') or mot['etym_clean'])}\n{SIGNATURE} · CC0\n{_hashtags(mot, 8)}"
     return txt[:2150]
 
 
 def alt_text(mot: dict) -> str:
     return (f"Carte typographique sur fond parchemin. Le mot « {mot['mot']} », son étymologie "
-            f"({mot['etym_clean']}) et sa définition : {mot['corps_court']}")
+            f"({(mot.get('etym_court') or mot['etym_clean'])}) et sa définition : {mot['corps_court']}")
 
 
 if __name__ == "__main__":

@@ -41,6 +41,12 @@ jobs:
           python-version: "3.12"
           cache: pip
 
+      - name: Cache de la voix
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/piper
+          key: piper-fr_FR-siwis-medium-v1
+
       - name: Dépendances
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
@@ -56,7 +62,7 @@ jobs:
           TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
           TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
           TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
-          TIKTOK_MODE: ${{ vars.TIKTOK_MODE || 'direct' }}
+          TIKTOK_MODE: ${{ vars.TIKTOK_MODE || 'direct' }}
           TIKTOK_VISIBILITE: ${{ vars.TIKTOK_VISIBILITE || 'PUBLIC_TO_EVERYONE' }}
           GH_PAT: ${{ secrets.GH_PAT }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -6,6 +6,7 @@ parchemin #f4ead4, encre #2b2118, or #a9842b, une couleur par lexique, Cardo.
 from __future__ import annotations
 
 import math
+import os
 import shutil
 import subprocess
 import tempfile
@@ -130,7 +131,7 @@ def _bloc(d, mot, maxw, tailles, dispo: float):
     from motdujour import resume
 
     f_m = font(True, taille_lemme(mot["mot"], tailles["lemme"]))
-    f_e, l_e = ajuster(d, mot["etym_clean"], maxw, tailles["etym"], 3)
+    f_e, l_e = ajuster(d, mot.get("etym_court") or mot["etym_clean"], maxw, tailles["etym"], 3)
     h_lemme = f_m.size * 1.16
     h_etym = len(l_e) * f_e.size * 1.42
     ecart1, ecart2 = tailles["ecart_etym"], tailles["ecart_corps"]
@@ -218,14 +219,19 @@ def carte(mot: dict, w: int = 1080, h: int = 1350, t: float | None = None) -> Im
     return img
 
 
-def story(mot: dict, t: float, w: int = 1080, h: int = 1920) -> Image.Image:
-    """Image 9:16 animée à l'instant t (TikTok, Reels, Stories)."""
+def story(mot: dict, t: float, w: int = 1080, h: int = 1920,
+          reperes: tuple[float, float, float] | None = None) -> Image.Image:
+    """Image 9:16 animée à l'instant t (TikTok, Reels, Stories).
+
+    `reperes` cale l'apparition du lemme, de l'étymologie et de la définition
+    sur la voix off : l'image suit ce qui est dit au lieu de le devancer.
+    """
     coul = hex_rgb(mot["couleur"])
     img = fond(w, h, coul, derive=0.010 * math.sin(t * 0.45))
     d = ImageDraw.Draw(img)
     M = 104
     maxw = w - 2 * M
-    T_MOT, T_ETYM, T_DEF = 1.05, 2.15, 3.05
+    T_MOT, T_ETYM, T_DEF = reperes or (1.05, 2.15, 3.05)
 
     a_bar = fenetre(t, 0.00, 0.80)
     a_kick = fenetre(t, 0.40, 0.60)
@@ -271,16 +277,20 @@ def ecrire_couverture(mot: dict, dest: Path) -> Path:
     return dest
 
 
-def ecrire_video(mot: dict, dest: Path, duree: float = DUREE, fps: int = FPS) -> Path:
+def ecrire_video(mot: dict, dest: Path, duree: float = DUREE, fps: int = FPS,
+                 audio: Path | None = None,
+                 reperes: tuple[float, float, float] | None = None) -> Path:
     dest.parent.mkdir(parents=True, exist_ok=True)
     n = int(duree * fps)
     with tempfile.TemporaryDirectory() as tmp:
         for i in range(n):
-            story(mot, i / fps).save(Path(tmp) / f"f{i:04d}.png", "PNG")
+            story(mot, i / fps, reperes=reperes).save(Path(tmp) / f"f{i:04d}.png", "PNG")
+        piste = (["-i", str(audio)] if audio and Path(audio).exists()
+                 else ["-f", "lavfi", "-i", "anullsrc=channel_layout=stereo:sample_rate=44100"])
         cmd = [
             "ffmpeg", "-y", "-loglevel", "error",
             "-framerate", str(fps), "-i", str(Path(tmp) / "f%04d.png"),
-            "-f", "lavfi", "-i", "anullsrc=channel_layout=stereo:sample_rate=44100",
+            *piste,
             "-shortest",
             "-c:v", "libx264", "-preset", "slow", "-crf", "19",
             "-pix_fmt", "yuv420p", "-profile:v", "high", "-level", "4.0",
@@ -295,10 +305,18 @@ def tout(mot: dict, dossier: Path) -> dict[str, Path]:
     if not shutil.which("ffmpeg"):
         raise RuntimeError("ffmpeg introuvable — requis pour la vidéo 9:16")
     base = f"{mot['date']}-{mot['slug']}"
+    audio, duree, reperes = None, DUREE, None
+    if os.environ.get("SANS_SON", "").strip() not in ("1", "true", "oui"):
+        try:
+            import son
+            audio, duree, reperes = son.piste(mot, dossier / f"{base}.wav")
+        except Exception as e:  # noqa: BLE001 — une vidéo muette vaut mieux que rien
+            print(f"[render] piste audio indisponible ({e}) — vidéo muette", flush=True)
     return {
         "carte": ecrire_carte(mot, dossier / f"{base}.jpg"),
         "couverture": ecrire_couverture(mot, dossier / f"{base}-cover.jpg"),
-        "video": ecrire_video(mot, dossier / f"{base}.mp4"),
+        "video": ecrire_video(mot, dossier / f"{base}.mp4", duree=duree,
+                              audio=audio, reperes=reperes),
     }
 
 

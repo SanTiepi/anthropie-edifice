@@ -106,6 +106,18 @@ def load_pool(path: Path | None = None) -> list[dict]:
     return pool
 
 
+
+def etym_courte(s: str) -> str:
+    """Ligne d'étymologie telle qu'on la montre sur une carte ou qu'on la lit.
+
+    La note de faux-ami appartient à la page du mot, où l'on a le temps de la
+    lire ; sur un visuel de neuf secondes elle noie la composition. On la coupe.
+    """
+    m = re.search(r"\(?\s*Faux-?\s?amis?\b", s, re.IGNORECASE)
+    if m:
+        s = s[:m.start()]
+    return s.strip().rstrip(" .;:—-(")
+
 def date_key(d: date) -> str:
     return f"{d.year}-{d.month}-{d.day}"
 
@@ -114,6 +126,7 @@ def mot_du_jour(d: date, pool: list[dict] | None = None) -> dict:
     pool = pool or load_pool()
     w = dict(pool[_fnv1a(date_key(d)) % len(pool)])
     w["etym_clean"] = de_mark(w["etym"])
+    w["etym_court"] = etym_courte(w["etym_clean"])
     w["corps_clean"] = de_mark(w["corps"]).strip()
     w["corps_teaser"] = teaser(w["corps"])
     w["corps_court"] = resume(w["corps"])
