@@ -65,26 +65,26 @@ jobs:
       - name: Dépendances
         timeout-minutes: 12
         run: |
-          # Le 2026-08-19, apt s'est figé sans une ligne de sortie et a mangé les
-          # 40 minutes du job. D'où : ffmpeg est déjà là la plupart du temps, on ne
-          # l'installe que s'il manque, chaque commande est bornée, et on réessaie.
+          # Le 2026-08-19, apt-get s'est figé sans une ligne de sortie et a mangé les
+          # 40 minutes du job. On ne lui confie donc plus le chemin principal : le
+          # binaire statique livré par PyPI arrive en quelques secondes et ne dépend
+          # d'aucun miroir Ubuntu. apt ne sert plus que de second recours.
           if ! command -v ffmpeg >/dev/null 2>&1; then
+            if timeout 300 pip install imageio-ffmpeg; then
+              BIN=$(python3 -c "import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())")
+              sudo ln -sf "$BIN" /usr/local/bin/ffmpeg
+            fi
+          fi
+          if ! command -v ffmpeg >/dev/null 2>&1; then
+            echo "PyPI n'a pas suffi — on tente apt"
             for essai in 1 2; do
               if sudo timeout 120 apt-get update -qq && sudo timeout 240 apt-get install -y -qq ffmpeg; then
                 break
               fi
-              echo "apt a échoué ou traîné (essai $essai) — on relâche les verrous et on réessaie"
+              echo "apt a échoué ou traîné (essai $essai)"
               sudo rm -f /var/lib/apt/lists/lock /var/cache/apt/archives/lock /var/lib/dpkg/lock*
               sleep 20
             done
-          fi
-          if ! command -v ffmpeg >/dev/null 2>&1; then
-            # Dernier recours, sans apt du tout : imageio-ffmpeg embarque un binaire
-            # statique, installé depuis PyPI. Le miroir Ubuntu peut mourir, pas la chaîne.
-            echo "apt indisponible — on prend le ffmpeg embarqué dans imageio-ffmpeg"
-            timeout 300 pip install imageio-ffmpeg
-            BIN=$(python3 -c "import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())")
-            sudo ln -sf "$BIN" /usr/local/bin/ffmpeg
           fi
           command -v ffmpeg >/dev/null 2>&1 || { echo "ffmpeg introuvable, même en dernier recours"; exit 1; }
           ffmpeg -version | head -1
